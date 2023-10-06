@@ -21,4 +21,17 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  cursor: url("/assets/icons/mh_cursor.svg"), default;
+}
+body {
+  background-image: linear-gradient(
+      157deg,
+      rgba(49, 158, 214, 0.3) 0%,
+      rgba(3, 5, 50, 0.3) 100%
+    ),
+    url("/assets/hunter.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }

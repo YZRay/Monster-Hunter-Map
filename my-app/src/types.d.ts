@@ -8,17 +8,23 @@ interface Armor {
   id: number;
   name: string;
   unlock: number;
-  equipKey?: string;
   equip: {
-    [key: string]: Equipment[any];
+    [key: string]: Equipment[];
   };
+  key?: string;
 }
 
+interface Monster {
+  id: number;
+  name: string;
+  unlock: number;
+}
 interface ArmorSectionProps {
-  armor: Armor | null;
+  armor: Armor[];
   qeuipKey?: string;
 }
 
 interface SelectionProps {
   onArmorClick: (armor: Armor, equipKey: string) => void;
+  onMonsterClick: (monster: Monster) => void;
 }
