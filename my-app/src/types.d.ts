@@ -27,4 +27,5 @@ interface ArmorSectionProps {
 interface SelectionProps {
   onArmorClick: (armor: Armor, equipKey: string) => void;
   onMonsterClick: (monster: Monster) => void;
+  selectedMonster: Monster | null;
 }
