@@ -2,6 +2,13 @@ import { FC, Fragment, useState, useEffect } from "react";
 import Image from "next/image";
 
 const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
+  if (armor.length === 0) {
+    return (
+      <div className="max-w-7xl text-center mx-auto p-8 my-4 rounded-md opacity-80 bg-slate-700">
+        <p className="text-white text-lg ">請點擊下方欄位</p>
+      </div>
+    );
+  }
   return (
     <div className="max-w-7xl mx-auto flex flex-col">
       <h1 className="text-2xl font-bold mt-8">Title</h1>
@@ -17,6 +24,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
                 width={30}
                 height={30}
                 alt="equipment"
+                loading="lazy"
               />
             </div>
             <div className="my-2">

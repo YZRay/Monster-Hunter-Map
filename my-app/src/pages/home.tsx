@@ -6,6 +6,7 @@ import Selection from "@/components/Selection";
 const HomePage: FC = () => {
   const [selectedArmors, setSelectedArmors] = useState<Armor[]>([]); // 使用狀態來跟蹤選中的防具
   const [selectedMonster, setSelectedMonster] = useState<Monster | null>(null);
+
   const handleArmorClick = (armor: Armor, key: string) => {
     // 檢查是否已經存在相同 key 的資料
     const existingIndex = selectedArmors.findIndex(
@@ -31,9 +32,11 @@ const HomePage: FC = () => {
       setSelectedArmors(newSelectedArmors);
     }
   };
+
   const monsterHandler = (monster: Monster) => {
     setSelectedMonster(monster);
   };
+  console.log(selectedMonster);
 
   return (
     <div className="">
@@ -41,6 +44,7 @@ const HomePage: FC = () => {
       <Selection
         onArmorClick={handleArmorClick}
         onMonsterClick={monsterHandler}
+        selectedMonster={selectedMonster}
       />
     </div>
   );
