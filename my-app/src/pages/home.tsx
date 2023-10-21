@@ -3,6 +3,7 @@ import React, { FC, useState, Fragment } from "react";
 import ArmorSection from "@/components/ArmorSection";
 import Selection from "@/components/Selection";
 import MapSelection from "@/components/MapSelection";
+import SkillLevel from "@/components/SkillLevel";
 import { Tab, Transition } from "@headlessui/react";
 import Image from "next/image";
 import FieldIcon from "../../public/assets/icons/field_icon.svg";
@@ -78,13 +79,7 @@ const HomePage: FC = () => {
         <Tab.Panels>
           <Tab.Panel>
             <ArmorSection armor={selectedArmors} />
-            <ul>
-              {Object.keys(skillLevels).map((skillName) => (
-                <li key={skillName}>
-                  {skillName}: {skillLevels[skillName]}
-                </li>
-              ))}
-            </ul>
+            <SkillLevel skill={skillLevels} />
             <Selection
               onArmorClick={handleArmorClick}
               onMonsterClick={monsterHandler}

@@ -33,3 +33,6 @@ interface SelectionProps {
 type SkillLevels = {
   [skillName: string]: number;
 };
+type SkillLevelProps = {
+  skill: SkillLevels;
+};
