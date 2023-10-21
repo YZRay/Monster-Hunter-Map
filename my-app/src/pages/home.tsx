@@ -1,11 +1,16 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC, useState, Fragment } from "react";
 import ArmorSection from "@/components/ArmorSection";
 import Selection from "@/components/Selection";
+import { Tab } from "@headlessui/react";
+import Image from "next/image";
+import FieldIcon from "../../public/assets/icons/field_icon.svg";
+import MonsterIcon from "../../public/assets/icons/monster_icon.svg";
 
 const HomePage: FC = () => {
   const [selectedArmors, setSelectedArmors] = useState<Armor[]>([]); // 使用狀態來跟蹤選中的防具
   const [selectedMonster, setSelectedMonster] = useState<Monster | null>(null);
+  const [isMonster, setIsMonster] = useState(false);
 
   const handleArmorClick = (armor: Armor, key: string) => {
     // 檢查是否已經存在相同 key 的資料
@@ -35,18 +40,37 @@ const HomePage: FC = () => {
 
   const monsterHandler = (monster: Monster) => {
     setSelectedMonster(monster);
+    setIsMonster(true);
   };
-  console.log(selectedMonster);
 
   return (
-    <div className="">
-      <ArmorSection armor={selectedArmors} />
-      <Selection
-        onArmorClick={handleArmorClick}
-        onMonsterClick={monsterHandler}
-        selectedMonster={selectedMonster}
-      />
-    </div>
+    <Fragment>
+      <Tab.Group>
+        <Tab.List className="max-w-7xl mx-auto flex my-4 bg-slate-400 p-1 rounded-md gap-4">
+          <Tab className="monster-tab flex items-center gap-2">
+            <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
+            魔物裝備
+          </Tab>
+          <Tab className="monster-tab flex items-center gap-2">
+            <Image src={FieldIcon} alt="FieldIcon" width={40} height={40} />
+            魔物地圖資訊
+          </Tab>
+        </Tab.List>
+        <Tab.Panels>
+          <Tab.Panel>
+            <ArmorSection armor={selectedArmors} />
+            <Selection
+              onArmorClick={handleArmorClick}
+              onMonsterClick={monsterHandler}
+              selectedMonster={selectedMonster}
+            />
+          </Tab.Panel>
+          <Tab.Panel>
+            <div className="max-w-7xl mx-auto">魔物地圖資訊</div>
+          </Tab.Panel>
+        </Tab.Panels>
+      </Tab.Group>
+    </Fragment>
   );
 };
 

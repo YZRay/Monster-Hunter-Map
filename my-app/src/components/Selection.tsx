@@ -33,13 +33,16 @@ const Selection: FC<SelectionProps> = ({
         scope="row"
         onClick={() => {
           onMonsterClick(armor);
+          if (armor.name === "礦石" || armor.name === "皮製") {
+            return setIsModalOpen(false);
+          }
           setIsModalOpen(true);
         }}
         className="px-2 py-2 font-bold text-center hover:bg-slate-800 border border-slate-200 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
       >
         <Image
           className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
-          src={`/assets/icons/${armor.name}.svg`}
+          src={`/assets/icons/Monster/${armor.name}.svg`}
           width={80}
           height={80}
           alt="equipment"
@@ -62,13 +65,7 @@ const Selection: FC<SelectionProps> = ({
               key={index}
             >
               <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                Unlock: {equipment.unlock}
-              </p>
-              <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                Skill: {equipment.skill}
-              </p>
-              <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                Level: {equipment.lv}
+                {equipment.unlock} {equipment.skill} {equipment.lv}
               </p>
             </div>
           ))}
@@ -85,10 +82,10 @@ const Selection: FC<SelectionProps> = ({
         monsterData={selectedMonster}
       ></MonsterModal>
       <div className="max-w-7xl mx-auto mt-4 mb-16 rounded-lg">
-        <h2 className="my-8 text-xl font-bold">Title</h2>
+        <h2 className="my-8 text-xl font-bold">裝備資訊</h2>
         <div className="relative overflow-x-auto shadow-md ">
-          <table className="table-auto text-md text-left font-bol text-slate-200 opacity-80 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
-            <thead className="text-md">
+          <table className="table-auto text-base text-left font-bol text-slate-200 opacity-80 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
+            <thead className="text-center">
               <tr>
                 <th scope="col" className="px-6 py-3 border border-slate-200">
                   種類
