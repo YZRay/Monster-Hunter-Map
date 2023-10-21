@@ -4,7 +4,7 @@ import Image from "next/image";
 const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
   if (armor.length === 0) {
     return (
-      <div className="max-w-7xl text-center mx-auto p-8 my-4 rounded-md opacity-80 bg-slate-700">
+      <div className="max-w-7xl text-center mx-auto p-8 my-4 rounded-md opacity-90 bg-slate-700">
         <p className="text-white text-lg ">請點擊下方欄位</p>
       </div>
     );
@@ -16,7 +16,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
         {armor.map((equipment) => (
           <div
             key={equipment.key}
-            className="flex flex-col items-center max-w-sm bg-white bg-opacity-80 border rounded-lg"
+            className="flex flex-col items-center max-w-sm bg-white bg-opacity-90 border rounded-lg"
           >
             <div className="pt-4">
               <Image

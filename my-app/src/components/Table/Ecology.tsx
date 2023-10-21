@@ -9,7 +9,7 @@ const MonsterEcology: FC<MyComponentProps<any>> = () => {
     <table className="monster-table">
       <thead className="bg-gray-800 text-gray-300">
         <tr>
-          <th>生存區域</th>
+          <th>出現區域</th>
         </tr>
       </thead>
       <tbody>

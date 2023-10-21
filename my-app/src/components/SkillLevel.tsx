@@ -1,9 +1,14 @@
 import { Fragment, FC } from "react";
 
 const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
+  if (Object.keys(skill).length === 0) {
+    // 如果還沒選取任何裝備就回傳null
+    return null;
+  }
+
   return (
     <Fragment>
-      <div className="max-w-7xl mx-auto grid grid-cols-5 my-4 bg-white py-4 px-8 rounded-md flex-wrap shadow-md">
+      <div className="max-w-7xl mx-auto grid grid-cols-5 my-4 bg-white pb-4 pt-8 px-8 rounded-md flex-wrap shadow-md">
         {Object.keys(skill).map((skillName) => (
           <div key={skillName}>
             <div className="flex flex-col gap-1 items-start">
