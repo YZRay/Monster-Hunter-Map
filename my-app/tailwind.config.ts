@@ -6,7 +6,13 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
-  plugins: [],
+  theme: {
+    extend: {
+      backgroundImage: {
+        texure: "url('/assets/texure.svg')",
+      },
+    },
+  },
+  plugins: [require("@headlessui/tailwindcss")],
 };
 export default config;

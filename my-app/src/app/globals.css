@@ -35,3 +35,16 @@ body {
   background-position: center;
   background-size: cover;
 }
+
+@layer components {
+  .monster-tab {
+    @apply w-44 bg-slate-400 text-white px-4 py-2 rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] ui-selected:bg-slate-800 hover:bg-slate-800 duration-300;
+  }
+  .monster-table {
+    @apply table table-fixed text-gray-300 border-separate space-y-6 text-center w-full;
+  }
+  .monster-table thead tr th,
+  .monster-table tbody tr td {
+    @apply p-3;
+  }
+}
