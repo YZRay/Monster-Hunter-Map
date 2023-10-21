@@ -29,3 +29,7 @@ interface SelectionProps {
   onMonsterClick: (monster: Monster) => void;
   selectedMonster: Monster | null;
 }
+
+type SkillLevels = {
+  [skillName: string]: number;
+};
