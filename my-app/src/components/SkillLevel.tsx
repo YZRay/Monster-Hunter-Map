@@ -17,7 +17,7 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
           const skillLevelLimit = skillObject.content.length;
           // 如果大於最高限制就回傳最後一個
           const skillContentIndex =
-            skillLevel - 1 > skillLevelLimit
+            skillLevel - 1 >= skillLevelLimit
               ? skillLevelLimit - 1
               : skillLevel - 1;
           const skillContent = skillObject?.content?.[skillContentIndex];
@@ -31,7 +31,13 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
                 <h3 className="font-bold text-lg text-gray-800">
                   {skillObject?.name}
                 </h3>
-                <span className="text-gray-800 font-bold">
+                <span
+                  className={`font-bold text-lg ${
+                    displayedSkillLevel === skillLevelLimit
+                      ? "text-[#E0AD55]"
+                      : "text-gray-800"
+                  }`}
+                >
                   Lv
                   {displayedSkillLevel}
                 </span>
@@ -39,9 +45,9 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
               <div className="flex">
                 {[...Array(skillLevelLimit)].map((_, index) => (
                   <span
-                    className={` h-4 w-6 mr-1 skew-x-[-20deg] border-solid border-2 border-[#313131] ease-linear ${
+                    className={`h-4 w-6 mr-1 skew-x-[-20deg] border-solid border-2 border-[#313131] ${
                       index < displayedSkillLevel
-                        ? "bg-[#2DB4FF]"
+                        ? "bg-[#2DB4FF] ease-linear"
                         : "bg-gray-600"
                     }`}
                     key={index}
