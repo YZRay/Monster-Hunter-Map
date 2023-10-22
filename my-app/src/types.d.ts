@@ -30,6 +30,10 @@ interface SelectionProps {
   selectedMonster: Monster | null;
 }
 
+interface Skills {
+  [key: string]: { name: string; content: string[] };
+}
+
 type SkillLevels = {
   [skillName: string]: number;
 };

@@ -10,6 +10,7 @@ const Selection: FC<SelectionProps> = ({
   selectedMonster,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const skills: Skills = data.baseSetting.skills;
 
   const th = Object.values(data.baseSetting.parts).map((item) => {
     return (
@@ -64,9 +65,12 @@ const Selection: FC<SelectionProps> = ({
               className="p-2 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
               key={index}
             >
-              <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                {equipment.unlock} {equipment.skill} {equipment.lv}
-              </p>
+              {equipment.skill && (
+                <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
+                  {equipment.unlock} {skills[equipment.skill]?.name}{" "}
+                  {equipment.lv}
+                </p>
+              )}
             </div>
           ))}
         </td>
