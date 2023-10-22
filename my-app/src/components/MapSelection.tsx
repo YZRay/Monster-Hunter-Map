@@ -1,7 +1,7 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import axios from "axios";
+import { log } from "console";
 
 const monster = [
   { id: 1, name: "Durward Reynolds", unavailable: false },
@@ -11,35 +11,40 @@ const monster = [
   { id: 5, name: "Katelyn Rohan", unavailable: false },
 ];
 const taiwanRegions = [
-  { id: 1, name: "台北市" },
-  { id: 2, name: "新北市" },
-  { id: 3, name: "桃園市" },
-  { id: 4, name: "台中市" },
-  { id: 5, name: "台南市" },
+  { id: 1, name: "台北" },
+  { id: 2, name: "新北" },
+  { id: 3, name: "桃園" },
+  { id: 4, name: "台中" },
+  { id: 5, name: "台南" },
   // 添加更多台湾地区
 ];
 
 const MapSelection = () => {
-  const [apiData, setApiData] = useState(null);
-  const l = "高雄";
-  const s = 10;
-  const p = 10;
-  useEffect(() => {
-    axios
-      .get(`https://api.mhnow.cc/${l}/?s=${s}&p=${p}`)
-      .then((response) => {
-        setApiData(response.data);
-      })
-      .catch((error) => {
-        console.error("error:", error);
-      });
-  }, []);
-
   const [selectedMonster, setSelectedMonster] = useState(monster[0]);
   const [selectedMonsterLevel, setSelectedMonsterLevel] = useState(
     monster[0].id
   );
   const [selectedRegion, setSelectedRegion] = useState(taiwanRegions[0]);
+  const city = selectedRegion.name;
+  const [data, setData] = useState<any>(null);
+  useEffect(() => {
+    // 發送 GET 請求
+    fetch(`https://api.mhnow.cc/api/monsterlocation?l=${city}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+  }, [city]);
+
+  console.log(data);
 
   return (
     <Fragment>

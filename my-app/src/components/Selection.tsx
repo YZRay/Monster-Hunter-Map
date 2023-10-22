@@ -26,7 +26,36 @@ const Selection: FC<SelectionProps> = ({
       </th>
     );
   });
-
+  const renderEquipmentType = (armor: Armor, type: string) => {
+    const equipArray = armor.equip[type] || [];
+    return (
+      <td
+        className="hover:bg-slate-800 border border-slate-200"
+        key={type}
+        onClick={() => {
+          const equipArray = armor.equip[type] || [];
+          if (equipArray.length === 0) {
+            return; // 直接返回，不执行后续的操作
+          }
+          onArmorClick(armor, type);
+        }}
+      >
+        {equipArray.map((equipment, index) => (
+          <div
+            className="p-2 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+            key={index}
+          >
+            {equipment.skill && (
+              <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
+                {equipment.unlock} {skills[equipment.skill]?.name}{" "}
+                {equipment.lv}
+              </p>
+            )}
+          </div>
+        ))}
+      </td>
+    );
+  };
   //表格內容
   const armorRows = Object.values(data.equipSetting).map((armor: Armor) => (
     <tr className="" key={armor.id}>
@@ -54,30 +83,14 @@ const Selection: FC<SelectionProps> = ({
       <td className="px-6 py-4 border border-slate-200 text-center">
         {armor.unlock}
       </td>
-      {Object.entries(armor.equip).map(([equipKey, equipArray]) => (
-        <td
-          className="hover:bg-slate-800 border border-slate-200"
-          key={equipKey}
-          onClick={() => onArmorClick(armor, equipKey)}
-        >
-          {equipArray.map((equipment: Equipment, index: number) => (
-            <div
-              className="p-2 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
-              key={index}
-            >
-              {equipment.skill && (
-                <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                  {equipment.unlock} {skills[equipment.skill]?.name}{" "}
-                  {equipment.lv}
-                </p>
-              )}
-            </div>
-          ))}
-        </td>
-      ))}
+      {renderEquipmentType(armor, "weapon")}
+      {renderEquipmentType(armor, "helm")}
+      {renderEquipmentType(armor, "mail")}
+      {renderEquipmentType(armor, "gloves")}
+      {renderEquipmentType(armor, "belt")}
+      {renderEquipmentType(armor, "greaves")}
     </tr>
   ));
-
   return (
     <Fragment>
       <MonsterModal
