@@ -15,7 +15,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
 
   return (
     <div className="max-w-7xl mx-auto flex flex-col">
-      <h1 className="text-2xl font-bold mt-2">裝備</h1>
+      <h1 className="text-2xl font-bold mt-2 text-gray-800">裝備技能一覽</h1>
       <div className="grid grid-cols-6 gap-2 mt-2 drop-shadow-[0_0px_35px_rgba(49, 158, 214, 0.3)]">
         {armor.map((equipment) => (
           <div
