@@ -64,7 +64,7 @@ const HomePage: FC = () => {
   return (
     <Fragment>
       <Tab.Group>
-        <Tab.List className="max-w-7xl mx-auto flex my-4 bg-slate-400 p-1 rounded-md gap-4 sticky top-0 z-50 shadow-lg bg-opacity-95">
+        <Tab.List className="max-w-7xl mx-auto flex my-4 bg-slate-400 p-1 rounded-md gap-4 sticky top-0 z-30 shadow-lg bg-opacity-95">
           <Tab className="monster-tab flex items-center gap-2">
             <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
             魔物資訊

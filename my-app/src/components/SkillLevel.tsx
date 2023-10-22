@@ -10,7 +10,7 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
 
   return (
     <Fragment>
-      <div className="max-w-7xl mx-auto grid grid-cols-5 my-2 bg-gray-100 pb-4 pt-8 px-8 rounded-md flex-wrap shadow-md bg-opacity-90 gap-x-8 gap-y-4 sticky top-16 z-40">
+      <div className="max-w-7xl mx-auto grid grid-cols-5 my-2 bg-gray-100 pb-4 pt-8 px-8 rounded-md flex-wrap shadow-md bg-opacity-90 gap-x-8 gap-y-4 sticky top-16 z-30">
         {Object.keys(skill).map((skillName) => {
           const skillObject = skills[skillName];
           const skillLevel = skill[skillName];
