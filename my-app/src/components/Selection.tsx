@@ -10,6 +10,7 @@ const Selection: FC<SelectionProps> = ({
   selectedMonster,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const skills: Skills = data.baseSetting.skills;
 
   const th = Object.values(data.baseSetting.parts).map((item) => {
     return (
@@ -64,9 +65,12 @@ const Selection: FC<SelectionProps> = ({
               className="p-2 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
               key={index}
             >
-              <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                {equipment.unlock} {equipment.skill} {equipment.lv}
-              </p>
+              {equipment.skill && (
+                <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
+                  {equipment.unlock} {skills[equipment.skill]?.name}{" "}
+                  {equipment.lv}
+                </p>
+              )}
             </div>
           ))}
         </td>
@@ -84,7 +88,7 @@ const Selection: FC<SelectionProps> = ({
       <div className="max-w-7xl mx-auto mt-4 mb-16 rounded-lg">
         <h2 className="my-8 text-xl font-bold">裝備資訊</h2>
         <div className="relative overflow-x-auto shadow-md ">
-          <table className="table-auto text-base text-left font-bol text-slate-200 opacity-80 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
+          <table className="table-auto text-base text-left font-bol text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
             <thead className="text-center">
               <tr>
                 <th scope="col" className="px-6 py-3 border border-slate-200">

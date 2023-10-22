@@ -2,7 +2,9 @@
 import React, { FC, useState, Fragment } from "react";
 import ArmorSection from "@/components/ArmorSection";
 import Selection from "@/components/Selection";
-import { Tab } from "@headlessui/react";
+import MapSelection from "@/components/MapSelection";
+import SkillLevel from "@/components/SkillLevel";
+import { Tab, Transition } from "@headlessui/react";
 import Image from "next/image";
 import FieldIcon from "../../public/assets/icons/field_icon.svg";
 import MonsterIcon from "../../public/assets/icons/monster_icon.svg";
@@ -37,6 +39,22 @@ const HomePage: FC = () => {
       setSelectedArmors(newSelectedArmors);
     }
   };
+  const skillLevels: SkillLevels = {};
+  selectedArmors.forEach((armor) => {
+    const { equip } = armor;
+    for (const key in equip) {
+      if (equip.hasOwnProperty(key)) {
+        const skillArray = equip[key];
+        for (const skill of skillArray) {
+          const { skill: skillName, lv } = skill;
+          if (skillLevels[skillName] === undefined) {
+            skillLevels[skillName] = 0;
+          }
+          skillLevels[skillName] += lv;
+        }
+      }
+    }
+  });
 
   const monsterHandler = (monster: Monster) => {
     setSelectedMonster(monster);
@@ -46,19 +64,20 @@ const HomePage: FC = () => {
   return (
     <Fragment>
       <Tab.Group>
-        <Tab.List className="max-w-7xl mx-auto flex my-4 bg-slate-400 p-1 rounded-md gap-4">
+        <Tab.List className="max-w-7xl mx-auto flex my-4 bg-slate-400 p-1 rounded-md gap-4 sticky top-0 z-50 shadow-lg bg-opacity-95">
           <Tab className="monster-tab flex items-center gap-2">
             <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
-            魔物裝備
+            魔物資訊
           </Tab>
           <Tab className="monster-tab flex items-center gap-2">
             <Image src={FieldIcon} alt="FieldIcon" width={40} height={40} />
-            魔物地圖資訊
+            地圖資訊
           </Tab>
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
             <ArmorSection armor={selectedArmors} />
+            <SkillLevel skill={skillLevels} />
             <Selection
               onArmorClick={handleArmorClick}
               onMonsterClick={monsterHandler}
@@ -66,7 +85,9 @@ const HomePage: FC = () => {
             />
           </Tab.Panel>
           <Tab.Panel>
-            <div className="max-w-7xl mx-auto">魔物地圖資訊</div>
+            <div className="max-w-7xl mx-auto">
+              <MapSelection />
+            </div>
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>

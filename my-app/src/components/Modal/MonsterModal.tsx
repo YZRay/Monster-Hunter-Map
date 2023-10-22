@@ -2,6 +2,9 @@ import { Dialog, Transition, Tab } from "@headlessui/react";
 import { FC, useState, Fragment } from "react";
 import Image from "next/image";
 import MonsterTableData from "../Table/MonsterTable";
+import MonsterMaterial from "../Table/Material";
+import MonsterStatusEffect from "../Table/StatusEffect";
+import MonsterEcology from "../Table/Ecology";
 
 interface MonsterModalProps {
   open: boolean;
@@ -46,8 +49,8 @@ const MonsterModal: FC<MonsterModalProps> = ({
                 <hr className="border-gray-400" />
                 <Tab.Group>
                   <Tab.List className="flex justify-between my-4 bg-slate-400 p-1 rounded-md">
-                    <Tab className="monster-tab">生態</Tab>
                     <Tab className="monster-tab">部位與肉質</Tab>
+                    <Tab className="monster-tab">生態</Tab>
                     <Tab className="monster-tab">狀態異常</Tab>
                     <Tab className="monster-tab">素材</Tab>
                   </Tab.List>
@@ -77,7 +80,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
                             <p className="text-sm text-gray-800">
                               解鎖等級：{monsterData?.unlock}
                             </p>
-                            <MonsterTableData data="生態" />
+                            <MonsterTableData data={monsterData?.name} />
                           </div>
                         </div>
                       </div>
@@ -88,15 +91,15 @@ const MonsterModal: FC<MonsterModalProps> = ({
                           <p className="text-sm text-gray-800">
                             解鎖等級：{monsterData?.unlock}
                           </p>
-                          <MonsterTableData data={monsterData?.name} />
+                          <MonsterEcology data="生態" />
                         </div>
                       </div>
                     </Tab.Panel>
                     <Tab.Panel>
-                      <MonsterTableData data="狀態異常" />
+                      <MonsterStatusEffect data="狀態異常" />
                     </Tab.Panel>
                     <Tab.Panel>
-                      <MonsterTableData data="素材" />
+                      <MonsterMaterial data="素材" />
                     </Tab.Panel>
                   </Tab.Panels>
                 </Tab.Group>
