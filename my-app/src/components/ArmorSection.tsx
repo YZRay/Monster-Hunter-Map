@@ -1,5 +1,6 @@
 import { FC, Fragment, useState, useEffect } from "react";
 import Image from "next/image";
+import data from "../data/data.json";
 
 const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
   if (armor.length === 0) {
@@ -9,6 +10,9 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
       </div>
     );
   }
+  const skillName: Skills = data.baseSetting.skills;
+  const armorName: ArmorName = data.baseSetting.parts;
+
   return (
     <div className="max-w-7xl mx-auto flex flex-col">
       <h1 className="text-2xl font-bold mt-2">裝備</h1>
@@ -18,7 +22,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
             key={equipment.key}
             className="flex flex-col items-center max-w-sm bg-gray-100 bg-opacity-90 border rounded-lg shadow-md"
           >
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col items-center gap-2">
               <Image
                 src={`/assets/icons/${equipment.key}.png`}
                 width={30}
@@ -26,15 +30,17 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
                 alt="equipment"
                 loading="lazy"
               />
+              <span className="font-bold text-gray-800">
+                {equipment.name}
+                {equipment.key && armorName[equipment.key]}
+              </span>
             </div>
             <div className="my-2">
               {Object.values(equipment.equip).map((equipArray) =>
-                equipArray.map((equip, index) => (
-                  <div className="font-bold" key={index}>
-                    <p className="mt-2" key={equip.skill}>
-                      {equip.skill} Lv: {equip.lv}
-                    </p>
-                  </div>
+                equipArray.map((equip) => (
+                  <p className="mt-2 font-bold" key={equip.skill}>
+                    {skillName[equip.skill].name} Lv{equip.lv}
+                  </p>
                 ))
               )}
             </div>
