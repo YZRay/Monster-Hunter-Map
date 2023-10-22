@@ -35,7 +35,7 @@ const Selection: FC<SelectionProps> = ({
         onClick={() => {
           const equipArray = armor.equip[type] || [];
           if (equipArray.length === 0) {
-            return; // 直接返回，不执行后续的操作
+            return; // 找不到就回傳以免報錯
           }
           onArmorClick(armor, type);
         }}
@@ -100,7 +100,7 @@ const Selection: FC<SelectionProps> = ({
       ></MonsterModal>
       <div className="max-w-7xl mx-auto mt-8 mb-16 rounded-lg">
         <h1 className="text-2xl font-bold mb-2 text-gray-800">魔物資訊</h1>
-        <div className="relative overflow-y-scroll max-h-[28rem]   shadow-md">
+        <div className="relative overflow-y-scroll max-h-[30rem]   shadow-md">
           <table className="table-auto text-base text-left w-full font-bol text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
             <thead className="text-center sticky top-0 bg-slate-700 border-b-2">
               <tr>
