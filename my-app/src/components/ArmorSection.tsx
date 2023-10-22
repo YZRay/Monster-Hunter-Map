@@ -20,9 +20,9 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
         {armor.map((equipment) => (
           <div
             key={equipment.key}
-            className="flex flex-col items-center max-w-sm bg-gray-100 bg-opacity-90 border rounded-lg shadow-md"
+            className="flex flex-col py-2 px-6 max-w-sm bg-gray-100 bg-opacity-90 border rounded-lg shadow-md"
           >
-            <div className="pt-4 flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-1">
               <Image
                 src={`/assets/icons/${equipment.key}.png`}
                 width={30}
@@ -35,15 +35,16 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
                 {equipment.key && armorName[equipment.key]}
               </span>
             </div>
-            <div className="my-2">
-              {Object.values(equipment.equip).map((equipArray) =>
-                equipArray.map((equip) => (
-                  <p className="mt-2 font-bold" key={equip.skill}>
-                    {skillName[equip.skill].name} Lv{equip.lv}
-                  </p>
-                ))
-              )}
-            </div>
+            {equipment.key && armorName[equipment.key] ? (
+              equipment.equip[equipment.key]?.map((equip, index) => (
+                <p className="mt-2 font-bold text-left" key={index}>
+                  {equip.unlock} 等解鎖
+                  <br /> {skillName[equip.skill].name} Lv{equip.lv}
+                </p>
+              ))
+            ) : (
+              <p className="mt-2 font-bold">未知</p>
+            )}
           </div>
         ))}
       </div>
