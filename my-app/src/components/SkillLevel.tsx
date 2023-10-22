@@ -14,9 +14,14 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
         {Object.keys(skill).map((skillName) => {
           const skillObject = skills[skillName];
           const skillLevel = skill[skillName];
-          const skillContentIndex = skillLevel - 1;
           const skillLevelLimit = skillObject.content.length;
+          // 如果大於最高限制就回傳最後一個
+          const skillContentIndex =
+            skillLevel - 1 > skillLevelLimit
+              ? skillLevelLimit - 1
+              : skillLevel - 1;
           const skillContent = skillObject?.content?.[skillContentIndex];
+          // 如果大於最高等級限制，就回傳回傳上限等級
           const displayedSkillLevel =
             skillLevel > skillLevelLimit ? skillLevelLimit : skillLevel;
 
