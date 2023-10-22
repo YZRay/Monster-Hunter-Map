@@ -8,13 +8,13 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
 
   return (
     <Fragment>
-      <div className="max-w-7xl mx-auto grid grid-cols-5 my-4 bg-white pb-4 pt-8 px-8 rounded-md flex-wrap shadow-md">
+      <div className="max-w-7xl mx-auto grid grid-cols-5 my-2 bg-gray-100 pb-4 pt-8 px-8 rounded-md flex-wrap shadow-md bg-opacity-90">
         {Object.keys(skill).map((skillName) => (
           <div key={skillName} className="flex flex-col gap-1 items-start">
             <div className="flex justify-around gap-4">
               <h3 className="font-bold text-lg text-gray-800">{skillName}</h3>
               <span className="text-gray-800 font-bold">
-                LV {skill[skillName]}
+                Lv{skill[skillName]}
               </span>
             </div>
             <div className="flex mb-4">
