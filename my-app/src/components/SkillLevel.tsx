@@ -15,7 +15,10 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
           const skillObject = skills[skillName];
           const skillLevel = skill[skillName];
           const skillContentIndex = skillLevel - 1;
+          const skillLevelLimit = skillObject.content.length;
           const skillContent = skillObject?.content?.[skillContentIndex];
+          const displayedSkillLevel =
+            skillLevel > skillLevelLimit ? skillLevelLimit : skillLevel;
 
           return (
             <div key={skillName} className="flex flex-col gap-1 items-start">
@@ -23,12 +26,19 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
                 <h3 className="font-bold text-lg text-gray-800">
                   {skillObject?.name}
                 </h3>
-                <span className="text-gray-800 font-bold">Lv{skillLevel}</span>
+                <span className="text-gray-800 font-bold">
+                  Lv
+                  {displayedSkillLevel}
+                </span>
               </div>
               <div className="flex">
-                {[...Array(skillLevel)].map((_, index) => (
+                {[...Array(skillLevelLimit)].map((_, index) => (
                   <span
-                    className="bg-[#2DB4FF] h-4 w-6 mr-1 skew-x-[-20deg] border-solid border-2 border-[#313131]"
+                    className={` h-4 w-6 mr-1 skew-x-[-20deg] border-solid border-2 border-[#313131] ease-linear ${
+                      index < displayedSkillLevel
+                        ? "bg-[#2DB4FF]"
+                        : "bg-gray-600"
+                    }`}
                     key={index}
                   ></span>
                 ))}
