@@ -10,8 +10,17 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
       </div>
     );
   }
+
   const skillName: Skills = data.baseSetting.skills;
   const armorName: ArmorName = data.baseSetting.parts;
+  armor.sort((a, b) => {
+    const order = ["weapon", "helm", "mail", "gloves", "belt", "greaves"];
+
+    const aKey = a.key || "";
+    const bKey = b.key || "";
+
+    return order.indexOf(aKey) - order.indexOf(bKey);
+  });
 
   return (
     <div className="max-w-7xl mx-auto flex flex-col">
