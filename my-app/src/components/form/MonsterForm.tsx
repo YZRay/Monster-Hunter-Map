@@ -12,6 +12,7 @@ const MonsterForm = () => {
     register,
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<PostData>({
     defaultValues: {
@@ -21,7 +22,10 @@ const MonsterForm = () => {
       desc: "描述地點",
     },
   });
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+    reset(); // 送出後清空表單
+  });
   const monsterNames = Object.values(monster.equipSetting)
     .filter(
       (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石")
@@ -31,7 +35,10 @@ const MonsterForm = () => {
   return (
     <Fragment>
       <h1 className="text-2xl font-bold mb-2 text-gray-800">分享魔物資訊</h1>
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={onSubmit}
+        className="bg-slate-200 px-8 py-4 rounded-md mb-12"
+      >
         <Controller
           name="name"
           control={control}
@@ -179,11 +186,15 @@ const MonsterForm = () => {
             </Listbox>
           )}
         />
-        <label>地點描述</label>
-        <input type="textarea" {...register("desc")} />
+        <label className="text-xl font-bold mt-2 block">地點描述</label>
+        <input
+          type="textarea"
+          {...register("desc")}
+          className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
+        />
         <button
           type="submit"
-          className="w-1/4 justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
+          className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300 my-4"
         >
           送出
         </button>
