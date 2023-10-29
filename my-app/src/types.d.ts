@@ -42,3 +42,30 @@ type SkillLevels = {
 type SkillLevelProps = {
   skill: SkillLevels;
 };
+
+//Loaction
+
+interface GetResponse {
+  status: boolean;
+  message: string;
+  data: DataItem[];
+}
+
+interface DataItem {
+  id: number;
+  name: string;
+  level: number;
+  coordinates: string;
+  lat: number;
+  lng: number;
+  location: string;
+  desc: string;
+  createdAt: string;
+}
+interface PostData {
+  name: string;
+  level: number;
+  coordinates: string;
+  location: string;
+  desc: string;
+}
