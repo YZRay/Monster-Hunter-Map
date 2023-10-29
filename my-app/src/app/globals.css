@@ -48,3 +48,21 @@ body {
     @apply p-3;
   }
 }
+* {
+  --sb-track-color: rgb(148 163 184);
+  --sb-thumb-color: rgb(30 41 59);
+  --sb-size: 8px;
+
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+*::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 16px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 16px;
+}

@@ -846,19 +846,19 @@
         "helm": [
           {
             "unlock": 2,
-            "skill": "麻痺耐性",
+            "skill": "paralysisResistance",
             "lv": 1
           },
           {
             "unlock": 6,
-            "skill": "麻痺耐性",
+            "skill": "paralysisResistance",
             "lv": 2
           }
         ],
         "mail": [
           {
             "unlock": 2,
-            "skill": "麻痺耐性",
+            "skill": "paralysisResistance",
             "lv": 1
           },
           {
