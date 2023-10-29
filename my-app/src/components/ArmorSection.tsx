@@ -33,9 +33,9 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
           >
             <div className="flex flex-col items-center gap-1">
               <Image
-                src={`/assets/icons/${equipment.key}.png`}
-                width={30}
-                height={30}
+                src={`/assets/icons/${equipment.key}.svg`}
+                width={50}
+                height={50}
                 alt="equipment"
                 loading="lazy"
               />

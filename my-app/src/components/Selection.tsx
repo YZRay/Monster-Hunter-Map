@@ -14,7 +14,7 @@ const Selection: FC<SelectionProps> = ({
 
   const th = Object.values(data.baseSetting.parts).map((item) => {
     return (
-      <th scope="col" className="px-6 py-3 border border-slate-200" key={item}>
+      <th scope="col" className="px-6 py-3 border border-slate-200 " key={item}>
         <Image
           className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
           src={`/assets/icons/${item}.svg`}
@@ -73,8 +73,8 @@ const Selection: FC<SelectionProps> = ({
         <Image
           className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
           src={`/assets/icons/Monster/${armor.name}.svg`}
-          width={80}
-          height={80}
+          width={60}
+          height={60}
           alt="equipment"
           loading="lazy"
         />
@@ -100,7 +100,7 @@ const Selection: FC<SelectionProps> = ({
       ></MonsterModal>
       <div className="max-w-7xl mx-auto mt-8 mb-16 rounded-lg">
         <h1 className="text-2xl font-bold mb-2 text-gray-800">魔物資訊</h1>
-        <div className="relative overflow-y-scroll max-h-[30rem] shadow-md">
+        <div className="relative overflow-y-scroll max-h-[40rem] shadow-md">
           <table className="table-auto text-base text-left w-full font-bol text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
             <thead className="text-center sticky top-0 bg-slate-700 border-b-2">
               <tr>
