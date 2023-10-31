@@ -40,16 +40,16 @@ const MonsterForm = () => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("Network response was not ok");
+          throw new Error("Error");
         }
       })
       .then((data) => {
-        console.log("Form data submit successfully", data);
+        console.log("Form submit successfully", data);
         setSubmitted(true);
         reset(); // 送出後清空表單
       })
       .catch((error) => {
-        console.error("Error submit data", error);
+        console.error("Error submit Form", error);
       });
   });
 
