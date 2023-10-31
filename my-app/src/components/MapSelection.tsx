@@ -73,7 +73,6 @@ const MapSelection = () => {
           </Listbox.Options>
         </Transition>
       </Listbox>
-      {/* 選擇魔物等級 */}
       {/* 選擇地區 */}
       <div className="w-full">
         <Listbox value={selectedRegion} onChange={setSelectedRegion}>
@@ -116,7 +115,7 @@ const MapSelection = () => {
           </Transition>
         </Listbox>
       </div>
-      <MapTable data={data} />
+      <MapTable data={data} monster={selectedMonster} city={city} />
       <MonsterForm />
     </Fragment>
   );
