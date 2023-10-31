@@ -5,9 +5,11 @@ import { Fragment, useState } from "react";
 import monster from "../../data/data.json";
 import city from "../../data/taiwanCity.json";
 
-const levels = [1, 2, 3, 4, 5, 6];
+const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const MonsterForm = () => {
+  const [submitted, setSubmitted] = useState(false);
+
   const {
     register,
     control,
@@ -16,16 +18,42 @@ const MonsterForm = () => {
     formState: { errors },
   } = useForm<PostData>({
     defaultValues: {
-      name: "魔物名稱",
+      name: "火龍",
       level: 1,
-      location: "發現縣市",
-      desc: "描述地點",
+      location: "縣市",
+      coordinates: "",
+      desc: "地點描述",
     },
   });
+
+  //送出表單
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    reset(); // 送出後清空表單
+    fetch("https://api.mhnow.cc/api/monsterlocation", {
+      method: "POST",
+      headers: {
+        accept: "text/plain",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
+      .then((data) => {
+        console.log("Form data submit successfully", data);
+        setSubmitted(true);
+        reset(); // 送出後清空表單
+      })
+      .catch((error) => {
+        console.error("Error submit data", error);
+      });
   });
+
+  // 魔物名稱
   const monsterNames = Object.values(monster.equipSetting)
     .filter(
       (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石")
@@ -42,6 +70,9 @@ const MonsterForm = () => {
         <Controller
           name="name"
           control={control}
+          rules={{
+            required: true,
+          }}
           render={({ field }) => (
             <Listbox {...field}>
               <div className="relative mt-1">
@@ -91,6 +122,9 @@ const MonsterForm = () => {
         <Controller
           name="level"
           control={control}
+          rules={{
+            required: true,
+          }}
           render={({ field }) => (
             <Listbox {...field}>
               <div className="relative mt-1">
@@ -136,6 +170,14 @@ const MonsterForm = () => {
               </div>
             </Listbox>
           )}
+        />
+        <label className="text-xl font-bold mt-2 block">經緯度</label>
+        <input
+          type="textarea"
+          {...register("coordinates")}
+          className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
+          required
+          placeholder="25.015, 121.483"
         />
         <Controller
           name="location"
@@ -186,6 +228,7 @@ const MonsterForm = () => {
             </Listbox>
           )}
         />
+
         <label className="text-xl font-bold mt-2 block">地點描述</label>
         <input
           type="textarea"
@@ -196,7 +239,7 @@ const MonsterForm = () => {
           type="submit"
           className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300 my-4"
         >
-          送出
+          送出 {submitted && <p>表单已成功提交</p>}
         </button>
       </form>
     </Fragment>
