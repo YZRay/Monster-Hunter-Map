@@ -1,4 +1,4 @@
-import { Listbox, Transition } from "@headlessui/react";
+import { Listbox, Transition, Dialog } from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { fetchMonsterLocation } from "./api/Location";
@@ -14,7 +14,15 @@ const monsterNames = Object.values(monster.equipSetting)
   .map((armor) => armor.name);
 
 const MapSelection = () => {
-  const [selectedMonster, setSelectedMonster] = useState(monsterNames[0]);
+  let [isOpenForm, setIsOpenForm] = useState(false);
+  function closeModal() {
+    setIsOpenForm(false);
+  }
+  function openModal() {
+    setIsOpenForm(true);
+  }
+
+  const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
   const [selectedRegion, setSelectedRegion] = useState(taiwanCity[0]);
   const city = selectedRegion.name;
 
@@ -33,51 +41,43 @@ const MapSelection = () => {
   return (
     <Fragment>
       {/* 選擇魔物 */}
-      <h1 className="text-2xl font-bold mb-2 text-gray-800">搜尋魔物資訊</h1>
-      <Listbox value={selectedMonster} onChange={setSelectedMonster}>
-        <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-          <h1 className="text-xl font-bold mt-2">魔物名稱</h1>
-        </Listbox.Label>
-        <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-          <span className="block truncate">{selectedMonster}</span>
-          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-            <ChevronUpDownIcon
-              className="h-5 w-5 text-gray-400"
-              aria-hidden="true"
+      <h1 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
+        搜尋魔物資訊
+      </h1>
+      <div className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-y-8 gap-x-4 ">
+        {monsterNames.map((monster, index) => (
+          <div className="flex gap-2 items-center" key={index}>
+            <input
+              type="checkbox"
+              id={`monsterCheckbox${index}`}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-lime-600"
+              value={monster}
+              checked={selectedMonster.includes(monster)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setSelectedMonster((prev) => {
+                  if (prev.includes(value)) {
+                    return prev.filter((item) => item !== value);
+                  } else {
+                    return [...prev, value];
+                  }
+                });
+              }}
             />
-          </span>
-        </Listbox.Button>
-        <Transition
-          as={Fragment}
-          enter="transition-opacity duration-75"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-150"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
-            {monsterNames.map((monster, index) => (
-              <Listbox.Option
-                className={({ active }) =>
-                  `relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${
-                    active ? "bg-slate-800 text-white" : "text-gray-900"
-                  }`
-                }
-                key={index}
-                value={monster}
-              >
-                {monster}
-              </Listbox.Option>
-            ))}
-          </Listbox.Options>
-        </Transition>
-      </Listbox>
+            <label
+              className="text-sm md:text-base text-gray-800"
+              htmlFor={`monsterCheckbox${index}`}
+            >
+              {monster}
+            </label>
+          </div>
+        ))}
+      </div>
       {/* 選擇地區 */}
       <div className="w-full">
         <Listbox value={selectedRegion} onChange={setSelectedRegion}>
           <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2">
-            <h1 className="text-xl font-bold mt-2">地區</h1>
+            <h1 className="text-xl lg:text-2xl font-bold mt-2">地區</h1>
           </Listbox.Label>
           <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">
             <span className="block truncate">{selectedRegion.name}</span>
@@ -115,8 +115,60 @@ const MapSelection = () => {
           </Transition>
         </Listbox>
       </div>
+      {/* 魔物資訊 */}
       <MapTable data={data} monster={selectedMonster} city={city} />
-      <MonsterForm />
+      <button
+        type="button"
+        onClick={openModal}
+        className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300 my-4"
+      >
+        上傳魔物資訊
+      </button>
+      <Transition appear show={isOpenForm} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/25" />
+          </Transition.Child>
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-bold leading-6 text-gray-800"
+                  >
+                    分享魔物資訊
+                  </Dialog.Title>
+                  <MonsterForm />
+                  <button
+                    type="button"
+                    className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
+                    onClick={closeModal}
+                  >
+                    取消
+                  </button>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
     </Fragment>
   );
 };

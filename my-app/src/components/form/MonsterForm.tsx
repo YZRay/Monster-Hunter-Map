@@ -9,6 +9,7 @@ const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const MonsterForm = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [disableSubmit, setDisableSubmit] = useState(false);
 
   const {
     register,
@@ -28,6 +29,10 @@ const MonsterForm = () => {
 
   //送出表單
   const onSubmit = handleSubmit((data) => {
+    if (disableSubmit) {
+      return; // 如果被禁用就直接回傳，不往下執行
+    }
+    setDisableSubmit(true);
     fetch("https://api.mhnow.cc/api/monsterlocation", {
       method: "POST",
       headers: {
@@ -50,6 +55,11 @@ const MonsterForm = () => {
       })
       .catch((error) => {
         console.error("Error submit Form", error);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setDisableSubmit(false);
+        }, 180000); // 設定3分鐘後才能再次上傳
       });
   });
 
@@ -62,10 +72,9 @@ const MonsterForm = () => {
 
   return (
     <Fragment>
-      <h1 className="text-2xl font-bold mb-2 text-gray-800">分享魔物資訊</h1>
       <form
         onSubmit={onSubmit}
-        className="bg-slate-200 px-8 py-4 rounded-md mb-12"
+        className="bg-slate-200 px-8 py-4 rounded-md my-4"
       >
         <Controller
           name="name"
@@ -237,9 +246,14 @@ const MonsterForm = () => {
         />
         <button
           type="submit"
-          className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300 my-4"
+          disabled={disableSubmit} // 禁止上傳
+          className={`w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] py-2 font-bold my-4 ${
+            disableSubmit
+              ? "bg-gray-300 text-gray-500" // 禁用时的样式
+              : "bg-slate-400 text-white hover:bg-slate-800 duration-300" // 启用时的样式
+          }`}
         >
-          送出 {submitted && <p>表单已成功提交</p>}
+          {disableSubmit ? "已成功上傳" : "送出表單"}
         </button>
       </form>
     </Fragment>

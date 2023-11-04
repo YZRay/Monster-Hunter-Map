@@ -38,7 +38,7 @@ body {
 
 @layer components {
   .monster-tab {
-    @apply w-44 bg-slate-400 text-white px-4 py-2 rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] ui-selected:bg-slate-800 hover:bg-slate-800 duration-300;
+    @apply w-full md:w-44 bg-slate-400 text-white px-2 py-1 md:px-4 md:py-2 rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] ui-selected:bg-slate-800 hover:bg-slate-800 duration-300  justify-center;
   }
   .monster-table {
     @apply table table-fixed text-gray-300 border-separate space-y-6 text-center w-full;
@@ -51,8 +51,7 @@ body {
 * {
   --sb-track-color: rgb(148 163 184);
   --sb-thumb-color: rgb(30 41 59);
-  --sb-size: 8px;
-
+  --sb-size: 6px;
   scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 }
 *::-webkit-scrollbar {

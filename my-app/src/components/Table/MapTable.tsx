@@ -3,14 +3,14 @@ import { StarIcon } from "@heroicons/react/24/solid";
 
 interface MapTableProps {
   data: GetResponse | null;
-  monster: string;
+  monster: string[];
   city: string;
 }
 
 const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   const filteredData = data
     ? data.data.filter(
-        (item) => item.name === monster || item.location === city
+        (item) => monster.includes(item.name) && item.location === city
       )
     : [];
 
@@ -36,10 +36,12 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   ));
 
   return (
-    <div className="max-w-7xl mx-auto mt-8 mb-16 rounded-lg">
-      <h1 className="text-2xl font-bold mb-2 text-gray-800">魔物資訊</h1>
+    <div className="max-w-7xl mx-auto mt-2 mb-4 md:mt-4 md:mb-8 lg:mt-8 lg:mb-16 rounded-lg">
+      <h1 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
+        魔物資訊
+      </h1>
       <div className="relative overflow-y-scroll max-h-[30rem] shadow-md">
-        <table className="table-auto text-base text-left w-full font-bol text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
+        <table className="table-auto lg:table-fixed text-base text-left w-max lg:w-full font-bol text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
           <thead className="sticky top-0 bg-slate-700 border-b-2">
             <tr>
               <th className="px-6 py-3 border border-slate-200">Level</th>
