@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, Form } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Fragment, useState } from "react";
@@ -10,16 +10,19 @@ const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const MonsterForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
+  const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
+  const monsterNameData = selectedMonster.join(", ");
 
   const {
     register,
     control,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<PostData>({
     defaultValues: {
-      name: "火龍",
+      name: "",
       level: 1,
       location: "縣市",
       coordinates: "",
@@ -32,7 +35,10 @@ const MonsterForm = () => {
     if (disableSubmit) {
       return; // 如果被禁用就直接回傳，不往下執行
     }
+
     setDisableSubmit(true);
+    console.log(data);
+
     fetch("https://api.mhnow.cc/api/monsterlocation", {
       method: "POST",
       headers: {
@@ -49,7 +55,7 @@ const MonsterForm = () => {
         }
       })
       .then((data) => {
-        // console.log("Form submit successfully", data);
+        console.log("Form submit successfully", data);
         setSubmitted(true);
         reset(); // 送出後清空表單
       })
@@ -74,7 +80,7 @@ const MonsterForm = () => {
     <Fragment>
       <form
         onSubmit={onSubmit}
-        className="bg-slate-200 px-8 py-4 rounded-md my-4"
+        className="bg-slate-200 px-6 py-4 rounded-md my-4"
       >
         <Controller
           name="name"
@@ -83,49 +89,39 @@ const MonsterForm = () => {
             required: true,
           }}
           render={({ field }) => (
-            <Listbox {...field}>
-              <div className="relative mt-1">
-                <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                  <h1 className="text-xl font-bold mt-2">魔物名稱</h1>
-                </Listbox.Label>
-                <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                  <span className="block truncate">{field.value}</span>
-                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    <ChevronUpDownIcon
-                      className="h-5 w-5 text-gray-400"
-                      aria-hidden="true"
+            <div className="relative mt-1">
+              <h1 className="text-xl font-bold mt-2">魔物名稱</h1>
+              <div className="bg-white p-2 rounded-md shadow-md flex flex-wrap gap-4">
+                {monsterNames.map((name, index) => (
+                  <div className="flex gap-1 items-center" key={index}>
+                    <input
+                      type="checkbox"
+                      id={name}
+                      {...field}
+                      value={name}
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-lime-600"
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setSelectedMonster((prev) => {
+                          if (prev.includes(value)) {
+                            return prev.filter((item) => item !== value);
+                          } else {
+                            return [...prev, value];
+                          }
+                        });
+                        setValue("name", monsterNameData);
+                      }}
                     />
-                  </span>
-                </Listbox.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition-opacity duration-75"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="transition-opacity duration-150"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
-                    {monsterNames.map((name) => (
-                      <Listbox.Option key={name} value={name}>
-                        {({ active }) => (
-                          <div
-                            className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${
-                              active
-                                ? "bg-slate-800 text-white"
-                                : "text-gray-900"
-                            }`}
-                          >
-                            {name}
-                          </div>
-                        )}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </Transition>
+                    <label
+                      htmlFor={name}
+                      className="text-sm md:text-base text-gray-800"
+                    >
+                      {name}
+                    </label>
+                  </div>
+                ))}
               </div>
-            </Listbox>
+            </div>
           )}
         />
         <Controller
