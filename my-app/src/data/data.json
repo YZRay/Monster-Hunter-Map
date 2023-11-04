@@ -116,6 +116,10 @@
           "武器的雷屬性 +500"
         ]
       },
+      "dragonAttackBoost":{
+        "name":"龍屬性攻擊強化",
+        "content":["武器的龍屬性 +50", "武器的龍屬性 +100", "武器的龍屬性 +200", "武器的龍屬性 +350", "武器的龍屬性 +500"]
+      },
       "poisonAttackBoost": {
         "name": "毒屬性強化",
         "content": [
@@ -325,7 +329,7 @@
         ]
       },
       "spSkillBoost": {
-        "name": "SP技能威力上升",
+        "name": "SP技能威力提升",
         "content": [
           "SP技能威力 +10%",
           "SP技能威力 +15%",
@@ -413,6 +417,24 @@
           "攻擊弱點部位時，會心率 +40%",
           "攻擊弱點部位時，會心率 +50%"
         ]
+      },
+      "resentment": {
+        "name": "怨恨",
+        "content": [
+          "獵人受到傷害時，攻擊力15秒內上升10%", 
+          "獵人受到傷害時，攻擊力15秒內上升15%", 
+          "獵人受到傷害時，攻擊力15秒內上升20%", 
+          "獵人受到傷害時，攻擊力15秒內上升25%", 
+          "獵人受到傷害時，攻擊力15秒內上升30%"
+        ]
+      },
+      "solidarity": {
+        "name": "團結力",
+        "content": ["單人時攻擊力 +1% (僅限無屬部分)，組隊時效果乘以隊中發動團結力的人數。※【萬聖節 秋季採南瓜】活動期間內的效果額外乘以5倍"]
+      },
+      "criticalBoost": {
+        "name": "超會心",
+        "content": ["會心攻擊的傷害倍率提升至130%", "會心攻擊的傷害倍率提升至135%", "會心攻擊的傷害倍率提升至140%"]
       }
     }
   },
@@ -1538,6 +1560,157 @@
         ]
       },
       "eff": "fire"
+    },
+    "b-diab": {
+      "id": 14,
+      "name": "黑角龍",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "partbreaker",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "partbreaker",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "resentment",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "resentment",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "staminaThief",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "resentment",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "lockOn",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "firestarter",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "firestarter",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "counterstrike",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "fire"
+    },
+    "p-rathi": {
+      "id": 15,
+      "name": "櫻火龍",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "spSkillBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "windProof",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "spSkillBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "fire"
     }
+
   }
 }

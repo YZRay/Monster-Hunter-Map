@@ -56,13 +56,13 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   return (
     <div className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto mt-2 mb-4  md:mb-8 md:mt-4 lg:mb-16 rounded-lg">
       <h1 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
-        魔物地圖資訊
+        魔物目擊地圖資訊
       </h1>
       <div className="relative overflow-y-scroll max-h-[30rem] shadow-md">
         <table className="table-auto lg:table-fixed text-base text-left w-max md:w-full font-bol text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
           <thead className="sticky top-0 bg-slate-700 border-b-2">
             <tr>
-              <th className="px-12 py-6 border border-slate-200">魔物資訊</th>
+              <th className="px-12 py-6 border border-slate-200">魔物資料</th>
               <th className="px-12 py-6 border border-slate-200">經緯度</th>
             </tr>
           </thead>

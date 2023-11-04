@@ -2,6 +2,7 @@ import { useForm, Controller, Form } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Fragment, useState } from "react";
+import Image from "next/image";
 import monster from "../../data/data.json";
 import city from "../../data/taiwanCity.json";
 
@@ -56,15 +57,13 @@ const MonsterForm = () => {
       .then((data) => {
         console.log("Form submit successfully", data);
         setSubmitted(true);
-        reset(); // 送出後清空表單
+        //reset(); // 送出後清空表單
       })
       .catch((error) => {
         console.error("Error submit Form", error);
       })
       .finally(() => {
-        setTimeout(() => {
-          setDisableSubmit(false);
-        }, 180000); // 設定3分鐘後才能再次上傳
+        setDisableSubmit(false);
       });
   });
 
@@ -112,7 +111,14 @@ const MonsterForm = () => {
                       htmlFor={`checkbox_${name}`}
                       className="text-sm md:text-base text-gray-800"
                     >
-                      {name}
+                      <Image
+                        className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] h-8 w-8 md:w-12 md:h-12"
+                        src={`/assets/icons/Monster/${name}.svg`}
+                        width={50}
+                        height={50}
+                        alt="equipment"
+                        loading="lazy"
+                      />
                     </label>
                   </div>
                 ))}
@@ -174,11 +180,11 @@ const MonsterForm = () => {
         />
         <label className="text-xl font-bold mt-2 block">經緯度</label>
         <input
-          type="textarea"
+          type="text"
           {...register("coordinates")}
           className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
           required
-          placeholder="25.015, 121.483"
+          placeholder="請輸入經緯度"
         />
         <button
           type="submit"
