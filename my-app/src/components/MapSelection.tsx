@@ -77,7 +77,7 @@ const MapSelection = () => {
       <div className="w-full">
         <Listbox value={selectedRegion} onChange={setSelectedRegion}>
           <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2">
-            <h1 className="text-xl lg:text-2xl font-bold mt-2">地區</h1>
+            <h1 className="text-xl lg:text-2xl font-bold mt-2">搜尋地區</h1>
           </Listbox.Label>
           <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">
             <span className="block truncate">{selectedRegion.name}</span>
@@ -115,15 +115,15 @@ const MapSelection = () => {
           </Transition>
         </Listbox>
       </div>
-      {/* 魔物資訊 */}
-      <MapTable data={data} monster={selectedMonster} city={city} />
       <button
         type="button"
         onClick={openModal}
-        className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300 my-4"
+        className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300 mt-8 mb-4"
       >
         上傳魔物資訊
       </button>
+      {/* 魔物資訊 */}
+      <MapTable data={data} monster={selectedMonster} city={city} />
       <Transition appear show={isOpenForm} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
