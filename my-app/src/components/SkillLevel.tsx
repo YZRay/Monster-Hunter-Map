@@ -2,7 +2,7 @@ import { Fragment, FC, useState } from "react";
 import data from "../data/data.json";
 
 const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   if (Object.keys(skill).length === 0) {
     // 如果還沒選取任何裝備就回傳null

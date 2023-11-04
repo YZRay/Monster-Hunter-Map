@@ -3,7 +3,7 @@ import Image from "next/image";
 import data from "../data/data.json";
 
 const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
