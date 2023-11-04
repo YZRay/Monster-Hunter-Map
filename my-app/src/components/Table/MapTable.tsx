@@ -44,7 +44,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
               )
             )}
           </div>
-          <div className="">{item.name}</div>
+          <div className="">{item.name} 在 {item.location}</div>
         </div>
       </td>
       <td className="px-12 py-6 border border-slate-200 flex gap-1">
