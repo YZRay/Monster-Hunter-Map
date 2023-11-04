@@ -7,21 +7,24 @@ interface MapTableProps {
   monster: string[];
   city: string;
 }
-async function copyTextToClipboard(coordinates:string) {
+async function copyTextToClipboard(coordinates: string) {
   try {
     // 使用 Clipboard API 写入剪贴板
     await navigator.clipboard.writeText(coordinates);
-    console.log('已成功复制到剪贴板！');
+    console.log("已成功复制到剪贴板！");
   } catch (err) {
-    console.error('复制文本失败：', err);
+    console.error("复制文本失败：", err);
   }
 }
 
 const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   const filteredData = data
-    ? data.data.filter(
-        (item) => monster.includes(item.name) || item.location === city
-      )
+    ? data.data.filter((item) => {
+        return (
+          (monster.length === 0 || monster.includes(item.name)) &&
+          (city === "全部" || item.location === city)
+        );
+      })
     : [];
 
   const locationTable = filteredData.map((item) => (
@@ -29,27 +32,29 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       <td className="px-12 py-6 border border-slate-200">
         <div>
           <div className="flex gap-1">
-            {Array.from({ length: item.level > 5 ? item.level - 5 : item.level }, (_, index) => (
-              <StarIcon
-                key={index}
-                className={`w-5 h-5 ${
-                  item.level > 5 ? "text-purple-600" : "text-yellow-300"
-                }`}
-              />
-            ))}
+            {Array.from(
+              { length: item.level > 5 ? item.level - 5 : item.level },
+              (_, index) => (
+                <StarIcon
+                  key={index}
+                  className={`w-5 h-5 ${
+                    item.level > 5 ? "text-purple-600" : "text-yellow-300"
+                  }`}
+                />
+              )
+            )}
           </div>
-          <div className="">
-            {item.name}
-          </div>
+          <div className="">{item.name}</div>
         </div>
       </td>
       <td className="px-12 py-6 border border-slate-200 flex gap-1">
-        <ClipboardIcon 
+        <ClipboardIcon
           title="複製"
-          className={`w-10 h-10 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]`} 
-          onClick={()=>copyTextToClipboard(item.coordinates)}
-         />
-        {item.coordinates}</td>
+          className={`w-10 h-10 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]`}
+          onClick={() => copyTextToClipboard(item.coordinates)}
+        />
+        {item.coordinates}
+      </td>
     </tr>
   ));
 
