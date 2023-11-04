@@ -55,7 +55,7 @@ const MonsterForm = () => {
         }
       })
       .then((data) => {
-        console.log("Form submit successfully", data);
+        // console.log("Form submit successfully", data);
         setSubmitted(true);
         reset(); // 送出後清空表單
       })
