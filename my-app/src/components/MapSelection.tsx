@@ -2,6 +2,7 @@ import { Listbox, Transition, Dialog } from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { fetchMonsterLocation } from "./api/Location";
+import Image from "next/image";
 import MapTable from "./Table/MapTable";
 import MonsterForm from "./form/MonsterForm";
 import taiwanCity from "../data/taiwanCity.json";
@@ -44,7 +45,8 @@ const MapSelection = () => {
       <h1 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
         搜尋魔物資訊
       </h1>
-      <div className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-y-8 gap-x-4 ">
+      <div className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 
+      overflow-y-auto grid grid-cols-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-y-2 gap-x-2 ">
         {monsterNames.map((monster, index) => (
           <div className="flex gap-2 items-center" key={index}>
             <input
@@ -68,7 +70,14 @@ const MapSelection = () => {
               className="text-sm md:text-base text-gray-800"
               htmlFor={`monsterCheckbox${index}`}
             >
-              {monster}
+              <Image
+                className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] h-8 w-8 md:w-12 md:h-12"
+                src={`/assets/icons/Monster/${monster}.svg`}
+                width={50}
+                height={50}
+                alt="equipment"
+                loading="lazy"
+              />
             </label>
           </div>
         ))}

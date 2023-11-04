@@ -64,7 +64,7 @@ const HomePage: FC = () => {
   return (
     <Fragment>
       <Tab.Group>
-        <Tab.List className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto flex flex-wrap my-4 bg-slate-400 p-1 rounded-md gap-1 md:gap-4 top-0 z-30 shadow-lg bg-opacity-95">
+        <Tab.List className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto flex my-4 bg-slate-400 p-1 rounded-md gap-1 md:gap-4 top-0 z-30 shadow-lg bg-opacity-95">
           <Tab className="monster-tab flex items-center md:gap-2 text-lg">
             <Image src={FieldIcon} alt="FieldIcon" width={40} height={40} />
             地圖資訊

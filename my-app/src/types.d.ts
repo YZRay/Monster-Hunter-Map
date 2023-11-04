@@ -66,6 +66,4 @@ interface PostData {
   name: string;
   level: number;
   coordinates: string;
-  location: string;
-  desc: string;
 }

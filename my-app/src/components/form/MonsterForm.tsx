@@ -5,13 +5,13 @@ import { Fragment, useState } from "react";
 import monster from "../../data/data.json";
 import city from "../../data/taiwanCity.json";
 
-const levels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const levels = [5, 6, 7, 8, 9, 10];
 
 const MonsterForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
-  const monsterNameData = selectedMonster.join(", ");
+  const monsterNameData = selectedMonster.join(",");
 
   const {
     register,
@@ -23,10 +23,8 @@ const MonsterForm = () => {
   } = useForm<PostData>({
     defaultValues: {
       name: "",
-      level: 1,
-      location: "縣市",
+      level: 5,
       coordinates: "",
-      desc: "地點描述",
     },
   });
 
@@ -181,62 +179,6 @@ const MonsterForm = () => {
           className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
           required
           placeholder="25.015, 121.483"
-        />
-        <Controller
-          name="location"
-          control={control}
-          render={({ field }) => (
-            <Listbox {...field}>
-              <div className="relative mt-1">
-                <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                  <h1 className="text-xl font-bold mt-2">縣市</h1>
-                </Listbox.Label>
-                <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                  <span className="block truncate">{field.value}</span>
-                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    <ChevronUpDownIcon
-                      className="h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </Listbox.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition-opacity duration-75"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="transition-opacity duration-150"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
-                    {city.map((name) => (
-                      <Listbox.Option key={name.id} value={name.name}>
-                        {({ active }) => (
-                          <div
-                            className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${
-                              active
-                                ? "bg-slate-800 text-white"
-                                : "text-gray-900"
-                            }`}
-                          >
-                            {name.name}
-                          </div>
-                        )}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </Transition>
-              </div>
-            </Listbox>
-          )}
-        />
-
-        <label className="text-xl font-bold mt-2 block">地點描述</label>
-        <input
-          type="textarea"
-          {...register("desc")}
-          className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
         />
         <button
           type="submit"

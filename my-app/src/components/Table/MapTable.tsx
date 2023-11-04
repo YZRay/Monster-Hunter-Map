@@ -1,37 +1,55 @@
 import { FC, Fragment, useState } from "react";
 import { StarIcon } from "@heroicons/react/24/solid";
+import { ClipboardIcon } from "@heroicons/react/24/solid";
 
 interface MapTableProps {
   data: GetResponse | null;
   monster: string[];
   city: string;
 }
+async function copyTextToClipboard(coordinates:string) {
+  try {
+    // 使用 Clipboard API 写入剪贴板
+    await navigator.clipboard.writeText(coordinates);
+    console.log('已成功复制到剪贴板！');
+  } catch (err) {
+    console.error('复制文本失败：', err);
+  }
+}
 
 const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   const filteredData = data
     ? data.data.filter(
-        (item) => monster.includes(item.name) && item.location === city
+        (item) => monster.includes(item.name) || item.location === city
       )
     : [];
 
   const locationTable = filteredData.map((item) => (
     <tr key={item.id}>
-      <td className="px-6 py-3 border border-slate-200">
-        <div className="flex gap-1">
-          {Array.from({ length: item.level }, (_, index) => (
-            <StarIcon
-              key={index}
-              className={`w-5 h-5 ${
-                item.level > 5 ? "text-red-600" : "text-purple-950"
-              }`}
-            />
-          ))}
+      <td className="px-12 py-6 border border-slate-200">
+        <div>
+          <div className="flex gap-1">
+            {Array.from({ length: item.level > 5 ? item.level - 5 : item.level }, (_, index) => (
+              <StarIcon
+                key={index}
+                className={`w-5 h-5 ${
+                  item.level > 5 ? "text-purple-600" : "text-yellow-300"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="">
+            {item.name}
+          </div>
         </div>
       </td>
-      <td className="px-6 py-3 border border-slate-200">{item.name}</td>
-      <td className="px-6 py-3 border border-slate-200">{item.coordinates}</td>
-      <td className="px-6 py-3 border border-slate-200">{item.location}</td>
-      <td className="px-6 py-3 border border-slate-200">{item.desc}</td>
+      <td className="px-12 py-6 border border-slate-200 flex gap-1">
+        <ClipboardIcon 
+          title="複製"
+          className={`w-10 h-10 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]`} 
+          onClick={()=>copyTextToClipboard(item.coordinates)}
+         />
+        {item.coordinates}</td>
     </tr>
   ));
 
@@ -44,11 +62,8 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
         <table className="table-auto lg:table-fixed text-base text-left w-max md:w-full font-bol text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
           <thead className="sticky top-0 bg-slate-700 border-b-2">
             <tr>
-              <th className="px-6 py-3 border border-slate-200">Level</th>
-              <th className="px-6 py-3 border border-slate-200">魔物</th>
-              <th className="px-6 py-3 border border-slate-200">經緯度</th>
-              <th className="px-6 py-3 border border-slate-200">縣市</th>
-              <th className="px-6 py-3 border border-slate-200">簡述地點</th>
+              <th className="px-12 py-6 border border-slate-200">魔物資訊</th>
+              <th className="px-12 py-6 border border-slate-200">經緯度</th>
             </tr>
           </thead>
           <tbody>{locationTable}</tbody>
