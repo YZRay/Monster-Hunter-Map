@@ -48,7 +48,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
                 </Dialog.Title>
                 <hr className="border-gray-400" />
                 <Tab.Group>
-                  <Tab.List className="flex justify-between my-4 bg-slate-400 p-1 rounded-md">
+                  <Tab.List className="grid grid-cols-2 md:grid-cols-4 gap-1 my-4 bg-slate-400 p-1 rounded-md">
                     <Tab className="monster-tab">部位與肉質</Tab>
                     <Tab className="monster-tab">生態</Tab>
                     <Tab className="monster-tab">狀態異常</Tab>
@@ -56,7 +56,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
                   </Tab.List>
 
                   {/*  */}
-                  <div className="flex items-center m-10 gap-4">
+                  <div className="flex items-center m-10 gap-4 flex-col lg:flex-row">
                     <Image
                       className=""
                       src={`/assets/icons/Monster/${monsterData?.name}.svg`}
@@ -65,35 +65,25 @@ const MonsterModal: FC<MonsterModalProps> = ({
                       alt="equipment"
                       loading="lazy"
                     />
-                    <h3 className="text-3xl font-bold text-gray-800">
+                    <h3 className="text-3xl font-bold text-gray-800 text-center lg:text-left">
                       {monsterData?.name}
-                      <p className="text-base mt-4">
+                      <p className="text-base mt-4 hidden lg:inline-block">
                         魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹
                       </p>
                     </h3>
                   </div>
                   <Tab.Panels>
                     <Tab.Panel>
-                      <div className="flex items-center justify-center">
-                        <div className="col-span-12">
-                          <div className="overflow-auto shadow-md">
-                            <p className="text-sm text-gray-800">
-                              解鎖等級：{monsterData?.unlock}
-                            </p>
-                            <MonsterTableData data={monsterData?.name} />
-                          </div>
-                        </div>
-                      </div>
+                      <p className="text-sm text-gray-800">
+                        解鎖等級：{monsterData?.unlock}
+                      </p>
+                      <MonsterTableData data={monsterData?.name} />
                     </Tab.Panel>
                     <Tab.Panel>
-                      <div className="flex items-center justify-center">
-                        <div className="overflow-auto shadow-md">
-                          <p className="text-sm text-gray-800">
-                            解鎖等級：{monsterData?.unlock}
-                          </p>
-                          <MonsterEcology data="生態" />
-                        </div>
-                      </div>
+                      <p className="text-sm text-gray-800">
+                        解鎖等級：{monsterData?.unlock}
+                      </p>
+                      <MonsterEcology data="生態" />
                     </Tab.Panel>
                     <Tab.Panel>
                       <MonsterStatusEffect data="狀態異常" />

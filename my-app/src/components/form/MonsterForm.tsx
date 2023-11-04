@@ -35,8 +35,9 @@ const MonsterForm = () => {
     if (disableSubmit) {
       return; // 如果被禁用就直接回傳，不往下執行
     }
-
+    data.name = monsterNameData;
     setDisableSubmit(true);
+
     console.log(data);
 
     fetch("https://api.mhnow.cc/api/monsterlocation", {
@@ -55,7 +56,7 @@ const MonsterForm = () => {
         }
       })
       .then((data) => {
-        // console.log("Form submit successfully", data);
+        console.log("Form submit successfully", data);
         setSubmitted(true);
         reset(); // 送出後清空表單
       })
@@ -85,9 +86,6 @@ const MonsterForm = () => {
         <Controller
           name="name"
           control={control}
-          rules={{
-            required: true,
-          }}
           render={({ field }) => (
             <div className="relative mt-1">
               <h1 className="text-xl font-bold mt-2">魔物名稱</h1>
@@ -96,7 +94,7 @@ const MonsterForm = () => {
                   <div className="flex gap-1 items-center" key={index}>
                     <input
                       type="checkbox"
-                      id={name}
+                      id={`checkbox_${name}`}
                       {...field}
                       value={name}
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-lime-600"
@@ -113,7 +111,7 @@ const MonsterForm = () => {
                       }}
                     />
                     <label
-                      htmlFor={name}
+                      htmlFor={`checkbox_${name}`}
                       className="text-sm md:text-base text-gray-800"
                     >
                       {name}
@@ -242,11 +240,11 @@ const MonsterForm = () => {
         />
         <button
           type="submit"
-          disabled={disableSubmit} // 禁止上傳
-          className={`w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] py-2 font-bold my-4 ${
-            disableSubmit
-              ? "bg-gray-300 text-gray-500" // 禁用时的样式
-              : "bg-slate-400 text-white hover:bg-slate-800 duration-300" // 启用时的样式
+          disabled={disableSubmit || selectedMonster.length === 0} // 禁止上傳
+          className={`w-full justify-center rounded-md py-2 font-bold my-4 ${
+            disableSubmit || selectedMonster.length === 0
+              ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
+              : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]" // 可以送出時
           }`}
         >
           {disableSubmit ? "已成功上傳" : "送出表單"}
