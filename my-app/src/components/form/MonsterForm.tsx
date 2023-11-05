@@ -196,21 +196,23 @@ const MonsterForm = () => {
           )}
         />
         <label className="text-xl font-bold mt-2 block">經緯度</label>
-        <input
-          type="text"
-          {...register("coordinates")}
-          value={
-            manualInput ||
-            `${geolocationData.latitude ?? ""}, ${
-              geolocationData.longitude ?? ""
-            }`
-          }
-          onChange={(e) => setManualInput(e.target.value)}
-          className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
-          required
-          placeholder="請輸入經緯度"
-        />
-        <GeolocationBtn onGeolocationData={setGeolocationData} />
+        <div className="flex items-center gap-2">
+          <input
+            type="text"
+            {...register("coordinates")}
+            value={
+              manualInput ||
+              `${geolocationData.latitude ?? ""}, ${
+                geolocationData.longitude ?? ""
+              }`
+            }
+            onChange={(e) => setManualInput(e.target.value)}
+            className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
+            required
+            placeholder="請輸入經緯度"
+          />
+          <GeolocationBtn onGeolocationData={setGeolocationData} />
+        </div>
         <button
           type="submit"
           disabled={disableSubmit || selectedMonster.length === 0} // 禁止上傳

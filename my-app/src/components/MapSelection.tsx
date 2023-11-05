@@ -1,6 +1,6 @@
 import { Listbox, Transition, Dialog } from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { ChevronUpDownIcon, MapPinIcon } from "@heroicons/react/20/solid";
 import { fetchMonsterLocation } from "./api/Location";
 import Image from "next/image";
 import MapTable from "./Table/MapTable";
