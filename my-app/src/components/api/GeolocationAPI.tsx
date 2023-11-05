@@ -39,7 +39,7 @@ function GeoLocationBtn({
     <button
       onClick={getLocation}
       disabled={isLoading}
-      className={`w-1/2 flex items-center justify-center rounded-md py-2 font-bold transition-all ease-linear ${
+      className={`w-full md:w-1/2 flex items-center justify-center rounded-md py-2 font-bold transition-all ease-linear ${
         isLoading
           ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
           : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"

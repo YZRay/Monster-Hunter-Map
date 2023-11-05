@@ -1,6 +1,9 @@
 import { useForm, Controller, Form } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import {
+  ChevronUpDownIcon,
+  PaperAirplaneIcon,
+} from "@heroicons/react/20/solid";
 import { Fragment, useState } from "react";
 import GeolocationBtn from "../api/GeolocationAPI";
 import Image from "next/image";
@@ -196,7 +199,7 @@ const MonsterForm = () => {
           )}
         />
         <label className="text-xl font-bold mt-2 block">經緯度</label>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-col md:flex-row">
           <input
             type="text"
             {...register("coordinates")}
@@ -216,13 +219,14 @@ const MonsterForm = () => {
         <button
           type="submit"
           disabled={disableSubmit || selectedMonster.length === 0} // 禁止上傳
-          className={`w-full justify-center rounded-md py-2 font-bold my-4 ${
+          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${
             disableSubmit || selectedMonster.length === 0
               ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
               : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]" // 可以送出時
           }`}
         >
-          {disableSubmit ? "已成功上傳" : "送出表單"}
+          <PaperAirplaneIcon className="w-4 h-4" />
+          <span>{disableSubmit ? "已成功上傳" : "送出表單"}</span>
         </button>
       </form>
     </Fragment>
