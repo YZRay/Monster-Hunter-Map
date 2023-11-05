@@ -37,7 +37,7 @@ const MonsterForm = () => {
   } = useForm<PostData>({
     defaultValues: {
       name: "",
-      level: 5,
+      level: 8,
       coordinates: "",
     },
   });
@@ -91,7 +91,7 @@ const MonsterForm = () => {
   // 魔物名稱
   const monsterNames = Object.values(monster.equipSetting)
     .filter(
-      (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石")
+      (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石") && armor.mapShow
     )
     .map((armor) => armor.name);
 

@@ -10,13 +10,13 @@ import monster from "../data/data.json";
 
 const monsterNames = Object.values(monster.equipSetting)
   .filter(
-    (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石")
+    (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石") && armor.mapShow
   )
   .map((armor) => armor.name);
 
 const MapSelection = () => {
   //摺疊搜尋區塊
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };

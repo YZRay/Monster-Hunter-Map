@@ -1,6 +1,7 @@
 import { FC, Fragment, useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { ClipboardDocumentIcon } from "@heroicons/react/24/solid";
+import { MapPinIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -46,11 +47,11 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       key={item.id}
       onClick={() => copyTextToClipboard(`${item.coordinates}`)}
     >
-      <div className="flex items-center justify-around flex-wrap">
+      <div className="justify-around flex-wrap">
         <div className="flex gap-2">
           {item.name.split(",").map((monsterName, index) => {
             return (
-              <div key={index}>
+              <div className="flex-grow basis-1/4" key={index}>
                 <Image
                   className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] h-16 w-16 drop-shadow"
                   src={`/assets/icons/Monster/${monsterName}.svg`}
@@ -62,40 +63,45 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
               </div>
             );
           })}
+          <div className="flex-grow basis-1/2">
+            <div className="flex gap-1">
+              {Array.from(
+                { length: item.level > 5 ? item.level - 5 : item.level },
+                (_, index) => (
+                  <StarIcon
+                    key={index}
+                    className={`w-5 h-5 ${
+                      item.level > 5 ? "text-purple-600" : "text-yellow-300"
+                    }`}
+                  />
+                )
+              )}
+            </div>
+            <div>
+              <p>
+                {item.name}
+              </p>
+              <p>
+                {(() => {
+                  const date = new Date(item.createdAt + "Z");
+                  const localTime = date.toLocaleString();
+                  return localTime;
+                })()}
+              </p>
+            </div>
+          </div>
+          <div className="basis-1/4">
+              <ClipboardDocumentIcon
+                title="複製"
+                className="w-8 h-8 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] float-right"
+              />
+          </div>
         </div>
-        <div>
-          <div className="flex gap-1">
-            {Array.from(
-              { length: item.level > 5 ? item.level - 5 : item.level },
-              (_, index) => (
-                <StarIcon
-                  key={index}
-                  className={`w-5 h-5 ${
-                    item.level > 5 ? "text-purple-600" : "text-yellow-300"
-                  }`}
-                />
-              )
-            )}
-          </div>
-          <div>
-            <p>
-              {item.name} 在 {item.location}
-            </p>
-            <p>
-              {(() => {
-                const date = new Date(item.createdAt + "Z");
-                const localTime = date.toLocaleString();
-                return localTime;
-              })()}
-            </p>
-          </div>
-          <div className="flex gap-1 items-center">
-            <ClipboardDocumentIcon
-              title="複製"
-              className="w-8 h-8 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+        <div className="flex">
+            <MapPinIcon
+              className="w-5 h-8"
             />
-            <span>{item.coordinates}</span>
-          </div>
+            <span className="pt-1">{item.location} - {item.coordinates}</span> 
         </div>
       </div>
     </div>

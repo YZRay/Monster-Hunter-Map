@@ -468,7 +468,8 @@
             "lv": 2
           }
         ]
-      }
+      },
+      "mapShow": true
     },
     "leather": {
       "id": 1,
@@ -535,7 +536,8 @@
             "lv": 1
           }
         ]
-      }
+      },
+      "mapShow": true
     },
     "g-jagr": {
       "id": 2,
@@ -620,7 +622,8 @@
           }
         ]
       },
-      "eff": "water"
+      "eff": "water",
+      "mapShow": true
     },
     "kulu": {
       "id": 3,
@@ -699,7 +702,8 @@
           }
         ]
       },
-      "unlock": 1
+      "unlock": 1,
+      "mapShow": true
     },
     "puke": {
       "id": 4,
@@ -779,7 +783,8 @@
           }
         ]
       },
-      "eff": "poison"
+      "eff": "poison",
+      "mapShow": true
     },
     "barr": {
       "id": 5,
@@ -863,7 +868,8 @@
           }
         ]
       },
-      "unlock": 1
+      "unlock": 1,
+      "mapShow": true
     },
     "g-girr": {
       "id": 6,
@@ -938,7 +944,8 @@
           }
         ]
       },
-      "eff": "paralysis"
+      "eff": "paralysis",
+      "mapShow": true
     },
     "tobi": {
       "id": 7,
@@ -1018,7 +1025,8 @@
           }
         ]
       },
-      "eff": "thunder"
+      "eff": "thunder",
+      "mapShow": true
     },
     "paol": {
       "id": 8,
@@ -1102,7 +1110,8 @@
             "lv": 2
           }
         ]
-      }
+      },
+      "mapShow": true
     },
     "jyur": {
       "id": 9,
@@ -1182,7 +1191,8 @@
           }
         ]
       },
-      "eff": "water"
+      "eff": "water",
+      "mapShow": true
     },
     "anja": {
       "id": 10,
@@ -1257,7 +1267,8 @@
           }
         ]
       },
-      "eff": "fire"
+      "eff": "fire",
+      "mapShow": true
     },
     "rathi": {
       "id": 11,
@@ -1342,7 +1353,8 @@
           }
         ]
       },
-      "eff": "poison"
+      "eff": "poison",
+      "mapShow": true
     },
     "legi": {
       "id": 12,
@@ -1422,7 +1434,8 @@
           }
         ]
       },
-      "eff": "ice"
+      "eff": "ice",
+      "mapShow": true
     },
     "diab": {
       "id": 13,
@@ -1496,7 +1509,8 @@
           }
         ]
       },
-      "unlock": 5
+      "unlock": 5,
+      "mapShow": true
     },
     "ratha": {
       "id": 14,
@@ -1571,7 +1585,8 @@
           }
         ]
       },
-      "eff": "fire"
+      "eff": "fire",
+      "mapShow": true
     },
     "b-diab": {
       "id": 15,
@@ -1646,7 +1661,8 @@
           }
         ]
       },
-      "eff": "fire"
+      "eff": "fire",
+      "mapShow": false
     },
     "p-rathi": {
       "id": 16,
@@ -1721,7 +1737,8 @@
           }
         ]
       },
-      "eff": "fire"
+      "eff": "fire",
+      "mapShow": false
     }
   }
 }
