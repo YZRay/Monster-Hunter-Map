@@ -47,8 +47,8 @@ const MapSelection = () => {
   return (
     <Fragment>
       {/* 選擇魔物 */}
-      <div className="flex justify-between">
-        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
+      <div className="flex justify-between items-center">
+        <h3 className="text-xl lg:text-2xl font-bold text-gray-800">
           搜尋魔物資訊
         </h3>
         <button
