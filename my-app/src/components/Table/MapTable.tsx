@@ -82,7 +82,13 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
             )}
           </div>
           <div>
-            {item.name} 在 {item.location}
+            <p>{item.name} 在 {item.location}</p>
+            <p>{(() => {
+                  const date = new Date(item.createdAt+"Z");
+                  const localTime = date.toLocaleString();
+                  return localTime;
+                })()}
+            </p>
           </div>
           <div className="flex gap-1 items-center">
             <ClipboardDocumentIcon
