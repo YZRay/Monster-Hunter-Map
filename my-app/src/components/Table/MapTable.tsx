@@ -24,7 +24,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
     if (isCopied) {
       const timeout = setTimeout(() => {
         setIsCopied(false);
-      }, 1500); // 显示 3 秒后隐藏
+      }, 1500); //顯示1.5秒
       return () => clearTimeout(timeout);
     }
   }, [isCopied]);
