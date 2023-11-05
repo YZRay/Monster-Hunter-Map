@@ -38,7 +38,6 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
         );
       })
     : [];
-  console.log(filteredData.map((item) => item.name.split(",")));
 
   const locationTable = filteredData.map((item) => (
     <div
