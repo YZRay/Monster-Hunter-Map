@@ -103,7 +103,7 @@ const Selection: FC<SelectionProps> = ({
         onClose={() => setIsModalOpen(false)}
         monsterData={selectedMonster}
       ></MonsterModal>
-      <div className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto mt-4 mb-6 lg:mt-8 lg:mb-16 rounded-lg">
+      <div className="max-w-sm sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto mt-4 mb-6 lg:mt-8 lg:mb-16 rounded-lg">
         <h1 className="text-2xl font-bold mb-2 text-gray-800">魔物資訊</h1>
         <div className="relative overflow-auto  max-h-[40rem] w-full shadow-md">
           <table className="table-auto text-base text-left font-bold w-max lg:w-full text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">

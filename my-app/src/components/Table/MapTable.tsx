@@ -59,7 +59,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   ));
 
   return (
-    <div className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto mt-2 mb-4  md:mb-8 md:mt-4 lg:mb-16 rounded-lg">
+    <div className="max-w-sm sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto mt-2 mb-4  md:mb-8 md:mt-4 lg:mb-16 rounded-lg">
       <h1 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
         魔物目擊地圖資訊
       </h1>
