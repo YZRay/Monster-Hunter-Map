@@ -46,7 +46,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       key={item.id}
       onClick={() =>
         copyTextToClipboard(
-          `${item.level}星 ${item.name} 在 ${item.location} 經緯度：${item.coordinates}`
+          `${item.coordinates}`
         )
       }
     >
