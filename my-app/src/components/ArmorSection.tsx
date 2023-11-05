@@ -10,7 +10,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
 
   if (armor.length === 0) {
     return (
-      <div className="max-w-sm sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl text-center mx-auto p-4 my-2 lg:p-8 lg:my-4 rounded-md opacity-90 bg-slate-700">
+      <div className="max-w-full mx-1 sm:mx-4 md:max-w-xl lg:max-w-2xl xl:max-w-7xl md:mx-auto text-center p-4 my-2 lg:p-8 lg:my-4 rounded-md opacity-90 bg-slate-700">
         <p className="text-white text-base md:text-lg ">請點擊下方欄位</p>
       </div>
     );
@@ -28,7 +28,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
   });
 
   return (
-    <div className="max-w-sm sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto flex flex-col">
+    <div className="container flex flex-col">
       <button
         className=" w-max justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 px-4 text-white font-bold hover:bg-slate-800 duration-300"
         onClick={toggleCollapse}
@@ -36,11 +36,11 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
         {isCollapsed ? "查看武器" : "收起武器資訊"}
       </button>
       {!isCollapsed && (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1 md:gap-2 mt-2 drop-shadow-[0_0px_35px_rgba(49, 158, 214, 0.3)]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-1 md:gap-2 mt-2 drop-shadow-[0_0px_35px_rgba(49, 158, 214, 0.3)]">
           {armor.map((equipment) => (
             <div
               key={equipment.key}
-              className="flex w-full py-1 px-2 lg:py-2 lg:px-4 items-center justify-around bg-gray-100 bg-opacity-90 border rounded-lg shadow-md"
+              className="flex w-full py-1 px-2 lg:py-2 lg:px-4 items-center gap-4 bg-gray-100 bg-opacity-90 border rounded-lg shadow-md"
             >
               <div className="flex flex-col items-center gap-1">
                 <Image

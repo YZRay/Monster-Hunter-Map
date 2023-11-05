@@ -47,6 +47,9 @@ body {
   .monster-table tbody tr td {
     @apply p-3;
   }
+  .container {
+    @apply max-w-full mx-1 sm:mx-4 md:max-w-xl lg:max-w-2xl xl:max-w-7xl md:mx-auto;
+  }
 }
 * {
   --sb-track-color: rgb(148 163 184);

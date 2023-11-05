@@ -16,7 +16,7 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
 
   return (
     <Fragment>
-      <div className="max-w-sm sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto mt-4">
+      <div className="max-w-full mx-1 sm:mx-4 md:max-w-xl lg:max-w-2xl xl:max-w-7xl md:mx-auto mt-4">
         <button
           className=" w-max justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 px-4 text-white font-bold hover:bg-slate-800 duration-300"
           onClick={toggleCollapse}
@@ -25,7 +25,7 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
         </button>
       </div>
       {!isCollapsed && (
-        <div className="max-w-sm sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 my-2 bg-gray-100 pb-2 pt-4 px-8 rounded-md shadow-md bg-opacity-90 gap-x-8 gap-y-4">
+        <div className="max-w-full mx-1 sm:mx-4 md:max-w-xl lg:max-w-2xl xl:max-w-7xl md:mx-auto grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 my-2 bg-gray-100 pb-2 pt-4 px-8 rounded-md shadow-md bg-opacity-90 gap-x-8 gap-y-4">
           {Object.keys(skill).map((skillName) => {
             const skillObject = skills[skillName];
             const skillLevel = skill[skillName];

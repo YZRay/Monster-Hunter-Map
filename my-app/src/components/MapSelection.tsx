@@ -35,7 +35,6 @@ const MapSelection = () => {
         setData(result);
       }
     }
-
     fetchData();
   }, [city]);
 
