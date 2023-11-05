@@ -1,6 +1,6 @@
 import { FC, Fragment, useState } from "react";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { ClipboardIcon } from "@heroicons/react/24/solid";
+import { ClipboardDocumentIcon } from "@heroicons/react/24/solid";
 
 interface MapTableProps {
   data: GetResponse | null;
@@ -44,14 +44,18 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
               )
             )}
           </div>
-          <div className="">{item.name} 在 {item.location}</div>
+          <div className="text-base lg:text-lg">
+            {item.name} 在 {item.location}
+          </div>
         </div>
       </td>
-      <td className="px-12 py-6 border border-slate-200 flex gap-1">
-        <ClipboardIcon
+      <td
+        className="px-12 py-6 border border-slate-200 text-base lg:text-lg flex gap-1 items-center cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+        onClick={() => copyTextToClipboard(item.coordinates)}
+      >
+        <ClipboardDocumentIcon
           title="複製"
           className={`w-10 h-10 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]`}
-          onClick={() => copyTextToClipboard(item.coordinates)}
         />
         {item.coordinates}
       </td>
@@ -65,7 +69,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       </h1>
       <div className="relative overflow-y-scroll max-h-[30rem] shadow-md">
         <table className="table-auto lg:table-fixed text-base text-left w-max md:w-full font-bol text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
-          <thead className="sticky top-0 bg-slate-700 border-b-2">
+          <thead className="sticky top-0 bg-slate-700 border-b-2 text-base lg:text-lg">
             <tr>
               <th className="px-12 py-6 border border-slate-200">魔物資料</th>
               <th className="px-12 py-6 border border-slate-200">經緯度</th>
