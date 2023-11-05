@@ -84,7 +84,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
               <p>
                 {(() => {
                   const date = new Date(item.createdAt + "Z");
-                  const localTime = date.toLocaleString();
+                  const localTime = date.toLocaleString(undefined, { hour12: false });
                   return localTime;
                 })()}
               </p>
