@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment, useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { ClipboardDocumentIcon } from "@heroicons/react/24/solid";
 
@@ -7,17 +7,28 @@ interface MapTableProps {
   monster: string[];
   city: string;
 }
-async function copyTextToClipboard(coordinates: string) {
-  try {
-    // 使用 Clipboard API 写入剪贴板
-    await navigator.clipboard.writeText(coordinates);
-    console.log("已成功复制到剪贴板！");
-  } catch (err) {
-    console.error("复制文本失败：", err);
-  }
-}
 
 const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
+  const [isCopied, setIsCopied] = useState(false);
+  async function copyTextToClipboard(coordinates: string) {
+    try {
+      // 使用 Clipboard API 写入剪贴板
+      await navigator.clipboard.writeText(coordinates);
+      console.log("已成功复制到剪贴板！");
+      setIsCopied(true);
+    } catch (err) {
+      console.error("复制文本失败：", err);
+    }
+  }
+  useEffect(() => {
+    if (isCopied) {
+      const timeout = setTimeout(() => {
+        setIsCopied(false);
+      }, 1500); //顯示1.5秒
+      return () => clearTimeout(timeout);
+    }
+  }, [isCopied]);
+
   const filteredData = data
     ? data.data.filter((item) => {
         return (
@@ -49,7 +60,11 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       </td>
       <td
         className="px-12 py-6 border border-slate-200 text-base lg:text-lg cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
-        onClick={() => copyTextToClipboard(item.coordinates)}
+        onClick={() =>
+          copyTextToClipboard(
+            `${item.level}星 ${item.name} 在 ${item.location} 經緯度：${item.coordinates}`
+          )
+        }
       >
         <div className="flex gap-1 items-center cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
           <ClipboardDocumentIcon title="複製" className="w-10 h-10" />
@@ -76,7 +91,12 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
           </thead>
           <tbody>{locationTable}</tbody>
         </table>
-      </div>
+      </div>{" "}
+      {isCopied && (
+        <div className="text-green-500 text-center mt-2 text-base">
+          複製成功！
+        </div>
+      )}
     </div>
   );
 };
