@@ -8,6 +8,7 @@ import { Fragment, useState } from "react";
 import GeolocationBtn from "../api/GeolocationAPI";
 import Image from "next/image";
 import monster from "../../data/data.json";
+import { ToastContainer, toast } from "react-toastify";
 import city from "../../data/taiwanCity.json";
 
 const levels = [5, 6, 7, 8, 9, 10];
@@ -67,12 +68,20 @@ const MonsterForm = () => {
         }
       })
       .then((data) => {
-        console.log("Form submit successfully", data);
+        // console.log("Form submit successfully", data);
         setSubmitted(true);
         //reset(); // 送出後清空表單
+        toast.success("表單提交成功！", {
+          position: "top-center",
+          autoClose: 1500, // 1.5秒關閉
+        });
       })
       .catch((error) => {
-        console.error("Error submit Form", error);
+        // console.error("Error submit Form", error);
+        toast.error("表單提交失敗！", {
+          position: "top-center",
+          autoClose: 1500, // 1.5秒關閉
+        });
       })
       .finally(() => {
         setDisableSubmit(false);
@@ -217,7 +226,7 @@ const MonsterForm = () => {
           }`}
         >
           <PaperAirplaneIcon className="w-4 h-4" />
-          <span>{disableSubmit ? "已成功上傳" : "送出表單"}</span>
+          <span>送出表單</span>
         </button>
       </form>
     </Fragment>
