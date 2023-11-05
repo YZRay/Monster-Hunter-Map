@@ -1,7 +1,11 @@
 import { useForm, Controller, Form } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import {
+  ChevronUpDownIcon,
+  PaperAirplaneIcon,
+} from "@heroicons/react/20/solid";
 import { Fragment, useState } from "react";
+import GeolocationBtn from "../api/GeolocationAPI";
 import Image from "next/image";
 import monster from "../../data/data.json";
 import city from "../../data/taiwanCity.json";
@@ -12,7 +16,15 @@ const MonsterForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
+  const [manualInput, setManualInput] = useState("");
   const monsterNameData = selectedMonster.join(",");
+  const [geolocationData, setGeolocationData] = useState<{
+    latitude: number | null;
+    longitude: number | null;
+  }>({
+    latitude: null,
+    longitude: null,
+  });
 
   const {
     register,
@@ -35,6 +47,14 @@ const MonsterForm = () => {
       return; // 如果被禁用就直接回傳，不往下執行
     }
     data.name = monsterNameData;
+
+    if (
+      geolocationData.latitude !== null &&
+      geolocationData.longitude !== null
+    ) {
+      data.coordinates = `${geolocationData.latitude},${geolocationData.longitude}`;
+    }
+
     setDisableSubmit(true);
 
     console.log(data);
@@ -86,15 +106,15 @@ const MonsterForm = () => {
           render={({ field }) => (
             <div className="relative mt-1">
               <h1 className="text-xl font-bold mt-2">魔物名稱</h1>
-              <div className="bg-white p-2 rounded-md shadow-md flex flex-wrap gap-4">
+              <div className="bg-white p-2 rounded-md shadow-md flex flex-wrap gap-y-4 gap-x-2 justify-center">
                 {monsterNames.map((name, index) => (
-                  <div className="flex gap-1 items-center" key={index}>
+                  <div className="flex gap-2 items-center" key={index}>
                     <input
                       type="checkbox"
                       id={`checkbox_${name}`}
                       {...field}
                       value={name}
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-lime-600"
+                      className="w-5 h-5 bg-gray-100 border-gray-300 rounded focus:ring-lime-600 accent-lime-600"
                       onChange={(e) => {
                         const value = e.target.value;
                         setSelectedMonster((prev) => {
@@ -179,23 +199,34 @@ const MonsterForm = () => {
           )}
         />
         <label className="text-xl font-bold mt-2 block">經緯度</label>
-        <input
-          type="text"
-          {...register("coordinates")}
-          className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
-          required
-          placeholder="請輸入經緯度"
-        />
+        <div className="flex items-center gap-2 flex-col md:flex-row">
+          <input
+            type="text"
+            {...register("coordinates")}
+            value={
+              manualInput ||
+              `${geolocationData.latitude ?? ""}, ${
+                geolocationData.longitude ?? ""
+              }`
+            }
+            onChange={(e) => setManualInput(e.target.value)}
+            className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
+            required
+            placeholder="請輸入經緯度"
+          />
+          <GeolocationBtn onGeolocationData={setGeolocationData} />
+        </div>
         <button
           type="submit"
           disabled={disableSubmit || selectedMonster.length === 0} // 禁止上傳
-          className={`w-full justify-center rounded-md py-2 font-bold my-4 ${
+          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${
             disableSubmit || selectedMonster.length === 0
               ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
               : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]" // 可以送出時
           }`}
         >
-          {disableSubmit ? "已成功上傳" : "送出表單"}
+          <PaperAirplaneIcon className="w-4 h-4" />
+          <span>{disableSubmit ? "已成功上傳" : "送出表單"}</span>
         </button>
       </form>
     </Fragment>

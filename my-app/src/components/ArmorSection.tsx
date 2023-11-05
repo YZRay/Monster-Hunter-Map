@@ -36,11 +36,11 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
         {isCollapsed ? "查看武器" : "收起武器資訊"}
       </button>
       {!isCollapsed && (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-2 mt-2 drop-shadow-[0_0px_35px_rgba(49, 158, 214, 0.3)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1 md:gap-2 mt-2 drop-shadow-[0_0px_35px_rgba(49, 158, 214, 0.3)]">
           {armor.map((equipment) => (
             <div
               key={equipment.key}
-              className="flex flex-row xl:flex-col py-1 px-2 lg:py-2 lg:px-4 items-center justify-around max-w-sm bg-gray-100 bg-opacity-90 border rounded-lg shadow-md"
+              className="flex w-full py-1 px-2 lg:py-2 lg:px-4 items-center justify-around bg-gray-100 bg-opacity-90 border rounded-lg shadow-md"
             >
               <div className="flex flex-col items-center gap-1">
                 <Image
