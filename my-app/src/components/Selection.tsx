@@ -96,6 +96,7 @@ const Selection: FC<SelectionProps> = ({
       {renderEquipmentType(armor, "greaves")}
     </tr>
   ));
+
   return (
     <Fragment>
       <MonsterModal
