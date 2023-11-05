@@ -42,7 +42,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
 
   const locationTable = filteredData.map((item) => (
     <div
-      className="flex flex-col text-base lg:text-lg font-bold bg-slate-400 text-slate-200 rounded-md shadow-md p-4"
+      className="flex flex-col text-base lg:text-lg font-bold bg-slate-400 text-slate-200 rounded-md shadow-md p-4 hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
       key={item.id}
       onClick={() =>
         copyTextToClipboard(
