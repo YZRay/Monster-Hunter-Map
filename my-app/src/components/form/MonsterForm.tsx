@@ -47,17 +47,9 @@ const MonsterForm = () => {
       return; // 如果被禁用就直接回傳，不往下執行
     }
     data.name = monsterNameData;
-
-    if (
-      geolocationData.latitude !== null &&
-      geolocationData.longitude !== null
-    ) {
-      data.coordinates = `${geolocationData.latitude},${geolocationData.longitude}`;
-    }
+    data.coordinates = manualInput;
 
     setDisableSubmit(true);
-
-    console.log(data);
 
     fetch("https://api.mhnow.cc/api/monsterlocation", {
       method: "POST",
@@ -203,18 +195,17 @@ const MonsterForm = () => {
           <input
             type="text"
             {...register("coordinates")}
-            value={
-              manualInput ||
-              `${geolocationData.latitude ?? ""}, ${
-                geolocationData.longitude ?? ""
-              }`
-            }
+            value={manualInput}
             onChange={(e) => setManualInput(e.target.value)}
             className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
             required
             placeholder="請輸入經緯度"
           />
-          <GeolocationBtn onGeolocationData={setGeolocationData} />
+          <GeolocationBtn
+            onGeolocationData={(data) =>
+              setManualInput(`${data.latitude}, ${data.longitude}`)
+            }
+          />
         </div>
         <button
           type="submit"
