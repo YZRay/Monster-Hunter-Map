@@ -26,8 +26,8 @@
 body {
   background-image: linear-gradient(
       157deg,
-      rgba(49, 158, 214, 0.3) 0%,
-      rgba(3, 5, 50, 0.3) 50%
+      rgba(49, 158, 214, 0.4) 0%,
+      rgba(3, 5, 50, 0.35) 65%
     ),
     url("/assets/hunter.png");
   background-repeat: no-repeat;
@@ -49,6 +49,9 @@ body {
   }
   .container {
     @apply w-11/12 md:max-w-xl lg:max-w-2xl xl:max-w-7xl mx-auto;
+  }
+  .btn {
+    @apply bg-slate-300 py-2 text-slate-800 hover:bg-slate-800 hover:text-slate-200 duration-300 shadow-md;
   }
 }
 * {
