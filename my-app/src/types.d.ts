@@ -62,11 +62,11 @@ interface DataItem {
   desc: string;
   createdAt: string;
   round: number;
-  distance: number = 0;
+  distance: number;
 }
 interface PostData {
   name: string;
   level: number;
   coordinates: string;
-  round: number=4;
+  round: number;
 }
