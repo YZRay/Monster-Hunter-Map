@@ -52,7 +52,7 @@ const MonsterForm = () => {
 
     setDisableSubmit(true);
 
-    fetch("https://api.mhnow.cc/api/monsterlocation", {
+    fetch("https://api.mhnow.cc/api/monsterlocation/create", {
       method: "POST",
       headers: {
         accept: "text/plain",
@@ -61,27 +61,34 @@ const MonsterForm = () => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Error");
+        if (!response.ok) {
+          toast.success("網路回應發生錯誤", {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500, // 1.5秒關閉
+          });
         }
+
+        return response.json();
       })
       .then((data) => {
-        // console.log("Form submit successfully", data);
+        if(!data.success){
+          toast.error("魔物資訊新增失敗！", {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        }else{
+          toast.error("魔物資訊新增成功！", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        }
         setSubmitted(true);
         //reset(); // 送出後清空表單
-        toast.success("表單提交成功！", {
-          position: "top-center",
-          autoClose: 1500, // 1.5秒關閉
-        });
       })
       .catch((error) => {
         // console.error("Error submit Form", error);
-        toast.error("表單提交失敗！", {
-          position: "top-center",
-          autoClose: 1500, // 1.5秒關閉
-        });
       })
       .finally(() => {
         setDisableSubmit(false);
