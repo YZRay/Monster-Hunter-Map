@@ -47,12 +47,10 @@ const HomePage: FC = () => {
         const skillArray = equip[key];
         for (const skill of skillArray) {
           const { skill: skillName, lv } = skill;
-          if (
-            skillLevels[skillName] === undefined ||
-            lv > skillLevels[skillName]
-          ) {
-            skillLevels[skillName] = lv;
+          if (skillLevels[skillName] === undefined) {
+            skillLevels[skillName] = 0;
           }
+          skillLevels[skillName] += lv;
         }
       }
     }
