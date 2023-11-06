@@ -60,6 +60,7 @@ interface DataItem {
   lng: number;
   location: string;
   desc: string;
+  round: number;
   createdAt: string;
 }
 interface PostData {
