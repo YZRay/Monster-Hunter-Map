@@ -1,6 +1,6 @@
 export async function fetchMonsterLocation() {
   try {
-    const response = await fetch(`https://api.mhnow.cc/api/monsterlocation`);
+    const response = await fetch(`https://api.mhnow.cc/api/monsterlocation/get`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
