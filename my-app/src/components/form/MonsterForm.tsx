@@ -5,7 +5,7 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/20/solid";
 import { Fragment, useState } from "react";
-import GeolocationBtn from "../api/GeolocationAPI";
+import GeolocationBtn from "../api/GeolocationBtn";
 import Image from "next/image";
 import monster from "../../data/data.json";
 import { ToastContainer, toast } from "react-toastify";

@@ -1,7 +1,7 @@
-export async function Getlocation() {
+export async function Getlocation(c: string) {
   try {
     const response = await fetch(
-      `https://api.mhnow.cc/api/monsterlocation/getlocation`
+      `https://api.mhnow.cc/api/monsterlocation/getlocation?c=${c}`
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
