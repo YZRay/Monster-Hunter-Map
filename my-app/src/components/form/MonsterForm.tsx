@@ -72,14 +72,14 @@ const MonsterForm = () => {
         return response.json();
       })
       .then((data) => {
-        if(!data.success){
-          toast.error("魔物資訊新增失敗！", {
+        if(!data.status){
+          toast.error(data.message, {
             position: "top-center",
             className: "danger",
             autoClose: 1500, // 1.5秒關閉
           });
         }else{
-          toast.error("魔物資訊新增成功！", {
+          toast.error(data.message, {
             position: "top-center",
             autoClose: 1500, // 1.5秒關閉
           });
