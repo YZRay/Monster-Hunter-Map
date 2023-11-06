@@ -48,7 +48,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       onClick={() => copyTextToClipboard(`${item.coordinates}`)}
     >
       <div className="justify-around flex-wrap">
-        <div className="flex gap-2 relative">
+        <div className="flex gap-2 relative items-center">
           {item.name.split(",").map((monsterName, index) => {
             return (
               <div key={index}>
