@@ -61,6 +61,8 @@ interface DataItem {
   location: string;
   desc: string;
   createdAt: string;
+  round: number,
+  distance: number = 0
 }
 interface PostData {
   name: string;
