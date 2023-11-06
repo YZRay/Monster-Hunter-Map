@@ -10,7 +10,10 @@ import monster from "../data/data.json";
 
 const monsterNames = Object.values(monster.equipSetting)
   .filter(
-    (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石") && armor.mapShow
+    (armor) =>
+      !armor.name.includes("皮製") &&
+      !armor.name.includes("礦石") &&
+      armor.mapShow
   )
   .map((armor) => armor.name);
 
@@ -36,13 +39,13 @@ const MapSelection = () => {
   const [data, setData] = useState<GetResponse | null>(null);
   useEffect(() => {
     async function fetchData() {
-      const result = await fetchMonsterLocation(city);
+      const result = await fetchMonsterLocation();
       if (result) {
         setData(result);
       }
     }
     fetchData();
-  }, [city]);
+  }, []);
 
   return (
     <Fragment>
@@ -52,7 +55,7 @@ const MapSelection = () => {
           搜尋魔物資訊
         </h3>
         <button
-          className=" w-max justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 px-4 text-white font-bold hover:bg-slate-800 duration-300"
+          className="w-max btn justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] py-2 px-4  font-bold "
           onClick={toggleCollapse}
         >
           {isCollapsed ? "打開搜尋欄" : "收起搜尋欄"}
@@ -146,7 +149,7 @@ const MapSelection = () => {
       <button
         type="button"
         onClick={openModal}
-        className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300 mt-8 mb-4"
+        className="w-full btn justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]  font-bold mt-8 mb-4 text-base shadow-color"
       >
         上傳魔物資訊
       </button>
