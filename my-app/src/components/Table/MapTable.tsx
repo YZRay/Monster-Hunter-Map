@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 interface MapTableProps {
   data: GetResponse | null;
   monster: string[];
-  city: string;
+  city: string | null;
 }
 
 const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {

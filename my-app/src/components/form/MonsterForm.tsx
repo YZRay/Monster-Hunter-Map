@@ -72,13 +72,13 @@ const MonsterForm = () => {
         return response.json();
       })
       .then((data) => {
-        if(!data.success){
+        if (!data.success) {
           toast.error("魔物資訊新增失敗！", {
             position: "top-center",
             className: "danger",
             autoClose: 1500, // 1.5秒關閉
           });
-        }else{
+        } else {
           toast.error("魔物資訊新增成功！", {
             position: "top-center",
             autoClose: 1500, // 1.5秒關閉
@@ -88,7 +88,7 @@ const MonsterForm = () => {
         //reset(); // 送出後清空表單
       })
       .catch((error) => {
-        // console.error("Error submit Form", error);
+        console.error("Error submit Form", error);
       })
       .finally(() => {
         setDisableSubmit(false);
@@ -98,7 +98,10 @@ const MonsterForm = () => {
   // 魔物名稱
   const monsterNames = Object.values(monster.equipSetting)
     .filter(
-      (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石") && armor.mapShow
+      (armor) =>
+        !armor.name.includes("皮製") &&
+        !armor.name.includes("礦石") &&
+        armor.mapShow
     )
     .map((armor) => armor.name);
 

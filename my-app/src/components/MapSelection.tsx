@@ -2,10 +2,11 @@ import { Listbox, Transition, Dialog } from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
 import { ChevronUpDownIcon, MapPinIcon } from "@heroicons/react/20/solid";
 import { fetchMonsterLocation } from "./api/Location";
+import { GetlocationList } from "./api/Getlocationlist";
+import { Getlocation } from "./api/Getlocation";
 import Image from "next/image";
 import MapTable from "./Table/MapTable";
 import MonsterForm from "./form/MonsterForm";
-import taiwanCity from "../data/taiwanCity.json";
 import monster from "../data/data.json";
 
 const monsterNames = Object.values(monster.equipSetting)
@@ -31,12 +32,34 @@ const MapSelection = () => {
   function openModal() {
     setIsOpenForm(true);
   }
-
+  const [LocationList, setLocationList] = useState<string[]>([]);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
-  const [selectedRegion, setSelectedRegion] = useState(taiwanCity[0]);
-  const city = selectedRegion.name;
-
+  const [selectedRegion, setSelectedRegion] = useState(null);
   const [data, setData] = useState<GetResponse | null>(null);
+
+  //獲取經緯度城市
+  useEffect(() => {
+    async function fetchData() {
+      const result = await Getlocation();
+      if (result) {
+        setLocationList(result.data);
+      }
+    }
+    fetchData();
+  }, []);
+
+  //取的已經上傳的地區、國家
+  useEffect(() => {
+    async function fetchData() {
+      const result = await GetlocationList();
+      if (result) {
+        setLocationList(result.data);
+      }
+    }
+    fetchData();
+  }, []);
+
+  // 獲取上傳的魔物資料
   useEffect(() => {
     async function fetchData() {
       const result = await fetchMonsterLocation();
@@ -104,12 +127,19 @@ const MapSelection = () => {
           </div>
           {/* 選擇地區 */}
           <div className="w-full">
-            <Listbox value={selectedRegion} onChange={setSelectedRegion}>
+            <Listbox
+              value={selectedRegion}
+              onChange={(newSelectedRegion) =>
+                setSelectedRegion(newSelectedRegion)
+              }
+            >
               <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2">
                 <h3 className="text-xl lg:text-2xl font-bold mt-2">搜尋地區</h3>
               </Listbox.Label>
               <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">
-                <span className="block truncate">{selectedRegion.name}</span>
+                <span className="block truncate">
+                  {selectedRegion ? selectedRegion : "選擇地區"}
+                </span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                   <ChevronUpDownIcon
                     className="h-5 w-5 text-gray-400"
@@ -127,17 +157,17 @@ const MapSelection = () => {
                 leaveTo="opacity-0"
               >
                 <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 pl-3 shadow-md max-h-40 overflow-y-auto">
-                  {taiwanCity.map((city) => (
+                  {LocationList.map((city, index) => (
                     <Listbox.Option
                       className={({ active }) =>
                         `relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 ${
                           active ? "bg-slate-800 text-white" : "text-gray-900"
                         }`
                       }
-                      key={city.id}
+                      key={index}
                       value={city}
                     >
-                      {city.name}
+                      {city}
                     </Listbox.Option>
                   ))}
                 </Listbox.Options>
@@ -154,7 +184,7 @@ const MapSelection = () => {
         上傳魔物資訊
       </button>
       {/* 魔物資訊 */}
-      <MapTable data={data} monster={selectedMonster} city={city} />
+      <MapTable data={data} monster={selectedMonster} city={selectedRegion} />
       <Transition appear show={isOpenForm} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
