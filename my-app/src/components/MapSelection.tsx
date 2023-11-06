@@ -10,7 +10,10 @@ import monster from "../data/data.json";
 
 const monsterNames = Object.values(monster.equipSetting)
   .filter(
-    (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石") && armor.mapShow
+    (armor) =>
+      !armor.name.includes("皮製") &&
+      !armor.name.includes("礦石") &&
+      armor.mapShow
   )
   .map((armor) => armor.name);
 
@@ -36,13 +39,13 @@ const MapSelection = () => {
   const [data, setData] = useState<GetResponse | null>(null);
   useEffect(() => {
     async function fetchData() {
-      const result = await fetchMonsterLocation(city);
+      const result = await fetchMonsterLocation();
       if (result) {
         setData(result);
       }
     }
     fetchData();
-  }, [city]);
+  }, []);
 
   return (
     <Fragment>
