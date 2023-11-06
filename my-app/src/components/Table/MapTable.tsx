@@ -48,10 +48,10 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       onClick={() => copyTextToClipboard(`${item.coordinates}`)}
     >
       <div className="justify-around flex-wrap">
-        <div className="flex gap-2">
+        <div className="flex gap-2 relative">
           {item.name.split(",").map((monsterName, index) => {
             return (
-              <div className="flex-grow basis-1/4" key={index}>
+              <div key={index}>
                 <Image
                   className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] h-16 w-16 drop-shadow"
                   src={`/assets/icons/Monster/${monsterName}.svg`}
@@ -63,7 +63,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
               </div>
             );
           })}
-          <div className="flex-grow basis-1/2">
+          <div>
             <div className="flex gap-1">
               {Array.from(
                 { length: item.level > 5 ? item.level - 5 : item.level },
@@ -78,30 +78,30 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
               )}
             </div>
             <div>
-              <p>
-                {item.name}
-              </p>
+              <p>{item.name}</p>
               <p>
                 {(() => {
                   const date = new Date(item.createdAt + "Z");
-                  const localTime = date.toLocaleString(undefined, { hour12: false });
+                  const localTime = date.toLocaleString(undefined, {
+                    hour12: false,
+                  });
                   return localTime;
                 })()}
               </p>
             </div>
           </div>
-          <div className="basis-1/4">
-              <ClipboardDocumentIcon
-                title="複製"
-                className="w-8 h-8 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] float-right"
-              />
+          <div className="absolute right-0 top-0">
+            <ClipboardDocumentIcon
+              title="複製"
+              className="w-8 h-8 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] float-right"
+            />
           </div>
         </div>
-        <div className="flex">
-            <MapPinIcon
-              className="w-5 h-8"
-            />
-            <span className="pt-1">{item.location} - {item.coordinates}</span> 
+        <div className="flex gap-1 items-center pt-2">
+          <MapPinIcon className="w-5 h-8" />
+          <span>
+            {item.location} - {item.coordinates}
+          </span>
         </div>
       </div>
     </div>
