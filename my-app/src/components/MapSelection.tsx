@@ -44,31 +44,29 @@ const MapSelection = () => {
     longitude: number | null;
   } | null>(null);
 
-  useEffect(() => {
-    // 使用 useEffect 在載入時調用 getGeolocationData 來獲取位置
-    getGeolocationData(handleGeolocationData);
-  }, []);
-  const handleGeolocationData = (geolocationData: {
-    latitude: number | null;
-    longitude: number | null;
-  }) => {
-    setGeolocation(geolocationData);
-  };
-
-  const cityLocation = `${geolocation?.latitude}, ${geolocation?.longitude}`;
-  console.log(cityLocation);
-
-  //獲取經緯度城市
+  // 獲取經緯度城市
   useEffect(() => {
     async function fetchData() {
-      const result = await Getlocation(cityLocation);
-      if (result) {
-        setCity(result);
+      if (geolocation) {
+        const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
+        const result = await Getlocation(cityLocation);
+        if (result) {
+          setCity(result.data);
+          setSelectedRegion(result.data);
+        }
       }
     }
     fetchData();
+  }, [geolocation]);
+  // 載入經緯度數據
+  useEffect(() => {
+    async function loadGeolocation() {
+      getGeolocationData((data) => {
+        setGeolocation(data);
+      });
+    }
+    loadGeolocation();
   }, []);
-  console.log(city);
 
   //取的已經上傳的地區、國家
   useEffect(() => {
@@ -157,7 +155,7 @@ const MapSelection = () => {
           </Listbox.Label>
           <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">
             <span className="block truncate">
-              {selectedRegion ? selectedRegion : "選擇地區"}
+              {selectedRegion ? selectedRegion : city}
             </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon

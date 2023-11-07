@@ -69,8 +69,8 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                 (_, index) => (
                   <StarIcon
                     key={index}
-                    className={`w-5 h-5 ${
-                      item.level > 5 ? "text-purple-600" : "text-yellow-300"
+                    className={`w-5 h-5 drop-shadow-md ${
+                      item.level > 5 ? "text-purple-600" : "text-amber-400"
                     }`}
                   />
                 )
