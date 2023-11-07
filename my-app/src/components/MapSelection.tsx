@@ -174,19 +174,28 @@ const MapSelection = () => {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 pl-3 shadow-md max-h-40 overflow-y-auto">
-              {LocationList.map((city, index) => (
+              {LocationList.length === 0 ? (
                 <Listbox.Option
-                  className={({ active }) =>
-                    `relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 ${
-                      active ? "bg-slate-800 text-white" : "text-gray-900"
-                    }`
-                  }
-                  key={index}
-                  value={city}
+                  className="relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 text-gray-900"
+                  value=""
                 >
-                  {city}
+                  還未搜尋到有魔物的地區
                 </Listbox.Option>
-              ))}
+              ) : (
+                LocationList.map((city, index) => (
+                  <Listbox.Option
+                    className={({ active }) =>
+                      `relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 ${
+                        active ? "bg-slate-800 text-white" : "text-gray-900"
+                      }`
+                    }
+                    key={index}
+                    value={city}
+                  >
+                    {city}
+                  </Listbox.Option>
+                ))
+              )}
             </Listbox.Options>
           </Transition>
         </Listbox>
