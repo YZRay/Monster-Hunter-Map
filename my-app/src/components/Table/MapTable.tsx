@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 interface MapTableProps {
   data: GetResponse | null;
   monster: string[];
-  city: string;
+  city: string | null;
 }
 
 const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
@@ -69,22 +69,25 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                 (_, index) => (
                   <StarIcon
                     key={index}
-                    className={`w-5 h-5 ${
-                      item.level > 5 ? "text-purple-600" : "text-yellow-300"
+                    className={`w-5 h-5 drop-shadow-md ${
+                      item.level > 5 ? "text-purple-600" : "text-amber-400"
                     }`}
                   />
                 )
               )}
             </div>
             <div>
-              <p>{item.name}</p>
-              <p>
+              <p className="text-base">{item.name}</p>
+              <p className="text-base">
                 {(() => {
                   const date = new Date(item.createdAt + "Z");
-                  const localTime = date.toLocaleString();
+                  const localTime = date.toLocaleString(undefined, {
+                    hour12: false,
+                  });
                   return localTime;
                 })()}
               </p>
+              <span className="text-base">{item.round} 周目</span>
             </div>
           </div>
           <ClipboardDocumentIcon
@@ -92,9 +95,9 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
             className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] absolute top-0 right-0"
           />
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 ">
           <MapPinIcon className="w-5 h-8" />
-          <span>
+          <span className="text-base">
             {item.location} - {item.coordinates}
           </span>
         </div>

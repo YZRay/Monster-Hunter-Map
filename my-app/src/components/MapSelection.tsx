@@ -2,11 +2,14 @@ import { Listbox, Transition, Dialog } from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
 import { ChevronUpDownIcon, MapPinIcon } from "@heroicons/react/20/solid";
 import { fetchMonsterLocation } from "./api/Location";
+import { GetlocationList } from "./api/Getlocationlist";
+import { Getlocation } from "./api/Getlocation";
+import { getGeolocationData } from "./api/GeolocationAPI";
 import Image from "next/image";
 import MapTable from "./Table/MapTable";
 import MonsterForm from "./form/MonsterForm";
-import taiwanCity from "../data/taiwanCity.json";
 import monster from "../data/data.json";
+import { log } from "console";
 
 const monsterNames = Object.values(monster.equipSetting)
   .filter(
@@ -31,12 +34,52 @@ const MapSelection = () => {
   function openModal() {
     setIsOpenForm(true);
   }
-
+  const [city, setCity] = useState("");
+  const [LocationList, setLocationList] = useState<string[]>([]);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
-  const [selectedRegion, setSelectedRegion] = useState(taiwanCity[0]);
-  const city = selectedRegion.name;
-
+  const [selectedRegion, setSelectedRegion] = useState(null);
   const [data, setData] = useState<GetResponse | null>(null);
+  const [geolocation, setGeolocation] = useState<{
+    latitude: number | null;
+    longitude: number | null;
+  } | null>(null);
+
+  // 獲取經緯度城市
+  useEffect(() => {
+    async function fetchData() {
+      if (geolocation) {
+        const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
+        const result = await Getlocation(cityLocation);
+        if (result) {
+          setCity(result.data);
+          setSelectedRegion(result.data);
+        }
+      }
+    }
+    fetchData();
+  }, [geolocation]);
+  // 載入經緯度數據
+  useEffect(() => {
+    async function loadGeolocation() {
+      getGeolocationData((data) => {
+        setGeolocation(data);
+      });
+    }
+    loadGeolocation();
+  }, []);
+
+  //取的已經上傳的地區、國家
+  useEffect(() => {
+    async function fetchData() {
+      const result = await GetlocationList();
+      if (result) {
+        setLocationList(result.data);
+      }
+    }
+    fetchData();
+  }, []);
+
+  // 獲取上傳的魔物資料
   useEffect(() => {
     async function fetchData() {
       const result = await fetchMonsterLocation();
@@ -50,15 +93,12 @@ const MapSelection = () => {
   return (
     <Fragment>
       {/* 選擇魔物 */}
-      <div className="flex justify-between items-center">
-        <h3 className="text-xl lg:text-2xl font-bold text-gray-800">
-          搜尋魔物資訊
-        </h3>
+      <div className="flex gap-2 items-center">
         <button
           className="w-max btn justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] py-2 px-4  font-bold "
           onClick={toggleCollapse}
         >
-          {isCollapsed ? "打開搜尋欄" : "收起搜尋欄"}
+          {isCollapsed ? "打開魔物搜尋欄" : "收起魔物搜尋欄"}
         </button>
       </div>
       {!isCollapsed && (
@@ -102,50 +142,55 @@ const MapSelection = () => {
               </div>
             ))}
           </div>
-          {/* 選擇地區 */}
-          <div className="w-full">
-            <Listbox value={selectedRegion} onChange={setSelectedRegion}>
-              <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2">
-                <h3 className="text-xl lg:text-2xl font-bold mt-2">搜尋地區</h3>
-              </Listbox.Label>
-              <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">
-                <span className="block truncate">{selectedRegion.name}</span>
-                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                  <ChevronUpDownIcon
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </span>
-              </Listbox.Button>
-              <Transition
-                as={Fragment}
-                enter="transition-opacity duration-75"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition-opacity duration-150"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 pl-3 shadow-md max-h-40 overflow-y-auto">
-                  {taiwanCity.map((city) => (
-                    <Listbox.Option
-                      className={({ active }) =>
-                        `relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 ${
-                          active ? "bg-slate-800 text-white" : "text-gray-900"
-                        }`
-                      }
-                      key={city.id}
-                      value={city}
-                    >
-                      {city.name}
-                    </Listbox.Option>
-                  ))}
-                </Listbox.Options>
-              </Transition>
-            </Listbox>
-          </div>
         </>
       )}
+      {/* 選擇地區 */}
+      <div className="w-full">
+        <Listbox
+          value={selectedRegion}
+          onChange={(newSelectedRegion) => setSelectedRegion(newSelectedRegion)}
+        >
+          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2">
+            <h3 className="text-xl lg:text-2xl font-bold mt-2">搜尋地區</h3>
+          </Listbox.Label>
+          <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">
+            <span className="block truncate">
+              {selectedRegion ? selectedRegion : city}
+            </span>
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <ChevronUpDownIcon
+                className="h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              />
+            </span>
+          </Listbox.Button>
+          <Transition
+            as={Fragment}
+            enter="transition-opacity duration-75"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 pl-3 shadow-md max-h-40 overflow-y-auto">
+              {LocationList.map((city, index) => (
+                <Listbox.Option
+                  className={({ active }) =>
+                    `relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 ${
+                      active ? "bg-slate-800 text-white" : "text-gray-900"
+                    }`
+                  }
+                  key={index}
+                  value={city}
+                >
+                  {city}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
+        </Listbox>
+      </div>
       <button
         type="button"
         onClick={openModal}
@@ -154,7 +199,7 @@ const MapSelection = () => {
         上傳魔物資訊
       </button>
       {/* 魔物資訊 */}
-      <MapTable data={data} monster={selectedMonster} city={city} />
+      <MapTable data={data} monster={selectedMonster} city={selectedRegion} />
       <Transition appear show={isOpenForm} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child

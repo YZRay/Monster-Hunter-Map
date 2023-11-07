@@ -5,14 +5,13 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/20/solid";
 import { Fragment, useState } from "react";
-import GeolocationBtn from "../api/GeolocationAPI";
+import GeolocationBtn from "../api/GeolocationBtn";
 import Image from "next/image";
 import monster from "../../data/data.json";
 import { ToastContainer, toast } from "react-toastify";
-import city from "../../data/taiwanCity.json";
 
 const levels = [5, 6, 7, 8, 9, 10];
-
+const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const MonsterForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
@@ -39,6 +38,7 @@ const MonsterForm = () => {
       name: "",
       level: 8,
       coordinates: "",
+      round: 4,
     },
   });
 
@@ -71,13 +71,14 @@ const MonsterForm = () => {
         return response.json();
       })
       .then((data) => {
-        if(!data.status){
-          toast.error(data.message, {
+        if (!data.success) {
+          toast.error("魔物資訊新增失敗！", {
             position: "top-center",
+            className: "danger",
             autoClose: 1500, // 1.5秒關閉
           });
-        }else{
-          toast.success(data.message, {
+        } else {
+          toast.error("魔物資訊新增成功！", {
             position: "top-center",
             autoClose: 1500, // 1.5秒關閉
           });
@@ -86,7 +87,7 @@ const MonsterForm = () => {
         //reset(); // 送出後清空表單
       })
       .catch((error) => {
-        // console.error("Error submit Form", error);
+        console.error("Error submit Form", error);
       })
       .finally(() => {
         setDisableSubmit(false);
@@ -96,12 +97,16 @@ const MonsterForm = () => {
   // 魔物名稱
   const monsterNames = Object.values(monster.equipSetting)
     .filter(
-      (armor) => !armor.name.includes("皮製") && !armor.name.includes("礦石") && armor.mapShow
+      (armor) =>
+        !armor.name.includes("皮製") &&
+        !armor.name.includes("礦石") &&
+        armor.mapShow
     )
     .map((armor) => armor.name);
 
   return (
     <Fragment>
+      <ToastContainer />
       <form
         onSubmit={onSubmit}
         className="bg-slate-200 px-6 py-4 rounded-md my-4"
@@ -152,58 +157,112 @@ const MonsterForm = () => {
             </div>
           )}
         />
-        <Controller
-          name="level"
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field }) => (
-            <Listbox {...field}>
-              <div className="relative mt-1">
-                <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                  <h1 className="text-xl font-bold mt-2">魔物等級</h1>
-                </Listbox.Label>
-                <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
-                  <span className="block truncate">{field.value}</span>
-                  <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    <ChevronUpDownIcon
-                      className="h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </Listbox.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition-opacity duration-75"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="transition-opacity duration-150"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
-                    {levels.map((level) => (
-                      <Listbox.Option key={level} value={level}>
-                        {({ active }) => (
-                          <div
-                            className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${
-                              active
-                                ? "bg-slate-800 text-white"
-                                : "text-gray-900"
-                            }`}
-                          >
-                            {level}
-                          </div>
-                        )}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </Transition>
-              </div>
-            </Listbox>
-          )}
-        />
+        <div className="grid grid-cols-2 gap-2">
+          <Controller
+            name="level"
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field }) => (
+              <Listbox {...field}>
+                <div className="relative mt-1">
+                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
+                    <h1 className="text-xl font-bold mt-2">魔物等級</h1>
+                  </Listbox.Label>
+                  <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
+                    <span className="block truncate">{field.value}</span>
+                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                      <ChevronUpDownIcon
+                        className="h-5 w-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Listbox.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition-opacity duration-75"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="transition-opacity duration-150"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
+                      {levels.map((level) => (
+                        <Listbox.Option key={level} value={level}>
+                          {({ active }) => (
+                            <div
+                              className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${
+                                active
+                                  ? "bg-slate-800 text-white"
+                                  : "text-gray-900"
+                              }`}
+                            >
+                              {level}
+                            </div>
+                          )}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </Transition>
+                </div>
+              </Listbox>
+            )}
+          />
+          <Controller
+            name="round"
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field }) => (
+              <Listbox {...field}>
+                <div className="relative mt-1">
+                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
+                    <h1 className="text-xl font-bold mt-2">周目</h1>
+                  </Listbox.Label>
+                  <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
+                    <span className="block truncate">{field.value}</span>
+                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                      <ChevronUpDownIcon
+                        className="h-5 w-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Listbox.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition-opacity duration-75"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="transition-opacity duration-150"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
+                      {rounds.map((round) => (
+                        <Listbox.Option key={round} value={round}>
+                          {({ active }) => (
+                            <div
+                              className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${
+                                active
+                                  ? "bg-slate-800 text-white"
+                                  : "text-gray-900"
+                              }`}
+                            >
+                              {round}
+                            </div>
+                          )}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </Transition>
+                </div>
+              </Listbox>
+            )}
+          />
+        </div>
         <label className="text-xl font-bold mt-2 block">經緯度</label>
         <div className="flex items-center gap-2 flex-col md:flex-row">
           <input
