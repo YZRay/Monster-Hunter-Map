@@ -78,7 +78,7 @@ const MonsterForm = () => {
             autoClose: 1500, // 1.5秒關閉
           });
         } else {
-          toast.error("魔物資訊新增成功！", {
+          toast.success("魔物資訊新增成功！", {
             position: "top-center",
             autoClose: 1500, // 1.5秒關閉
           });
