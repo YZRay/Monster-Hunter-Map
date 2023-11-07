@@ -10,7 +10,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
 
   if (armor.length === 0) {
     return (
-      <div className="max-w-full mx-1 sm:mx-4 md:max-w-xl lg:max-w-2xl xl:max-w-7xl md:mx-auto text-center p-4 my-2 lg:p-8 lg:my-4 rounded-md opacity-90 bg-slate-700">
+      <div className="container text-center p-4 my-2 lg:p-8 lg:my-4 rounded-md opacity-90 bg-slate-700">
         <p className="text-white text-base md:text-lg ">請點擊下方欄位</p>
       </div>
     );
