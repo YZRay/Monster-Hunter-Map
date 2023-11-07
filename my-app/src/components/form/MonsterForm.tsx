@@ -62,9 +62,8 @@ const MonsterForm = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          toast.success("網路回應發生錯誤", {
+          toast.error("網路回應發生錯誤", {
             position: "top-center",
-            className: "danger",
             autoClose: 1500, // 1.5秒關閉
           });
         }
