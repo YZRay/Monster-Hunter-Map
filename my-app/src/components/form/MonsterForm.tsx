@@ -106,7 +106,6 @@ const MonsterForm = () => {
 
   return (
     <Fragment>
-      <ToastContainer />
       <form
         onSubmit={onSubmit}
         className="bg-slate-200 px-6 py-4 rounded-md my-4"
