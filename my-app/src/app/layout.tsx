@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Head from "next/head";
 import GoogleAnalytics from "../components/api/GA";
+import Adsense from "../components/api/Adsense";
 
 export const metadata: Metadata = {
   title: "MHNow 魔物地圖",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="zh-tw">
       <body>
+        <Adsense />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
