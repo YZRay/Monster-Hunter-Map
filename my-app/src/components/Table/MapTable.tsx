@@ -33,10 +33,16 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
 
   const filteredData = data
     ? data.data.filter((item) => {
-        return (
-          (monster.length === 0 || monster.includes(item.name)) &&
-          (city === "全部" || item.location === city)
-        );
+        const cityCondition = city === "全部" || item.location === city;
+        if (monster.length === 0) {
+          return cityCondition;
+        } else {
+          // 檢查 item.name 是否包含選擇的魔物
+          const isMonsterSelected = monster.some((selectedMonster) =>
+            item.name.includes(selectedMonster)
+          );
+          return cityCondition && isMonsterSelected;
+        }
       })
     : [];
 
