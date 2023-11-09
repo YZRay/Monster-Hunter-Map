@@ -35,6 +35,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
     ? data.data.filter((item) => {
         const cityCondition = city === "全部" || item.location === city;
         if (monster.length === 0) {
+          //如果沒有選擇任何魔物就篩選city就好
           return cityCondition;
         } else {
           // 檢查 item.name 是否包含選擇的魔物
