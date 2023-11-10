@@ -1,6 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Head from "next/head";
 import GoogleAnalytics from "../components/api/GA";
 import Adsense from "../components/api/Adsense";
 

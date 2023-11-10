@@ -40,6 +40,7 @@ body {
   .monster-tab {
     @apply w-full md:w-44 bg-slate-400 text-white px-2 py-1 md:px-4 md:py-2 rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] ui-selected:bg-slate-800 hover:bg-slate-800 duration-300  justify-center;
   }
+
   .monster-table {
     @apply table table-fixed text-gray-300 border-separate space-y-6 text-center w-full;
   }
