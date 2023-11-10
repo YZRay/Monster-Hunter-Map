@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/og-image.png",
+        url: "/assets/og.jpg",
         width: 1200,
         height: 630,
         alt: "MHNow 魔物地圖",
