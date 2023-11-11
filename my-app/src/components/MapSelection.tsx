@@ -1,6 +1,6 @@
 import { Listbox, Transition, Dialog } from "@headlessui/react";
-import { Fragment, useState, useEffect } from "react";
-import { ChevronUpDownIcon, MapPinIcon } from "@heroicons/react/20/solid";
+import { Fragment, useState, useEffect, useCallback } from "react";
+import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { fetchMonsterLocation } from "./api/Location";
 import { GetlocationList } from "./api/Getlocationlist";
 import { Getlocation } from "./api/Getlocation";
@@ -9,7 +9,6 @@ import Image from "next/image";
 import MapTable from "./Table/MapTable";
 import MonsterForm from "./form/MonsterForm";
 import monster from "../data/data.json";
-import { log } from "console";
 
 const monsterNames = Object.values(monster.equipSetting)
   .filter(
@@ -23,17 +22,20 @@ const monsterNames = Object.values(monster.equipSetting)
 const MapSelection = () => {
   //摺疊搜尋區塊
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-  };
+  const toggleCollapse = useCallback(() => {
+    setIsCollapsed((prevIsCollapsed) => !prevIsCollapsed);
+  }, []);
+
   //打開表單
   let [isOpenForm, setIsOpenForm] = useState(false);
-  function closeModal() {
+  const closeModal = useCallback(() => {
     setIsOpenForm(false);
-  }
-  function openModal() {
+  }, []);
+
+  const openModal = useCallback(() => {
     setIsOpenForm(true);
-  }
+  }, []);
+
   const [city, setCity] = useState("");
   const [LocationList, setLocationList] = useState<string[]>([]);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
@@ -44,6 +46,28 @@ const MapSelection = () => {
     longitude: number | null;
   } | null>(null);
 
+  useEffect(() => {
+    async function fetchData() {
+      // 載入經緯度數據
+      getGeolocationData((geoData) => {
+        setGeolocation(geoData);
+      });
+
+      // 取得已經上傳的地區、國家
+      const locationListResult = await GetlocationList();
+      if (locationListResult) {
+        setLocationList(locationListResult.data);
+      }
+
+      // 獲取上傳的魔物資料
+      const monsterDataResult = await fetchMonsterLocation();
+      if (monsterDataResult) {
+        setData(monsterDataResult);
+      }
+    }
+
+    fetchData();
+  }, []);
   // 獲取經緯度城市
   useEffect(() => {
     async function fetchData() {
@@ -58,37 +82,6 @@ const MapSelection = () => {
     }
     fetchData();
   }, [geolocation]);
-  // 載入經緯度數據
-  useEffect(() => {
-    async function loadGeolocation() {
-      getGeolocationData((data) => {
-        setGeolocation(data);
-      });
-    }
-    loadGeolocation();
-  }, []);
-
-  //取的已經上傳的地區、國家
-  useEffect(() => {
-    async function fetchData() {
-      const result = await GetlocationList();
-      if (result) {
-        setLocationList(result.data);
-      }
-    }
-    fetchData();
-  }, []);
-
-  // 獲取上傳的魔物資料
-  useEffect(() => {
-    async function fetchData() {
-      const result = await fetchMonsterLocation();
-      if (result) {
-        setData(result);
-      }
-    }
-    fetchData();
-  }, []);
 
   return (
     <Fragment>
@@ -166,10 +159,10 @@ const MapSelection = () => {
           </Listbox.Button>
           <Transition
             as={Fragment}
-            enter="transition-opacity duration-75"
+            enter="ease-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="transition-opacity duration-150"
+            leave="ease-in duration-300"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -227,11 +220,11 @@ const MapSelection = () => {
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
+                enterFrom="opacity-0 scale-90"
                 enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+                leaveTo="opacity-0 scale-90"
               >
                 <Dialog.Panel className="w-full max-w-md md:max-w-lg lg:max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
