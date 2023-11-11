@@ -58,7 +58,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
                   {/*  */}
                   <div className="flex items-center m-10 gap-4 flex-col lg:flex-row">
                     <Image
-                      className=""
+                      className="w-40 h-40"
                       src={`/assets/icons/Monster/${monsterData?.name}.svg`}
                       width={300}
                       height={300}
@@ -67,9 +67,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
                     />
                     <h3 className="text-3xl font-bold text-gray-800 text-center lg:text-left">
                       {monsterData?.name}
-                      <p className="text-base mt-4 hidden lg:inline-block">
-                        魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹魔物介紹
-                      </p>
+                      <p className="text-base mt-4 hidden lg:inline-block"></p>
                     </h3>
                   </div>
                   <Tab.Panels>
