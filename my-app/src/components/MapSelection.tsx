@@ -6,9 +6,11 @@ import { GetlocationList } from "./api/Getlocationlist";
 import { Getlocation } from "./api/Getlocation";
 import { getGeolocationData } from "./api/GeolocationAPI";
 import Image from "next/image";
-import MapTable from "./Table/MapTable";
-import MonsterForm from "./form/MonsterForm";
 import monster from "../data/data.json";
+import dynamic from "next/dynamic";
+
+const MapTable = dynamic(() => import("./Table/MapTable"));
+const MonsterForm = dynamic(() => import("./form/MonsterForm"));
 
 const monsterNames = Object.values(monster.equipSetting)
   .filter(
@@ -25,7 +27,6 @@ const MapSelection = () => {
   const toggleCollapse = useCallback(() => {
     setIsCollapsed((prevIsCollapsed) => !prevIsCollapsed);
   }, []);
-
   //打開表單
   let [isOpenForm, setIsOpenForm] = useState(false);
   const closeModal = useCallback(() => {

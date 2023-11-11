@@ -2,9 +2,11 @@
 import "../app/globals.css";
 import React, { FC, useState, Fragment } from "react";
 import Navbar from "../components/UI/Navbar";
-import ArmorSection from "@/components/ArmorSection";
-import Selection from "@/components/Selection";
-import SkillLevel from "@/components/SkillLevel";
+import dynamic from "next/dynamic";
+
+const Selection = dynamic(() => import("@/components/Selection"));
+const ArmorSection = dynamic(() => import("@/components/ArmorSection"));
+const SkillLevel = dynamic(() => import("@/components/SkillLevel"));
 const SelectionPage: FC = () => {
   const [selectedArmors, setSelectedArmors] = useState<Armor[]>([]); // 使用狀態來跟蹤選中的防具
   const [selectedMonster, setSelectedMonster] = useState<Monster | null>(null);
