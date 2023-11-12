@@ -38,7 +38,7 @@ body {
 
 @layer components {
   .monster-tab {
-    @apply w-full md:w-44 bg-slate-400 text-slate-800 px-2 py-1 md:px-4 md:py-2 rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]  hover:bg-slate-800 hover:text-white duration-300 justify-center tracking-wider;
+    @apply w-full md:w-44 bg-slate-400 text-slate-800 px-2 py-1 md:px-4 md:py-2 rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]  hover:bg-slate-800 hover:text-white duration-300 justify-center tracking-wider ui-selected:bg-slate-800 ui-selected:text-white;
   }
   .active {
     @apply bg-slate-800 text-white;
