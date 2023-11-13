@@ -5,16 +5,16 @@ import L from "leaflet";
 const MonsterMap = () => {
   return (
     <MapContainer
-      center={{ lat: 51.505, lng: -0.09 }}
-      zoom={16}
+      center={{ lat: 25.0097, lng: 121.459 }}
+      zoom={17}
       minZoom={15}
       maxZoom={18}
-      scrollWheelZoom={true}
-      className="w-full h-96"
+      scrollWheelZoom={false}
+      className="w-full h-96 z-0 mb-12"
     >
       <TileLayer
         attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors'
-        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+        url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
       />
     </MapContainer>
   );
