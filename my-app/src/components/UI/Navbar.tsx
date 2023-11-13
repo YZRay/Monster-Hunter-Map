@@ -28,6 +28,24 @@ const Navbar = () => {
           <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
           魔物資訊
         </Link>
+        <Link
+          href="/news"
+          className={`${
+            pathname === "/news" ? "active" : ""
+          } monster-tab flex items-center gap-2 text-lg`}
+        >
+          <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
+          最新消息
+        </Link>
+        <Link
+          href="/about"
+          className={`${
+            pathname === "/about" ? "active" : ""
+          } monster-tab flex items-center gap-2 text-lg`}
+        >
+          <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
+          關於我們
+        </Link>
       </div>
     </Fragment>
   );
