@@ -142,7 +142,11 @@ const MapSelection = () => {
           </Tab.Panel>
           <Tab.Panel>
             {/* 動態地圖 */}
-            <MonsterMap geolocation={geolocation} />
+            <MonsterMap
+              geolocation={geolocation}
+              data={data}
+              monster={selectedMonster}
+            />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
