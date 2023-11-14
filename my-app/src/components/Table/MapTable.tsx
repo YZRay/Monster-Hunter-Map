@@ -15,7 +15,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
     try {
       // 使用 Clipboard API 写入剪贴板
       await navigator.clipboard.writeText(coordinates);
-      console.log("已成功复制到剪贴板！");
+      console.log("已成功複製");
       toast.success("已複製位置", {
         position: "top-center",
         autoClose: 1500,
@@ -27,29 +27,34 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
         theme: "light",
       });
     } catch (err) {
-      console.error("复制文本失败：", err);
+      console.error("複製失敗：", err);
     }
   }
 
-  const filteredData = data
-    ? data.data.filter((item) => {
-        const cityCondition = city === "全部" || item.location === city;
-        if (monster.length === 0) {
-          //如果沒有選擇任何魔物就篩選city就好
-          return cityCondition;
-        } else {
-          // 檢查 item.name 是否包含選擇的魔物
-          const isMonsterSelected = monster.some((selectedMonster) =>
-            item.name.includes(selectedMonster)
-          );
-          return cityCondition && isMonsterSelected;
-        }
-      })
-    : [];
+  //最多只會有三個魔物的名字
+  const processedData =
+    data?.data.map((item) => ({
+      ...item,
+      monsterNames: item.name.split(",").slice(0, 3),
+    })) || [];
+
+  //篩選魔物
+  const filteredData = processedData.filter((item) => {
+    const cityCondition = city === "全部" || item.location === city;
+    if (monster.length === 0) {
+      //如果沒有選擇任何魔物就篩選city就好
+      return cityCondition;
+    } else {
+      // 檢查 item.monsterNames (前三個名字) 是否包含選擇的魔物
+      const isMonsterSelected = monster.some((selectedMonster) =>
+        item.monsterNames.includes(selectedMonster)
+      );
+      return cityCondition && isMonsterSelected;
+    }
+  });
 
   const locationTable = filteredData.map((item) => {
-    const monsterNames = item.name.split(",").slice(0, 3);
-    const imageElements = monsterNames.map((monsterName, index) => (
+    const imageElements = item.monsterNames.map((monsterName, index) => (
       <div className="max-w-[4rem] max-h-[4rem]" key={index}>
         <Image
           className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] w-auto h-auto drop-shadow"
@@ -86,7 +91,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                 )}
               </div>
               <div>
-                <p className="text-base">{monsterNames.join(", ")}</p>
+                <p className="text-base">{item.monsterNames.join(", ")}</p>
                 <p className="text-base">
                   {(() => {
                     const date = new Date(item.createdAt + "Z");
@@ -118,9 +123,9 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   return (
     <div className="mt-2 mb-4 md:mb-8 md:mt-4 lg:mb-16">
       <ToastContainer />
-      <h1 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
+      {/* <h1 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
         魔物目擊地圖資訊
-      </h1>
+      </h1> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-2 gap-y-2 md:gap-y-4">
         {locationTable}
       </div>{" "}

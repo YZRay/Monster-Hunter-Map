@@ -21,7 +21,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  cursor: url("/assets/icons/mh_cursor.svg"), default;
+  /* cursor: url("/assets/icons/mh_cursor.svg"), default; */
 }
 body {
   background-image: linear-gradient(

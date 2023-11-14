@@ -3,6 +3,9 @@ import React, { Fragment } from "react";
 import Image from "next/image";
 import FieldIcon from "../../../public/assets/icons/field_icon.svg";
 import MonsterIcon from "../../../public/assets/icons/monster_icon.svg";
+import AboutIcon from "../../../public/assets/icons/about.svg";
+import NewsIcon from "../../../public/assets/icons/news.svg";
+
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
@@ -34,7 +37,7 @@ const Navbar = () => {
             pathname === "/news" ? "active" : ""
           } monster-tab flex items-center gap-2 text-lg`}
         >
-          <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
+          <Image src={NewsIcon} alt="MonsterIcon" width={40} height={40} />
           最新消息
         </Link>
         <Link
@@ -43,7 +46,7 @@ const Navbar = () => {
             pathname === "/about" ? "active" : ""
           } monster-tab flex items-center gap-2 text-lg`}
         >
-          <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
+          <Image src={AboutIcon} alt="MonsterIcon" width={40} height={40} />
           關於我們
         </Link>
       </div>
