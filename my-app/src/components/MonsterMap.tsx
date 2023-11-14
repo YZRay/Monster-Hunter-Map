@@ -10,7 +10,7 @@ const MonsterMap = () => {
       minZoom={15}
       maxZoom={18}
       scrollWheelZoom={false}
-      className="w-full h-96 z-0 mb-12"
+      className="w-full h-[30rem] max-h-[30rem] z-0 mb-12"
     >
       <TileLayer
         attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> contributors'

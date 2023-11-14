@@ -28,7 +28,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
   return (
     <Fragment>
       {/* 搜尋魔物 */}
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center mb-4 md:mb-0">
         <button
           className="w-max btn justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] py-2 px-4  font-bold "
           onClick={toggleCollapse}
@@ -81,7 +81,9 @@ const SearchMonster: FC<SearchMonsterProps> = ({
           onChange={(newSelectedRegion) => setSelectedRegion(newSelectedRegion)}
         >
           <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2">
-            <h3 className="text-xl lg:text-2xl font-bold mt-2">搜尋地區</h3>
+            <h3 className="text-lg md:text-xl lg:text-2xl font-bold mt-2">
+              搜尋地區
+            </h3>
           </Listbox.Label>
           <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">
             <span className="block truncate">

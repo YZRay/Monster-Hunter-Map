@@ -1,6 +1,7 @@
-import { Listbox, Transition, Dialog, Tab } from "@headlessui/react";
+import { Transition, Dialog, Tab } from "@headlessui/react";
 import { Fragment, useState, useEffect, useCallback } from "react";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import FieldIcon from "../../public/assets/icons/field_icon.svg";
+import MonsterIcon from "../../public/assets/icons/monster_icon.svg";
 import { fetchMonsterLocation } from "./api/Location";
 import { GetlocationList } from "./api/Getlocationlist";
 import { Getlocation } from "./api/Getlocation";
@@ -113,16 +114,22 @@ const MapSelection = () => {
       <button
         type="button"
         onClick={openModal}
-        className="w-full btn justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]  font-bold mt-8 mb-4 text-base shadow-color"
+        className="w-full btn justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]  font-bold my-4 md:my-8 text-base shadow-color"
       >
         上傳魔物資訊
       </button>
       {/* 上傳魔物表單 */}
       {/* 切換動態地圖 */}
       <Tab.Group>
-        <Tab.List className="flex items-center gap-4 my-4">
-          <Tab className="monster-tab">魔物目擊資訊</Tab>
-          <Tab className="monster-tab">魔物動態地圖</Tab>
+        <Tab.List className="flex items-center gap-4 mb-4 mt-1">
+          <Tab className="monster-tab flex items-center md:gap-2 text-lg py-2">
+            <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
+            目擊資訊
+          </Tab>
+          <Tab className="monster-tab flex items-center md:gap-2 text-lg py-2">
+            <Image src={FieldIcon} alt="FieldIcon" width={40} height={40} />
+            動態地圖
+          </Tab>
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
