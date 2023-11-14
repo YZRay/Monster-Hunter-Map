@@ -1,11 +1,19 @@
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { Fragment, FC } from "react";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-
-const MonsterMap = () => {
+interface Props {
+  geolocation: {
+    latitude: number | null;
+    longitude: number | null;
+  };
+}
+const MonsterMap: FC<Props> = ({ geolocation }) => {
   return (
     <MapContainer
-      center={{ lat: 25.0097, lng: 121.459 }}
+      center={{
+        lat: geolocation.latitude ?? 25.033671,
+        lng: geolocation.longitude ?? 121.564427,
+      }}
       zoom={17}
       minZoom={15}
       maxZoom={18}

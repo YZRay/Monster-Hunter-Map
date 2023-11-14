@@ -133,6 +133,7 @@ const MapSelection = () => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
+            {/* 魔物上傳資訊 */}
             <MapTable
               data={data}
               monster={selectedMonster}
@@ -140,7 +141,8 @@ const MapSelection = () => {
             />
           </Tab.Panel>
           <Tab.Panel>
-            <MonsterMap />
+            {/* 動態地圖 */}
+            <MonsterMap geolocation={geolocation} />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
