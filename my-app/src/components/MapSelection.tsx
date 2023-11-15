@@ -9,11 +9,11 @@ import { getGeolocationData } from "./api/GeolocationAPI";
 import Image from "next/image";
 import monster from "../data/data.json";
 import dynamic from "next/dynamic";
-import MonsterMap from "@/components/MonsterMap";
 import SearchMonster from "./SearchMonster";
 
 const MapTable = dynamic(() => import("./Table/MapTable"));
 const MonsterForm = dynamic(() => import("./form/MonsterForm"));
+const MonsterMap = dynamic(() => import("@/components/MonsterMap"));
 
 const monsterNames = Object.values(monster.equipSetting)
   .filter(
