@@ -281,9 +281,15 @@ const MonsterForm = () => {
         </div>
         <button
           type="submit"
-          disabled={disableSubmit || selectedMonster.length === 0} // 禁止上傳
+          disabled={
+            disableSubmit ||
+            selectedMonster.length === 0 ||
+            selectedMonster.length > 3
+          } // 禁止上傳
           className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${
-            disableSubmit || selectedMonster.length === 0
+            disableSubmit ||
+            selectedMonster.length === 0 ||
+            selectedMonster.length > 3
               ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
               : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]" // 可以送出時
           }`}
