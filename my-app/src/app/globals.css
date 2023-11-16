@@ -22,6 +22,7 @@
   padding: 0;
   text-decoration: none;
   cursor: url("/assets/icons/mh_cursor.svg"), default;
+  font-family: "Noto Sans TC", sans-serif;
 }
 body {
   background-image: linear-gradient(
