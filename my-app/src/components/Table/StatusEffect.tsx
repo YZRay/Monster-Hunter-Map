@@ -1,6 +1,7 @@
 import React, { FC, Fragment } from "react";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 interface MyComponentProps<T> {
   data: T;
@@ -15,7 +16,7 @@ interface statusEffect {
 }
 const MonsterStatusEffect: FC<MyComponentProps<any>> = ({ data }) => {
   const statusEffects = data.statusEffect;
-
+  const weaknessElement = data.weaknessElement;
   const renderStatusEffectRow = (effectName: string, effectCount: number) => (
     <tr key={effectName} className="bg-gray-800">
       <td>
@@ -30,13 +31,17 @@ const MonsterStatusEffect: FC<MyComponentProps<any>> = ({ data }) => {
       </td>
       <td>
         <div className="flex items-center gap-1 justify-center">
-          {Array.from({ length: effectCount }, (_, index) => (
-            <StarIcon
-              key={index}
-              className="h-5 w-5 text-yellow-500"
-              aria-hidden="true"
-            />
-          ))}
+          {effectCount === 0 ? (
+            <XMarkIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+          ) : (
+            Array.from({ length: effectCount }, (_, index) => (
+              <StarIcon
+                key={index}
+                className="h-5 w-5 text-yellow-500"
+                aria-hidden="true"
+              />
+            ))
+          )}
         </div>
       </td>
     </tr>
@@ -50,20 +55,35 @@ const MonsterStatusEffect: FC<MyComponentProps<any>> = ({ data }) => {
           的數量越多，對魔物越有效
         </p>
       </div>
-
-      <table className="monster-table">
-        <thead className="bg-gray-800 text-gray-300">
-          <tr>
-            <th>狀態異常</th>
-            <th>有效程度</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(statusEffects).map(([effectName, effectCount]) =>
-            renderStatusEffectRow(effectName, effectCount as number)
-          )}
-        </tbody>
-      </table>
+      <div className="flex">
+        <table className="monster-table">
+          <thead className="bg-gray-800 text-gray-300">
+            <tr>
+              <th>狀態異常</th>
+              <th>有效程度</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(statusEffects).map(([effectName, effectCount]) =>
+              renderStatusEffectRow(effectName, effectCount as number)
+            )}
+          </tbody>
+        </table>
+        <table className="monster-table">
+          <thead className="bg-gray-800 text-gray-300">
+            <tr>
+              <th>屬性異常</th>
+              <th>有效程度</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(weaknessElement).map(
+              ([weaknessName, weaknessCount]) =>
+                renderStatusEffectRow(weaknessName, weaknessCount as number)
+            )}
+          </tbody>
+        </table>
+      </div>
     </Fragment>
   );
 };
