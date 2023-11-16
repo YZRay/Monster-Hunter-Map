@@ -61,7 +61,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
                   <Tab.List className="grid grid-cols-2 md:grid-cols-4 gap-1 my-4 bg-slate-400 p-1 rounded-md">
                     <Tab className="monster-tab">部位與肉質</Tab>
                     <Tab className="monster-tab">生態</Tab>
-                    <Tab className="monster-tab">狀態異常</Tab>
+                    <Tab className="monster-tab">弱點屬性</Tab>
                     <Tab className="monster-tab">素材</Tab>
                   </Tab.List>
 

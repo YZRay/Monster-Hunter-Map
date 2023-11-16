@@ -631,6 +631,13 @@
         "paralysis": 3,
         "blastblight": 3,
         "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 1
       }
     },
     "kulu": {
@@ -719,6 +726,13 @@
         "paralysis": 2,
         "blastblight": 2,
         "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 2
       }
     },
     "puke": {
@@ -808,6 +822,13 @@
         "paralysis": 3,
         "blastblight": 2,
         "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 0,
+        "thunder": 3,
+        "ice": 2,
+        "dragon": 1
       }
     },
     "barr": {
@@ -901,6 +922,13 @@
         "paralysis": 3,
         "blastblight": 3,
         "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
       }
     },
     "g-girr": {
@@ -985,6 +1013,13 @@
         "paralysis": 1,
         "blastblight": 2,
         "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
       }
     },
     "tobi": {
@@ -1074,6 +1109,13 @@
         "paralysis": 2,
         "blastblight": 2,
         "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
       }
     },
     "paol": {
@@ -1167,6 +1209,13 @@
         "paralysis": 2,
         "blastblight": 3,
         "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 1
       }
     },
     "jyur": {
@@ -1256,6 +1305,13 @@
         "paralysis": 2,
         "blastblight": 1,
         "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 1,
+        "water": 0,
+        "thunder": 3,
+        "ice": 1,
+        "dragon": 1
       }
     },
     "anja": {
@@ -1340,6 +1396,13 @@
         "paralysis": 2,
         "blastblight": 1,
         "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 3,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 1
       }
     },
     "rathi": {
@@ -1434,6 +1497,13 @@
         "paralysis": 2,
         "blastblight": 1,
         "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
       }
     },
     "legi": {
@@ -1523,6 +1593,13 @@
         "paralysis": 2,
         "blastblight": 2,
         "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 1,
+        "thunder": 3,
+        "ice": 0,
+        "dragon": 1
       }
     },
     "diab": {
@@ -1606,6 +1683,13 @@
         "paralysis": 3,
         "blastblight": 2,
         "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 2,
+        "thunder": 1,
+        "ice": 3,
+        "dragon": 2
       }
     },
     "ratha": {
@@ -1690,6 +1774,13 @@
         "paralysis": 2,
         "blastblight": 1,
         "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
       }
     },
     "b-diab": {
@@ -1774,6 +1865,13 @@
         "paralysis": 3,
         "blastblight": 2,
         "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 2,
+        "thunder": 1,
+        "ice": 3,
+        "dragon": 0
       }
     },
     "p-rathi": {
@@ -1858,6 +1956,13 @@
         "paralysis": 2,
         "blastblight": 1,
         "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
       }
     }
   }
