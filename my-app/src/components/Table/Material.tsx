@@ -18,22 +18,10 @@ const MonsterMaterial: FC<MyComponentProps<any>> = () => {
         </thead>
         <tbody>
           <tr className="bg-gray-800">
-            <td>鱗</td>
-            <td>2%</td>
-            <td>40%</td>
-            <td>20%</td>
-          </tr>
-          <tr className="bg-gray-800">
-            <td>甲殻</td>
-            <td>42%</td>
-            <td>69%</td>
-            <td>28%</td>
-          </tr>
-          <tr className="bg-gray-800">
-            <td>翼膜</td>
-            <td>29%</td>
-            <td>15%</td>
-            <td>15%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>

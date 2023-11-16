@@ -42,7 +42,7 @@ const Navbar = () => {
           } monster-tab flex items-center gap-2 text-lg`}
         >
           <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
-          魔物資訊
+          配裝資訊
         </Link>
         <Link
           href="/news"

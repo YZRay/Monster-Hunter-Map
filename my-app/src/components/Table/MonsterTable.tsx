@@ -18,16 +18,10 @@ const MonsterTableData: FC<MyComponentProps<any>> = () => {
         </thead>
         <tbody>
           <tr className="bg-gray-800">
-            <td>頭部</td>
-            <td>10</td>
-            <td>10</td>
-            <td>10</td>
-          </tr>
-          <tr className="bg-gray-800">
-            <td>腹部</td>
-            <td>20</td>
-            <td>20</td>
-            <td>20</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>

@@ -43,7 +43,7 @@ const MobileNavbar = ({ show, toggleShow }: IProps) => {
             pathname === "/SelectionPage" ? "active" : ""
           } monster-tab-mobile flex items-center gap-2 text-lg`}
         >
-          魔物資訊
+          配裝資訊
         </Link>
         <Link
           href="/news"
