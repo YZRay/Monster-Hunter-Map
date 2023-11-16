@@ -4,6 +4,7 @@ import {
   ChevronUpDownIcon,
   PaperAirplaneIcon,
 } from "@heroicons/react/20/solid";
+import { FC } from "react";
 import { Fragment, useState } from "react";
 import GeolocationBtn from "../api/GeolocationBtn";
 import Image from "next/image";
@@ -12,7 +13,12 @@ import { ToastContainer, toast } from "react-toastify";
 
 const levels = [5, 6, 7, 8, 9, 10];
 const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const MonsterForm = () => {
+
+interface Props {
+  onSubmitted: (data: void) => void;
+}
+
+const MonsterForm : FC<Props> = ({ onSubmitted }) => {
   const [submitted, setSubmitted] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
@@ -82,6 +88,8 @@ const MonsterForm = () => {
             position: "top-center",
             autoClose: 1500, // 1.5秒關閉
           });
+
+          onSubmitted();
         }
         setSubmitted(true);
         //reset(); // 送出後清空表單

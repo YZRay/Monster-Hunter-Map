@@ -52,19 +52,27 @@ const MapSelection = () => {
     longitude: number | null;
   } | null>(null);
 
+  async function handleFormSubmitted () {
+    // 獲取上傳的魔物資料
+    const monsterDataResult = await fetchMonsterLocation();
+    if (monsterDataResult) {
+      setData(monsterDataResult);
+    }
+  };
+
   useEffect(() => {
     async function fetchData() {
       // 載入經緯度數據
       getGeolocationData((geoData) => {
         setGeolocation(geoData);
       });
-
+  
       // 取得已經上傳的地區、國家
       const locationListResult = await GetlocationList();
       if (locationListResult) {
         setLocationList(locationListResult.data);
       }
-
+  
       // 獲取上傳的魔物資料
       const monsterDataResult = await fetchMonsterLocation();
       if (monsterDataResult) {
@@ -72,7 +80,7 @@ const MapSelection = () => {
       }
     }
 
-    fetchData();
+    fetchData()
   }, []);
   // 獲取經緯度城市
   useEffect(() => {
@@ -184,7 +192,7 @@ const MapSelection = () => {
                   >
                     分享魔物資訊
                   </Dialog.Title>
-                  <MonsterForm />
+                  <MonsterForm onSubmitted={handleFormSubmitted} />
                   <button
                     type="button"
                     className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
