@@ -19,7 +19,7 @@ const MobileNavbar = ({ show, toggleShow }: IProps) => {
   return (
     <Fragment>
       <div
-        className={`border shadow-md w-64 h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-slate-200 fixed top-0 transition-all ease-in duration-500 z-50 ${
+        className={`border shadow-md w-64 h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-slate-200 fixed top-0 transition-all duration-500 z-50 ${
           show ? "right-0" : "-right-full"
         }`}
       >

@@ -1,4 +1,4 @@
-import { FC, Fragment, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import data from "../data/data.json";
 

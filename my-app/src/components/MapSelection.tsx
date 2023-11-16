@@ -12,9 +12,11 @@ import dynamic from "next/dynamic";
 import SearchMonster from "./SearchMonster";
 
 const MapTable = dynamic(() => import("./Table/MapTable"));
-const MonsterForm = dynamic(() => import("./form/MonsterForm"));
+const MonsterForm = dynamic(() => import("./form/MonsterForm"), {
+  ssr: false,
+});
 const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
-  ssr: false
+  ssr: false,
 });
 
 const monsterNames = Object.values(monster.equipSetting)
@@ -52,13 +54,13 @@ const MapSelection = () => {
     longitude: number | null;
   } | null>(null);
 
-  async function handleFormSubmitted () {
+  async function handleFormSubmitted() {
     // 獲取上傳的魔物資料
     const monsterDataResult = await fetchMonsterLocation();
     if (monsterDataResult) {
       setData(monsterDataResult);
     }
-  };
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -66,13 +68,13 @@ const MapSelection = () => {
       getGeolocationData((geoData) => {
         setGeolocation(geoData);
       });
-  
+
       // 取得已經上傳的地區、國家
       const locationListResult = await GetlocationList();
       if (locationListResult) {
         setLocationList(locationListResult.data);
       }
-  
+
       // 獲取上傳的魔物資料
       const monsterDataResult = await fetchMonsterLocation();
       if (monsterDataResult) {
@@ -80,7 +82,7 @@ const MapSelection = () => {
       }
     }
 
-    fetchData()
+    fetchData();
   }, []);
   // 獲取經緯度城市
   useEffect(() => {

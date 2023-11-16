@@ -1,10 +1,20 @@
 import { Dialog, Transition, Tab } from "@headlessui/react";
-import { FC, useState, Fragment } from "react";
+import { FC, Fragment } from "react";
 import Image from "next/image";
-import MonsterTableData from "../Table/MonsterTable";
-import MonsterMaterial from "../Table/Material";
-import MonsterStatusEffect from "../Table/StatusEffect";
-import MonsterEcology from "../Table/Ecology";
+import dynamic from "next/dynamic";
+
+const MonsterTableData = dynamic(() => import("../Table/MonsterTable"), {
+  ssr: false,
+});
+const MonsterMaterial = dynamic(() => import("../Table/Material"), {
+  ssr: false,
+});
+const MonsterStatusEffect = dynamic(() => import("../Table/StatusEffect"), {
+  ssr: false,
+});
+const MonsterEcology = dynamic(() => import("../Table/Ecology"), {
+  ssr: false,
+});
 
 interface MonsterModalProps {
   open: boolean;

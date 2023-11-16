@@ -2,8 +2,11 @@
 import { FC, Fragment, useState } from "react";
 import data from "../data/data.json";
 import Image from "next/image";
-import MonsterModal from "./Modal/MonsterModal.tsx";
+import dynamic from "next/dynamic";
 
+const MonsterModal = dynamic(() => import("./Modal/MonsterModal.tsx"), {
+  ssr: false,
+});
 const Selection: FC<SelectionProps> = ({
   onArmorClick,
   onMonsterClick,
