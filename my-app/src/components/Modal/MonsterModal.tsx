@@ -66,16 +66,16 @@ const MonsterModal: FC<MonsterModalProps> = ({
                   </Tab.List>
 
                   {/*  */}
-                  <div className="flex items-center m-10 gap-4 flex-col lg:flex-row">
+                  <div className="flex items-center m-5 lg:m-10 gap-4 flex-col lg:flex-row">
                     <Image
-                      className="w-40 h-40"
+                      className="w-32 h-32"
                       src={`/assets/icons/Monster/${monsterData?.name}.svg`}
                       width={300}
                       height={300}
                       alt="equipment"
                       loading="lazy"
                     />
-                    <h3 className="text-3xl font-bold text-gray-800 text-center lg:text-left">
+                    <h3 className="text-lg xl:text-3xl font-bold text-gray-800 text-center lg:text-left">
                       {monsterData?.name}
                       <p className="text-base mt-4 hidden lg:inline-block"></p>
                     </h3>
@@ -91,13 +91,13 @@ const MonsterModal: FC<MonsterModalProps> = ({
                       <p className="text-sm text-gray-800">
                         解鎖等級：{monsterData?.unlock}
                       </p>
-                      <MonsterEcology data="生態" />
+                      <MonsterEcology data={monsterData} />
                     </Tab.Panel>
                     <Tab.Panel>
-                      <MonsterStatusEffect data="狀態異常" />
+                      <MonsterStatusEffect data={monsterData} />
                     </Tab.Panel>
                     <Tab.Panel>
-                      <MonsterMaterial data="素材" />
+                      <MonsterMaterial data={monsterData} />
                     </Tab.Panel>
                   </Tab.Panels>
                 </Tab.Group>

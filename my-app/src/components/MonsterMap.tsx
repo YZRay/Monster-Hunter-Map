@@ -13,6 +13,7 @@ interface Props {
     longitude: number | null;
   } | null;
 }
+
 const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
   const latitude = geolocation?.latitude || 25.033671;
   const longitude = geolocation?.longitude || 121.564427;

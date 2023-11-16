@@ -1,10 +1,23 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import Image from "next/image";
 
 interface MyComponentProps<T> {
   data: T;
 }
-const MonsterEcology: FC<MyComponentProps<any>> = () => {
+const MonsterEcology: FC<MyComponentProps<any>> = (props) => {
+  const location = props.data.location.map((item: string[], index: number) => {
+    return (
+      <Image
+        key={index}
+        src={`/assets/icons/${item}.svg`}
+        width={30}
+        height={30}
+        alt="equipment"
+        loading="lazy"
+      />
+    );
+  });
+
   return (
     <table className="monster-table">
       <thead className="bg-gray-800 text-gray-300">
@@ -14,10 +27,7 @@ const MonsterEcology: FC<MyComponentProps<any>> = () => {
       </thead>
       <tbody>
         <tr className="bg-gray-800">
-          <td className="flex justify-evenly">
-            <span>森林</span>
-            <span>沙漠</span>
-          </td>
+          <td className="flex justify-evenly">{location}</td>
         </tr>
       </tbody>
     </table>
