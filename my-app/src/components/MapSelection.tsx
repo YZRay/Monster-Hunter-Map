@@ -13,7 +13,9 @@ import SearchMonster from "./SearchMonster";
 
 const MapTable = dynamic(() => import("./Table/MapTable"));
 const MonsterForm = dynamic(() => import("./form/MonsterForm"));
-const MonsterMap = dynamic(() => import("@/components/MonsterMap"));
+const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
+  ssr: false
+});
 
 const monsterNames = Object.values(monster.equipSetting)
   .filter(
