@@ -44,10 +44,10 @@ const MapSelection = () => {
     setIsOpenForm(true);
   }, []);
 
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("全部");
   const [LocationList, setLocationList] = useState<string[]>([]);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<string | null>("全部");
   const [data, setData] = useState<GetResponse | null>(null);
   const [geolocation, setGeolocation] = useState<{
     latitude: number | null;
@@ -89,11 +89,11 @@ const MapSelection = () => {
     async function fetchData() {
       if (geolocation) {
         const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
-        const result = await Getlocation(cityLocation);
-        if (result) {
-          setCity(result.data);
-          setSelectedRegion(result.data);
-        }
+        //const result = await Getlocation(cityLocation);
+        //if (result) {
+        //  setCity(result.data);
+        //  setSelectedRegion(result.data);
+        //}
       }
     }
     fetchData();
