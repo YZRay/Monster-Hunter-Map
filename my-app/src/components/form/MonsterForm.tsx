@@ -10,6 +10,7 @@ import GeolocationBtn from "../api/GeolocationBtn";
 import Image from "next/image";
 import monster from "../../data/data.json";
 import { ToastContainer, toast } from "react-toastify";
+import useUserId from "@/components/ID/UserId";
 
 const levels = [5, 6, 7, 8, 9, 10];
 const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -18,7 +19,7 @@ interface Props {
   onSubmitted: (data: void) => void;
 }
 
-const MonsterForm : FC<Props> = ({ onSubmitted }) => {
+const MonsterForm: FC<Props> = ({ onSubmitted }) => {
   const [submitted, setSubmitted] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
@@ -31,6 +32,8 @@ const MonsterForm : FC<Props> = ({ onSubmitted }) => {
     latitude: null,
     longitude: null,
   });
+  const userId = useUserId();
+  const isPrivateMode = userId.isPrivateMode;
 
   const {
     register,
@@ -50,7 +53,7 @@ const MonsterForm : FC<Props> = ({ onSubmitted }) => {
 
   //送出表單
   const onSubmit = handleSubmit((data) => {
-    if (disableSubmit) {
+    if (isPrivateMode || disableSubmit) {
       return; // 如果被禁用就直接回傳，不往下執行
     }
     data.name = monsterNameData;
