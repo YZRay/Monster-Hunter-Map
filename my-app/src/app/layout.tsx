@@ -3,7 +3,6 @@ import "leaflet/dist/leaflet.css";
 import type { Metadata } from "next";
 import GoogleAnalytics from "../components/api/GA";
 import Adsense from "../components/api/Adsense";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   openGraph: {
