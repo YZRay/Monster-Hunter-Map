@@ -61,6 +61,14 @@ const MobileNavbar = ({ show, toggleShow }: IProps) => {
         >
           關於我們
         </Link>
+
+        <Link
+          href={"https://lin.ee/g3FujGH"} 
+          target="_blank"
+          className={`monster-tab-mobile flex items-center gap-2 text-lg`}
+        >
+          <img src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" alt="加入好友" height="24"></img>
+        </Link>
       </div>
       {show ? <ModalOverlay /> : <></>}
     </Fragment>
