@@ -61,6 +61,14 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
       console.error("複製失敗：", err);
     }
   }
+  async function openGoogleMap(coordinates: string) {
+    const confirmed = window.confirm("是否打開 Google 地圖查看位置？");
+
+    if (confirmed) {
+      const googleMapUrl = `https://www.google.com/maps?q=${coordinates}`;
+      window.open(googleMapUrl, "_blank");
+    }
+  }
 
   return (
     <div>
@@ -90,6 +98,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
             eventHandlers={{
               click: () => {
                 copyTextToClipboard(monsterData.coordinates);
+                openGoogleMap(monsterData.coordinates);
               },
             }}
           >
@@ -106,10 +115,11 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
                   (_, index) => (
                     <StarIcon
                       key={index}
-                      className={`w-5 h-5 drop-shadow-md ${monsterData.level > 5
-                        ? "text-purple-600"
-                        : "text-amber-400"
-                        }`}
+                      className={`w-5 h-5 drop-shadow-md ${
+                        monsterData.level > 5
+                          ? "text-purple-600"
+                          : "text-amber-400"
+                      }`}
                     />
                   )
                 )}
@@ -119,7 +129,6 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
         ))}
       </MapContainer>
     </div>
-
   );
 };
 
