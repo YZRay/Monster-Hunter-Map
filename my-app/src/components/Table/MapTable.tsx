@@ -30,6 +30,14 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       console.error("複製失敗：", err);
     }
   }
+  async function openGoogleMap(coordinates: string) {
+    const confirmed = window.confirm("是否打開 Google 地圖查看位置？");
+
+    if (confirmed) {
+      const googleMapUrl = `https://www.google.com/maps?q=${coordinates}`;
+      window.open(googleMapUrl, "_blank");
+    }
+  }
 
   //最多只會有三個魔物的名字
   const processedData =
@@ -71,7 +79,10 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       <div
         className="flex flex-col text-base lg:text-lg font-bold bg-slate-300 text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
         key={item.id}
-        onClick={() => copyTextToClipboard(`${item.coordinates}`)}
+        onClick={() => {
+          copyTextToClipboard(`${item.coordinates}`);
+          openGoogleMap(item.coordinates);
+        }}
       >
         <div className="justify-around flex-wrap">
           <div className="flex gap-4 relative items-center">
