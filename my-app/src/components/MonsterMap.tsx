@@ -98,7 +98,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
             eventHandlers={{
               click: () => {
                 copyTextToClipboard(monsterData.coordinates);
-                openGoogleMap(monsterData.coordinates);
+                //openGoogleMap(monsterData.coordinates);
               },
             }}
           >

@@ -81,7 +81,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
         key={item.id}
         onClick={() => {
           copyTextToClipboard(`${item.coordinates}`);
-          openGoogleMap(item.coordinates);
+          //openGoogleMap(item.coordinates);
         }}
       >
         <div className="justify-around flex-wrap">
