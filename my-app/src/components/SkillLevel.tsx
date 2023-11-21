@@ -9,7 +9,6 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
     return null;
   }
   const skills: Skills = data.baseSetting.skills;
-  console.log(skill);
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);

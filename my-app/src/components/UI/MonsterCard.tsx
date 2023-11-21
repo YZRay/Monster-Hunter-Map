@@ -40,10 +40,9 @@ const MonsterCard: FC<MonsterCardProps> = ({
 
   return (
     <div
-      className="flex flex-col text-base lg:text-lg font-bold cursor-pointer bg-slate-300 
+      className="flex flex-col text-base lg:text-lg font-bold bg-slate-300 
         text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 
         "
-      onClick={() => onCardClick(item)}
     >
       <div className="justify-around flex-wrap">
         <div className="flex gap-4 relative items-center">
@@ -90,8 +89,11 @@ const MonsterCard: FC<MonsterCardProps> = ({
             <div className="absolute right-10">{item.badLocations.length}</div>
           </div>
         </div>
-        <div className="flex items-center gap-1 ">
-          <MapPinIcon className="w-5 h-8" />
+        <div
+          className="flex items-center gap-1 cursor-pointer"
+          onClick={() => onCardClick(item)}
+        >
+          <MapPinIcon className="w-5 h-8" title="開啟地圖" />
           <span className="text-base">
             {item.location} - {item.coordinates}
           </span>

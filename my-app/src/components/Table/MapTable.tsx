@@ -99,6 +99,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       })
       .finally(() => {});
   };
+
   //最多只會有三個魔物的名字
   const processedData =
     data?.data.map((item) => ({
@@ -145,9 +146,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   return (
     <div className="mt-2 mb-4 md:mb-8 md:mt-4 lg:mb-16">
       <ToastContainer />
-      {/* <h1 className="text-xl lg:text-2xl font-bold mb-2 text-gray-800">
-        魔物目擊地圖資訊
-      </h1> */}
+      {/* 目擊資訊 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-2 gap-y-2 md:gap-y-4">
         {monsterLocationCards}
       </div>

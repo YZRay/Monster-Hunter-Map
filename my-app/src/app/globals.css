@@ -55,6 +55,12 @@ body {
   .btn {
     @apply bg-slate-300 py-2 text-slate-800 hover:bg-slate-800 hover:text-slate-200 duration-300 shadow-md;
   }
+  .card-header {
+    @apply p-4 mb-2 rounded-md;
+  }
+  .card-body {
+    @apply p-4 mb-4 rounded-md;
+  }
 }
 * {
   --sb-track-color: rgb(148 163 184);

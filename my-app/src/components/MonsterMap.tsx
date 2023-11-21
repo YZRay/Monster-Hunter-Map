@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { StarIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
 import useUserId from "./ID/UserId";
@@ -22,7 +22,6 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   const latitude = geolocation?.latitude || 25.033671;
   const longitude = geolocation?.longitude || 121.564427;
   const position: LatLngTuple = [latitude, longitude];
-  console.log(monsterData);
 
   const processedData =
     data?.data.map((item) => ({
@@ -136,9 +135,10 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
     <div>
       <ToastContainer />
       <MapContainer
+        key={geolocation?.latitude || 0}
         center={position}
         zoom={17}
-        minZoom={12}
+        minZoom={10}
         maxZoom={18}
         scrollWheelZoom={false}
         className="w-full h-[30rem] max-h-[30rem] z-0 mb-12"
