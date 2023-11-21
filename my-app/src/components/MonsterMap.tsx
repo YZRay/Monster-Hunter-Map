@@ -5,7 +5,7 @@ import { LatLngTuple, Icon } from "leaflet";
 import { FC, useState } from "react";
 import { StarIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
-import useUserId from "./ID/UserId";
+import useUserId from "./Hook/UserId";
 import { createBadLocation } from "./api/MLApi";
 
 interface Props {

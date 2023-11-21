@@ -10,7 +10,7 @@ import GeolocationBtn from "../api/GeolocationBtn";
 import Image from "next/image";
 import monster from "../../data/data.json";
 import { ToastContainer, toast } from "react-toastify";
-import useUserId from "@/components/ID/UserId";
+import useUserId from "@/components/Hook/UserId";
 import { createMonsterLocation } from "../api/MLApi";
 
 const levels = [5, 6, 7, 8, 9, 10];
