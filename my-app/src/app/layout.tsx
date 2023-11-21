@@ -3,6 +3,7 @@ import "leaflet/dist/leaflet.css";
 import type { Metadata } from "next";
 import GoogleAnalytics from "../components/api/GA";
 import Adsense from "../components/api/Adsense";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   openGraph: {
@@ -57,6 +58,22 @@ export default function RootLayout({
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
         {children}
+        <footer className="py-2 bg-stone-900">
+          <div className="container">
+            <Link 
+              href="/privacy"
+              className="text-white"
+            >
+              隱私權政策
+            </Link> | 
+            <Link 
+              href="/terms"
+              className="text-white"
+            >
+              使用者條款
+            </Link>
+          </div>
+        </footer>
       </body>
     </html>
   );
