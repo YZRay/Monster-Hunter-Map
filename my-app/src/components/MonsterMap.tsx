@@ -22,6 +22,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   const latitude = geolocation?.latitude || 25.033671;
   const longitude = geolocation?.longitude || 121.564427;
   const position: LatLngTuple = [latitude, longitude];
+  console.log(monsterData);
 
   const processedData =
     data?.data.map((item) => ({
@@ -42,7 +43,10 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
     // 如果有monsterData就用monsterData的icon
     if (monsterData && monsterData.name) {
       return new Icon({
-        iconUrl: `/assets/icons/Monster/${monsterData.name}.svg`,
+        iconUrl: `/assets/icons/Monster/${monsterData.name
+          .split(",")
+          .slice(0, 1)
+          .join("")}.svg`,
         iconSize: [45, 45], // 設定圖案大小
         iconAnchor: [45 / 2, 45 / 2], // 設定錨點位置
       });

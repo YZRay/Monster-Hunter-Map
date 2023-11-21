@@ -1,11 +1,4 @@
 import { FC, useState } from "react";
-import {
-  StarIcon,
-  ClipboardDocumentIcon,
-  MapPinIcon,
-  FaceSmileIcon,
-} from "@heroicons/react/24/solid";
-import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import { Dialog, Transition } from "@headlessui/react";
 import useUserId from "../ID/UserId";
@@ -13,6 +6,9 @@ import { createBadLocation } from "./../api/MLApi";
 import dynamic from "next/dynamic";
 
 const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
+  ssr: false,
+});
+const MonsterCard = dynamic(() => import("@/components/UI/MonsterCard"), {
   ssr: false,
 });
 
@@ -134,89 +130,17 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   };
 
   //地圖卡片資訊
-  const locationTable = filteredData.map((item) => {
-    const imageElements = item.monsterNames.map((monsterName, index) => (
-      <div className="max-w-[4rem] max-h-[4rem]" key={index}>
-        <Image
-          className="w-auto h-auto drop-shadow"
-          src={`/assets/icons/Monster/${monsterName}.svg`}
-          width={50}
-          height={50}
-          alt="equipment"
-          loading="lazy"
-        />
-      </div>
-    ));
-
-    return (
-      <div
-        className="flex flex-col text-base lg:text-lg font-bold cursor-pointer bg-slate-300 
-        text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 
-        "
-        key={item.id}
-        onClick={() => handleCardClick(item)}
-      >
-        <div className="justify-around flex-wrap">
-          <div className="flex gap-4 relative items-center">
-            {imageElements}
-            <div className="basis-1/2">
-              <div className="flex gap-1">
-                {Array.from(
-                  { length: item.level > 5 ? item.level - 5 : item.level },
-                  (_, index) => (
-                    <StarIcon
-                      key={index}
-                      className={`w-5 h-5 drop-shadow-md ${
-                        item.level > 5 ? "text-purple-600" : "text-amber-400"
-                      }`}
-                    />
-                  )
-                )}
-              </div>
-              <div>
-                <p className="text-base">{item.monsterNames.join(", ")}</p>
-                <p className="text-base">
-                  {(() => {
-                    const date = new Date(item.createdAt + "Z");
-                    const localTime = date.toLocaleString(undefined, {
-                      hour12: false,
-                    });
-                    return localTime;
-                  })()}
-                </p>
-                <span className="text-base">{item.round} 周目</span>
-              </div>
-            </div>
-            <div>
-              <ClipboardDocumentIcon
-                title="複製"
-                className="w-6 h-6 cursor-pointer absolute top-0 right-0"
-                onClick={() => {
-                  copyTextToClipboard(`${item.coordinates}`);
-                }}
-              />
-              <FaceSmileIcon
-                title="回報正確定位"
-                className="w-6 h-6 cursor-pointer absolute top-15 right-0"
-                onClick={() => {
-                  sendBad(userId.userId || "", item);
-                }}
-              />
-              <div className="absolute right-10">
-                {item.badLocations.length}
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-1 ">
-            <MapPinIcon className="w-5 h-8" />
-            <span className="text-base">
-              {item.location} - {item.coordinates}
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  });
+  const monsterLocationCards = filteredData.map((item) => (
+    <MonsterCard
+      key={item.id}
+      item={item}
+      monsterNames={item.monsterNames}
+      onCardClick={handleCardClick}
+      copyToClipboard={copyTextToClipboard}
+      sendBad={sendBad}
+      userId={userId.userId || null}
+    />
+  ));
 
   return (
     <div className="mt-2 mb-4 md:mb-8 md:mt-4 lg:mb-16">
@@ -225,7 +149,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
         魔物目擊地圖資訊
       </h1> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-2 gap-y-2 md:gap-y-4">
-        {locationTable}
+        {monsterLocationCards}
       </div>
       {/* 地圖modal */}
       <Transition appear show={isOpen}>
@@ -251,7 +175,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-[80vw] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="container w-[80vw] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
@@ -270,7 +194,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                   />
                   <button
                     type="button"
-                    className="monster-tab mt-4"
+                    className="monster-tab"
                     onClick={closeModal}
                   >
                     關閉地圖
