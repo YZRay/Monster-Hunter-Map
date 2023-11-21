@@ -25,12 +25,6 @@
   font-family: "Noto Sans TC", sans-serif;
 }
 body {
-  background-image: linear-gradient(
-      157deg,
-      rgba(49, 158, 214, 0.4) 0%,
-      rgba(3, 5, 50, 0.35) 65%
-    ),
-    url("/assets/hunter.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
