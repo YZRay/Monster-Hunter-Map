@@ -11,6 +11,7 @@ import Image from "next/image";
 import monster from "../../data/data.json";
 import { ToastContainer, toast } from "react-toastify";
 import useUserId from "@/components/ID/UserId";
+import { createMonsterLocation } from "../api/MLApi";
 
 const levels = [5, 6, 7, 8, 9, 10];
 const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -66,48 +67,40 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
 
     setDisableSubmit(true);
 
-    fetch("https://api.mhnow.cc/api/monsterlocation/create", {
-      method: "POST",
-      headers: {
-        accept: "text/plain",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+    createMonsterLocation(data)
+    .then((response) => {
+      if (!response.ok) {
+        toast.error("網路回應發生錯誤", {
+          position: "top-center",
+          autoClose: 1500, // 1.5秒關閉
+        });
+      }
+      return response.json();
     })
-      .then((response) => {
-        if (!response.ok) {
-          toast.error("網路回應發生錯誤", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        }
+    .then((data) => {
+      if (!data.status) {
+        toast.error("魔物資訊新增失敗！", {
+          position: "top-center",
+          className: "danger",
+          autoClose: 1500, // 1.5秒關閉
+        });
+      } else {
+        toast.success("魔物資訊新增成功！", {
+          position: "top-center",
+          autoClose: 1500, // 1.5秒關閉
+        });
 
-        return response.json();
-      })
-      .then((data) => {
-        if (!data.status) {
-          toast.error("魔物資訊新增失敗！", {
-            position: "top-center",
-            className: "danger",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        } else {
-          toast.success("魔物資訊新增成功！", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
-
-          onSubmitted();
-        }
-        setSubmitted(true);
-        //reset(); // 送出後清空表單
-      })
-      .catch((error) => {
-        console.error("Error submit Form", error);
-      })
-      .finally(() => {
-        setDisableSubmit(false);
-      });
+        onSubmitted();
+      }
+      setSubmitted(true);
+      //reset(); // 送出後清空表單
+    })
+    .catch((error) => {
+      console.error("Error submit Form", error);
+    })
+    .finally(() => {
+      setDisableSubmit(false);
+    });
   });
 
   // 魔物名稱
@@ -209,8 +202,8 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                           {({ active }) => (
                             <div
                               className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${active
-                                  ? "bg-slate-800 text-white"
-                                  : "text-gray-900"
+                                ? "bg-slate-800 text-white"
+                                : "text-gray-900"
                                 }`}
                             >
                               {level}
@@ -260,8 +253,8 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                           {({ active }) => (
                             <div
                               className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${active
-                                  ? "bg-slate-800 text-white"
-                                  : "text-gray-900"
+                                ? "bg-slate-800 text-white"
+                                : "text-gray-900"
                                 }`}
                             >
                               {round}
@@ -301,10 +294,10 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             selectedMonster.length > 3
           } // 禁止上傳
           className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${disableSubmit ||
-              selectedMonster.length === 0 ||
-              selectedMonster.length > 3
-              ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
-              : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]" // 可以送出時
+            selectedMonster.length === 0 ||
+            selectedMonster.length > 3
+            ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
+            : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]" // 可以送出時
             }`}
         >
           <PaperAirplaneIcon className="w-4 h-4" />
