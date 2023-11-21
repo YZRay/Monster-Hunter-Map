@@ -1,7 +1,7 @@
 "use client";
-import "../app/globals.css";
+import "../globals.css";
 import React, { FC, useState, Fragment, useMemo } from "react";
-import Navbar from "../components/UI/Navbar";
+import Navbar from "@/components/UI/Navbar";
 import dynamic from "next/dynamic";
 
 const Selection = dynamic(() => import("@/components/Selection"), {
