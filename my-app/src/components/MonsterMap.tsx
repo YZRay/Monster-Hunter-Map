@@ -3,7 +3,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
 import { FC, useState } from "react";
-import { StarIcon, FaceFrownIcon } from "@heroicons/react/24/solid";
+import { StarIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
 import useUserId from "./ID/UserId";
 import { createBadLocation } from "./api/MLApi";
@@ -183,8 +183,8 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
               </div>
               <div className="flex gap-1">
                 <span className="text-lg">{monsterData.badLocations.length}</span>
-                <FaceFrownIcon
-                  title="回報錯誤定位"
+                <FaceSmileIcon
+                  title="回報正確定位"
                   className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
                   onClick={() => {
                     sendBad(userId.userId || "", monsterData);

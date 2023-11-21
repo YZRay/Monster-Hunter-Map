@@ -1,5 +1,5 @@
 import { FC, Fragment, useState, useEffect } from "react";
-import { StarIcon, ClipboardDocumentIcon, MapPinIcon, FaceFrownIcon } from "@heroicons/react/24/solid";
+import { StarIcon, ClipboardDocumentIcon, MapPinIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import useUserId from "../ID/UserId";
@@ -174,8 +174,8 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                 }}
 
               />
-              <FaceFrownIcon
-                title="回報錯誤定位"
+              <FaceSmileIcon
+                title="回報正確定位"
                 className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] absolute top-15 right-0"
                 onClick={() => {
                   sendBad(userId.userId || "", item);
