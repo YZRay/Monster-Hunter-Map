@@ -70,4 +70,5 @@ interface PostData {
   level: number;
   coordinates: string;
   round: number;
+  uid: string| null;
 }

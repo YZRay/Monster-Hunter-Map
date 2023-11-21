@@ -47,17 +47,22 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
       name: "",
       level: 8,
       coordinates: "",
-      round: 4,
+      round: 4
     },
   });
 
   //送出表單
   const onSubmit = handleSubmit((data) => {
     if (isPrivateMode || disableSubmit) {
+      toast.error("你使用的瀏覽器無法上傳資料", {
+        position: "top-center",
+        autoClose: 1000, // 1.5秒關閉
+      });
       return; // 如果被禁用就直接回傳，不往下執行
     }
     data.name = monsterNameData;
     data.coordinates = manualInput;
+    data.uid = userId.userId;
 
     setDisableSubmit(true);
 
@@ -203,11 +208,10 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                         <Listbox.Option key={level} value={level}>
                           {({ active }) => (
                             <div
-                              className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${
-                                active
+                              className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${active
                                   ? "bg-slate-800 text-white"
                                   : "text-gray-900"
-                              }`}
+                                }`}
                             >
                               {level}
                             </div>
@@ -255,11 +259,10 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                         <Listbox.Option key={round} value={round}>
                           {({ active }) => (
                             <div
-                              className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${
-                                active
+                              className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${active
                                   ? "bg-slate-800 text-white"
                                   : "text-gray-900"
-                              }`}
+                                }`}
                             >
                               {round}
                             </div>
@@ -297,13 +300,12 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             selectedMonster.length === 0 ||
             selectedMonster.length > 3
           } // 禁止上傳
-          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${
-            disableSubmit ||
-            selectedMonster.length === 0 ||
-            selectedMonster.length > 3
+          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${disableSubmit ||
+              selectedMonster.length === 0 ||
+              selectedMonster.length > 3
               ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
               : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]" // 可以送出時
-          }`}
+            }`}
         >
           <PaperAirplaneIcon className="w-4 h-4" />
           <span>送出表單</span>
