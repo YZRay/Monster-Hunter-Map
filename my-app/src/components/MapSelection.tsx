@@ -2,7 +2,11 @@ import { Transition, Dialog, Tab } from "@headlessui/react";
 import { Fragment, useState, useEffect, useCallback } from "react";
 import FieldIcon from "../../public/assets/icons/field_icon.svg";
 import MonsterIcon from "../../public/assets/icons/monster_icon.svg";
-import { fetchMonsterLocation, GetlocationList, Getlocation  } from "./api/MLApi";
+import {
+  fetchMonsterLocation,
+  GetlocationList,
+  Getlocation,
+} from "./api/MLApi";
 import { getGeolocationData } from "./api/GeolocationAPI";
 import Image from "next/image";
 import monster from "../data/data.json";
@@ -83,19 +87,19 @@ const MapSelection = () => {
     fetchData();
   }, []);
   // 獲取經緯度城市
-  useEffect(() => {
-    async function fetchData() {
-      if (geolocation) {
-        const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
-        //const result = await Getlocation(cityLocation);
-        //if (result) {
-        //  setCity(result.data);
-        //  setSelectedRegion(result.data);
-        //}
-      }
-    }
-    fetchData();
-  }, [geolocation]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     if (geolocation) {
+  //       const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
+  //       //const result = await Getlocation(cityLocation);
+  //       //if (result) {
+  //       //  setCity(result.data);
+  //       //  setSelectedRegion(result.data);
+  //       //}
+  //     }
+  //   }
+  //   fetchData();
+  // }, [geolocation]);
 
   return (
     <Fragment>
@@ -124,7 +128,7 @@ const MapSelection = () => {
       <button
         type="button"
         onClick={openModal}
-        className="w-full btn justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]  font-bold my-4 md:my-8 text-base shadow-color"
+        className="w-full btn justify-center rounded-md font-bold my-4 md:my-8 text-base shadow-color"
       >
         上傳魔物資訊
       </button>
@@ -156,6 +160,7 @@ const MapSelection = () => {
               geolocation={geolocation}
               data={data}
               monster={selectedMonster}
+              monsterData={null}
             />
           </Tab.Panel>
         </Tab.Panels>
@@ -195,7 +200,7 @@ const MapSelection = () => {
                   <MonsterForm onSubmitted={handleFormSubmitted} />
                   <button
                     type="button"
-                    className="w-full justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
+                    className="w-full justify-center rounded-md bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
                     onClick={closeModal}
                   >
                     取消

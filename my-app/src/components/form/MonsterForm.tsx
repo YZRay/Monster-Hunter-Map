@@ -48,7 +48,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
       name: "",
       level: 8,
       coordinates: "",
-      round: 4
+      round: 4,
     },
   });
 
@@ -68,39 +68,39 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
     setDisableSubmit(true);
 
     createMonsterLocation(data)
-    .then((response) => {
-      if (!response.ok) {
-        toast.error("網路回應發生錯誤", {
-          position: "top-center",
-          autoClose: 1500, // 1.5秒關閉
-        });
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (!data.status) {
-        toast.error("魔物資訊新增失敗！", {
-          position: "top-center",
-          className: "danger",
-          autoClose: 1500, // 1.5秒關閉
-        });
-      } else {
-        toast.success("魔物資訊新增成功！", {
-          position: "top-center",
-          autoClose: 1500, // 1.5秒關閉
-        });
+      .then((response) => {
+        if (!response.ok) {
+          toast.error("網路回應發生錯誤", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (!data.status) {
+          toast.error("魔物資訊新增失敗！", {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        } else {
+          toast.success("魔物資訊新增成功！", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
 
-        onSubmitted();
-      }
-      setSubmitted(true);
-      //reset(); // 送出後清空表單
-    })
-    .catch((error) => {
-      console.error("Error submit Form", error);
-    })
-    .finally(() => {
-      setDisableSubmit(false);
-    });
+          onSubmitted();
+        }
+        setSubmitted(true);
+        //reset(); // 送出後清空表單
+      })
+      .catch((error) => {
+        console.error("Error submit Form", error);
+      })
+      .finally(() => {
+        setDisableSubmit(false);
+      });
   });
 
   // 魔物名稱
@@ -151,7 +151,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                       className="text-sm md:text-base text-gray-800"
                     >
                       <Image
-                        className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] h-8 w-8 md:w-12 md:h-12"
+                        className=" h-8 w-8 md:w-12 md:h-12"
                         src={`/assets/icons/Monster/${name}.svg`}
                         width={50}
                         height={50}
@@ -178,7 +178,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                   <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
                     <h1 className="text-xl font-bold mt-2">魔物等級</h1>
                   </Listbox.Label>
-                  <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
+                  <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md ">
                     <span className="block truncate">{field.value}</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <ChevronUpDownIcon
@@ -201,10 +201,11 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                         <Listbox.Option key={level} value={level}>
                           {({ active }) => (
                             <div
-                              className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${active
-                                ? "bg-slate-800 text-white"
-                                : "text-gray-900"
-                                }`}
+                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${
+                                active
+                                  ? "bg-slate-800 text-white"
+                                  : "text-gray-900"
+                              }`}
                             >
                               {level}
                             </div>
@@ -229,7 +230,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                   <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
                     <h1 className="text-xl font-bold mt-2">周目</h1>
                   </Listbox.Label>
-                  <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer]">
+                  <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md ">
                     <span className="block truncate">{field.value}</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <ChevronUpDownIcon
@@ -252,10 +253,11 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                         <Listbox.Option key={round} value={round}>
                           {({ active }) => (
                             <div
-                              className={`relative cursor-[url('/assets/icons/mh_hand.svg'),_pointer] rounded-md select-none py-2 pl-8 pr-4 ${active
-                                ? "bg-slate-800 text-white"
-                                : "text-gray-900"
-                                }`}
+                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${
+                                active
+                                  ? "bg-slate-800 text-white"
+                                  : "text-gray-900"
+                              }`}
                             >
                               {round}
                             </div>
@@ -293,12 +295,13 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             selectedMonster.length === 0 ||
             selectedMonster.length > 3
           } // 禁止上傳
-          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${disableSubmit ||
+          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${
+            disableSubmit ||
             selectedMonster.length === 0 ||
             selectedMonster.length > 3
-            ? "bg-gray-300 text-gray-500 cursor-[url('/assets/icons/mh_cursor.svg'),_auto]" // 禁止上傳
-            : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]" // 可以送出時
-            }`}
+              ? "bg-gray-300 text-gray-500" // 禁止上傳
+              : "bg-slate-400 text-white hover:bg-slate-800 duration-300 " // 可以送出時
+          }`}
         >
           <PaperAirplaneIcon className="w-4 h-4" />
           <span>送出表單</span>

@@ -1,9 +1,20 @@
-import { FC, Fragment, useState, useEffect } from "react";
-import { StarIcon, ClipboardDocumentIcon, MapPinIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
+import { FC, useState } from "react";
+import {
+  StarIcon,
+  ClipboardDocumentIcon,
+  MapPinIcon,
+  FaceSmileIcon,
+} from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
+import { Dialog, Transition } from "@headlessui/react";
 import useUserId from "../ID/UserId";
 import { createBadLocation } from "./../api/MLApi";
+import dynamic from "next/dynamic";
+
+const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
+  ssr: false,
+});
 
 interface MapTableProps {
   data: GetResponse | null;
@@ -12,6 +23,16 @@ interface MapTableProps {
 }
 
 const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
+  //點擊卡片設定魔物資料
+  const [selectMonster, setSelectMonster] = useState<DataItem | null>(null);
+  //打開modal
+  let [isOpen, setIsOpen] = useState(false);
+  function closeModal() {
+    setIsOpen(false);
+  }
+  function openModal() {
+    setIsOpen(true);
+  }
   async function copyTextToClipboard(coordinates: string) {
     try {
       // 使用 Clipboard API 写入剪贴板
@@ -31,16 +52,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       console.error("複製失敗：", err);
     }
   }
-  async function openGoogleMap(coordinates: string) {
-    const confirmed = window.confirm("是否打開 Google 地圖查看位置？");
-
-    if (confirmed) {
-      const googleMapUrl = `https://www.google.com/maps?q=${coordinates}`;
-      window.open(googleMapUrl, "_blank");
-    }
-  }
   const userId = useUserId();
-
   const [isCreateing, setIsCreateing] = useState(false);
 
   const sendBad = (uid: string | null, mlitem: DataItem) => {
@@ -54,7 +66,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
 
     var model = {
       uid: uid,
-      mlid: mlitem.id
+      mlid: mlitem.id,
     };
 
     createBadLocation(model)
@@ -89,9 +101,8 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       .catch((error) => {
         console.error("Error submit Form", error);
       })
-      .finally(() => {
-      });
-  }
+      .finally(() => {});
+  };
   //最多只會有三個魔物的名字
   const processedData =
     data?.data.map((item) => ({
@@ -114,11 +125,20 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
     }
   });
 
+  //獲取卡片資料
+  const handleCardClick = (clickedItem: DataItem) => {
+    //設定魔物資料
+    setSelectMonster(clickedItem);
+    //打開modal
+    openModal();
+  };
+
+  //地圖卡片資訊
   const locationTable = filteredData.map((item) => {
     const imageElements = item.monsterNames.map((monsterName, index) => (
       <div className="max-w-[4rem] max-h-[4rem]" key={index}>
         <Image
-          className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] w-auto h-auto drop-shadow"
+          className="w-auto h-auto drop-shadow"
           src={`/assets/icons/Monster/${monsterName}.svg`}
           width={50}
           height={50}
@@ -130,10 +150,11 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
 
     return (
       <div
-        className="flex flex-col text-base lg:text-lg font-bold bg-slate-300 
+        className="flex flex-col text-base lg:text-lg font-bold cursor-pointer bg-slate-300 
         text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 
-        cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+        "
         key={item.id}
+        onClick={() => handleCardClick(item)}
       >
         <div className="justify-around flex-wrap">
           <div className="flex gap-4 relative items-center">
@@ -145,8 +166,9 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                   (_, index) => (
                     <StarIcon
                       key={index}
-                      className={`w-5 h-5 drop-shadow-md ${item.level > 5 ? "text-purple-600" : "text-amber-400"
-                        }`}
+                      className={`w-5 h-5 drop-shadow-md ${
+                        item.level > 5 ? "text-purple-600" : "text-amber-400"
+                      }`}
                     />
                   )
                 )}
@@ -168,20 +190,21 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
             <div>
               <ClipboardDocumentIcon
                 title="複製"
-                className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] absolute top-0 right-0"
+                className="w-6 h-6 cursor-pointer absolute top-0 right-0"
                 onClick={() => {
                   copyTextToClipboard(`${item.coordinates}`);
                 }}
-
               />
               <FaceSmileIcon
                 title="回報正確定位"
-                className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] absolute top-15 right-0"
+                className="w-6 h-6 cursor-pointer absolute top-15 right-0"
                 onClick={() => {
                   sendBad(userId.userId || "", item);
                 }}
               />
-              <div className="absolute right-10">{item.badLocations.length}</div>
+              <div className="absolute right-10">
+                {item.badLocations.length}
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-1 ">
@@ -203,7 +226,61 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       </h1> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-2 gap-y-2 md:gap-y-4">
         {locationTable}
-      </div>{" "}
+      </div>
+      {/* 地圖modal */}
+      <Transition appear show={isOpen}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-[80vw] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-gray-900"
+                  >
+                    魔物地圖
+                  </Dialog.Title>
+                  <MonsterMap
+                    //這邊用不到 所以寫null，只要傳入點擊到的卡片資料
+                    geolocation={{
+                      latitude: selectMonster?.lat || null,
+                      longitude: selectMonster?.lng || null,
+                    }}
+                    data={null}
+                    monster={selectMonster?.name || []}
+                    monsterData={selectMonster}
+                  />
+                  <button
+                    type="button"
+                    className="monster-tab mt-4"
+                    onClick={closeModal}
+                  >
+                    關閉地圖
+                  </button>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
     </div>
   );
 };

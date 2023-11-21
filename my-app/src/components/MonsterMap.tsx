@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { StarIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
 import useUserId from "./ID/UserId";
@@ -10,14 +10,15 @@ import { createBadLocation } from "./api/MLApi";
 
 interface Props {
   data: GetResponse | null;
-  monster: string[];
+  monster: string | string[];
   geolocation: {
     latitude: number | null;
     longitude: number | null;
   } | null;
+  monsterData: DataItem | null;
 }
 
-const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
+const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   const latitude = geolocation?.latitude || 25.033671;
   const longitude = geolocation?.longitude || 121.564427;
   const position: LatLngTuple = [latitude, longitude];
@@ -33,16 +34,26 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
     new Icon({
       iconUrl: `/assets/icons/Monster/${name}.svg`,
       iconSize: [45, 45], // 設定圖案大小
-      iconAnchor: [15, 15], // 設定錨點位置
+      iconAnchor: [45 / 2, 45 / 2], // 設定錨點位置
     });
 
   //當前位置的icon
-  const curlocationIcon = () =>
-    new Icon({
-      iconUrl: `/assets/icons/location.svg`,
-      iconSize: [40, 40], // 設定圖案大小
-      iconAnchor: [20, 20], // 設定錨點位置
-    });
+  const curlocationIcon = () => {
+    // 如果有monsterData就用monsterData的icon
+    if (monsterData && monsterData.name) {
+      return new Icon({
+        iconUrl: `/assets/icons/Monster/${monsterData.name}.svg`,
+        iconSize: [45, 45], // 設定圖案大小
+        iconAnchor: [45 / 2, 45 / 2], // 設定錨點位置
+      });
+    } else {
+      return new Icon({
+        iconUrl: `/assets/icons/location.svg`,
+        iconSize: [40, 40], // 設定圖案大小
+        iconAnchor: [20, 20], // 設定錨點位置
+      });
+    }
+  };
 
   const userId = useUserId();
 
@@ -59,7 +70,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
 
     var model = {
       uid: uid,
-      mlid: mlitem.id
+      mlid: mlitem.id,
     };
 
     createBadLocation(model)
@@ -94,9 +105,8 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
       .catch((error) => {
         console.error("Error submit Form", error);
       })
-      .finally(() => {
-      });
-  }
+      .finally(() => {});
+  };
 
   async function copyTextToClipboard(coordinates: string) {
     try {
@@ -115,15 +125,6 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
       });
     } catch (err) {
       console.error("複製失敗：", err);
-    }
-  }
-
-  async function openGoogleMap(coordinates: string) {
-    const confirmed = window.confirm("是否打開 Google 地圖查看位置？");
-
-    if (confirmed) {
-      const googleMapUrl = `https://www.google.com/maps?q=${coordinates}`;
-      window.open(googleMapUrl, "_blank");
     }
   }
 
@@ -155,7 +156,6 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
             eventHandlers={{
               click: () => {
                 copyTextToClipboard(monsterData.coordinates);
-                //openGoogleMap(monsterData.coordinates);
               },
             }}
           >
@@ -181,11 +181,13 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
                   )
                 )}
               </div>
-              <div className="flex gap-1">
-                <span className="text-lg">{monsterData.badLocations.length}</span>
+              <div className="flex gap-1 items-center">
+                <span className="text-lg">
+                  {monsterData.badLocations.length}
+                </span>
                 <FaceSmileIcon
                   title="回報正確定位"
-                  className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+                  className="w-6 h-6 cursor-pointer"
                   onClick={() => {
                     sendBad(userId.userId || "", monsterData);
                   }}

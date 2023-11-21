@@ -30,7 +30,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
       {/* 搜尋魔物 */}
       <div className="flex gap-2 items-center mb-4 md:mb-0">
         <button
-          className="w-max btn justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] py-2 px-4  font-bold "
+          className="w-max btn justify-center rounded-md py-2 px-4  font-bold "
           onClick={toggleCollapse}
         >
           {isCollapsed ? "打開魔物搜尋欄" : "關閉搜尋欄位"}
@@ -61,7 +61,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
                   htmlFor={`monsterCheckbox${index}`}
                 >
                   <Image
-                    className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] h-8 w-8 md:w-12 md:h-12"
+                    className="h-8 w-8 md:w-12 md:h-12"
                     src={`/assets/icons/Monster/${monster}.svg`}
                     width={50}
                     height={50}
