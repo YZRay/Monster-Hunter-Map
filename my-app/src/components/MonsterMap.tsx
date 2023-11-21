@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
-import { FC, useState } from "react";
+import { FC, useState, useLayoutEffect } from "react";
 import { StarIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
 import useUserId from "./Hook/UserId";
@@ -111,6 +111,15 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
       .finally(() => {});
   };
 
+  // 顯示地圖初始化
+  const [mapInitiated, setMapInitiated] = useState(false);
+  useLayoutEffect(() => {
+    setMapInitiated(true);
+  }, []); // 空的依賴陣列確保只在組件初次渲染時執行
+  if (!mapInitiated) {
+    return null;
+  }
+
   async function copyTextToClipboard(coordinates: string) {
     try {
       // 使用 Clipboard API 写入剪贴板
@@ -131,6 +140,45 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
     }
   }
 
+  //Popup顯示資訊，點擊卡片的就顯示卡片資訊
+  const getPopupContent = (dataItem: DataItem | null) => {
+    if (dataItem) {
+      return (
+        <>
+          {dataItem.name}
+          <div className="flex gap-1">
+            {Array.from(
+              {
+                length:
+                  dataItem.level > 5 ? dataItem.level - 5 : dataItem.level,
+              },
+              (_, index) => (
+                <StarIcon
+                  key={index}
+                  className={`w-5 h-5 drop-shadow-md ${
+                    dataItem.level > 5 ? "text-purple-600" : "text-amber-400"
+                  }`}
+                />
+              )
+            )}
+          </div>
+          <div className="flex gap-1 items-center">
+            <span className="text-lg">{dataItem.badLocations.length}</span>
+            <FaceSmileIcon
+              title="回報正確定位"
+              className="w-6 h-6 cursor-pointer"
+              onClick={() => {
+                sendBad(userId.userId || "", dataItem);
+              }}
+            />
+          </div>
+        </>
+      );
+    } else {
+      return "當前位置";
+    }
+  };
+
   return (
     <div>
       <ToastContainer />
@@ -149,7 +197,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
         />
         {/* 當前位置 */}
         <Marker position={position} icon={curlocationIcon()}>
-          <Popup>當前位置</Popup>
+          <Popup>{getPopupContent(monsterData)}</Popup>
         </Marker>
         {/* 魔物位置 */}
         {processedData.map((monsterData) => (
@@ -163,41 +211,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               },
             }}
           >
-            <Popup>
-              {monsterData.name}
-              <div className="flex gap-1">
-                {Array.from(
-                  {
-                    length:
-                      monsterData.level > 5
-                        ? monsterData.level - 5
-                        : monsterData.level,
-                  },
-                  (_, index) => (
-                    <StarIcon
-                      key={index}
-                      className={`w-5 h-5 drop-shadow-md ${
-                        monsterData.level > 5
-                          ? "text-purple-600"
-                          : "text-amber-400"
-                      }`}
-                    />
-                  )
-                )}
-              </div>
-              <div className="flex gap-1 items-center">
-                <span className="text-lg">
-                  {monsterData.badLocations.length}
-                </span>
-                <FaceSmileIcon
-                  title="回報正確定位"
-                  className="w-6 h-6 cursor-pointer"
-                  onClick={() => {
-                    sendBad(userId.userId || "", monsterData);
-                  }}
-                />
-              </div>
-            </Popup>
+            <Popup>{getPopupContent(monsterData)}</Popup>
           </Marker>
         ))}
       </MapContainer>
