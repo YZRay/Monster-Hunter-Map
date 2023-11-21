@@ -6,6 +6,7 @@ import useUserId from "@/components/Hook/UserId";
 
 const HomePage: FC = () => {
   const userId = useUserId();
+
   return (
     <Fragment>
       <Navbar />
