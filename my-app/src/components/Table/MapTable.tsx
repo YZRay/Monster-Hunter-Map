@@ -1,8 +1,9 @@
 import { FC, Fragment, useState, useEffect } from "react";
-import { StarIcon } from "@heroicons/react/24/solid";
-import { ClipboardDocumentIcon, MapPinIcon } from "@heroicons/react/24/solid";
+import { StarIcon, ClipboardDocumentIcon, MapPinIcon, FaceFrownIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
+import useUserId from "../ID/UserId";
+import { createBadLocation } from "./../api/MLApi";
 
 interface MapTableProps {
   data: GetResponse | null;
@@ -38,7 +39,59 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       window.open(googleMapUrl, "_blank");
     }
   }
+  const userId = useUserId();
 
+  const [isCreateing, setIsCreateing] = useState(false);
+
+  const sendBad = (uid: string | null, mlitem: DataItem) => {
+    if (isCreateing || !uid) {
+      return;
+    }
+
+    var loading = toast.loading("回報中！");
+
+    setIsCreateing(true);
+
+    var model = {
+      uid: uid,
+      mlid: mlitem.id
+    };
+
+    createBadLocation(model)
+      .then((response) => {
+        if (!response.ok) {
+          toast.error("網路回應發生錯誤", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        toast.dismiss(loading);
+        if (!data.status) {
+          toast.error("回報失敗！", {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        } else {
+          toast.success("回報成功！", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+
+          mlitem.badLocations.push(model);
+        }
+
+        setIsCreateing(false);
+      })
+      .catch((error) => {
+        console.error("Error submit Form", error);
+      })
+      .finally(() => {
+      });
+  }
   //最多只會有三個魔物的名字
   const processedData =
     data?.data.map((item) => ({
@@ -77,12 +130,10 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
 
     return (
       <div
-        className="flex flex-col text-base lg:text-lg font-bold bg-slate-300 text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+        className="flex flex-col text-base lg:text-lg font-bold bg-slate-300 
+        text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 
+        cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
         key={item.id}
-        onClick={() => {
-          copyTextToClipboard(`${item.coordinates}`);
-          //openGoogleMap(item.coordinates);
-        }}
       >
         <div className="justify-around flex-wrap">
           <div className="flex gap-4 relative items-center">
@@ -94,9 +145,8 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                   (_, index) => (
                     <StarIcon
                       key={index}
-                      className={`w-5 h-5 drop-shadow-md ${
-                        item.level > 5 ? "text-purple-600" : "text-amber-400"
-                      }`}
+                      className={`w-5 h-5 drop-shadow-md ${item.level > 5 ? "text-purple-600" : "text-amber-400"
+                        }`}
                     />
                   )
                 )}
@@ -115,10 +165,24 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                 <span className="text-base">{item.round} 周目</span>
               </div>
             </div>
-            <ClipboardDocumentIcon
-              title="複製"
-              className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] absolute top-0 right-0"
-            />
+            <div>
+              <ClipboardDocumentIcon
+                title="複製"
+                className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] absolute top-0 right-0"
+                onClick={() => {
+                  copyTextToClipboard(`${item.coordinates}`);
+                }}
+
+              />
+              <FaceFrownIcon
+                title="回報錯誤定位"
+                className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer] absolute top-15 right-0"
+                onClick={() => {
+                  sendBad(userId.userId || "", item);
+                }}
+              />
+              <div className="absolute right-10">{item.badLocations.length}</div>
+            </div>
           </div>
           <div className="flex items-center gap-1 ">
             <MapPinIcon className="w-5 h-8" />

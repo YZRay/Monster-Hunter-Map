@@ -64,6 +64,7 @@ interface DataItem {
   createdAt: string;
   round: number;
   distance: number;
+  badLocations: badLocationModel[]
 }
 interface PostData {
   name: string;
@@ -71,4 +72,9 @@ interface PostData {
   coordinates: string;
   round: number;
   uid: string| null;
+}
+
+interface badLocationModel{
+  uid : string ,
+  mlid : number
 }

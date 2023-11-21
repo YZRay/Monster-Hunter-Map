@@ -22,8 +22,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  title: "MHNow 魔物地圖",
-  description: "歡迎上傳你看到的魔物...方便大家找怪喔",
+  title: "MHNow 魔物地圖 Monster Hunter Now",
+  description: "Monster Hunter Now 的各位獵人們 歡迎上傳你看到的魔物...方便大家找怪喔",
   icons: [
     {
       rel: "icon",

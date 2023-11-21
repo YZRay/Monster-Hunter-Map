@@ -64,10 +64,7 @@ export async function createMonsterLocation(model: PostData) {
     return response;
 }
 
-export async function createBadLocation(model: {
-    uid: string,
-    mlid: number
-}) {
+export async function createBadLocation(model: badLocationModel) {
     const response = await fetch(
         `https://api.mhnow.cc/api/monsterlocation/createBadLocation`, {
         method: "POST",

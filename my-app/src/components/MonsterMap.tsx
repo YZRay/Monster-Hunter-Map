@@ -2,9 +2,11 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
-import { FC } from "react";
-import { StarIcon } from "@heroicons/react/24/solid";
+import { FC, useState } from "react";
+import { StarIcon, FaceFrownIcon } from "@heroicons/react/24/solid";
 import { ToastContainer, toast } from "react-toastify";
+import useUserId from "./ID/UserId";
+import { createBadLocation } from "./api/MLApi";
 
 interface Props {
   data: GetResponse | null;
@@ -42,6 +44,60 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
       iconAnchor: [20, 20], // 設定錨點位置
     });
 
+  const userId = useUserId();
+
+  const [isCreateing, setIsCreateing] = useState(false);
+
+  const sendBad = (uid: string | null, mlitem: DataItem) => {
+    if (isCreateing || !uid) {
+      return;
+    }
+
+    var loading = toast.loading("回報中！");
+
+    setIsCreateing(true);
+
+    var model = {
+      uid: uid,
+      mlid: mlitem.id
+    };
+
+    createBadLocation(model)
+      .then((response) => {
+        if (!response.ok) {
+          toast.error("網路回應發生錯誤", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        toast.dismiss(loading);
+        if (!data.status) {
+          toast.error("回報失敗！", {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        } else {
+          toast.success("回報成功！", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+
+          mlitem.badLocations.push(model);
+        }
+
+        setIsCreateing(false);
+      })
+      .catch((error) => {
+        console.error("Error submit Form", error);
+      })
+      .finally(() => {
+      });
+  }
+
   async function copyTextToClipboard(coordinates: string) {
     try {
       // 使用 Clipboard API 写入剪贴板
@@ -61,6 +117,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
       console.error("複製失敗：", err);
     }
   }
+
   async function openGoogleMap(coordinates: string) {
     const confirmed = window.confirm("是否打開 Google 地圖查看位置？");
 
@@ -123,6 +180,16 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
                     />
                   )
                 )}
+              </div>
+              <div className="flex gap-1">
+                <span className="text-lg">{monsterData.badLocations.length}</span>
+                <FaceFrownIcon
+                  title="回報錯誤定位"
+                  className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+                  onClick={() => {
+                    sendBad(userId.userId || "", monsterData);
+                  }}
+                />
               </div>
             </Popup>
           </Marker>
