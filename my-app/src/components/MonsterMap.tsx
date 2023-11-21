@@ -145,8 +145,22 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
     if (dataItem) {
       return (
         <>
-          {dataItem.name}
-          <div className="flex gap-1">
+          <div className="flex gap-4 items-center mb-2">
+            <span className="text-base font-semibold text-slate-700">
+              {dataItem.name}
+            </span>
+            <div className="flex gap-1 items-center">
+              <FaceSmileIcon
+                title="回報正確定位"
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => {
+                  sendBad(userId.userId || "", dataItem);
+                }}
+              />
+              <span className="text-lg">{dataItem.badLocations.length}</span>
+            </div>
+          </div>
+          <div className="flex gap-1 mb-2">
             {Array.from(
               {
                 length:
@@ -162,16 +176,15 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               )
             )}
           </div>
-          <div className="flex gap-1 items-center">
-            <span className="text-lg">{dataItem.badLocations.length}</span>
-            <FaceSmileIcon
-              title="回報正確定位"
-              className="w-6 h-6 cursor-pointer"
-              onClick={() => {
-                sendBad(userId.userId || "", dataItem);
-              }}
-            />
-          </div>
+          <span>
+            {(() => {
+              const date = new Date(dataItem.createdAt + "Z");
+              const localTime = date.toLocaleString(undefined, {
+                hour12: false,
+              });
+              return localTime;
+            })()}
+          </span>
         </>
       );
     } else {
