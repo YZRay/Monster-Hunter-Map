@@ -81,12 +81,14 @@ const MonsterCard: FC<MonsterCardProps> = ({
               className="w-6 h-6 cursor-pointer absolute top-0 right-0"
               onClick={() => copyToClipboard(item.coordinates)}
             />
-            <FaceSmileIcon
-              title="回報正確定位"
-              className="w-6 h-6 cursor-pointer absolute top-15 right-0"
-              onClick={() => sendBad(userId, item)}
-            />
-            <div className="absolute right-10">{item.badLocations.length}</div>
+            <div className="flex gap-2 absolute top-12 right-0">
+              <span className="">{item.badLocations.length}</span>
+              <FaceSmileIcon
+                title="回報正確定位"
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => sendBad(userId, item)}
+              />
+            </div>
           </div>
         </div>
         <div

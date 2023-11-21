@@ -100,11 +100,11 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       .finally(() => {});
   };
 
-  //最多只會有三個魔物的名字
+  //最多只會有兩個魔物的名字
   const processedData =
     data?.data.map((item) => ({
       ...item,
-      monsterNames: item.name.split(",").slice(0, 3),
+      monsterNames: item.name.split(",").slice(0, 2),
     })) || [];
 
   //篩選魔物
@@ -114,7 +114,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       //如果沒有選擇任何魔物就篩選city就好
       return cityCondition;
     } else {
-      // 檢查 item.monsterNames (前三個名字) 是否包含選擇的魔物
+      // 檢查 item.monsterNames (前兩個名字) 是否包含選擇的魔物
       const isMonsterSelected = monster.some((selectedMonster) =>
         item.monsterNames.includes(selectedMonster)
       );
@@ -145,7 +145,6 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
 
   return (
     <div className="mt-2 mb-4 md:mb-8 md:mt-4 lg:mb-16">
-      <ToastContainer />
       {/* 目擊資訊 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-2 gap-y-2 md:gap-y-4">
         {monsterLocationCards}
@@ -177,9 +176,9 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                 <Dialog.Panel className="container w-[90vw] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-medium leading-6 text-gray-900 mb-2"
                   >
-                    魔物地圖
+                    魔物地圖－{selectMonster?.location}
                   </Dialog.Title>
                   <MonsterMap
                     //這邊用不到 所以寫null，只要傳入點擊到的卡片資料
@@ -187,7 +186,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                       latitude: selectMonster?.lat || null,
                       longitude: selectMonster?.lng || null,
                     }}
-                    data={null}
+                    data={data}
                     monster={selectMonster?.name || []}
                     monsterData={selectMonster}
                   />

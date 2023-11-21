@@ -4,7 +4,7 @@ import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
 import { FC, useState, useLayoutEffect } from "react";
 import { StarIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import useUserId from "./Hook/UserId";
 import { createBadLocation } from "./api/MLApi";
 
@@ -194,7 +194,6 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
 
   return (
     <div>
-      <ToastContainer />
       <MapContainer
         key={geolocation?.latitude || 0}
         center={position}
@@ -202,14 +201,22 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
         minZoom={10}
         maxZoom={18}
         scrollWheelZoom={false}
-        className="w-full h-[30rem] max-h-[30rem] z-0 mb-12"
+        className="w-full h-[30rem] max-h-[30rem] z-0 mb-8"
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {/* 當前位置 */}
-        <Marker position={position} icon={curlocationIcon()}>
+        <Marker
+          position={position}
+          icon={curlocationIcon()}
+          eventHandlers={{
+            add: (e) => {
+              e.target.openPopup();
+            },
+          }}
+        >
           <Popup>{getPopupContent(monsterData)}</Popup>
         </Marker>
         {/* 魔物位置 */}

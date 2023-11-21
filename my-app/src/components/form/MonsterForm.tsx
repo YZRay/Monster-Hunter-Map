@@ -293,12 +293,12 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
           disabled={
             disableSubmit ||
             selectedMonster.length === 0 ||
-            selectedMonster.length > 3
+            selectedMonster.length > 2
           } // 禁止上傳
           className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${
             disableSubmit ||
             selectedMonster.length === 0 ||
-            selectedMonster.length > 3
+            selectedMonster.length > 2
               ? "bg-gray-300 text-gray-500" // 禁止上傳
               : "bg-slate-400 text-white hover:bg-slate-800 duration-300 " // 可以送出時
           }`}
