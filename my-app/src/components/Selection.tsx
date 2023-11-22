@@ -23,7 +23,7 @@ const Selection: FC<SelectionProps> = ({
         key={item}
       >
         <Image
-          className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] h-8 w-8 md:w-12 md:h-12"
+          className="h-8 w-8 md:w-12 md:h-12"
           src={`/assets/icons/${item}.svg`}
           width={50}
           height={50}
@@ -49,12 +49,9 @@ const Selection: FC<SelectionProps> = ({
         }}
       >
         {equipArray.map((equipment, index) => (
-          <div
-            className="p-2 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
-            key={index}
-          >
+          <div className="p-2" key={index}>
             {equipment.skill && (
-              <p className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer] text-sm md:text-base">
+              <p className="text-sm md:text-base">
                 {equipment.unlock} {skills[equipment.skill]?.name}{" "}
                 {equipment.lv}
               </p>
@@ -76,10 +73,10 @@ const Selection: FC<SelectionProps> = ({
           }
           setIsModalOpen(true);
         }}
-        className="sticky left-0 border-r-2 bg-slate-700 px-2 py-2 font-bold text-center hover:bg-slate-800 border border-slate-200 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+        className="sticky left-0 border-r-2 bg-slate-700 px-2 py-2 font-bold text-center hover:bg-slate-800 border border-slate-200 "
       >
         <Image
-          className="cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
+          className=""
           src={`/assets/icons/Monster/${armor.name}.svg`}
           width={60}
           height={60}
@@ -128,7 +125,7 @@ const Selection: FC<SelectionProps> = ({
                 {th}
               </tr>
             </thead>
-            <tbody>{armorRows}</tbody>
+            <tbody className="cursor-pointer">{armorRows}</tbody>
           </table>
         </div>
       </div>

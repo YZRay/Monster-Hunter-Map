@@ -36,9 +36,9 @@ const Navbar = () => {
           地圖資訊
         </Link>
         <Link
-          href="/SelectionPage"
+          href="/equipment"
           className={`${
-            pathname === "/SelectionPage" ? "active" : ""
+            pathname === "/equipment" ? "active" : ""
           } monster-tab flex items-center gap-2 text-lg`}
         >
           <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />

@@ -23,7 +23,8 @@ export const metadata: Metadata = {
     ],
   },
   title: "MHNow 魔物地圖 Monster Hunter Now",
-  description: "Monster Hunter Now 的各位獵人們 歡迎上傳你看到的魔物...方便大家找怪喔",
+  description:
+    "Monster Hunter Now 的各位獵人們 歡迎上傳你看到的魔物...方便大家找怪喔",
   icons: [
     {
       rel: "icon",
@@ -58,20 +59,10 @@ export default function RootLayout({
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
         {children}
-        <footer className="py-2 bg-stone-900">
-          <div className="container">
-            <Link 
-              href="/privacy"
-              className="text-white"
-            >
-              隱私權政策
-            </Link> | 
-            <Link 
-              href="/terms"
-              className="text-white"
-            >
-              使用者條款
-            </Link>
+        <footer className="py-2 bg-slate-900 relative bottom-0 w-full">
+          <div className="text-white text-center">
+            <Link href="/privacy">隱私權政策</Link> |
+            <Link href="/terms">使用者條款</Link>
           </div>
         </footer>
       </body>

@@ -2,22 +2,23 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
-import { FC, useState } from "react";
+import { FC, useState, useLayoutEffect } from "react";
 import { StarIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
-import { ToastContainer, toast } from "react-toastify";
-import useUserId from "./ID/UserId";
+import { toast } from "react-toastify";
+import useUserId from "./Hook/UserId";
 import { createBadLocation } from "./api/MLApi";
 
 interface Props {
   data: GetResponse | null;
-  monster: string[];
+  monster: string | string[];
   geolocation: {
     latitude: number | null;
     longitude: number | null;
   } | null;
+  monsterData: DataItem | null;
 }
 
-const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
+const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   const latitude = geolocation?.latitude || 25.033671;
   const longitude = geolocation?.longitude || 121.564427;
   const position: LatLngTuple = [latitude, longitude];
@@ -33,16 +34,29 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
     new Icon({
       iconUrl: `/assets/icons/Monster/${name}.svg`,
       iconSize: [45, 45], // 設定圖案大小
-      iconAnchor: [15, 15], // 設定錨點位置
+      iconAnchor: [45 / 2, 45 / 2], // 設定錨點位置
     });
 
   //當前位置的icon
-  const curlocationIcon = () =>
-    new Icon({
-      iconUrl: `/assets/icons/location.svg`,
-      iconSize: [40, 40], // 設定圖案大小
-      iconAnchor: [20, 20], // 設定錨點位置
-    });
+  const curlocationIcon = () => {
+    // 如果有monsterData就用monsterData的icon
+    if (monsterData && monsterData.name) {
+      return new Icon({
+        iconUrl: `/assets/icons/Monster/${monsterData.name
+          .split(",")
+          .slice(0, 1)
+          .join("")}.svg`,
+        iconSize: [45, 45], // 設定圖案大小
+        iconAnchor: [45 / 2, 45 / 2], // 設定錨點位置
+      });
+    } else {
+      return new Icon({
+        iconUrl: `/assets/icons/location.svg`,
+        iconSize: [40, 40], // 設定圖案大小
+        iconAnchor: [20, 20], // 設定錨點位置
+      });
+    }
+  };
 
   const userId = useUserId();
 
@@ -59,7 +73,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
 
     var model = {
       uid: uid,
-      mlid: mlitem.id
+      mlid: mlitem.id,
     };
 
     createBadLocation(model)
@@ -94,8 +108,16 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
       .catch((error) => {
         console.error("Error submit Form", error);
       })
-      .finally(() => {
-      });
+      .finally(() => {});
+  };
+
+  // 顯示地圖初始化
+  const [mapInitiated, setMapInitiated] = useState(false);
+  useLayoutEffect(() => {
+    setMapInitiated(true);
+  }, []); // 空的依賴陣列確保只在組件初次渲染時執行
+  if (!mapInitiated) {
+    return null;
   }
 
   async function copyTextToClipboard(coordinates: string) {
@@ -118,33 +140,84 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
     }
   }
 
-  async function openGoogleMap(coordinates: string) {
-    const confirmed = window.confirm("是否打開 Google 地圖查看位置？");
-
-    if (confirmed) {
-      const googleMapUrl = `https://www.google.com/maps?q=${coordinates}`;
-      window.open(googleMapUrl, "_blank");
+  //Popup顯示資訊，點擊卡片的就顯示卡片資訊
+  const getPopupContent = (dataItem: DataItem | null) => {
+    if (dataItem) {
+      return (
+        <>
+          <div className="flex gap-4 items-center mb-2">
+            <span className="text-base font-semibold text-slate-700">
+              {dataItem.name}
+            </span>
+            <div className="flex gap-1 items-center">
+              <FaceSmileIcon
+                title="回報正確定位"
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => {
+                  sendBad(userId.userId || "", dataItem);
+                }}
+              />
+              <span className="text-lg">{dataItem.badLocations.length}</span>
+            </div>
+          </div>
+          <div className="flex gap-1 mb-2">
+            {Array.from(
+              {
+                length:
+                  dataItem.level > 5 ? dataItem.level - 5 : dataItem.level,
+              },
+              (_, index) => (
+                <StarIcon
+                  key={index}
+                  className={`w-5 h-5 drop-shadow-md ${
+                    dataItem.level > 5 ? "text-purple-600" : "text-amber-400"
+                  }`}
+                />
+              )
+            )}
+          </div>
+          <span>
+            {(() => {
+              const date = new Date(dataItem.createdAt + "Z");
+              const localTime = date.toLocaleString(undefined, {
+                hour12: false,
+              });
+              return localTime;
+            })()}
+          </span>
+        </>
+      );
+    } else {
+      return "當前位置";
     }
-  }
+  };
 
   return (
     <div>
-      <ToastContainer />
       <MapContainer
+        key={geolocation?.latitude || 0}
         center={position}
         zoom={17}
-        minZoom={12}
+        minZoom={10}
         maxZoom={18}
         scrollWheelZoom={false}
-        className="w-full h-[30rem] max-h-[30rem] z-0 mb-12"
+        className="w-full h-[30rem] max-h-[30rem] z-0 mb-8"
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {/* 當前位置 */}
-        <Marker position={position} icon={curlocationIcon()}>
-          <Popup>當前位置</Popup>
+        <Marker
+          position={position}
+          icon={curlocationIcon()}
+          eventHandlers={{
+            add: (e) => {
+              e.target.openPopup();
+            },
+          }}
+        >
+          <Popup>{getPopupContent(monsterData)}</Popup>
         </Marker>
         {/* 魔物位置 */}
         {processedData.map((monsterData) => (
@@ -155,43 +228,10 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster }) => {
             eventHandlers={{
               click: () => {
                 copyTextToClipboard(monsterData.coordinates);
-                //openGoogleMap(monsterData.coordinates);
               },
             }}
           >
-            <Popup>
-              {monsterData.name}
-              <div className="flex gap-1">
-                {Array.from(
-                  {
-                    length:
-                      monsterData.level > 5
-                        ? monsterData.level - 5
-                        : monsterData.level,
-                  },
-                  (_, index) => (
-                    <StarIcon
-                      key={index}
-                      className={`w-5 h-5 drop-shadow-md ${
-                        monsterData.level > 5
-                          ? "text-purple-600"
-                          : "text-amber-400"
-                      }`}
-                    />
-                  )
-                )}
-              </div>
-              <div className="flex gap-1">
-                <span className="text-lg">{monsterData.badLocations.length}</span>
-                <FaceSmileIcon
-                  title="回報正確定位"
-                  className="w-6 h-6 cursor-[url('/assets/icons/mh_hand.svg'),_pointer]"
-                  onClick={() => {
-                    sendBad(userId.userId || "", monsterData);
-                  }}
-                />
-              </div>
-            </Popup>
+            <Popup>{getPopupContent(monsterData)}</Popup>
           </Marker>
         ))}
       </MapContainer>

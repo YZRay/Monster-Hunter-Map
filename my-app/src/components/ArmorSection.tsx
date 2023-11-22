@@ -30,7 +30,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
   return (
     <div className="container flex flex-col">
       <button
-        className=" w-max justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] btn py-2 px-4 font-bold"
+        className=" w-max justify-center rounded-md btn py-2 px-4 font-bold"
         onClick={toggleCollapse}
       >
         {isCollapsed ? "查看武器" : "收起武器資訊"}

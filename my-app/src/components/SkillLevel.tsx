@@ -9,7 +9,6 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
     return null;
   }
   const skills: Skills = data.baseSetting.skills;
-  console.log(skill);
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -19,7 +18,7 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
     <Fragment>
       <div className="container mt-4">
         <button
-          className=" w-max justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] btn py-2 px-4 font-bold "
+          className=" w-max justify-center rounded-md btn py-2 px-4 font-bold "
           onClick={toggleCollapse}
         >
           {isCollapsed ? "查看技能" : "收起技能資訊"}

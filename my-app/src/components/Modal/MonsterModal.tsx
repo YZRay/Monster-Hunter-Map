@@ -104,7 +104,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
                 <div className="mt-4 flex justify-center">
                   <button
                     type="button"
-                    className="w-1/4 justify-center rounded-md cursor-[url('/assets/icons/mh_hand.svg'),_pointer] bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
+                    className="w-1/4 justify-center rounded-md bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
                     onClick={onClose}
                   >
                     關閉
