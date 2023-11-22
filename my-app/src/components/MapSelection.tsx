@@ -87,19 +87,19 @@ const MapSelection = () => {
     fetchData();
   }, []);
   // 獲取經緯度城市
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     if (geolocation) {
-  //       const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
-  //       //const result = await Getlocation(cityLocation);
-  //       //if (result) {
-  //       //  setCity(result.data);
-  //       //  setSelectedRegion(result.data);
-  //       //}
-  //     }
-  //   }
-  //   fetchData();
-  // }, [geolocation]);
+  //useEffect(() => {
+    //async function fetchData() {
+      //if (geolocation) {
+        //const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
+        //const result = await Getlocation(cityLocation);
+        //if (result) {
+        //  setCity(result.data);
+        //  setSelectedRegion(result.data);
+        //}
+      //}
+    //}
+    //fetchData();
+  //}, [geolocation]);
 
   return (
     <Fragment>
