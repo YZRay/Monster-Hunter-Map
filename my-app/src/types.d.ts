@@ -64,7 +64,8 @@ interface DataItem {
   createdAt: string;
   round: number;
   distance: number;
-  badLocations: badLocationModel[];
+  badLocations: ReportLocationModel[];
+  goodLocations: ReportLocationModel[];
 }
 interface PostData {
   name: string;
@@ -74,7 +75,7 @@ interface PostData {
   uid: string | null;
 }
 
-interface badLocationModel {
+interface ReportLocationModel {
   uid: string;
   mlid: number;
 }

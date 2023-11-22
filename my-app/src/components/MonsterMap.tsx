@@ -3,7 +3,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
 import { FC, useState, useLayoutEffect } from "react";
-import { StarIcon, FaceSmileIcon } from "@heroicons/react/24/solid";
+import { StarIcon, FaceSmileIcon, FaceFrownIcon } from "@heroicons/react/24/solid";
 import { toast } from "react-toastify";
 import useUserId from "./Hook/UserId";
 import { createBadLocation } from "./api/MLApi";
@@ -62,7 +62,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
 
   const [isCreateing, setIsCreateing] = useState(false);
 
-  const sendBad = (uid: string | null, mlitem: DataItem) => {
+  const sendReport = (isGood: boolean, uid: string | null, mlitem: DataItem) => {
     if (isCreateing || !uid) {
       return;
     }
@@ -154,10 +154,20 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
                 title="回報正確定位"
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => {
-                  sendBad(userId.userId || "", dataItem);
+                  sendReport(true, userId.userId || "", dataItem);
                 }}
               />
               <span className="text-lg">{dataItem.badLocations.length}</span>
+            </div>
+            <div className="flex gap-1 items-center">
+              <FaceFrownIcon
+                title="回報錯誤定位"
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => {
+                  sendReport(false, userId.userId || "", dataItem);
+                }}
+              />
+              <span className="text-lg">{dataItem.goodLocations.length}</span>
             </div>
           </div>
           <div className="flex gap-1 mb-2">

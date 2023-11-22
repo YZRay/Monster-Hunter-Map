@@ -1,7 +1,9 @@
+const url = "https://api.mhnow.cc";
+
 export async function Getlocation(c: string) {
     try {
         const response = await fetch(
-            `https://api.mhnow.cc/api/monsterlocation/getlocation?c=${c}`
+            `${url}/api/monsterlocation/getlocation?c=${c}`
         );
 
         if (!response.ok) {
@@ -18,7 +20,7 @@ export async function Getlocation(c: string) {
 export async function GetlocationList() {
     try {
         const response = await fetch(
-            `https://api.mhnow.cc/api/monsterlocation/getlocationlist`
+            `${url}/api/monsterlocation/getlocationlist`
         );
         if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -34,7 +36,7 @@ export async function GetlocationList() {
 export async function fetchMonsterLocation() {
     try {
         const response = await fetch(
-            `https://api.mhnow.cc/api/monsterlocation/get`
+            `${url}/api/monsterlocation/get`
         );
         if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -51,7 +53,7 @@ export async function fetchMonsterLocation() {
 export async function createMonsterLocation(model: PostData) {
 
     const response = await fetch(
-        `https://api.mhnow.cc/api/monsterlocation/create`, {
+        `${url}/api/monsterlocation/create`, {
         method: "POST",
         headers: {
             accept: "text/plain",
@@ -64,9 +66,23 @@ export async function createMonsterLocation(model: PostData) {
     return response;
 }
 
-export async function createBadLocation(model: badLocationModel) {
+export async function createBadLocation(model: ReportLocationModel) {
     const response = await fetch(
-        `https://api.mhnow.cc/api/monsterlocation/createBadLocation`, {
+        `${url}/api/monsterlocation/createBadLocation`, {
+        method: "POST",
+        headers: {
+            accept: "text/plain",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(model),
+    });
+
+    return response;
+}
+
+export async function createGoodLocation(model: ReportLocationModel) {
+    const response = await fetch(
+        `${url}/api/monsterlocation/createGoodLocation`, {
         method: "POST",
         headers: {
             accept: "text/plain",

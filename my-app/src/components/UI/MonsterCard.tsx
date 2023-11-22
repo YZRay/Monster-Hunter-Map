@@ -5,6 +5,7 @@ import {
   ClipboardDocumentIcon,
   MapPinIcon,
   FaceSmileIcon,
+  FaceFrownIcon
 } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
@@ -13,7 +14,7 @@ interface MonsterCardProps {
   monsterNames: string[];
   onCardClick: (clickedItem: DataItem) => void;
   copyToClipboard: (coordinates: string) => void;
-  sendBad: (uid: string | null, mlitem: DataItem) => void;
+  sendReport: (isGood: boolean, uid: string | null, mlitem: DataItem) => void;
   userId: string | null;
 }
 
@@ -22,7 +23,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
   monsterNames,
   onCardClick,
   copyToClipboard,
-  sendBad,
+  sendReport,
   userId,
 }) => {
   const imageElements = monsterNames.map((monsterName, index) => (
@@ -82,11 +83,17 @@ const MonsterCard: FC<MonsterCardProps> = ({
               onClick={() => copyToClipboard(item.coordinates)}
             />
             <div className="flex gap-2 absolute top-12 right-0">
-              <span className="">{item.badLocations.length}</span>
+              <span className="">{item.goodLocations.length}</span>
               <FaceSmileIcon
                 title="回報正確定位"
                 className="w-6 h-6 cursor-pointer"
-                onClick={() => sendBad(userId, item)}
+                onClick={() => sendReport(true ,userId, item)}
+              /><br/>
+              <span className="">{item.badLocations.length}</span>
+              <FaceFrownIcon
+                title="回報錯誤定位"
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => sendReport(false ,userId, item)}
               />
             </div>
           </div>

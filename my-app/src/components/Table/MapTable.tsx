@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Dialog, Transition } from "@headlessui/react";
 import useUserId from "../Hook/UserId";
-import { createBadLocation } from "./../api/MLApi";
+import { createBadLocation, createGoodLocation } from "./../api/MLApi";
 import dynamic from "next/dynamic";
 
 const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
@@ -51,7 +51,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   const userId = useUserId();
   const [isCreateing, setIsCreateing] = useState(false);
 
-  const sendBad = (uid: string | null, mlitem: DataItem) => {
+  const sendReport = (isGood: boolean, uid: string | null, mlitem: DataItem) => {
     if (isCreateing || !uid) {
       return;
     }
@@ -65,7 +65,8 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       mlid: mlitem.id,
     };
 
-    createBadLocation(model)
+    if(isGood){
+      createGoodLocation(model)
       .then((response) => {
         if (!response.ok) {
           toast.error("網路回應發生錯誤", {
@@ -98,6 +99,42 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
         console.error("Error submit Form", error);
       })
       .finally(() => {});
+    }else{
+      createBadLocation(model)
+      .then((response) => {
+        if (!response.ok) {
+          toast.error("網路回應發生錯誤", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        toast.dismiss(loading);
+        if (!data.status) {
+          toast.error("回報失敗！", {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        } else {
+          toast.success("回報成功！", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+
+          mlitem.badLocations.push(model);
+        }
+
+        setIsCreateing(false);
+      })
+      .catch((error) => {
+        console.error("Error submit Form", error);
+      })
+      .finally(() => {});
+    }
+    
   };
 
   //最多只會有兩個魔物的名字
@@ -138,7 +175,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       monsterNames={item.monsterNames}
       onCardClick={handleCardClick}
       copyToClipboard={copyTextToClipboard}
-      sendBad={sendBad}
+      sendReport={sendReport}
       userId={userId.userId || null}
     />
   ));
