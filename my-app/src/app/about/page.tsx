@@ -17,6 +17,19 @@ const AboutPage: FC = () => {
         <p className="my-5">
           如果有合作需求，歡迎寄信到 : <Link href="mailto:josh@mhnow.cc" >josh@mhnow.cc</Link>
         </p>
+        <p className="my-5">
+        <Link
+          href={"https://lin.ee/g3FujGH"}
+          target="_blank"
+          className={`monster-tab-mobile flex items-center gap-2 text-lg`}
+        >
+          <img
+            src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png"
+            alt="加入好友"
+            height="24"
+          ></img>
+        </Link>
+        </p>
       </div>
     </Fragment>
   );
