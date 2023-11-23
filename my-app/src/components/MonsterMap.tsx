@@ -157,7 +157,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
                   sendReport(true, userId.userId || "", dataItem);
                 }}
               />
-              <span className="text-lg">{dataItem.badLocations.length}</span>
+              <span className="text-lg">{dataItem.goodLocations.length}</span>
             </div>
             <div className="flex gap-1 items-center">
               <FaceFrownIcon
@@ -167,7 +167,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
                   sendReport(false, userId.userId || "", dataItem);
                 }}
               />
-              <span className="text-lg">{dataItem.goodLocations.length}</span>
+              <span className="text-lg">{dataItem.badLocations.length}</span>
             </div>
           </div>
           <div className="flex gap-1 mb-2">
