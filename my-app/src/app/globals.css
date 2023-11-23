@@ -50,7 +50,7 @@ body {
     @apply p-3;
   }
   .container {
-    @apply  md:max-w-xl lg:max-w-2xl xl:max-w-5xl mx-auto;
+    @apply w-11/12 md:max-w-xl lg:max-w-2xl xl:max-w-5xl mx-auto;
   }
   .btn {
     @apply bg-slate-300 py-2 text-slate-800 hover:bg-slate-800 hover:text-slate-200 duration-300 shadow-md;
