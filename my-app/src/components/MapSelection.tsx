@@ -125,13 +125,22 @@ const MapSelection = () => {
       />
       {/* 搜尋魔物 */}
       {/* 上傳魔物表單 */}
-      <button
-        type="button"
-        onClick={openModal}
-        className="w-full btn justify-center rounded-md font-bold my-4 md:my-8 text-base shadow-color"
-      >
-        上傳魔物資訊
-      </button>
+      <div className="flex gap-2">
+        <button
+          type="button"
+          onClick={openModal}
+          className="w-full btn justify-center rounded-md font-bold my-4 md:my-8 text-base shadow-color"
+        >
+          上傳魔物資訊
+        </button>
+        <button
+          type="button"
+          onClick={handleFormSubmitted}
+          className="w-full btn justify-center rounded-md font-bold my-4 md:my-8 text-base shadow-color"
+        >
+          重新取得魔物資訊
+        </button>
+      </div>
       {/* 上傳魔物表單 */}
       {/* 切換動態地圖 */}
       <Tab.Group>
