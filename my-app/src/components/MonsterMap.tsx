@@ -6,7 +6,7 @@ import { FC, useState, useLayoutEffect } from "react";
 import { StarIcon, FaceSmileIcon, FaceFrownIcon } from "@heroicons/react/24/solid";
 import { toast } from "react-toastify";
 import useUserId from "./Hook/UserId";
-import { createBadLocation } from "./api/MLApi";
+import { createBadLocation, createGoodLocation } from "./api/MLApi";
 
 interface Props {
   data: GetResponse | null;
@@ -76,7 +76,42 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
       mlid: mlitem.id,
     };
 
-    createBadLocation(model)
+    if(isGood){
+      createGoodLocation(model)
+      .then((response) => {
+        if (!response.ok) {
+          toast.error("網路回應發生錯誤", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        toast.dismiss(loading);
+        if (!data.status) {
+          toast.error("回報失敗！", {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500, // 1.5秒關閉
+          });
+        } else {
+          toast.success("回報成功！", {
+            position: "top-center",
+            autoClose: 1500, // 1.5秒關閉
+          });
+
+          mlitem.goodLocations.push(model);
+        }
+
+        setIsCreateing(false);
+      })
+      .catch((error) => {
+        console.error("Error submit Form", error);
+      })
+      .finally(() => {});
+    }else{
+      createBadLocation(model)
       .then((response) => {
         if (!response.ok) {
           toast.error("網路回應發生錯誤", {
@@ -109,6 +144,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
         console.error("Error submit Form", error);
       })
       .finally(() => {});
+    }
   };
 
   // 顯示地圖初始化
