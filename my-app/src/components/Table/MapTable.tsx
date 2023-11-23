@@ -90,7 +90,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
             autoClose: 1500, // 1.5秒關閉
           });
 
-          mlitem.badLocations.push(model);
+          mlitem.goodLocations.push(model);
         }
 
         setIsCreateing(false);
