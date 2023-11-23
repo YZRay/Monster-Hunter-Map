@@ -5,7 +5,7 @@ import {
   ClipboardDocumentIcon,
   MapPinIcon,
   FaceSmileIcon,
-  FaceFrownIcon
+  FaceFrownIcon,
 } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
@@ -73,24 +73,10 @@ const MonsterCard: FC<MonsterCardProps> = ({
               className="w-6 h-6 cursor-pointer absolute top-0 right-0"
               onClick={() => copyToClipboard(item.coordinates)}
             />
-            <div className="flex gap-2 absolute top-12 right-0">
-              <span className="">{item.goodLocations.length}</span>
-              <FaceSmileIcon
-                title="回報正確定位"
-                className="w-6 h-6 cursor-pointer"
-                onClick={() => sendReport(true ,userId, item)}
-              /><br/>
-              <span className="">{item.badLocations.length}</span>
-              <FaceFrownIcon
-                title="回報錯誤定位"
-                className="w-6 h-6 cursor-pointer"
-                onClick={() => sendReport(false ,userId, item)}
-              />
-            </div>
           </div>
         </div>
         <div
-          className="flex items-center gap-1 cursor-pointer"
+          className="flex items-center gap-1 mt-2 cursor-pointer"
           onClick={() => onCardClick(item)}
         >
           <MapPinIcon className="w-5 h-8" title="開啟地圖" />
@@ -98,14 +84,34 @@ const MonsterCard: FC<MonsterCardProps> = ({
             {item.location} - {item.coordinates}
           </span>
         </div>
-        <div className="text-base">
-          {(() => {
-            const date = new Date(item.createdAt + "Z");
-            const localTime = date.toLocaleString(undefined, {
-              hour12: false,
-            });
-            return localTime;
-          })()}
+        <div className="flex items-center justify-between pt-2">
+          <div className="text-base">
+            {(() => {
+              const date = new Date(item.createdAt + "Z");
+              const localTime = date.toLocaleString(undefined, {
+                hour12: false,
+              });
+              return localTime;
+            })()}
+          </div>
+          <div className="flex gap-4">
+            <div className="flex items-center gap-1">
+              <span className="">{item.goodLocations.length}</span>
+              <FaceSmileIcon
+                title="回報正確定位"
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => sendReport(true, userId, item)}
+              />
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="">{item.badLocations.length}</span>
+              <FaceFrownIcon
+                title="回報錯誤定位"
+                className="w-6 h-6 cursor-pointer"
+                onClick={() => sendReport(false, userId, item)}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
