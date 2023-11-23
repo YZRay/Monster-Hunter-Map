@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
@@ -22,6 +22,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   const latitude = geolocation?.latitude || 25.033671;
   const longitude = geolocation?.longitude || 121.564427;
   const position: LatLngTuple = [latitude, longitude];
+  const [iconSize, setIconSize] = useState(35);
 
   const processedData =
     data?.data.map((item) => ({
@@ -33,8 +34,8 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   const monsterIcon = (name: string) =>
     new Icon({
       iconUrl: `/assets/icons/Monster/${name}.svg`,
-      iconSize: [45, 45], // 設定圖案大小
-      iconAnchor: [45 / 2, 45 / 2], // 設定錨點位置
+      iconSize: [iconSize, iconSize], // 設定圖案大小
+      iconAnchor: [iconSize / 2, iconSize / 2], // 設定錨點位置
     });
 
   //當前位置的icon
@@ -46,8 +47,8 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
           .split(",")
           .slice(0, 1)
           .join("")}.svg`,
-        iconSize: [45, 45], // 設定圖案大小
-        iconAnchor: [45 / 2, 45 / 2], // 設定錨點位置
+        iconSize: [iconSize, iconSize], // 設定圖案大小
+        iconAnchor: [iconSize / 2, iconSize / 2], // 設定錨點位置
       });
     } else {
       return new Icon({
@@ -238,20 +239,51 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
     }
   };
 
+  function MyMapComponent() {
+    const mapEvents = useMapEvents({
+        zoomend: () => {
+          switch(mapEvents.getZoom()){
+            case 12:
+              setIconSize(30)
+              break;
+            case 11:
+              setIconSize(25)
+              break;
+            case 10:
+              setIconSize(20)
+              break;
+            case 9:
+              setIconSize(15)
+              break;
+            case 8:
+                setIconSize(10)
+                break;
+            default:
+              setIconSize(35)
+              break;
+          }
+        },
+    });
+
+    return null
+  }
+
   return (
     <div>
       <MapContainer
         key={geolocation?.latitude || 0}
         center={position}
         zoom={17}
-        minZoom={10}
+        minZoom={8}
         maxZoom={18}
         scrollWheelZoom={false}
         className="w-full h-[30rem] max-h-[30rem] z-0 mb-8"
       >
+        <MyMapComponent/>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          
         />
         {/* 當前位置 */}
         <Marker
