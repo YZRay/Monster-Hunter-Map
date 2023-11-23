@@ -64,15 +64,6 @@ const MonsterCard: FC<MonsterCardProps> = ({
             </div>
             <div>
               <p className="text-base">{monsterNames.join(", ")}</p>
-              <p className="text-base">
-                {(() => {
-                  const date = new Date(item.createdAt + "Z");
-                  const localTime = date.toLocaleString(undefined, {
-                    hour12: false,
-                  });
-                  return localTime;
-                })()}
-              </p>
               <span className="text-base">{item.round} 周目</span>
             </div>
           </div>
@@ -106,6 +97,15 @@ const MonsterCard: FC<MonsterCardProps> = ({
           <span className="text-base">
             {item.location} - {item.coordinates}
           </span>
+        </div>
+        <div className="text-base">
+          {(() => {
+            const date = new Date(item.createdAt + "Z");
+            const localTime = date.toLocaleString(undefined, {
+              hour12: false,
+            });
+            return localTime;
+          })()}
         </div>
       </div>
     </div>
