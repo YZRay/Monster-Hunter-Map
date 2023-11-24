@@ -1,12 +1,10 @@
 "use client";
 import "../globals.css";
 import React, { FC, useState, Fragment } from "react";
-import Navbar from "../../components/UI/Navbar";
 
 const AboutPage: FC = () => {
   return (
     <Fragment>
-      <Navbar />
       <div className="container">
         <div className="w-lg-75 mx-lg-auto">
           <div className="card card-lg card-shadow">

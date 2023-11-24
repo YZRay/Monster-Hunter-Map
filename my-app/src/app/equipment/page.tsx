@@ -1,7 +1,6 @@
 "use client";
 import "../globals.css";
 import React, { FC, useState, Fragment, useMemo } from "react";
-import Navbar from "@/components/UI/Navbar";
 import dynamic from "next/dynamic";
 
 const Selection = dynamic(() => import("@/components/Selection"), {
@@ -71,7 +70,6 @@ const SelectionPage: FC = () => {
 
   return (
     <Fragment>
-      <Navbar />
       <ArmorSection armor={selectedArmors} />
       <SkillLevel skill={skillLevels} />
       <Selection

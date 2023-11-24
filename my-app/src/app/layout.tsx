@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import GoogleAnalytics from "../components/api/GA";
 import Adsense from "../components/api/Adsense";
 import Link from "next/link";
+import Navbar from "@/components/UI/Navbar";
 
 export const metadata: Metadata = {
   openGraph: {
@@ -58,6 +59,7 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
+        <Navbar />
         {children}
         <footer className="py-2 bg-slate-900 relative bottom-0 w-full">
           <div className="text-white text-center">

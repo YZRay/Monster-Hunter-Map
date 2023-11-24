@@ -1,7 +1,6 @@
 "use client";
 import React, { FC, Fragment } from "react";
 import MapSelection from "@/components/MapSelection";
-import Navbar from "../components/UI/Navbar";
 import useUserId from "@/components/Hook/UserId";
 
 const HomePage: FC = () => {
@@ -9,7 +8,6 @@ const HomePage: FC = () => {
 
   return (
     <Fragment>
-      <Navbar />
       <div className="container">
         <MapSelection />
       </div>
