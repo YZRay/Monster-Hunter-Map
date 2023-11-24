@@ -35,7 +35,7 @@ const Navbar = () => {
             href="/"
             className={`${
               pathname === "/" ? "active" : ""
-            } px-4 py-1 hover:bg-slate-300 transition-all duration-300 rounded-md flex items-center md:gap-2 text-lg`}
+            } px-4 py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md flex items-center md:gap-2 text-lg`}
           >
             <Image src={FieldIcon} alt="FieldIcon" width={40} height={40} />
             地圖資訊
@@ -44,7 +44,7 @@ const Navbar = () => {
             href="/equipment"
             className={`${
               pathname === "/equipment" ? "active" : ""
-            } px-4 py-1 hover:bg-slate-300 transition-all duration-300 rounded-md flex items-center gap-2 text-lg`}
+            } px-4 py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md flex items-center gap-2 text-lg`}
           >
             <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
             配裝資訊
@@ -53,7 +53,7 @@ const Navbar = () => {
             href="/news"
             className={`${
               pathname === "/news" ? "active" : ""
-            } px-4 py-1 hover:bg-slate-300 transition-all duration-300 rounded-md flex items-center gap-2 text-lg`}
+            } px-4 py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md flex items-center gap-2 text-lg`}
           >
             <Image src={NewsIcon} alt="MonsterIcon" width={40} height={40} />
             最新消息
@@ -62,7 +62,7 @@ const Navbar = () => {
             href="/about"
             className={`${
               pathname === "/about" ? "active" : ""
-            } px-4 py-1 hover:bg-slate-300 transition-all duration-300 rounded-md flex items-center gap-2 text-lg`}
+            } px-4 py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md flex items-center gap-2 text-lg`}
           >
             <Image src={AboutIcon} alt="MonsterIcon" width={40} height={40} />
             關於我們
