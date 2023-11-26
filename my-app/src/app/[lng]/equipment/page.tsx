@@ -31,6 +31,7 @@ const SelectionPage: FC = () => {
         equip: { [key]: armor.equip[key] },
         key: key,
       };
+
       setSelectedArmors(updatedArmors);
     } else {
       // 否則添加新的資料

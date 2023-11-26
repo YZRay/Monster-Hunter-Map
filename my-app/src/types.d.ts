@@ -12,6 +12,7 @@ interface Armor {
     [key: string]: Equipment[];
   };
   key?: string;
+  equipmentTypeData?: any;
 }
 
 interface Monster {

@@ -29,6 +29,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
   monsterData,
 }) => {
   const { t } = useTranslation("monster");
+  const { t: trans } = useTranslation("data");
 
   return (
     <Transition appear show={open} as={Fragment}>

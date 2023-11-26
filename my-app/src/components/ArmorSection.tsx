@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
   const { t } = useTranslation("monster");
+  const { t: equipName } = useTranslation("data");
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -59,7 +60,8 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
                 />
                 <span className="font-bold text-sm lg:text-base text-gray-800">
                   {equipment.name}
-                  {equipment.key && armorName[equipment.key]}
+                  {equipment.key &&
+                    equipName(`baseSetting.parts.${equipment.key}`)}
                 </span>
               </div>
               {equipment.key && armorName[equipment.key] ? (
@@ -69,7 +71,11 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
                     key={index}
                   >
                     {equip.unlock} {t("ArmorSetting.unlock")}
-                    <br /> {skillName[equip.skill].name} Lv{equip.lv}
+                    <br /> {equipName(
+                      `baseSetting.skills.${equip.skill}.name`
+                    )}{" "}
+                    Lv
+                    {equip.lv}
                   </p>
                 ))
               ) : (
