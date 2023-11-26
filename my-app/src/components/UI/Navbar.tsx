@@ -13,7 +13,7 @@ const Navbar = ({ lng }: { lng: string }) => {
   const toggleShow = () => {
     setShow(!show);
   };
-  const { t } = useTranslation(lng, "data");
+  const { t } = useTranslation(lng, "monster");
 
   return (
     <Fragment>

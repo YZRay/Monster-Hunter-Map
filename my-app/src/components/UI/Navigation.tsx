@@ -11,7 +11,7 @@ import { useTranslation } from "../../app/i18n/client";
 
 export default function Navigation({ lng }: { lng: string }) {
   const pathname = usePathname();
-  const { t } = useTranslation(lng, "data");
+  const { t } = useTranslation(lng, "monster");
 
   return (
     <div className="w-full xl:w-max xl:flex gap-4">

@@ -12,6 +12,7 @@ import monster from "../../data/data.json";
 import { toast } from "react-toastify";
 import useUserId from "@/components/Hook/UserId";
 import { createMonsterLocation } from "../api/MLApi";
+import { useTranslation } from "../../app/i18n";
 
 const levels = [5, 6, 7, 8, 9, 10];
 const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
