@@ -35,6 +35,8 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
     longitude: null,
   });
   const { t } = useTranslation("monster");
+  const { t: TransMonster } = useTranslation("data");
+
   const userId = useUserId();
   const isPrivateMode = userId.isPrivateMode;
 
@@ -106,18 +108,15 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
   });
 
   // 魔物名稱
-  const monsterNames = Object.values(monster.equipSetting)
+  const monsterNames = Object.entries(monster.equipSetting)
     .filter(
-      (armor) =>
-        !armor.name.includes("皮製") &&
-        !armor.name.includes("礦石") &&
-        armor.mapShow
+      ([key, armor]) =>
+        !key.includes("leather") && !key.includes("alloy") && armor.mapShow
     )
-    .map((armor) => armor.name);
+    .map(([key, armor]) => ({ ...armor, key }));
 
   return (
     <Fragment>
-      <p></p>
       <form
         onSubmit={onSubmit}
         className="bg-slate-200 px-6 py-4 rounded-md my-4"
@@ -135,9 +134,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                   <div className="flex gap-2 items-center" key={index}>
                     <input
                       type="checkbox"
-                      id={`checkbox_${name}`}
+                      id={`checkbox_${name.name}`}
                       {...field}
-                      value={name}
+                      value={TransMonster(`equipSetting.${name.key}.name`)}
                       className="w-5 h-5 bg-gray-100 border-gray-300 rounded focus:ring-lime-600 accent-lime-600"
                       onChange={(e) => {
                         const value = e.target.value;
@@ -152,12 +151,12 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                       }}
                     />
                     <label
-                      htmlFor={`checkbox_${name}`}
+                      htmlFor={`checkbox_${name.name}`}
                       className="text-sm md:text-base text-gray-800"
                     >
                       <Image
                         className=" h-8 w-8 md:w-12 md:h-12"
-                        src={`/assets/icons/Monster/${name}.svg`}
+                        src={`/assets/icons/Monster/${name.name}.svg`}
                         width={50}
                         height={50}
                         alt="equipment"
