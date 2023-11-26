@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import Image from "next/image";
 
 interface MyComponentProps<T> {
   data: T;

@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import useUserId from "../Hook/UserId";
 import { createBadLocation, createGoodLocation } from "./../api/MLApi";
 import dynamic from "next/dynamic";
+import { useTranslation } from "react-i18next";
 
 const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
   ssr: false,
@@ -19,6 +20,7 @@ interface MapTableProps {
 }
 
 const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
+  const { t } = useTranslation("monster");
   //點擊卡片設定魔物資料
   const [selectMonster, setSelectMonster] = useState<DataItem | null>(null);
   //打開modal
@@ -33,8 +35,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
     try {
       // 使用 Clipboard API 写入剪贴板
       await navigator.clipboard.writeText(coordinates);
-      console.log("已成功複製");
-      toast.success("已複製位置", {
+      toast.success(`${t("MonsterMap.copy")}`, {
         position: "top-center",
         autoClose: 1500,
         hideProgressBar: false,
@@ -45,18 +46,22 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
         theme: "light",
       });
     } catch (err) {
-      console.error("複製失敗：", err);
+      console.error(`${t("MonsterMap.copyFailed")}`, err);
     }
   }
   const userId = useUserId();
   const [isCreateing, setIsCreateing] = useState(false);
 
-  const sendReport = (isGood: boolean, uid: string | null, mlitem: DataItem) => {
+  const sendReport = (
+    isGood: boolean,
+    uid: string | null,
+    mlitem: DataItem
+  ) => {
     if (isCreateing || !uid) {
       return;
     }
 
-    var loading = toast.loading("回報中！");
+    var loading = toast.loading(`${t("MonsterMap.reporting")}`);
 
     setIsCreateing(true);
 
@@ -65,76 +70,75 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       mlid: mlitem.id,
     };
 
-    if(isGood){
+    if (isGood) {
       createGoodLocation(model)
-      .then((response) => {
-        if (!response.ok) {
-          toast.error("網路回應發生錯誤", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        }
-        return response.json();
-      })
-      .then((data) => {
-        toast.dismiss(loading);
-        if (!data.status) {
-          toast.error("回報失敗！", {
-            position: "top-center",
-            className: "danger",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        } else {
-          toast.success("回報成功！", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
+        .then((response) => {
+          if (!response.ok) {
+            toast.error("網路回應發生錯誤", {
+              position: "top-center",
+              autoClose: 1500, // 1.5秒關閉
+            });
+          }
+          return response.json();
+        })
+        .then((data) => {
+          toast.dismiss(loading);
+          if (!data.status) {
+            toast.error(`${t("MonsterMap.error")}`, {
+              position: "top-center",
+              className: "danger",
+              autoClose: 1500, // 1.5秒關閉
+            });
+          } else {
+            toast.success(`${t("MonsterMap.success")}`, {
+              position: "top-center",
+              autoClose: 1500, // 1.5秒關閉
+            });
 
-          mlitem.goodLocations.push(model);
-        }
+            mlitem.goodLocations.push(model);
+          }
 
-        setIsCreateing(false);
-      })
-      .catch((error) => {
-        console.error("Error submit Form", error);
-      })
-      .finally(() => {});
-    }else{
+          setIsCreateing(false);
+        })
+        .catch((error) => {
+          console.error("Error submit Form", error);
+        })
+        .finally(() => {});
+    } else {
       createBadLocation(model)
-      .then((response) => {
-        if (!response.ok) {
-          toast.error("網路回應發生錯誤", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        }
-        return response.json();
-      })
-      .then((data) => {
-        toast.dismiss(loading);
-        if (!data.status) {
-          toast.error("回報失敗！", {
-            position: "top-center",
-            className: "danger",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        } else {
-          toast.success("回報成功！", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
+        .then((response) => {
+          if (!response.ok) {
+            toast.error("網路回應發生錯誤", {
+              position: "top-center",
+              autoClose: 1500, // 1.5秒關閉
+            });
+          }
+          return response.json();
+        })
+        .then((data) => {
+          toast.dismiss(loading);
+          if (!data.status) {
+            toast.error(`${t("MonsterMap.error")}`, {
+              position: "top-center",
+              className: "danger",
+              autoClose: 1500, // 1.5秒關閉
+            });
+          } else {
+            toast.success(`${t("MonsterMap.success")}`, {
+              position: "top-center",
+              autoClose: 1500, // 1.5秒關閉
+            });
 
-          mlitem.badLocations.push(model);
-        }
+            mlitem.badLocations.push(model);
+          }
 
-        setIsCreateing(false);
-      })
-      .catch((error) => {
-        console.error("Error submit Form", error);
-      })
-      .finally(() => {});
+          setIsCreateing(false);
+        })
+        .catch((error) => {
+          console.error("Error submit Form", error);
+        })
+        .finally(() => {});
     }
-    
   };
 
   //最多只會有兩個魔物的名字
@@ -215,7 +219,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900 mb-2"
                   >
-                    魔物地圖－{selectMonster?.location}
+                    {t("MonsterMap.monsterMap")}－{selectMonster?.location}
                   </Dialog.Title>
                   <MonsterMap
                     //這邊用不到 所以寫null，只要傳入點擊到的卡片資料
@@ -232,7 +236,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
                     className="monster-tab"
                     onClick={closeModal}
                   >
-                    關閉地圖
+                    {t("MonsterMap.closeMap")}
                   </button>
                 </Dialog.Panel>
               </Transition.Child>

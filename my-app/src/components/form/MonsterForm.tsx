@@ -12,17 +12,16 @@ import monster from "../../data/data.json";
 import { toast } from "react-toastify";
 import useUserId from "@/components/Hook/UserId";
 import { createMonsterLocation } from "../api/MLApi";
-import { useTranslation } from "../../app/i18n";
+import { useTranslation } from "react-i18next";
 
 const levels = [5, 6, 7, 8, 9, 10];
 const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 interface Props {
   onSubmitted: (data: void) => void;
-  lng: string;
 }
 
-const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
+const MonsterForm: FC<Props> = ({ onSubmitted }) => {
   const [submitted, setSubmitted] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
@@ -35,7 +34,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
     latitude: null,
     longitude: null,
   });
-  // const { t } = useTranslation(lng, "data");
+  const { t } = useTranslation("monster");
   const userId = useUserId();
   const isPrivateMode = userId.isPrivateMode;
 
@@ -118,6 +117,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
 
   return (
     <Fragment>
+      <p></p>
       <form
         onSubmit={onSubmit}
         className="bg-slate-200 px-6 py-4 rounded-md my-4"
@@ -128,7 +128,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
           render={({ field }) => (
             <div className="relative mt-1">
               <h1 className="text-xl font-bold mt-2">
-                魔物名稱 {/* {t("MonsterMap.monsterName")} */}
+                {t("MonsterMap.monsterName")}
               </h1>
               <div className="bg-white p-2 rounded-md shadow-md flex flex-wrap gap-y-4 gap-x-2 justify-center">
                 {monsterNames.map((name, index) => (
@@ -181,7 +181,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
               <Listbox {...field}>
                 <div className="relative mt-1">
                   <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                    <h1 className="text-xl font-bold mt-2">魔物等級</h1>
+                    <h1 className="text-xl font-bold mt-2">
+                      {t("MonsterMap.level")}
+                    </h1>
                   </Listbox.Label>
                   <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md ">
                     <span className="block truncate">{field.value}</span>
@@ -233,7 +235,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
               <Listbox {...field}>
                 <div className="relative mt-1">
                   <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                    <h1 className="text-xl font-bold mt-2">周目</h1>
+                    <h1 className="text-xl font-bold mt-2">
+                      {t("MonsterMap.round")}
+                    </h1>
                   </Listbox.Label>
                   <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md ">
                     <span className="block truncate">{field.value}</span>
@@ -276,7 +280,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
             )}
           />
         </div>
-        <label className="text-xl font-bold mt-2 block">經緯度</label>
+        <label className="text-xl font-bold mt-2 block">
+          {t("MonsterMap.Latitude")}
+        </label>
         <div className="flex items-center gap-2 flex-col md:flex-row">
           <input
             type="text"
@@ -285,7 +291,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
             onChange={(e) => setManualInput(e.target.value)}
             className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
             required
-            placeholder="請輸入經緯度"
+            placeholder={`${t("MonsterMap.LatitudePlaceholder")}`}
           />
           <GeolocationBtn
             onGeolocationData={(data) =>
@@ -309,7 +315,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
           }`}
         >
           <PaperAirplaneIcon className="w-4 h-4" />
-          <span>送出表單</span>
+          <span>{t("MonsterMap.submit")}</span>
         </button>
       </form>
     </Fragment>

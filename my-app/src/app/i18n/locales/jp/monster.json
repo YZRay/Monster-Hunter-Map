@@ -1,11 +1,11 @@
 {
-  "title": "Monster Hunter Now 魔物地圖",
-  "LocaleSwitcher": "中文",
+  "title": "Monster Hunter Now 地図",
+  "LocaleSwitcher": "日語",
   "navigation": {
-    "map": "地圖資訊",
-    "setting": "配裝資訊",
+    "map": "地図情報",
+    "setting": "装備情報",
     "about": "關於我們",
-    "new": "最新消息"
+    "new": "ニュース"
   },
   "ArmorSetting": {
     "click": "請點擊下方欄位",
@@ -25,9 +25,7 @@
   },
   "MonsterMap": {
     "open": "打開魔物搜尋欄",
-    "unlock": "解鎖等級",
     "close": "關閉魔物搜尋欄",
-    "closeModal": "關閉",
     "searchArea": "搜尋地區",
     "upload": "上傳魔物資訊",
     "download": "重新取得魔物資訊",

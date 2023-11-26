@@ -25,7 +25,9 @@
   },
   "MonsterMap": {
     "open": "Open the search bar",
+    "unlock": "unlock",
     "close": "Close the search bar",
+    "closeModal": "Close",
     "searchArea": "Search area",
     "upload": "Upload monster information",
     "download": "Get monster information",

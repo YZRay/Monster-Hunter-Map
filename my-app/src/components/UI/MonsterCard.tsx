@@ -8,6 +8,7 @@ import {
   FaceFrownIcon,
 } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface MonsterCardProps {
   item: DataItem;
@@ -26,6 +27,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
   sendReport,
   userId,
 }) => {
+  const { t } = useTranslation("monster");
   const imageElements = monsterNames.map((monsterName, index) => (
     <div className="max-w-[4rem] max-h-[4rem]" key={index}>
       <Image
@@ -64,7 +66,9 @@ const MonsterCard: FC<MonsterCardProps> = ({
             </div>
             <div>
               <p className="text-base">{monsterNames.join(", ")}</p>
-              <span className="text-base">{item.round} 周目</span>
+              <span className="text-base">
+                {item.round} {t("MonsterMap.round")}
+              </span>
             </div>
           </div>
           <div>

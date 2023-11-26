@@ -2,6 +2,7 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, FC } from "react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { useTranslation } from "react-i18next";
 import Image from "next/image";
 interface SearchMonsterProps {
   isCollapsed: boolean;
@@ -25,6 +26,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
   isCollapsed,
   toggleCollapse,
 }) => {
+  const { t } = useTranslation("monster");
   return (
     <Fragment>
       {/* 搜尋魔物 */}
@@ -33,7 +35,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
           className="w-max btn justify-center rounded-md py-2 px-4  font-bold "
           onClick={toggleCollapse}
         >
-          {isCollapsed ? "打開魔物搜尋欄" : "關閉搜尋欄位"}
+          {isCollapsed ? `${t("MonsterMap.open")}` : `${t("MonsterMap.close")}`}
         </button>
       </div>
       {!isCollapsed && (
@@ -82,7 +84,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
         >
           <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2">
             <h3 className="text-lg md:text-xl lg:text-2xl font-bold mt-2">
-              搜尋地區
+              {t("MonsterMap.searchArea")}
             </h3>
           </Listbox.Label>
           <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">

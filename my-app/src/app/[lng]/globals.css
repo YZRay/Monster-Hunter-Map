@@ -34,7 +34,7 @@ body {
 
 @layer components {
   .monster-tab {
-    @apply w-full md:w-44 bg-slate-400 text-slate-800 px-2 py-1 md:px-4 md:py-2 rounded-md hover:bg-slate-800 hover:text-white duration-300 justify-center tracking-wider ui-selected:bg-slate-800 ui-selected:text-white;
+    @apply w-full bg-slate-400 text-slate-800 px-2 py-1 md:px-4 md:py-2 rounded-md hover:bg-slate-800 hover:text-white duration-300 justify-center tracking-wider ui-selected:bg-slate-800 ui-selected:text-white;
   }
   .monster-tab-mobile {
     @apply w-full text-slate-800 px-2 py-3 rounded-md text-lg hover:bg-slate-800 hover:text-white duration-300 justify-center tracking-wider ui-selected:bg-slate-800 ui-selected:text-white;

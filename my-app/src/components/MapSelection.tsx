@@ -2,6 +2,7 @@ import { Transition, Dialog, Tab } from "@headlessui/react";
 import { Fragment, useState, useEffect, useCallback } from "react";
 import FieldIcon from "../../public/assets/icons/field_icon.svg";
 import MonsterIcon from "../../public/assets/icons/monster_icon.svg";
+import { useTranslation } from "react-i18next";
 import {
   fetchMonsterLocation,
   GetlocationList,
@@ -31,6 +32,7 @@ const monsterNames = Object.values(monster.equipSetting)
   .map((armor) => armor.name);
 
 const MapSelection = () => {
+  const { t } = useTranslation("monster");
   //摺疊搜尋區塊
   const [isCollapsed, setIsCollapsed] = useState(true);
   const toggleCollapse = useCallback(() => {
@@ -88,17 +90,17 @@ const MapSelection = () => {
   }, []);
   // 獲取經緯度城市
   //useEffect(() => {
-    //async function fetchData() {
-      //if (geolocation) {
-        //const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
-        //const result = await Getlocation(cityLocation);
-        //if (result) {
-        //  setCity(result.data);
-        //  setSelectedRegion(result.data);
-        //}
-      //}
-    //}
-    //fetchData();
+  //async function fetchData() {
+  //if (geolocation) {
+  //const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
+  //const result = await Getlocation(cityLocation);
+  //if (result) {
+  //  setCity(result.data);
+  //  setSelectedRegion(result.data);
+  //}
+  //}
+  //}
+  //fetchData();
   //}, [geolocation]);
 
   return (
@@ -131,14 +133,14 @@ const MapSelection = () => {
           onClick={openModal}
           className="w-full btn justify-center rounded-md font-bold my-4 md:my-8 text-base shadow-color"
         >
-          上傳魔物資訊
+          {t("MonsterMap.upload")}
         </button>
         <button
           type="button"
           onClick={handleFormSubmitted}
           className="w-full btn justify-center rounded-md font-bold my-4 md:my-8 text-base shadow-color"
         >
-          重新取得魔物資訊
+          {t("MonsterMap.download")}
         </button>
       </div>
       {/* 上傳魔物表單 */}
@@ -147,11 +149,11 @@ const MapSelection = () => {
         <Tab.List className="flex items-center gap-4 mb-4 mt-1">
           <Tab className="monster-tab flex items-center md:gap-2 text-lg py-2">
             <Image src={MonsterIcon} alt="MonsterIcon" width={40} height={40} />
-            目擊資訊
+            {t("MonsterMap.eyewitness")}
           </Tab>
           <Tab className="monster-tab flex items-center md:gap-2 text-lg py-2">
             <Image src={FieldIcon} alt="FieldIcon" width={40} height={40} />
-            動態地圖
+            {t("MonsterMap.dynamicMap")}
           </Tab>
         </Tab.List>
         <Tab.Panels>
@@ -204,7 +206,7 @@ const MapSelection = () => {
                     as="h3"
                     className="text-lg font-bold leading-6 text-gray-800"
                   >
-                    分享魔物資訊
+                    {t("MonsterMap.share")}
                   </Dialog.Title>
                   <MonsterForm onSubmitted={handleFormSubmitted} />
                   <button
@@ -212,7 +214,7 @@ const MapSelection = () => {
                     className="w-full justify-center rounded-md bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
                     onClick={closeModal}
                   >
-                    取消
+                    {t("MonsterMap.cancel")}
                   </button>
                 </Dialog.Panel>
               </Transition.Child>

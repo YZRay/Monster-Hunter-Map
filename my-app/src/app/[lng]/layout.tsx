@@ -7,6 +7,7 @@ import Link from "next/link";
 import Navbar from "@/components/UI/Navbar";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
+import { I18nextProvider } from "react-i18next";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));

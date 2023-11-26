@@ -1,10 +1,12 @@
 import React, { FC } from "react";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface MyComponentProps<T> {
   data: T;
 }
 const MonsterEcology: FC<MyComponentProps<any>> = (props) => {
+  const { t } = useTranslation("monster");
   const location = props.data.location.map((item: string[], index: number) => {
     return (
       <Image
@@ -22,7 +24,7 @@ const MonsterEcology: FC<MyComponentProps<any>> = (props) => {
     <table className="monster-table">
       <thead className="bg-gray-800 text-gray-300">
         <tr>
-          <th>出現區域</th>
+          <th>{t("MonsterMap.generation")}</th>
         </tr>
       </thead>
       <tbody>

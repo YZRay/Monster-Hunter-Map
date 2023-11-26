@@ -1,8 +1,10 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import data from "../data/data.json";
+import { useTranslation } from "react-i18next";
 
 const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
+  const { t } = useTranslation("monster");
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -11,7 +13,9 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
   if (armor.length === 0) {
     return (
       <div className="container text-center p-4 my-2 lg:p-8 lg:my-4 rounded-md opacity-90 bg-slate-700">
-        <p className="text-white text-base md:text-lg ">請點擊下方欄位</p>
+        <p className="text-white text-base md:text-lg ">
+          {t("ArmorSetting.click")}
+        </p>
       </div>
     );
   }
@@ -33,7 +37,9 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
         className=" w-max justify-center rounded-md btn py-2 px-4 font-bold"
         onClick={toggleCollapse}
       >
-        {isCollapsed ? "查看武器" : "收起武器資訊"}
+        {isCollapsed
+          ? `${t("ArmorSetting.watch")}`
+          : `${t("ArmorSetting.hide")}`}
       </button>
       {!isCollapsed && (
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-1 md:gap-2 mt-2 drop-shadow-[0_0px_35px_rgba(49, 158, 214, 0.3)]">
@@ -62,12 +68,12 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
                     className="mt-2 font-bold text-left text-sm lg:text-base"
                     key={index}
                   >
-                    {equip.unlock} 等解鎖
+                    {equip.unlock} {t("ArmorSetting.unlock")}
                     <br /> {skillName[equip.skill].name} Lv{equip.lv}
                   </p>
                 ))
               ) : (
-                <p className="mt-2 font-bold">未知</p>
+                <p className="mt-2 font-bold">{t("ArmorSetting.unknown")}</p>
               )}
             </div>
           ))}

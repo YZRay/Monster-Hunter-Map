@@ -2,6 +2,7 @@ import { Dialog, Transition, Tab } from "@headlessui/react";
 import { FC, Fragment } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useTranslation } from "react-i18next";
 
 const MonsterTableData = dynamic(() => import("../Table/MonsterTable"), {
   ssr: false,
@@ -27,6 +28,8 @@ const MonsterModal: FC<MonsterModalProps> = ({
   onClose,
   monsterData,
 }) => {
+  const { t } = useTranslation("monster");
+
   return (
     <Transition appear show={open} as={Fragment}>
       <Dialog onClose={onClose}>
@@ -54,15 +57,22 @@ const MonsterModal: FC<MonsterModalProps> = ({
             >
               <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-lg bg-gray-100 p-6 text-left align-middle shadow-xl transition-all border-2 border-teal-800 border-double">
                 <Dialog.Title className="text-3xl font-bold text-gray-500 pb-2">
-                  狩獵指南
+                  {t("MonsterMap.huntingGuide")}
                 </Dialog.Title>
                 <hr className="border-gray-400" />
                 <Tab.Group>
                   <Tab.List className="grid grid-cols-2 md:grid-cols-4 gap-1 my-4 bg-slate-400 p-1 rounded-md">
-                    <Tab className="monster-tab">部位與肉質</Tab>
-                    <Tab className="monster-tab">生態</Tab>
-                    <Tab className="monster-tab">弱點屬性</Tab>
-                    <Tab className="monster-tab">素材</Tab>
+                    <Tab className="monster-tab">
+                      {" "}
+                      {t("MonsterMap.hitzone")}
+                    </Tab>
+                    <Tab className="monster-tab">{t("MonsterMap.impact")}</Tab>
+                    <Tab className="monster-tab">
+                      {t("MonsterMap.weakness")}
+                    </Tab>
+                    <Tab className="monster-tab">
+                      {t("MonsterMap.material")}
+                    </Tab>
                   </Tab.List>
 
                   {/*  */}
@@ -83,13 +93,13 @@ const MonsterModal: FC<MonsterModalProps> = ({
                   <Tab.Panels>
                     <Tab.Panel>
                       <p className="text-sm text-gray-800">
-                        解鎖等級：{monsterData?.unlock}
+                        {t("MonsterMap.unlock")}：{monsterData?.unlock}
                       </p>
                       <MonsterTableData data={monsterData?.name} />
                     </Tab.Panel>
                     <Tab.Panel>
                       <p className="text-sm text-gray-800">
-                        解鎖等級：{monsterData?.unlock}
+                        {t("MonsterMap.unlock")}：{monsterData?.unlock}
                       </p>
                       <MonsterEcology data={monsterData} />
                     </Tab.Panel>
@@ -107,7 +117,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
                     className="w-1/4 justify-center rounded-md bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
                     onClick={onClose}
                   >
-                    關閉
+                    {t("MonsterMap.closeModal")}
                   </button>
                 </div>
               </Dialog.Panel>

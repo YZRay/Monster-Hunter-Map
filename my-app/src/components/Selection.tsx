@@ -3,6 +3,7 @@ import { FC, Fragment, useState } from "react";
 import data from "../data/data.json";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useTranslation } from "react-i18next";
 
 const MonsterModal = dynamic(() => import("./Modal/MonsterModal.tsx"), {
   ssr: false,
@@ -12,6 +13,7 @@ const Selection: FC<SelectionProps> = ({
   onMonsterClick,
   selectedMonster,
 }) => {
+  const { t } = useTranslation("monster");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const skills: Skills = data.baseSetting.skills;
 
@@ -105,7 +107,9 @@ const Selection: FC<SelectionProps> = ({
         monsterData={selectedMonster}
       ></MonsterModal>
       <div className="container mt-4 mb-6 lg:mt-8 lg:mb-16 rounded-lg">
-        <h1 className="text-2xl font-bold mb-2 text-gray-800">魔物資訊</h1>
+        <h1 className="text-2xl font-bold mb-2 text-gray-800">
+          {t("Selection.information")}
+        </h1>
         <div className="relative overflow-auto  max-h-[40rem] w-full shadow-md">
           <table className="table-auto text-base text-left font-bold w-max lg:w-full text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
             <thead className="text-center sticky top-0 z-10 bg-slate-700 border-b-2">
@@ -114,13 +118,13 @@ const Selection: FC<SelectionProps> = ({
                   scope="col"
                   className="px-3 py-1 lg:px-6 lg:py-3 border border-slate-200"
                 >
-                  種類
+                  {t("Selection.type")}
                 </th>
                 <th
                   scope="col"
                   className="px-3 py-1 lg:px-6 lg:py-3 border border-slate-200"
                 >
-                  等級
+                  {t("Selection.level")}
                 </th>
                 {th}
               </tr>

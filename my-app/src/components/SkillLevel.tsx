@@ -1,7 +1,9 @@
 import { Fragment, FC, useState } from "react";
 import data from "../data/data.json";
+import { useTranslation } from "react-i18next";
 
 const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
+  const { t } = useTranslation("monster");
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   if (Object.keys(skill).length === 0) {
@@ -21,7 +23,9 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
           className=" w-max justify-center rounded-md btn py-2 px-4 font-bold "
           onClick={toggleCollapse}
         >
-          {isCollapsed ? "查看技能" : "收起技能資訊"}
+          {isCollapsed
+            ? `${t("SkillSetting.watch")}`
+            : `${t("SkillSetting.hide")}`}
         </button>
       </div>
       {!isCollapsed && (

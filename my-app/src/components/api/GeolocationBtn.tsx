@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MapPinIcon } from "@heroicons/react/20/solid";
 import { getGeolocationData } from "./GeolocationAPI"; // 引入地理位置函數
+import { useTranslation } from "react-i18next";
 
 function GeoLocationBtn({
   onGeolocationData,
@@ -12,6 +13,7 @@ function GeoLocationBtn({
 }) {
   const [isLoading, setIsLoading] = useState(false);
 
+  const { t } = useTranslation("monster");
   const getLocation = () => {
     if (isLoading) {
       return; // 如果正在載入，則不再執行
@@ -36,7 +38,11 @@ function GeoLocationBtn({
       }`}
     >
       <MapPinIcon className="w-6 h-6" />
-      <span>{isLoading ? "已取得" : "取得位置"}</span>
+      <span>
+        {isLoading
+          ? `${t("MonsterMap.gotCurrent")}`
+          : `${t("MonsterMap.getCurrent")}`}
+      </span>
     </button>
   );
 }
