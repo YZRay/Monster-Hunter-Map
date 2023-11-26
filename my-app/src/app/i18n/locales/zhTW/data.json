@@ -1,0 +1,1970 @@
+{
+  "title": "Monster Hunter Now 魔物地圖",
+  "baseSetting": {
+    "strEquip": "裝備",
+    "strEquipConfig": "配裝",
+    "strSkills": "技能",
+    "strSearch": "搜尋",
+    "strReset": "重置",
+    "strCopyLink": "複製配裝連結",
+    "strLinkCopied": "連結已複製",
+    "parts": {
+      "weapon": "武器",
+      "helm": "頭",
+      "mail": "身",
+      "gloves": "手",
+      "belt": "腰",
+      "greaves": "腳"
+    },
+    "skills": {
+      "iceResistance": {
+        "name": "冰耐性",
+        "content": [
+          "魔物的冰屬性傷害減少10%",
+          "魔物的冰屬性傷害減少20%",
+          "魔物的冰屬性傷害減少30%",
+          "魔物的冰屬性傷害減少40%",
+          "魔物的冰屬性傷害減少50%"
+        ]
+      },
+      "fireResistance": {
+        "name": "火耐性",
+        "content": [
+          "魔物的火屬性傷害減少10%",
+          "魔物的火屬性傷害減少20%",
+          "魔物的火屬性傷害減少30%",
+          "魔物的火屬性傷害減少40%",
+          "魔物的火屬性傷害減少50%"
+        ]
+      },
+      "thunderResistance": {
+        "name": "雷耐性",
+        "content": [
+          "魔物的雷屬性傷害減少10%",
+          "魔物的雷屬性傷害減少20%",
+          "魔物的雷屬性傷害減少30%",
+          "魔物的雷屬性傷害減少40%",
+          "魔物的雷屬性傷害減少50%"
+        ]
+      },
+      "waterResistance": {
+        "name": "水耐性",
+        "content": [
+          "魔物的水屬性傷害減少10%",
+          "魔物的水屬性傷害減少20%",
+          "魔物的水屬性傷害減少30%",
+          "魔物的水屬性傷害減少40%",
+          "魔物的水屬性傷害減少50%"
+        ]
+      },
+      "paralysisResistance": {
+        "name": "麻痺耐性",
+        "content": [
+          "受到麻痺攻擊時，20%機率麻痺無效",
+          "受到麻痺攻擊時，40%機率麻痺無效",
+          "受到麻痺攻擊時，60%機率麻痺無效",
+          "受到麻痺攻擊時，80%機率麻痺無效",
+          "麻痺無效"
+        ]
+      },
+      "poisonResistance": {
+        "name": "毒耐性",
+        "content": [
+          "受到毒攻擊時，20%機率毒無效",
+          "受到毒攻擊時，40%機率毒無效",
+          "受到毒攻擊時，60%機率毒無效",
+          "受到毒攻擊時，80%機率毒無效",
+          "毒無效"
+        ]
+      },
+      "fireAttackBoost": {
+        "name": "火屬性攻擊強化",
+        "content": [
+          "武器的火屬性 +50",
+          "武器的火屬性 +100",
+          "武器的火屬性 +200",
+          "武器的火屬性 +350",
+          "武器的火屬性 +500"
+        ]
+      },
+      "waterAttackBoost": {
+        "name": "水屬性攻擊強化",
+        "content": [
+          "武器的水屬性 +50",
+          "武器的水屬性 +100",
+          "武器的水屬性 +200",
+          "武器的水屬性 +350",
+          "武器的水屬性 +500"
+        ]
+      },
+      "iceAttackBoost": {
+        "name": "冰屬性攻擊強化",
+        "content": [
+          "武器的冰屬性 +50",
+          "武器的冰屬性 +100",
+          "武器的冰屬性 +200",
+          "武器的冰屬性 +350",
+          "武器的冰屬性 +500"
+        ]
+      },
+      "thunderAttackBoost": {
+        "name": "雷屬性攻擊強化",
+        "content": [
+          "武器的雷屬性 +50",
+          "武器的雷屬性 +100",
+          "武器的雷屬性 +200",
+          "武器的雷屬性 +350",
+          "武器的雷屬性 +500"
+        ]
+      },
+      "dragonAttackBoost": {
+        "name": "龍屬性攻擊強化",
+        "content": [
+          "武器的龍屬性 +50",
+          "武器的龍屬性 +100",
+          "武器的龍屬性 +200",
+          "武器的龍屬性 +350",
+          "武器的龍屬性 +500"
+        ]
+      },
+      "poisonAttackBoost": {
+        "name": "毒屬性強化",
+        "content": [
+          "武器的毒累積值 +50",
+          "武器的毒累積值 +75",
+          "武器的毒累積值 +100",
+          "武器的毒累積值 +125",
+          "武器的毒累積值 +150"
+        ]
+      },
+      "paralysisAttackBoost": {
+        "name": "麻痺屬性強化",
+        "content": [
+          "武器的麻痺累積值 +50",
+          "武器的麻痺累積值 +75",
+          "武器的麻痺累積值 +100",
+          "武器的麻痺累積值 +125",
+          "武器的麻痺累積值 +150"
+        ]
+      },
+      "unshaken": {
+        "name": "不屈",
+        "content": [
+          "體力歸零並復活後，10秒內攻擊力 +10%",
+          "體力歸零並復活後，10秒內攻擊力 +15%",
+          "體力歸零並復活後，10秒內攻擊力 +20%",
+          "體力歸零並復活後，10秒內攻擊力 +30%",
+          "體力歸零並復活後，10秒內攻擊力 +40%"
+        ]
+      },
+      "criticalEye": {
+        "name": "看破",
+        "content": [
+          "會心率 +10%",
+          "會心率 +15%",
+          "會心率 +20%",
+          "會心率 +30%",
+          "會心率 +40%"
+        ]
+      },
+      "attack": {
+        "name": "攻擊",
+        "content": [
+          "攻擊力 +20",
+          "攻擊力 +40",
+          "攻擊力 +60",
+          "攻擊力 +80",
+          "攻擊力 +120"
+        ]
+      },
+      "defense": {
+        "name": "防禦",
+        "content": [
+          "防禦力 +20",
+          "防禦力 +40",
+          "防禦力 +60",
+          "防禦力 +80",
+          "防禦力 +100"
+        ]
+      },
+      "healthBoost": {
+        "name": "體力增強",
+        "content": [
+          "體力上限 +10",
+          "體力上限 +20",
+          "體力上限 +30",
+          "體力上限 +40",
+          "體力上限 +50"
+        ]
+      },
+      "staminaThief": {
+        "name": "軀幹強化",
+        "content": [
+          "受到傷害時，後仰動作稍微輕減",
+          "受到傷害時，後仰動作小幅輕減",
+          "受到傷害時，後仰動作輕減"
+        ]
+      },
+      "heroics": {
+        "name": "愈戰愈勇",
+        "content": [
+          "剩餘狩獵時間越少，攻擊及防禦力稍微上升",
+          "剩餘狩獵時間越少，攻擊及防禦力小幅上升",
+          "剩餘狩獵時間越少，攻擊及防禦力上升",
+          "剩餘狩獵時間越少，攻擊及防禦力大幅上升",
+          "剩餘狩獵時間越少，攻擊及防禦力特大上升"
+        ]
+      },
+      "lockOn": {
+        "name": "鎖定",
+        "content": ["使用近戰武器時，可使用「鎖定」按鈕瞄準指定的魔物部位"]
+      },
+      "tenacity": {
+        "name": "毅力",
+        "content": [
+          "每次狩獵僅限一次，體力80以上時就算受到致命攻擊，也不會力盡",
+          "每次狩獵僅限一次，體力70以上時就算受到致命攻擊，也不會力盡",
+          "每次狩獵僅限一次，體力60以上時就算受到致命攻擊，也不會力盡",
+          "每次狩獵僅限一次，體力50以上時就算受到致命攻擊，也不會力盡",
+          "每次狩獵僅限一次，體力40以上時就算受到致命攻擊，也不會力盡"
+        ]
+      },
+      "lastStand": {
+        "name": "背水防禦",
+        "content": [
+          "體力29%或以下時，防禦力 +50",
+          "體力29%或以下時，防禦力 +100",
+          "體力29%或以下時，防禦力 +150",
+          "體力29%或以下時，防禦力 +200",
+          "體力29%或以下時，防禦力 +300"
+        ]
+      },
+      "evadeDistanceUP": {
+        "name": "迴避距離UP",
+        "content": [
+          "迴避距離稍微延長",
+          "迴避距離小幅延長",
+          "迴避距離延長",
+          "迴避距離大幅延長",
+          "迴避距離特大延長"
+        ]
+      },
+      "counterstrike": {
+        "name": "攻擊守勢",
+        "content": [
+          "成功防禦魔物的攻擊後，10秒內攻擊力 +10%",
+          "成功防禦魔物的攻擊後，10秒內攻擊力 +15%",
+          "成功防禦魔物的攻擊後，10秒內攻擊力 +20%",
+          "成功防禦魔物的攻擊後，10秒內攻擊力 +30%",
+          "成功防禦魔物的攻擊後，10秒內攻擊力 +40%"
+        ]
+      },
+      "focus": {
+        "name": "集中",
+        "content": [
+          "儲力攻擊時間減低 5%，太刀練氣計上升率 +5%",
+          "儲力攻擊時間減低 10%，太刀練氣計上升率 +10%",
+          "儲力攻擊時間減低 15%，太刀練氣計上升率 +15%",
+          "儲力攻擊時間減低 20%，太刀練氣計上升率 +20%",
+          "儲力攻擊時間減低 30%，太刀練氣計上升率 +30%"
+        ]
+      },
+      "defenseUp": {
+        "name": "防禦性能",
+        "content": [
+          "防禦魔物的攻擊時，傷害稍微輕減",
+          "防禦魔物的攻擊時，傷害小幅輕減",
+          "防禦魔物的攻擊時，傷害輕減",
+          "防禦魔物的攻擊時，傷害大幅輕減",
+          "防禦魔物的攻擊時，傷害特大輕減"
+        ]
+      },
+      "recoilReduction": {
+        "name": "反動輕減",
+        "content": [
+          "弩發射時，後座力小幅輕減",
+          "弩發射時，後座力輕減",
+          "弩發射時，後座力大幅輕減"
+        ]
+      },
+      "sneakAttack": {
+        "name": "黑暗突襲",
+        "content": [
+          "攻擊魔物的背後時，傷害 +10%",
+          "攻擊魔物的背後時，傷害 +15%",
+          "攻擊魔物的背後時，傷害 +20%",
+          "攻擊魔物的背後時，傷害 +25%",
+          "攻擊魔物的背後時，傷害 +30%"
+        ]
+      },
+      "earplugs": {
+        "name": "耳塞",
+        "content": [
+          "小幅減輕咆哮【小】的影響",
+          "減輕咆哮【小】的影響",
+          "使咆哮【小】無效，小幅減輕咆哮【大】的影響",
+          "使咆哮【小】無效，減輕咆哮【大】的影響",
+          "使咆哮【小】【大】無效"
+        ]
+      },
+      "loadingSpeed": {
+        "name": "裝填速度",
+        "content": [
+          "弩的裝填時間小幅縮短",
+          "弩的裝填時間縮短",
+          "弩的裝填時間大幅縮短"
+        ]
+      },
+      "perfectEvasion": {
+        "name": "完美迴避強化",
+        "content": [
+          "完美迴避的時機稍微延長",
+          "完美迴避的時機小幅延長",
+          "完美迴避的時機延長",
+          "完美迴避的時機大幅延長",
+          "完美迴避的時機特大延長"
+        ]
+      },
+      "spRapidCharge": {
+        "name": "SP儲力加速",
+        "content": [
+          "SP計的增加量 +5%",
+          "SP計的增加量 +10%",
+          "SP計的增加量 +15%",
+          "SP計的增加量 +20%",
+          "SP計的增加量 +30%"
+        ]
+      },
+      "spSkillBoost": {
+        "name": "SP技能威力提升",
+        "content": [
+          "SP技能威力 +10%",
+          "SP技能威力 +15%",
+          "SP技能威力 +20%",
+          "SP技能威力 +25%",
+          "SP技能威力 +30%"
+        ]
+      },
+      "windProof": {
+        "name": "風壓耐性",
+        "content": [
+          "小幅減輕風壓【小】的影響",
+          "減輕風壓【小】的影響",
+          "使風壓【小】無效，小幅減輕風壓【大】的影響",
+          "使風壓【小】無效，減輕風壓【大】的影響",
+          "使風壓【小】【大】無效"
+        ]
+      },
+      "peakPerformance": {
+        "name": "體力充沛",
+        "content": [
+          "體力全滿時，攻擊力 +30",
+          "體力全滿時，攻擊力 +60",
+          "體力全滿時，攻擊力 +90",
+          "體力全滿時，攻擊力 +130",
+          "體力全滿時，攻擊力 +180"
+        ]
+      },
+      "divineBlessing": {
+        "name": "精靈加護",
+        "content": [
+          "受到傷害時，30%機率使傷害減低 50%",
+          "受到傷害時，40%機率使傷害減低 50%",
+          "受到傷害時，50%機率使傷害減低 50%",
+          "受到傷害時，50%機率使傷害減低 60%",
+          "受到傷害時，50%機率使傷害減低 80%"
+        ]
+      },
+      "comboPro": {
+        "name": "連擊",
+        "content": [
+          "短時間內連續攻擊魔物後，4秒內攻擊力 +5%",
+          "短時間內連續攻擊魔物後，4秒內攻擊力 +10%",
+          "短時間內連續攻擊魔物後，4秒內攻擊力 +15%",
+          "短時間內連續攻擊魔物後，4秒內攻擊力 +20%",
+          "短時間內連續攻擊魔物後，4秒內攻擊力 +30%"
+        ]
+      },
+      "firestarter": {
+        "name": "火場怪力",
+        "content": [
+          "體力29%或以下時，攻擊力 +10%",
+          "體力29%或以下時，攻擊力 +20%",
+          "體力29%或以下時，攻擊力 +30%",
+          "體力29%或以下時，攻擊力 +40%",
+          "體力29%或以下時，攻擊力 +50%"
+        ]
+      },
+      "koKing": {
+        "name": "KO術",
+        "content": [
+          "昏厥威力 +10%",
+          "昏厥威力 +15%",
+          "昏厥威力 +20%",
+          "昏厥威力 +25%",
+          "昏厥威力 +30%"
+        ]
+      },
+      "partbreaker": {
+        "name": "破壞王",
+        "content": [
+          "對可破壞部位的傷害累積值 +5%",
+          "對可破壞部位的傷害累積值 +10%",
+          "對可破壞部位的傷害累積值 +20%",
+          "對可破壞部位的傷害累積值 +30%",
+          "對可破壞部位的傷害累積值 +40%"
+        ]
+      },
+      "weaknessExploit": {
+        "name": "弱點特效",
+        "content": [
+          "攻擊弱點部位時，會心率 +20%",
+          "攻擊弱點部位時，會心率 +25%",
+          "攻擊弱點部位時，會心率 +30%",
+          "攻擊弱點部位時，會心率 +40%",
+          "攻擊弱點部位時，會心率 +50%"
+        ]
+      },
+      "resentment": {
+        "name": "怨恨",
+        "content": [
+          "獵人受到傷害時，攻擊力15秒內上升10%",
+          "獵人受到傷害時，攻擊力15秒內上升15%",
+          "獵人受到傷害時，攻擊力15秒內上升20%",
+          "獵人受到傷害時，攻擊力15秒內上升25%",
+          "獵人受到傷害時，攻擊力15秒內上升30%"
+        ]
+      },
+      "solidarity": {
+        "name": "團結力",
+        "content": [
+          "單人時攻擊力 +1% (僅限無屬部分)，組隊時效果乘以隊中發動團結力的人數。※【萬聖節 秋季採南瓜】活動期間內的效果額外乘以5倍"
+        ]
+      },
+      "criticalBoost": {
+        "name": "超會心",
+        "content": [
+          "會心攻擊的傷害倍率提升至130%",
+          "會心攻擊的傷害倍率提升至135%",
+          "會心攻擊的傷害倍率提升至140%"
+        ]
+      }
+    }
+  },
+  "equipSetting": {
+    "alloy": {
+      "id": 0,
+      "name": "礦石",
+      "unlock": 1,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "poisonResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "poisonResistance",
+            "lv": 2
+          }
+        ]
+      },
+      "mapShow": true
+    },
+    "leather": {
+      "id": 1,
+      "name": "皮製",
+      "unlock": 1,
+      "equip": {
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "iceResistance",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "attack",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "fireResistance",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "thunderResistance",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "waterResistance",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "poisonResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "paralysisResistance",
+            "lv": 1
+          }
+        ]
+      },
+      "mapShow": true
+    },
+    "g-jagr": {
+      "id": 2,
+      "name": "大凶豺龍",
+      "unlock": 1,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "healthBoost",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "staminaThief",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "staminaThief",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "heroics",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "heroics",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "staminaThief",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "waterAttackBoost",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "unshaken",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "heroics",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "unshaken",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "waterAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "waterAttackBoost",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "water",
+      "mapShow": true,
+      "location": ["forest", "desert", "swamp"],
+      "statusEffect": {
+        "poison": 3,
+        "sleep": 3,
+        "paralysis": 3,
+        "blastblight": 3,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "kulu": {
+      "id": 3,
+      "name": "搔鳥",
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "unshaken",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "unshaken",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "lockOn",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "criticalEye",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "tenacity",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "tenacity",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "lastStand",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "criticalEye",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "lastStand",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 2
+          }
+        ]
+      },
+      "unlock": 1,
+      "mapShow": true,
+      "location": ["forest", "desert", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 2
+      }
+    },
+    "puke": {
+      "id": 4,
+      "name": "毒妖鳥",
+      "unlock": 1,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "sneakAttack",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "focus",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "healthBoost",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "poisonResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "focus",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "poisonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "poisonResistance",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "poisonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "poisonAttackBoost",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "poisonResistance",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "poison",
+      "mapShow": true,
+      "location": ["forest", "desert", "swamp"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 3,
+        "blastblight": 2,
+        "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 0,
+        "thunder": 3,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "barr": {
+      "id": 5,
+      "name": "土砂龍",
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "defense",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "counterstrike",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "counterstrike",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "counterstrike",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "defenseUp",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "defenseUp",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "defenseUp",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "recoilReduction",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "defense",
+            "lv": 2
+          }
+        ]
+      },
+      "unlock": 1,
+      "mapShow": true,
+      "location": ["desert", "swamp"],
+      "statusEffect": {
+        "poison": 3,
+        "sleep": 1,
+        "paralysis": 3,
+        "blastblight": 3,
+        "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "g-girr": {
+      "id": 6,
+      "name": "大凶顎龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "sneakAttack",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "paralysisResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "paralysisResistance",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "paralysisResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "sneakAttack",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "sneakAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "earplugs",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "paralysisAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "earplugs",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "paralysisAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "paralysisAttackBoost",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "paralysis",
+      "mapShow": true,
+      "location": ["forest", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 3,
+        "paralysis": 1,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "tobi": {
+      "id": 7,
+      "name": "飛雷龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "loadingSpeed",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "perfectEvasion",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "thunderAttackBoost",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "perfectEvasion",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "evadeDistanceUP",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "thunderAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "thunderAttackBoost",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "perfectEvasion",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "thunderResistance",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "thunder",
+      "mapShow": true,
+      "location": ["forest", "swamp"],
+      "statusEffect": {
+        "poison": 3,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "paol": {
+      "id": 8,
+      "name": "浮空龍",
+      "unlock": 3,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "divineBlessing",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 3,
+            "skill": "spRapidCharge",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 3,
+            "skill": "recoilReduction",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "recoilReduction",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 3,
+            "skill": "spRapidCharge",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "spRapidCharge",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 3,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "divineBlessing",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 3,
+            "skill": "windProof",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 2
+          }
+        ]
+      },
+      "mapShow": true,
+      "location": ["desert", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 3,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 1
+      }
+    },
+    "jyur": {
+      "id": 9,
+      "name": "泥魚龍",
+      "unlock": 3,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "lastStand",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 3,
+            "skill": "waterResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "lastStand",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 3,
+            "skill": "waterAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "lastStand",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 3,
+            "skill": "waterAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "waterAttackBoost",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 3,
+            "skill": "waterResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "waterResistance",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 3,
+            "skill": "focus",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "lastStand",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "water",
+      "mapShow": true,
+      "location": ["swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 1,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 1,
+        "water": 0,
+        "thunder": 3,
+        "ice": 1,
+        "dragon": 1
+      }
+    },
+    "anja": {
+      "id": 10,
+      "name": "蠻顎龍",
+      "unlock": 4,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "heroics",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 4,
+            "skill": "fireAttackBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "fireResistance",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 4,
+            "skill": "spSkillBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "spSkillBoost",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 4,
+            "skill": "fireAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "fireAttackBoost",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 4,
+            "skill": "fireResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "spSkillBoost",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 4,
+            "skill": "peakPerformance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "peakPerformance",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": true,
+      "location": ["forest", "desert"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 3,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "rathi": {
+      "id": 11,
+      "name": "雌火龍",
+      "unlock": 4,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "healthBoost",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "poisonAttackBoost",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 4,
+            "skill": "poisonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "poisonAttackBoost",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 4,
+            "skill": "lockOn",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "comboPro",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "comboPro",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 4,
+            "skill": "poisonResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "comboPro",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "healthBoost",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "poison",
+      "mapShow": true,
+      "location": ["forest", "desert"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
+      }
+    },
+    "legi": {
+      "id": 12,
+      "name": "風漂龍",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 5,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "divineBlessing",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "iceAttackBoost",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "divineBlessing",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "loadingSpeed",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "loadingSpeed",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "iceAttackBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "loadingSpeed",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "iceResistance",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "ice",
+      "mapShow": true,
+      "location": ["swamp"],
+      "statusEffect": {
+        "poison": 3,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 1,
+        "thunder": 3,
+        "ice": 0,
+        "dragon": 1
+      }
+    },
+    "diab": {
+      "id": 13,
+      "name": "角龍",
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "firestarter",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "firestarter",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "firestarter",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "koKing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "firestarter",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "firestarter",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "partbreaker",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "partbreaker",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "counterstrike",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "koKing",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "partbreaker",
+            "lv": 1
+          }
+        ]
+      },
+      "unlock": 5,
+      "mapShow": true,
+      "location": ["desert"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 3,
+        "blastblight": 2,
+        "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 2,
+        "thunder": 1,
+        "ice": 3,
+        "dragon": 2
+      }
+    },
+    "ratha": {
+      "id": 14,
+      "name": "火龍",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "earplugs",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "attack",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "fireAttackBoost",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "weaknessExploit",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "weaknessExploit",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "fireResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "attack",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "focus",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "fireAttackBoost",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "fireResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "weaknessExploit",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": true,
+      "location": ["forest"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
+      }
+    },
+    "b-diab": {
+      "id": 15,
+      "name": "黑角龍",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "partbreaker",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "partbreaker",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "resentment",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "resentment",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "staminaThief",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "resentment",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "lockOn",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "firestarter",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "firestarter",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "counterstrike",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": true,
+      "location": ["desert"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 3,
+        "blastblight": 2,
+        "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 2,
+        "thunder": 1,
+        "ice": 3,
+        "dragon": 0
+      }
+    },
+    "p-rathi": {
+      "id": 16,
+      "name": "櫻火龍",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "spSkillBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "windProof",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "spSkillBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": false,
+      "location": ["forest"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
+      }
+    }
+  }
+}

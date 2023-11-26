@@ -1,10 +1,16 @@
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import type { Metadata } from "next";
-import GoogleAnalytics from "../components/api/GA";
-import Adsense from "../components/api/Adsense";
+import GoogleAnalytics from "../../components/api/GA";
+import Adsense from "../../components/api/Adsense";
 import Link from "next/link";
 import Navbar from "@/components/UI/Navbar";
+import { dir } from "i18next";
+import { languages } from "../i18n/settings";
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
 
 export const metadata: Metadata = {
   openGraph: {
@@ -46,14 +52,15 @@ export const metadata: Metadata = {
     },
   ],
 };
-
 export default function RootLayout({
   children,
+  params: { lng },
 }: {
   children: React.ReactNode;
+  params: { lng: string };
 }) {
   return (
-    <html lang="zh-tw">
+    <html lang={lng} dir={dir(lng)}>
       <body>
         <Adsense />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
