@@ -9,7 +9,7 @@ import { Fragment, useState } from "react";
 import GeolocationBtn from "../api/GeolocationBtn";
 import Image from "next/image";
 import monster from "../../data/data.json";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import useUserId from "@/components/Hook/UserId";
 import { createMonsterLocation } from "../api/MLApi";
 
@@ -18,9 +18,10 @@ const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 interface Props {
   onSubmitted: (data: void) => void;
+  lng: string;
 }
 
-const MonsterForm: FC<Props> = ({ onSubmitted }) => {
+const MonsterForm: FC<Props> = ({ onSubmitted, lng }) => {
   const [submitted, setSubmitted] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
@@ -33,6 +34,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
     latitude: null,
     longitude: null,
   });
+  // const { t } = useTranslation(lng, "data");
   const userId = useUserId();
   const isPrivateMode = userId.isPrivateMode;
 
@@ -124,7 +126,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
           control={control}
           render={({ field }) => (
             <div className="relative mt-1">
-              <h1 className="text-xl font-bold mt-2">魔物名稱</h1>
+              <h1 className="text-xl font-bold mt-2">
+                魔物名稱 {/* {t("MonsterMap.monsterName")} */}
+              </h1>
               <div className="bg-white p-2 rounded-md shadow-md flex flex-wrap gap-y-4 gap-x-2 justify-center">
                 {monsterNames.map((name, index) => (
                   <div className="flex gap-2 items-center" key={index}>

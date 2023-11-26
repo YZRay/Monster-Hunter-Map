@@ -1,444 +1,509 @@
 {
   "title": "Monster Hunter Now Map",
+  "LocaleSwitcher": "English",
+  "navigation": {
+    "map": "Map",
+    "setting": "EquipSetting",
+    "about": "About",
+    "new": "News"
+  },
+  "ArmorSetting": {
+    "click": "Please click the table below",
+    "watch": "View weapons",
+    "hide": "Collapse weapons information",
+    "unlock": "unlock",
+    "unknown": "unknown"
+  },
+  "SkillSetting": {
+    "watch": "View skills",
+    "hide": "Collapse skills information"
+  },
+  "Selection": {
+    "type": "type",
+    "level": "level",
+    "information": "Monster information"
+  },
+  "MonsterMap": {
+    "open": "Open the search bar",
+    "close": "Close the search bar",
+    "searchArea": "Search area",
+    "upload": "Upload monster information",
+    "download": "Get monster information",
+    "eyewitness": "Eyewitness",
+    "dynamicMap": "Dynamic map",
+    "copy": "Copy position",
+    "copyFailed": "Copy failed",
+    "round": "round",
+    "reporting": "Reporting!",
+    "success": "Report success!",
+    "error": "Report failed!",
+    "current": "Current location",
+    "closeMap": "Close map",
+    "monsterMap": "Monster Map",
+    "getCurrent": "Get location",
+    "gotCurrent": "Got",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "share": "Share information",
+    "level": "Level",
+    "Latitude": "Latitude and longitude",
+    "LatitudePlaceholder": "Please enter latitude and longitude",
+    "all": "All",
+    "monsterName": "Monster Name",
+    "huntingGuide": "Hunting Guide",
+    "hitzone": "Hitzone",
+    "cutting": "Cutting",
+    "impact": "Impact",
+    "shot": "Shot",
+    "ecology": "Ecology",
+    "generation": "Generation",
+    "weakness": "Weakness",
+    "material": "Material",
+    "element": "Element",
+    "status": "Status",
+    "effectiveness": "Effectiveness"
+  },
   "baseSetting": {
-    "strEquip": "裝備",
-    "strEquipConfig": "配裝",
-    "strSkills": "技能",
-    "strSearch": "搜尋",
-    "strReset": "重置",
-    "strCopyLink": "複製配裝連結",
-    "strLinkCopied": "連結已複製",
+    "strEquip": "Equip",
+    "strEquipConfig": "EquipConfig",
+    "strSkills": "Skills",
+    "strSearch": "Search",
+    "strReset": "Reset",
+    "strCopyLink": "CopyLink",
+    "strLinkCopied": "LinkCopied",
     "parts": {
-      "weapon": "武器",
-      "helm": "頭",
-      "mail": "身",
-      "gloves": "手",
-      "belt": "腰",
-      "greaves": "腳"
+      "weapon": "weapon",
+      "helm": "helm",
+      "mail": "mail",
+      "gloves": "gloves",
+      "belt": "belt",
+      "greaves": "greaves"
     },
     "skills": {
       "iceResistance": {
-        "name": "冰耐性",
+        "name": "Ice Resistance",
         "content": [
-          "魔物的冰屬性傷害減少10%",
-          "魔物的冰屬性傷害減少20%",
-          "魔物的冰屬性傷害減少30%",
-          "魔物的冰屬性傷害減少40%",
-          "魔物的冰屬性傷害減少50%"
+          "Decreases damage from ice-element monster by 10%.",
+          "Decreases damage from ice-element monster by 20%.",
+          "Decreases damage from ice-element monster by 30%.",
+          "Decreases damage from ice-element monster by 40%.",
+          "Decreases damage from ice-element monster by 50%."
         ]
       },
       "fireResistance": {
-        "name": "火耐性",
+        "name": "Fire Resistance",
         "content": [
-          "魔物的火屬性傷害減少10%",
-          "魔物的火屬性傷害減少20%",
-          "魔物的火屬性傷害減少30%",
-          "魔物的火屬性傷害減少40%",
-          "魔物的火屬性傷害減少50%"
+          "Decreases damage from fire-element monster by 10%.",
+          "Decreases damage from fire-element monster by 20%.",
+          "Decreases damage from fire-element monster by 30%.",
+          "Decreases damage from fire-element monster by 40%.",
+          "Decreases damage from fire-element monster by 50%."
         ]
       },
       "thunderResistance": {
-        "name": "雷耐性",
+        "name": "Thunder Resistance",
         "content": [
-          "魔物的雷屬性傷害減少10%",
-          "魔物的雷屬性傷害減少20%",
-          "魔物的雷屬性傷害減少30%",
-          "魔物的雷屬性傷害減少40%",
-          "魔物的雷屬性傷害減少50%"
+          "Decreases damage from thunder-element monster by 10%.",
+          "Decreases damage from thunder-element monster by 20%.",
+          "Decreases damage from thunder-element monster by 30%.",
+          "Decreases damage from thunder-element monster by 40%.",
+          "Decreases damage from thunder-element monster by 50%."
         ]
       },
       "waterResistance": {
-        "name": "水耐性",
+        "name": "Water Resistance",
         "content": [
-          "魔物的水屬性傷害減少10%",
-          "魔物的水屬性傷害減少20%",
-          "魔物的水屬性傷害減少30%",
-          "魔物的水屬性傷害減少40%",
-          "魔物的水屬性傷害減少50%"
+          "Decreases damage from water-element monster by 10%.",
+          "Decreases damage from water-element monster by 20%.",
+          "Decreases damage from water-element monster by 30%.",
+          "Decreases damage from water-element monster by 40%.",
+          "Decreases damage from water-element monster by 50%."
         ]
       },
       "paralysisResistance": {
-        "name": "麻痺耐性",
+        "name": "Paralysis Resistance",
         "content": [
-          "受到麻痺攻擊時，20%機率麻痺無效",
-          "受到麻痺攻擊時，40%機率麻痺無效",
-          "受到麻痺攻擊時，60%機率麻痺無效",
-          "受到麻痺攻擊時，80%機率麻痺無效",
-          "麻痺無效"
+          "Grants a 20% chance of preventing paralysis status when damaged by a paralysis-element attack.",
+          "Grants a 40% chance of preventing paralysis status when damaged by a paralysis-element attack.",
+          "Grants a 60% chance of preventing paralysis status when damaged by a paralysis-element attack.",
+          "Grants a 80% chance of preventing paralysis status when damaged by a paralysis-element attack.",
+          "Paralysis has no effect"
         ]
       },
       "poisonResistance": {
-        "name": "毒耐性",
+        "name": "Poison Resistance",
         "content": [
-          "受到毒攻擊時，20%機率毒無效",
-          "受到毒攻擊時，40%機率毒無效",
-          "受到毒攻擊時，60%機率毒無效",
-          "受到毒攻擊時，80%機率毒無效",
-          "毒無效"
+          "Grants a 20% chance of preventing poison status when damaged by a poison-element attack.",
+          "Grants a 40% chance of preventing poison status when damaged by a poison-element attack.",
+          "Grants a 60% chance of preventing poison status when damaged by a poison-element attack.",
+          "Grants a 80% chance of preventing poison status when damaged by a poison-element attack.",
+          "Poison has no effect"
         ]
       },
       "fireAttackBoost": {
-        "name": "火屬性攻擊強化",
+        "name": "Fire Attack",
         "content": [
-          "武器的火屬性 +50",
-          "武器的火屬性 +100",
-          "武器的火屬性 +200",
-          "武器的火屬性 +350",
-          "武器的火屬性 +500"
+          "Increases weapon's fire-element value by 50.",
+          "Increases weapon's fire-element value by 100.",
+          "Increases weapon's fire-element value by 200.",
+          "Increases weapon's fire-element value by 350.",
+          "Increases weapon's fire-element value by 500."
         ]
       },
       "waterAttackBoost": {
-        "name": "水屬性攻擊強化",
+        "name": "Water Attack",
         "content": [
-          "武器的水屬性 +50",
-          "武器的水屬性 +100",
-          "武器的水屬性 +200",
-          "武器的水屬性 +350",
-          "武器的水屬性 +500"
+          "Increases weapon's water-element value by 50.",
+          "Increases weapon's water-element value by 100.",
+          "Increases weapon's water-element value by 200.",
+          "Increases weapon's water-element value by 350.",
+          "Increases weapon's water-element value by 500."
         ]
       },
       "iceAttackBoost": {
-        "name": "冰屬性攻擊強化",
+        "name": "Ice Attack",
         "content": [
-          "武器的冰屬性 +50",
-          "武器的冰屬性 +100",
-          "武器的冰屬性 +200",
-          "武器的冰屬性 +350",
-          "武器的冰屬性 +500"
+          "Increases weapon's ice-element value by 50.",
+          "Increases weapon's ice-element value by 100.",
+          "Increases weapon's ice-element value by 200.",
+          "Increases weapon's ice-element value by 350.",
+          "Increases weapon's ice-element value by 500."
         ]
       },
       "thunderAttackBoost": {
-        "name": "雷屬性攻擊強化",
+        "name": "Thunder Attack",
         "content": [
-          "武器的雷屬性 +50",
-          "武器的雷屬性 +100",
-          "武器的雷屬性 +200",
-          "武器的雷屬性 +350",
-          "武器的雷屬性 +500"
+          "Increases weapon's thunder-element value by 50.",
+          "Increases weapon's thunder-element value by 100.",
+          "Increases weapon's thunder-element value by 200.",
+          "Increases weapon's thunder-element value by 350.",
+          "Increases weapon's thunder-element value by 500."
         ]
       },
       "dragonAttackBoost": {
-        "name": "龍屬性攻擊強化",
+        "name": "Dragon Attack",
         "content": [
-          "武器的龍屬性 +50",
-          "武器的龍屬性 +100",
-          "武器的龍屬性 +200",
-          "武器的龍屬性 +350",
-          "武器的龍屬性 +500"
+          "Increases weapon's dragon-element value by 50.",
+          "Increases weapon's dragon-element value by 100.",
+          "Increases weapon's dragon-element value by 200.",
+          "Increases weapon's dragon-element value by 350.",
+          "Increases weapon's dragon-element value by 500."
         ]
       },
       "poisonAttackBoost": {
-        "name": "毒屬性強化",
+        "name": "Poison Attack",
         "content": [
-          "武器的毒累積值 +50",
-          "武器的毒累積值 +75",
-          "武器的毒累積值 +100",
-          "武器的毒累積值 +125",
-          "武器的毒累積值 +150"
+          "Increases weapon's poison buildup value by 50.",
+          "Increases weapon's poison buildup value by 75.",
+          "Increases weapon's poison buildup value by 100.",
+          "Increases weapon's poison buildup value by 125.",
+          "Increases weapon's poison buildup value by 150."
         ]
       },
       "paralysisAttackBoost": {
-        "name": "麻痺屬性強化",
+        "name": "Paralysis Attack",
         "content": [
-          "武器的麻痺累積值 +50",
-          "武器的麻痺累積值 +75",
-          "武器的麻痺累積值 +100",
-          "武器的麻痺累積值 +125",
-          "武器的麻痺累積值 +150"
+          "Increases weapon's paralysis buildup value by 50.",
+          "Increases weapon's paralysis buildup value by 75.",
+          "Increases weapon's paralysis buildup value by 100.",
+          "Increases weapon's paralysis buildup value by 125.",
+          "Increases weapon's paralysis buildup value by 150."
         ]
       },
       "unshaken": {
-        "name": "不屈",
+        "name": "Fortify",
         "content": [
-          "體力歸零並復活後，10秒內攻擊力 +10%",
-          "體力歸零並復活後，10秒內攻擊力 +15%",
-          "體力歸零並復活後，10秒內攻擊力 +20%",
-          "體力歸零並復活後，10秒內攻擊力 +30%",
-          "體力歸零並復活後，10秒內攻擊力 +40%"
+          "Increases attack power by 10% for 10 seconds each time you revive after fainting during a hunt.",
+          "Increases attack power by 15% for 10 seconds each time you revive after fainting during a hunt.",
+          "Increases attack power by 20% for 10 seconds each time you revive after fainting during a hunt.",
+          "Increases attack power by 30% for 10 seconds each time you revive after fainting during a hunt.",
+          "Increases attack power by 40% for 10 seconds each time you revive after fainting during a hunt."
         ]
       },
       "criticalEye": {
-        "name": "看破",
+        "name": "Critical Eye",
         "content": [
-          "會心率 +10%",
-          "會心率 +15%",
-          "會心率 +20%",
-          "會心率 +30%",
-          "會心率 +40%"
+          "Increases affinity by 10%.",
+          "Increases affinity by 15%.",
+          "Increases affinity by 20%.",
+          "Increases affinity by 30%.",
+          "Increases affinity by 40%."
         ]
       },
       "attack": {
-        "name": "攻擊",
+        "name": "Attack Boost",
         "content": [
-          "攻擊力 +20",
-          "攻擊力 +40",
-          "攻擊力 +60",
-          "攻擊力 +80",
-          "攻擊力 +120"
+          "Increases attack power by 20.",
+          "Increases attack power by 40.",
+          "Increases attack power by 60.",
+          "Increases attack power by 80.",
+          "Increases attack power by 120."
         ]
       },
       "defense": {
-        "name": "防禦",
+        "name": "Defense Boost",
         "content": [
-          "防禦力 +20",
-          "防禦力 +40",
-          "防禦力 +60",
-          "防禦力 +80",
-          "防禦力 +100"
+          "Increases defense by 20.",
+          "Increases defense by 40.",
+          "Increases defense by 60.",
+          "Increases defense by 80.",
+          "Increases defense by 100."
         ]
       },
       "healthBoost": {
-        "name": "體力增強",
+        "name": "Health Boost",
         "content": [
-          "體力上限 +10",
-          "體力上限 +20",
-          "體力上限 +30",
-          "體力上限 +40",
-          "體力上限 +50"
+          "Increases health by 10.",
+          "Increases health by 20.",
+          "Increases health by 30.",
+          "Increases health by 40.",
+          "Increases health by 50."
         ]
       },
       "staminaThief": {
-        "name": "軀幹強化",
+        "name": "Firm Foothold",
         "content": [
-          "受到傷害時，後仰動作稍微輕減",
-          "受到傷害時，後仰動作小幅輕減",
-          "受到傷害時，後仰動作輕減"
+          "Very slightly reduces knockback when taking damage.",
+          "Slightly reduces knockback when taking damage.",
+          "Moderately reduces knockback when taking damage."
         ]
       },
       "heroics": {
-        "name": "愈戰愈勇",
+        "name": "Rising Tide",
         "content": [
-          "剩餘狩獵時間越少，攻擊及防禦力稍微上升",
-          "剩餘狩獵時間越少，攻擊及防禦力小幅上升",
-          "剩餘狩獵時間越少，攻擊及防禦力上升",
-          "剩餘狩獵時間越少，攻擊及防禦力大幅上升",
-          "剩餘狩獵時間越少，攻擊及防禦力特大上升"
+          "Very slightly increases attack power and defense as the hunt timer runs out.",
+          "Slightly increases attack power and defense as the hunt timer runs out.",
+          "Moderately increases attack power and defense as the hunt timer runs out.",
+          "Greatly increases attack power and defense as the hunt timer runs out.",
+          "Massively increases attack power and defense as the hunt timer runs out."
         ]
       },
       "lockOn": {
-        "name": "鎖定",
-        "content": ["使用近戰武器時，可使用「鎖定」按鈕瞄準指定的魔物部位"]
+        "name": "Lock On",
+        "content": [
+          "If using close-range weapons, it displays a lock-on button while hunting, allowing a specific monster body part to be targeted."
+        ]
       },
       "tenacity": {
-        "name": "毅力",
+        "name": "Guts",
         "content": [
-          "每次狩獵僅限一次，體力80以上時就算受到致命攻擊，也不會力盡",
-          "每次狩獵僅限一次，體力70以上時就算受到致命攻擊，也不會力盡",
-          "每次狩獵僅限一次，體力60以上時就算受到致命攻擊，也不會力盡",
-          "每次狩獵僅限一次，體力50以上時就算受到致命攻擊，也不會力盡",
-          "每次狩獵僅限一次，體力40以上時就算受到致命攻擊，也不會力盡"
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 80 health or above.",
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 70 health or above.",
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 60 health or above.",
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 50 health or above.",
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 40 health or above."
         ]
       },
       "lastStand": {
-        "name": "背水防禦",
+        "name": "Last Stand",
         "content": [
-          "體力29%或以下時，防禦力 +50",
-          "體力29%或以下時，防禦力 +100",
-          "體力29%或以下時，防禦力 +150",
-          "體力29%或以下時，防禦力 +200",
-          "體力29%或以下時，防禦力 +300"
+          "Increases defense by 50 when your health drops to 29% or lower.",
+          "Increases defense by 100 when your health drops to 29% or lower.",
+          "Increases defense by 150 when your health drops to 29% or lower.",
+          "Increases defense by 200 when your health drops to 29% or lower.",
+          "Increases defense by 300 when your health drops to 29% or lower."
         ]
       },
       "evadeDistanceUP": {
-        "name": "迴避距離UP",
+        "name": "Evade Extender",
         "content": [
-          "迴避距離稍微延長",
-          "迴避距離小幅延長",
-          "迴避距離延長",
-          "迴避距離大幅延長",
-          "迴避距離特大延長"
+          "Very slightly extends evasion distance.",
+          "Slightly extends evasion distance.",
+          "Moderately extends evasion distance.",
+          "Greatly extends evasion distance.",
+          "Massively extends evasion distance."
         ]
       },
       "counterstrike": {
-        "name": "攻擊守勢",
+        "name": "Offensive Guard",
         "content": [
-          "成功防禦魔物的攻擊後，10秒內攻擊力 +10%",
-          "成功防禦魔物的攻擊後，10秒內攻擊力 +15%",
-          "成功防禦魔物的攻擊後，10秒內攻擊力 +20%",
-          "成功防禦魔物的攻擊後，10秒內攻擊力 +30%",
-          "成功防禦魔物的攻擊後，10秒內攻擊力 +40%"
+          "Increases attack power by 10% for 10 seconds after executing a well-timed guard.",
+          "Increases attack power by 15% for 10 seconds after executing a well-timed guard.",
+          "Increases attack power by 20% for 10 seconds after executing a well-timed guard.",
+          "Increases attack power by 30% for 10 seconds after executing a well-timed guard.",
+          "Increases attack power by 40% for 10 seconds after executing a well-timed guard."
         ]
       },
       "focus": {
-        "name": "集中",
+        "name": "Focus",
         "content": [
-          "儲力攻擊時間減低 5%，太刀練氣計上升率 +5%",
-          "儲力攻擊時間減低 10%，太刀練氣計上升率 +10%",
-          "儲力攻擊時間減低 15%，太刀練氣計上升率 +15%",
-          "儲力攻擊時間減低 20%，太刀練氣計上升率 +20%",
-          "儲力攻擊時間減低 30%，太刀練氣計上升率 +30%"
+          "Shortens charging time for weapons with charge attacks by 5%, and increases the fill rate of the Spirit Gauge by 5%.",
+          "Shortens charging time for weapons with charge attacks by 10%, and increases the fill rate of the Spirit Gauge by 10%.",
+          "Shortens charging time for weapons with charge attacks by 15%, and increases the fill rate of the Spirit Gauge by 15%.",
+          "Shortens charging time for weapons with charge attacks by 20%, and increases the fill rate of the Spirit Gauge by 20%.",
+          "Shortens charging time for weapons with charge attacks by 30%, and increases the fill rate of the Spirit Gauge by 30%."
         ]
       },
       "defenseUp": {
-        "name": "防禦性能",
+        "name": "Guard",
         "content": [
-          "防禦魔物的攻擊時，傷害稍微輕減",
-          "防禦魔物的攻擊時，傷害小幅輕減",
-          "防禦魔物的攻擊時，傷害輕減",
-          "防禦魔物的攻擊時，傷害大幅輕減",
-          "防禦魔物的攻擊時，傷害特大輕減"
+          "Very slightly reduces damage and knockback when guarding against monster attacks.",
+          "Slightly reduces damage and knockback when guarding against monster attacks.",
+          "Moderately reduces damage and knockback when guarding against monster attacks.",
+          "Greatly reduces damage and knockback when guarding against monster attacks.",
+          "Massively reduces damage and knockback when guarding against monster attacks."
         ]
       },
       "recoilReduction": {
-        "name": "反動輕減",
+        "name": "Recoil Down",
         "content": [
-          "弩發射時，後座力小幅輕減",
-          "弩發射時，後座力輕減",
-          "弩發射時，後座力大幅輕減"
+          "Slightly reduces bowgun recoil.",
+          "Moderately reduces bowgun recoil.",
+          "Greatly reduces bowgun recoil."
         ]
       },
       "sneakAttack": {
-        "name": "黑暗突襲",
+        "name": "Sneak Attack",
         "content": [
-          "攻擊魔物的背後時，傷害 +10%",
-          "攻擊魔物的背後時，傷害 +15%",
-          "攻擊魔物的背後時，傷害 +20%",
-          "攻擊魔物的背後時，傷害 +25%",
-          "攻擊魔物的背後時，傷害 +30%"
+          "Increases damage by 10% when attacking a monster from behind.",
+          "Increases damage by 15% when attacking a monster from behind.",
+          "Increases damage by 20% when attacking a monster from behind.",
+          "Increases damage by 25% when attacking a monster from behind.",
+          "Increases damage by 30% when attacking a monster from behind."
         ]
       },
       "earplugs": {
-        "name": "耳塞",
+        "name": "Earplugs",
         "content": [
-          "小幅減輕咆哮【小】的影響",
-          "減輕咆哮【小】的影響",
-          "使咆哮【小】無效，小幅減輕咆哮【大】的影響",
-          "使咆哮【小】無效，減輕咆哮【大】的影響",
-          "使咆哮【小】【大】無效"
+          "Slightly reduces the effects of weak monster roars.",
+          "Moderately reduces the effects of weak monster roars.",
+          "Nullifies the effects of weak monster roars, and slightly reduces the effects of strong monster roars.",
+          "Nullifies the effects of weak monster roars, and moderately reduces the effects of strong monster roars.",
+          "Nullifies the effects of both weak and strong monster roars."
         ]
       },
       "loadingSpeed": {
-        "name": "裝填速度",
+        "name": "Reload Speed",
         "content": [
-          "弩的裝填時間小幅縮短",
-          "弩的裝填時間縮短",
-          "弩的裝填時間大幅縮短"
+          "Slightly reduces reload time for bowguns.",
+          "Moderately reduces reload time for bowguns.",
+          "Greatly reduces reload time for bowguns."
         ]
       },
       "perfectEvasion": {
-        "name": "完美迴避強化",
+        "name": "Artful Dodger",
         "content": [
-          "完美迴避的時機稍微延長",
-          "完美迴避的時機小幅延長",
-          "完美迴避的時機延長",
-          "完美迴避的時機大幅延長",
-          "完美迴避的時機特大延長"
+          "Makes perfect evades ever so slightly easier to perform.",
+          "Makes perfect evades slightly easier to perform.",
+          "Makes perfect evades moderately easier to perform.",
+          "Makes perfect evades much easier to perform.",
+          "Makes perfect evades significantly easier to perform."
         ]
       },
       "spRapidCharge": {
-        "name": "SP儲力加速",
+        "name": "Concentration",
         "content": [
-          "SP計的增加量 +5%",
-          "SP計的增加量 +10%",
-          "SP計的增加量 +15%",
-          "SP計的增加量 +20%",
-          "SP計的增加量 +30%"
+          "Increases Special Gauge fill rate by 5%",
+          "Increases Special Gauge fill rate by 10%",
+          "Increases Special Gauge fill rate by 15%",
+          "Increases Special Gauge fill rate by 20%",
+          "Increases Special Gauge fill rate by 30%"
         ]
       },
       "spSkillBoost": {
-        "name": "SP技能威力提升",
+        "name": "Special Boost",
         "content": [
-          "SP技能威力 +10%",
-          "SP技能威力 +15%",
-          "SP技能威力 +20%",
-          "SP技能威力 +25%",
-          "SP技能威力 +30%"
+          "Increases the damage of Special Skills by 10%",
+          "Increases the damage of Special Skills by 15%",
+          "Increases the damage of Special Skills by 20%",
+          "Increases the damage of Special Skills by 25%",
+          "Increases the damage of Special Skills by 30%"
         ]
       },
       "windProof": {
-        "name": "風壓耐性",
+        "name": "Windproof",
         "content": [
-          "小幅減輕風壓【小】的影響",
-          "減輕風壓【小】的影響",
-          "使風壓【小】無效，小幅減輕風壓【大】的影響",
-          "使風壓【小】無效，減輕風壓【大】的影響",
-          "使風壓【小】【大】無效"
+          "Slightly reduces the effects of minor wind pressure.",
+          "Reduces the effects of minor wind pressure.",
+          "Negates minor wind pressure and slightly reduces the effects of major wind pressure.",
+          "Negates minor wind pressure and reduces the effects of major wind pressure.",
+          "Negates minor and major wind pressure."
         ]
       },
       "peakPerformance": {
-        "name": "體力充沛",
+        "name": "Peak Performance",
         "content": [
-          "體力全滿時，攻擊力 +30",
-          "體力全滿時，攻擊力 +60",
-          "體力全滿時，攻擊力 +90",
-          "體力全滿時，攻擊力 +130",
-          "體力全滿時，攻擊力 +180"
+          "Increases attack power by 30 when your health is full.",
+          "Increases attack power by 60 when your health is full.",
+          "Increases attack power by 90 when your health is full.",
+          "Increases attack power by 130 when your health is full.",
+          "Increases attack power by 180 when your health is full."
         ]
       },
       "divineBlessing": {
-        "name": "精靈加護",
+        "name": "Divine Blessing",
         "content": [
-          "受到傷害時，30%機率使傷害減低 50%",
-          "受到傷害時，40%機率使傷害減低 50%",
-          "受到傷害時，50%機率使傷害減低 50%",
-          "受到傷害時，50%機率使傷害減低 60%",
-          "受到傷害時，50%機率使傷害減低 80%"
+          "30% chance of reducing damage from a monster's attack by 50%",
+          "40% chance of reducing damage from a monster's attack by 50%",
+          "50% chance of reducing damage from a monster's attack by 50%",
+          "50% chance of reducing damage from a monster's attack by 60%",
+          "50% chance of reducing damage from a monster's attack by 80%"
         ]
       },
       "comboPro": {
-        "name": "連擊",
+        "name": "Burst",
         "content": [
-          "短時間內連續攻擊魔物後，4秒內攻擊力 +5%",
-          "短時間內連續攻擊魔物後，4秒內攻擊力 +10%",
-          "短時間內連續攻擊魔物後，4秒內攻擊力 +15%",
-          "短時間內連續攻擊魔物後，4秒內攻擊力 +20%",
-          "短時間內連續攻擊魔物後，4秒內攻擊力 +30%"
+          "Landing consecutive hits in a short span of time increases attack power by 5% for 4 seconds.",
+          "Landing consecutive hits in a short span of time increases attack power by 10% for 4 seconds.",
+          "Landing consecutive hits in a short span of time increases attack power by 15% for 4 seconds.",
+          "Landing consecutive hits in a short span of time increases attack power by 20% for 4 seconds.",
+          "Landing consecutive hits in a short span of time increases attack power by 30% for 4 seconds."
         ]
       },
       "firestarter": {
-        "name": "火場怪力",
+        "name": "Heroics",
         "content": [
-          "體力29%或以下時，攻擊力 +10%",
-          "體力29%或以下時，攻擊力 +20%",
-          "體力29%或以下時，攻擊力 +30%",
-          "體力29%或以下時，攻擊力 +40%",
-          "體力29%或以下時，攻擊力 +50%"
+          "Increases attack power by 10% when your health drops to 29% or lower.",
+          "Increases attack power by 20% when your health drops to 29% or lower.",
+          "Increases attack power by 30% when your health drops to 29% or lower.",
+          "Increases attack power by 40% when your health drops to 29% or lower.",
+          "Increases attack power by 50% when your health drops to 29% or lower."
         ]
       },
       "koKing": {
-        "name": "KO術",
+        "name": "Slugger",
         "content": [
-          "昏厥威力 +10%",
-          "昏厥威力 +15%",
-          "昏厥威力 +20%",
-          "昏厥威力 +25%",
-          "昏厥威力 +30%"
+          "Increases stun power by 10%",
+          "Increases stun power by 15%",
+          "Increases stun power by 20%",
+          "Increases stun power by 25%",
+          "Increases stun power by 30%"
         ]
       },
       "partbreaker": {
-        "name": "破壞王",
+        "name": "Partbreaker",
         "content": [
-          "對可破壞部位的傷害累積值 +5%",
-          "對可破壞部位的傷害累積值 +10%",
-          "對可破壞部位的傷害累積值 +20%",
-          "對可破壞部位的傷害累積值 +30%",
-          "對可破壞部位的傷害累積值 +40%"
+          "Increases part damage accumulated on breakable parts by 5%",
+          "Increases part damage accumulated on breakable parts by 10%",
+          "Increases part damage accumulated on breakable parts by 20%",
+          "Increases part damage accumulated on breakable parts by 30%",
+          "Increases part damage accumulated on breakable parts by 40%"
         ]
       },
       "weaknessExploit": {
-        "name": "弱點特效",
+        "name": "Weakness Exploit",
         "content": [
-          "攻擊弱點部位時，會心率 +20%",
-          "攻擊弱點部位時，會心率 +25%",
-          "攻擊弱點部位時，會心率 +30%",
-          "攻擊弱點部位時，會心率 +40%",
-          "攻擊弱點部位時，會心率 +50%"
+          "Increases affinity by 20% when attacking a monster's weak spot.",
+          "Increases affinity by 25% when attacking a monster's weak spot.",
+          "Increases affinity by 30% when attacking a monster's weak spot.",
+          "Increases affinity by 40% when attacking a monster's weak spot.",
+          "Increases affinity by 50% when attacking a monster's weak spot."
         ]
       },
       "resentment": {
-        "name": "怨恨",
+        "name": "Resentment",
         "content": [
-          "獵人受到傷害時，攻擊力15秒內上升10%",
-          "獵人受到傷害時，攻擊力15秒內上升15%",
-          "獵人受到傷害時，攻擊力15秒內上升20%",
-          "獵人受到傷害時，攻擊力15秒內上升25%",
-          "獵人受到傷害時，攻擊力15秒內上升30%"
+          "When taking damage, attack power is increased by 10% for 15 seconds.",
+          "When taking damage, attack power is increased by 15% for 15 seconds.",
+          "When taking damage, attack power is increased by 20% for 15 seconds.",
+          "When taking damage, attack power is increased by 25% for 15 seconds.",
+          "When taking damage, attack power is increased by 30% for 15 seconds."
         ]
       },
       "solidarity": {
-        "name": "團結力",
+        "name": "Solidarity",
         "content": [
-          "單人時攻擊力 +1% (僅限無屬部分)，組隊時效果乘以隊中發動團結力的人數。※【萬聖節 秋季採南瓜】活動期間內的效果額外乘以5倍"
+          "Increases raw attack power by 1%. The effect is multiplied by the number of hunters who are wearing it in the team. *During the Halloween Pumpkin Hunt event, extra 5 times the effect."
         ]
       },
       "criticalBoost": {
@@ -454,7 +519,7 @@
   "equipSetting": {
     "alloy": {
       "id": 0,
-      "name": "礦石",
+      "name": "Iron Ore",
       "unlock": 1,
       "equip": {
         "weapon": [
@@ -474,7 +539,7 @@
     },
     "leather": {
       "id": 1,
-      "name": "皮製",
+      "name": "Leather",
       "unlock": 1,
       "equip": {
         "helm": [
@@ -542,7 +607,7 @@
     },
     "g-jagr": {
       "id": 2,
-      "name": "大凶豺龍",
+      "name": "Great Jagras",
       "unlock": 1,
       "equip": {
         "weapon": [
@@ -643,7 +708,7 @@
     },
     "kulu": {
       "id": 3,
-      "name": "搔鳥",
+      "name": "Kulu-Ya-Ku",
       "equip": {
         "weapon": [
           {
@@ -738,7 +803,7 @@
     },
     "puke": {
       "id": 4,
-      "name": "毒妖鳥",
+      "name": "Pukei-Pukei",
       "unlock": 1,
       "equip": {
         "weapon": [
@@ -834,7 +899,7 @@
     },
     "barr": {
       "id": 5,
-      "name": "土砂龍",
+      "name": "Barroth",
       "equip": {
         "weapon": [
           {
@@ -934,7 +999,7 @@
     },
     "g-girr": {
       "id": 6,
-      "name": "大凶顎龍",
+      "name": "Great Girros",
       "unlock": 2,
       "equip": {
         "weapon": [
@@ -1025,7 +1090,7 @@
     },
     "tobi": {
       "id": 7,
-      "name": "飛雷龍",
+      "name": "Tobi-Kadachi",
       "unlock": 2,
       "equip": {
         "weapon": [
@@ -1121,7 +1186,7 @@
     },
     "paol": {
       "id": 8,
-      "name": "浮空龍",
+      "name": "Paolumu",
       "unlock": 3,
       "equip": {
         "weapon": [
@@ -1221,7 +1286,7 @@
     },
     "jyur": {
       "id": 9,
-      "name": "泥魚龍",
+      "name": "Jyuratodus",
       "unlock": 3,
       "equip": {
         "weapon": [
@@ -1317,7 +1382,7 @@
     },
     "anja": {
       "id": 10,
-      "name": "蠻顎龍",
+      "name": "Anjanath",
       "unlock": 4,
       "equip": {
         "weapon": [
@@ -1408,7 +1473,7 @@
     },
     "rathi": {
       "id": 11,
-      "name": "雌火龍",
+      "name": "Rathian",
       "unlock": 4,
       "equip": {
         "weapon": [
@@ -1509,7 +1574,7 @@
     },
     "legi": {
       "id": 12,
-      "name": "風漂龍",
+      "name": "Legiana",
       "unlock": 5,
       "equip": {
         "weapon": [
@@ -1605,7 +1670,7 @@
     },
     "diab": {
       "id": 13,
-      "name": "角龍",
+      "name": "Diablos",
       "equip": {
         "weapon": [
           {
@@ -1695,7 +1760,7 @@
     },
     "ratha": {
       "id": 14,
-      "name": "火龍",
+      "name": "Rathalos",
       "unlock": 5,
       "equip": {
         "weapon": [
@@ -1786,7 +1851,7 @@
     },
     "b-diab": {
       "id": 15,
-      "name": "黑角龍",
+      "name": "Black Diablos",
       "unlock": 5,
       "equip": {
         "weapon": [
@@ -1877,7 +1942,7 @@
     },
     "p-rathi": {
       "id": 16,
-      "name": "櫻火龍",
+      "name": "Pink Rathian",
       "unlock": 5,
       "equip": {
         "weapon": [

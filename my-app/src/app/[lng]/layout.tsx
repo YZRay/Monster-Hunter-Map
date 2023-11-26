@@ -66,7 +66,7 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
-        <Navbar />
+        <Navbar lng={lng} />
         {children}
         <footer className="py-2 bg-slate-900 relative bottom-0 w-full">
           <div className="text-white text-center">

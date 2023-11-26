@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
@@ -6,17 +7,19 @@ import MonsterIcon from "../../../public/assets/icons/monster_icon.svg";
 import AboutIcon from "../../../public/assets/icons/about.svg";
 import NewsIcon from "../../../public/assets/icons/news.svg";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "../../app/i18n/client";
 
-export default function Navigation({ locale }: { locale: string }) {
+export default function Navigation({ lng }: { lng: string }) {
   const pathname = usePathname();
+  const { t } = useTranslation(lng, "data");
 
   return (
     <div className="w-full xl:w-max xl:flex gap-4">
       <Link
-        href={`/${locale}`}
-        locale={locale}
+        href={`/${lng}`}
+        locale={lng}
         className={`${
-          pathname === "/" || pathname === `/${locale}` ? "active" : ""
+          pathname === "/" || pathname === `/${lng}` ? "active" : ""
         } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center md:gap-2 text-lg`}
       >
         <Image
@@ -26,11 +29,11 @@ export default function Navigation({ locale }: { locale: string }) {
           width={40}
           height={40}
         />
-        {t("map")}
+        {t("navigation.map")}
       </Link>
       <Link
-        href={`/${locale}/equipment`}
-        locale={locale}
+        href={`/${lng}/equipment`}
+        locale={lng}
         className={`${
           pathname.includes("equipment") ? "active" : ""
         } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
@@ -42,10 +45,11 @@ export default function Navigation({ locale }: { locale: string }) {
           width={40}
           height={40}
         />
-        {t("setting")}
+        {t("navigation.setting")}
       </Link>
       <Link
-        href={`/${locale}/news`}
+        href={`/${lng}/news`}
+        locale={lng}
         className={`${
           pathname.includes("news") ? "active" : ""
         } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
@@ -57,12 +61,13 @@ export default function Navigation({ locale }: { locale: string }) {
           width={40}
           height={40}
         />
-        {t("new")}
+        {t("navigation.new")}
       </Link>
       <Link
-        href={`/${locale}/about`}
+        href={`/${lng}/about`}
+        locale={lng}
         className={`${
-          pathname.includes("about") ? "active" : ""
+          pathname.includes("navigation.about") ? "active" : ""
         } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
       >
         <Image
@@ -72,7 +77,7 @@ export default function Navigation({ locale }: { locale: string }) {
           width={40}
           height={40}
         />
-        {t("about")}
+        {t("navigation.about")}
       </Link>
     </div>
   );

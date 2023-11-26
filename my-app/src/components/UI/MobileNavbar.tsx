@@ -1,14 +1,16 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import { usePathname } from "next/navigation";
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import Navigation from "./Navigation";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 interface IProps {
   show: boolean;
   toggleShow: () => void;
+  lng: string;
 }
-const MobileNavbar = ({ show, toggleShow }: IProps) => {
+const MobileNavbar = ({ show, toggleShow, lng }: IProps) => {
   const ModalOverlay = () => (
     <div
       className={`flex xl:hidden fixed top-0 right-0 bottom-0 left-0 bg-slate-400 opacity-50 z-30 transition-all duration-500`}
@@ -29,39 +31,8 @@ const MobileNavbar = ({ show, toggleShow }: IProps) => {
         >
           <XMarkIcon className="w-8"></XMarkIcon>
         </button>
-        <Link
-          href="/"
-          className={`${
-            pathname === "/" ? "active" : ""
-          } monster-tab-mobile flex items-center md:gap-2 text-lg`}
-        >
-          地圖資訊
-        </Link>
-        <Link
-          href="/equipment"
-          className={`${
-            pathname === "/equipment" ? "active" : ""
-          } monster-tab-mobile flex items-center gap-2 text-lg`}
-        >
-          配裝資訊
-        </Link>
-        <Link
-          href="/news"
-          className={`${
-            pathname === "/news" ? "active" : ""
-          } monster-tab-mobile flex items-center gap-2 text-lg`}
-        >
-          最新消息
-        </Link>
-        <Link
-          href="/about"
-          className={`${
-            pathname === "/about" ? "active" : ""
-          } monster-tab-mobile flex items-center gap-2 text-lg`}
-        >
-          關於我們
-        </Link>
-
+        <Navigation lng={lng} />
+        <LanguageSwitcher />
         <Link
           href={"https://lin.ee/g3FujGH"}
           target="_blank"

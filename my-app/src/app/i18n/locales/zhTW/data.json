@@ -1,5 +1,68 @@
 {
   "title": "Monster Hunter Now 魔物地圖",
+  "LocaleSwitcher": "中文",
+  "navigation": {
+    "map": "地圖資訊",
+    "setting": "配裝資訊",
+    "about": "關於我們",
+    "new": "最新消息"
+  },
+  "ArmorSetting": {
+    "click": "請點擊下方欄位",
+    "watch": "查看武器",
+    "hide": "收起武器資訊",
+    "unlock": "等解鎖",
+    "unknown": "未知"
+  },
+  "SkillSetting": {
+    "watch": "查看技能",
+    "hide": "收起技能資訊"
+  },
+  "Selection": {
+    "type": "種類",
+    "level": "等級",
+    "information": "魔物資訊"
+  },
+  "MonsterMap": {
+    "open": "打開魔物搜尋欄",
+    "close": "關閉魔物搜尋欄",
+    "searchArea": "搜尋地區",
+    "upload": "上傳魔物資訊",
+    "download": "重新取得魔物資訊",
+    "eyewitness": "目擊資訊",
+    "dynamicMap": "動態地圖",
+    "copy": "已複製位置",
+    "copyFailed": "複製失敗",
+    "round": "周目",
+    "reporting": "回報中！",
+    "success": "回報成功！",
+    "error": "回報失敗！",
+    "current": "當前位置",
+    "closeMap": "關閉地圖",
+    "monsterMap": "魔物地圖",
+    "getCurrent": "取得位置",
+    "gotCurrent": "已取得",
+    "submit": "送出表單",
+    "cancel": "取消",
+    "share": "分享魔物資訊",
+    "level": "魔物等級",
+    "Latitude": "經緯度",
+    "LatitudePlaceholder": "請輸入經緯度",
+    "all": "全部",
+    "monsterName": "魔物名稱",
+    "huntingGuide": "狩獵指南",
+    "hitzone": "部位與肉質",
+    "cutting": "斬擊",
+    "impact": "打擊",
+    "shot": "彈藥",
+    "ecology": "生態",
+    "generation": "出現區域",
+    "weakness": "弱點屬性",
+    "material": "素材",
+    "element": "屬性異常",
+    "status": "狀態異常",
+    "effectiveness": "有效程度"
+  },
   "baseSetting": {
     "strEquip": "裝備",
     "strEquipConfig": "配裝",
