@@ -30,6 +30,7 @@ const MonsterModal: FC<MonsterModalProps> = ({
 }) => {
   const { t } = useTranslation("monster");
   const { t: trans } = useTranslation("data");
+  console.log(monsterData);
 
   return (
     <Transition appear show={open} as={Fragment}>
@@ -80,14 +81,14 @@ const MonsterModal: FC<MonsterModalProps> = ({
                   <div className="flex items-center m-5 lg:m-10 gap-4 flex-col lg:flex-row">
                     <Image
                       className="w-32 h-32"
-                      src={`/assets/icons/Monster/${monsterData?.name}.svg`}
+                      src={`/assets/icons/Monster/${monsterData?.key}.svg`}
                       width={300}
                       height={300}
                       alt="equipment"
                       loading="lazy"
                     />
                     <h3 className="text-lg xl:text-3xl font-bold text-gray-800 text-center lg:text-left">
-                      {monsterData?.name}
+                      {trans(`equipSetting.${monsterData?.key}.name`)}
                       <p className="text-base mt-4 hidden lg:inline-block"></p>
                     </h3>
                   </div>

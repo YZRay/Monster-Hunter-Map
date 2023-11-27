@@ -157,7 +157,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                     >
                       <Image
                         className=" h-8 w-8 md:w-12 md:h-12"
-                        src={`/assets/icons/Monster/${name.name}.svg`}
+                        src={`/assets/icons/Monster/${name.key}.svg`}
                         width={50}
                         height={50}
                         alt="equipment"

@@ -22,14 +22,12 @@ const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
   ssr: false,
 });
 
-const monsterNames = Object.values(monster.equipSetting)
+const monsterNames = Object.entries(monster.equipSetting)
   .filter(
-    (armor) =>
-      !armor.name.includes("皮製") &&
-      !armor.name.includes("礦石") &&
-      armor.mapShow
+    ([key, armor]) =>
+      !key.includes("leather") && !key.includes("alloy") && armor.mapShow
   )
-  .map((armor) => armor.name);
+  .map(([key, armor]) => key);
 
 const MapSelection = () => {
   const { t } = useTranslation("monster");

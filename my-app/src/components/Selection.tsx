@@ -76,8 +76,8 @@ const Selection: FC<SelectionProps> = ({
         <th
           scope="row"
           onClick={() => {
-            onMonsterClick(armor);
-            if (armor.name === "礦石" || armor.name === "皮製") {
+            onMonsterClick({ ...armor, key: armorKey });
+            if (armorKey === "alloy" || armorKey === "leather") {
               return setIsModalOpen(false);
             }
             setIsModalOpen(true);
@@ -87,12 +87,12 @@ const Selection: FC<SelectionProps> = ({
           <div className="flex items-center flex-col">
             <Image
               className=""
-              src={`/assets/icons/Monster/${armor.name}.svg`}
+              src={`/assets/icons/Monster/${armorKey}.svg`}
               width={60}
               height={60}
               alt="equipment"
               loading="lazy"
-            />{" "}
+            />
             {transData(`equipSetting.${armorKey}.name`)}
           </div>
         </th>

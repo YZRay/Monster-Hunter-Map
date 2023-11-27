@@ -19,6 +19,7 @@ interface Monster {
   id: number;
   name: string;
   unlock: number;
+  key: string;
 }
 interface ArmorSectionProps {
   armor: Armor[];
