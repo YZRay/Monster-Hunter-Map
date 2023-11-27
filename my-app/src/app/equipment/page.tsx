@@ -48,20 +48,31 @@ const SelectionPage: FC = () => {
     const levels: SkillLevels = {};
 
     selectedArmors.forEach((armor) => {
+      console.log(armor);
       const { equip } = armor;
       for (const key in equip) {
+        console.log(key);
         if (equip.hasOwnProperty(key)) {
-          const skillArray = equip[key];
+          const skillArray = equip[key]; 
+          const skillHighLv: { [key: string]: number } = {}
           for (const skill of skillArray) {
             const { skill: skillName, lv } = skill;
-            if (levels[skillName] === undefined) {
-              levels[skillName] = 0;
-            }
-            levels[skillName] += lv;
+            if(skillHighLv[skillName] === undefined)
+              skillHighLv[skillName] = 0;
+            if(skillHighLv[skillName] < lv)
+              skillHighLv[skillName] = lv;
+
+          }
+          for (const skillkey in skillHighLv) {
+            if(levels[skillkey] === undefined)
+              levels[skillkey] = 0;
+              
+            levels[skillkey] += skillHighLv[skillkey];
           }
         }
       }
     });
+    console.log(levels)
     return levels;
   }, [selectedArmors]);
   const monsterHandler = (monster: Monster) => {
