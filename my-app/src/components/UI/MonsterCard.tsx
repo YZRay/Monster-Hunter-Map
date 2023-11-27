@@ -28,6 +28,8 @@ const MonsterCard: FC<MonsterCardProps> = ({
   userId,
 }) => {
   const { t } = useTranslation("monster");
+  const { t: transMonster } = useTranslation("data");
+
   const imageElements = monsterNames.map((monsterName, index) => (
     <div className="max-w-[4rem] max-h-[4rem]" key={index}>
       <Image
@@ -40,6 +42,12 @@ const MonsterCard: FC<MonsterCardProps> = ({
       />
     </div>
   ));
+
+  //翻譯名字
+  const trans = monsterNames.map((monsterName) => {
+    return transMonster(`equipSetting.${monsterName}.name`);
+  });
+  const translatedMonsterNamesString = trans.join(", ");
 
   return (
     <div
@@ -65,7 +73,10 @@ const MonsterCard: FC<MonsterCardProps> = ({
               )}
             </div>
             <div>
-              <p className="text-base">{monsterNames.join(", ")}</p>
+              <p className="text-base">
+                {/* {monsterNames.join(", ")} */}
+                {translatedMonsterNamesString}
+              </p>
               <span className="text-base">
                 {item.round} {t("MonsterMap.round")}
               </span>

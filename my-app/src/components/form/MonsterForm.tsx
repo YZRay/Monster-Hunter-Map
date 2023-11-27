@@ -68,6 +68,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
     data.name = monsterNameData;
     data.coordinates = manualInput;
     data.uid = userId.userId;
+    console.log(data);
 
     setDisableSubmit(true);
 
@@ -136,7 +137,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                       type="checkbox"
                       id={`checkbox_${name.name}`}
                       {...field}
-                      value={TransMonster(`equipSetting.${name.key}.name`)}
+                      value={name.key}
                       className="w-5 h-5 bg-gray-100 border-gray-300 rounded focus:ring-lime-600 accent-lime-600"
                       onChange={(e) => {
                         const value = e.target.value;
