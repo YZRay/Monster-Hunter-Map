@@ -1,7 +1,7 @@
 // MonsterSearch.js
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, FC } from "react";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { HiChevronUpDown } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 interface SearchMonsterProps {
@@ -93,7 +93,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
               {selectedRegion ? selectedRegion : city}
             </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-              <ChevronUpDownIcon
+              <HiChevronUpDown
                 className="h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import { RxCross1 } from "react-icons/rx";
 import Navigation from "./Navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
@@ -18,10 +18,23 @@ const MobileNavbar = ({ show, toggleShow, lng }: IProps) => {
     />
   );
   const pathname = usePathname();
+
+  useEffect(() => {
+    // 在 modal 打開時禁止背景滾動
+    if (show) {
+      document.body.style.overflow = "hidden";
+    } else {
+      // 在 modal 關閉時還原背景滾動
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [show]);
   return (
     <Fragment>
       <div
-        className={`border shadow-md w-64 h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-slate-200 fixed top-0 transition-all duration-500 z-50 ${
+        className={`border shadow-md w-64 h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-slate-200 fixed top-0 transition-all duration-500  z-50 ${
           show ? "right-0" : "-right-full"
         }`}
       >
@@ -29,7 +42,7 @@ const MobileNavbar = ({ show, toggleShow, lng }: IProps) => {
           className="p-2 mb-2 hover:rotate-180 transition-all duration-300"
           onClick={() => toggleShow()}
         >
-          <XMarkIcon className="w-8"></XMarkIcon>
+          <RxCross1 className="w-8 h-8" />
         </button>
         <Navigation lng={lng} />
         <LanguageSwitcher lng={lng} />

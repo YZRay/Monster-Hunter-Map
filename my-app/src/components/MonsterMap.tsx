@@ -9,11 +9,8 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
 import { FC, useState, useLayoutEffect } from "react";
-import {
-  StarIcon,
-  FaceSmileIcon,
-  FaceFrownIcon,
-} from "@heroicons/react/24/solid";
+import { FaStar } from "react-icons/fa6";
+import { HiFaceSmile, HiFaceFrown } from "react-icons/hi2";
 import { toast } from "react-toastify";
 import useUserId from "./Hook/UserId";
 import { createBadLocation, createGoodLocation } from "./api/MLApi";
@@ -203,7 +200,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               {dataItem.name}
             </span>
             <div className="flex gap-1 items-center">
-              <FaceSmileIcon
+              <HiFaceSmile
                 title="回報正確定位"
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => {
@@ -213,7 +210,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               <span className="text-lg">{dataItem.goodLocations.length}</span>
             </div>
             <div className="flex gap-1 items-center">
-              <FaceFrownIcon
+              <HiFaceFrown
                 title="回報錯誤定位"
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => {
@@ -230,7 +227,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
                   dataItem.level > 5 ? dataItem.level - 5 : dataItem.level,
               },
               (_, index) => (
-                <StarIcon
+                <FaStar
                   key={index}
                   className={`w-5 h-5 drop-shadow-md ${
                     dataItem.level > 5 ? "text-purple-600" : "text-amber-400"

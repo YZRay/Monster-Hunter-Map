@@ -1,9 +1,6 @@
-import { useForm, Controller, Form } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
-import {
-  ChevronUpDownIcon,
-  PaperAirplaneIcon,
-} from "@heroicons/react/20/solid";
+import { HiMiniPaperAirplane, HiChevronUpDown } from "react-icons/hi2";
 import { FC } from "react";
 import { Fragment, useState } from "react";
 import GeolocationBtn from "../api/GeolocationBtn";
@@ -188,7 +185,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                   <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md ">
                     <span className="block truncate">{field.value}</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                      <ChevronUpDownIcon
+                      <HiChevronUpDown
                         className="h-5 w-5 text-gray-400"
                         aria-hidden="true"
                       />
@@ -242,7 +239,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                   <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md ">
                     <span className="block truncate">{field.value}</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                      <ChevronUpDownIcon
+                      <HiChevronUpDown
                         className="h-5 w-5 text-gray-400"
                         aria-hidden="true"
                       />
@@ -314,7 +311,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
               : "bg-slate-400 text-white hover:bg-slate-800 duration-300 " // 可以送出時
           }`}
         >
-          <PaperAirplaneIcon className="w-4 h-4" />
+          <HiMiniPaperAirplane className="w-4 h-4" />
           <span>{t("MonsterMap.submit")}</span>
         </button>
       </form>
