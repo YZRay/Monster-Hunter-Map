@@ -71,8 +71,13 @@ export default function RootLayout({
         {children}
         <footer className="py-2 bg-slate-900 relative bottom-0 w-full">
           <div className="text-white text-center">
-            <Link href="/privacy">隱私權政策</Link> |
-            <Link href="/terms">使用者條款</Link>
+            <Link href={`/${lng}/privacy`} locale={lng}>
+              隱私權政策
+            </Link>{" "}
+            |
+            <Link href={`/${lng}/terms`} locale={lng}>
+              使用者條款
+            </Link>
           </div>
         </footer>
       </body>
