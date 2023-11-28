@@ -32,7 +32,7 @@ const MobileNavbar = ({ show, toggleShow, lng }: IProps) => {
           <XMarkIcon className="w-8"></XMarkIcon>
         </button>
         <Navigation lng={lng} />
-        <LanguageSwitcher />
+        <LanguageSwitcher lng={lng} />
         <Link
           href={"https://lin.ee/g3FujGH"}
           target="_blank"

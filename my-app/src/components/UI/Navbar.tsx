@@ -27,7 +27,7 @@ const Navbar = ({ lng }: { lng: string }) => {
         <h1 className="font-bold text-xl text-slate-800">{t("title")}</h1>
         <div className="flex gap-4">
           <Navigation lng={lng} />
-          <LanguageSwitcher />
+          <LanguageSwitcher lng={lng} />
         </div>
       </div>
       <MobileNavbar show={show} toggleShow={toggleShow} lng={lng} />
