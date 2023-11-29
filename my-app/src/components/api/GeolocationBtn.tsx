@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { MapPinIcon } from "@heroicons/react/20/solid";
 import { getGeolocationData } from "./GeolocationAPI"; // 引入地理位置函數
+import { useTranslation } from "react-i18next";
+import { FaLocationDot } from "react-icons/fa6";
 
 function GeoLocationBtn({
   onGeolocationData,
@@ -12,6 +13,7 @@ function GeoLocationBtn({
 }) {
   const [isLoading, setIsLoading] = useState(false);
 
+  const { t } = useTranslation("monster");
   const getLocation = () => {
     if (isLoading) {
       return; // 如果正在載入，則不再執行
@@ -29,14 +31,18 @@ function GeoLocationBtn({
     <button
       onClick={getLocation}
       disabled={isLoading}
-      className={`w-full md:w-1/2 flex items-center justify-center rounded-md py-2 font-bold transition-all ease-linear ${
+      className={`w-full md:w-1/2 flex items-center justify-center gap-1 rounded-md py-2 font-bold transition-all ease-linear ${
         isLoading
           ? "bg-gray-300 text-gray-500 cursor-not-allowed" // 禁止上傳
           : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-pointer"
       }`}
     >
-      <MapPinIcon className="w-6 h-6" />
-      <span>{isLoading ? "已取得" : "取得位置"}</span>
+      <FaLocationDot className="w-5 h-5" />
+      <span>
+        {isLoading
+          ? `${t("MonsterMap.gotCurrent")}`
+          : `${t("MonsterMap.getCurrent")}`}
+      </span>
     </button>
   );
 }

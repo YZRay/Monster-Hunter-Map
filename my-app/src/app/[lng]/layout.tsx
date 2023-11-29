@@ -1,9 +1,18 @@
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import type { Metadata } from "next";
-import GoogleAnalytics from "../components/api/GA";
-import Adsense from "../components/api/Adsense";
+import GoogleAnalytics from "../../components/api/GA";
+import Adsense from "../../components/api/Adsense";
 import Link from "next/link";
+import Navbar from "@/components/UI/Navbar";
+import Footer from "@/components/UI/Footer";
+import { dir } from "i18next";
+import { languages } from "../i18n/settings";
+import { useTranslation, I18nextProvider } from "react-i18next";
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
 
 export const metadata: Metadata = {
   openGraph: {
@@ -45,26 +54,23 @@ export const metadata: Metadata = {
     },
   ],
 };
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { lng },
 }: {
   children: React.ReactNode;
-}) {
+  params: { lng: string };
+}) {  
   return (
-    <html lang="zh-tw">
+    <html lang={lng} dir={dir(lng)}>
       <body>
         <Adsense />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
+        <Navbar lng={lng} />
         {children}
-        <footer className="py-2 bg-slate-900 relative bottom-0 w-full">
-          <div className="text-white text-center">
-            <Link href="/privacy">隱私權政策</Link> |
-            <Link href="/terms">使用者條款</Link>
-          </div>
-        </footer>
+        <Footer lng={lng} />
       </body>
     </html>
   );

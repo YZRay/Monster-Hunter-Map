@@ -1,0 +1,70 @@
+{
+  "title": "Monster Hunter Now Map",
+  "LocaleSwitcher": "English",
+  "navigation": {
+    "map": "Map",
+    "setting": "EquipSetting",
+    "about": "About Us",
+    "new": "News",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  },
+  "ArmorSetting": {
+    "click": "Please click the table below",
+    "watch": "View weapons",
+    "hide": "Collapse weapons information",
+    "unlock": "unlock",
+    "unknown": "unknown"
+  },
+  "SkillSetting": {
+    "watch": "View skills",
+    "hide": "Collapse skills information"
+  },
+  "Selection": {
+    "type": "type",
+    "level": "level",
+    "information": "Monster information"
+  },
+  "MonsterMap": {
+    "open": "Open the search bar",
+    "unlock": "unlock",
+    "close": "Close the search bar",
+    "closeModal": "Close",
+    "searchArea": "Search area",
+    "upload": "Upload monster information",
+    "download": "Refresh monster information",
+    "eyewitness": "List View",
+    "dynamicMap": "Map View",
+    "copy": "Copy position",
+    "copyFailed": "Copy failed",
+    "round": "round",
+    "reporting": "Reporting!",
+    "success": "Report success!",
+    "error": "Report failed!",
+    "current": "Current location",
+    "closeMap": "Close map",
+    "monsterMap": "Monster Map",
+    "getCurrent": "Get location",
+    "gotCurrent": "Got",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "share": "Share information",
+    "level": "Level",
+    "Latitude": "Latitude and longitude",
+    "LatitudePlaceholder": "Please enter latitude and longitude",
+    "all": "All",
+    "monsterName": "Monster Name",
+    "huntingGuide": "Hunting Guide",
+    "hitzone": "Hitzone",
+    "cutting": "Cutting",
+    "impact": "Impact",
+    "shot": "Shot",
+    "ecology": "Ecology",
+    "generation": "Generation",
+    "weakness": "Weakness",
+    "material": "Material",
+    "element": "Element",
+    "status": "Status",
+    "effectiveness": "Effectiveness"
+  }
+}

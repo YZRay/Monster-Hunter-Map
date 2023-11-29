@@ -1,7 +1,11 @@
 import { Fragment, FC, useState } from "react";
 import data from "../data/data.json";
+import { useTranslation } from "react-i18next";
 
 const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
+  const { t } = useTranslation("monster");
+  const { t: skillsName } = useTranslation("data");
+
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   if (Object.keys(skill).length === 0) {
@@ -21,14 +25,15 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
           className=" w-max justify-center rounded-md btn py-2 px-4 font-bold "
           onClick={toggleCollapse}
         >
-          {isCollapsed ? "查看技能" : "收起技能資訊"}
+          {isCollapsed
+            ? `${t("SkillSetting.watch")}`
+            : `${t("SkillSetting.hide")}`}
         </button>
       </div>
       {!isCollapsed && (
         <div className="container grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 my-2 bg-gray-100 pb-2 pt-4 px-8 rounded-md shadow-md bg-opacity-90 gap-x-8 gap-y-4">
-          {Object.keys(skill).map((skillName) => {
+          {Object.entries(skill).map(([skillName, skillLevel]) => {
             const skillObject = skills[skillName];
-            const skillLevel = skill[skillName];
             const skillLevelLimit = skillObject.content.length;
             // 如果大於最高限制就回傳最後一個
             const skillContentIndex =
@@ -44,7 +49,7 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
               <div key={skillName} className="flex flex-col gap-1 items-start">
                 <div className="flex justify-around items-center gap-4">
                   <h3 className="font-bold text-sm md:text-md lg:text-lg text-gray-800">
-                    {skillObject?.name}
+                    {skillsName(`baseSetting.skills.${skillName}.name`)}
                   </h3>
                   <span
                     className={`font-bold text-base lg:text-lg ${
@@ -70,7 +75,9 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
                   ))}
                 </div>
                 <p className="md:mb-4 text-sm lg:text-base font-bold text-gray-700">
-                  {skillContent}
+                  {skillsName(
+                    `baseSetting.skills.${skillName}.content.${skillContentIndex}`
+                  )}
                 </p>
               </div>
             );

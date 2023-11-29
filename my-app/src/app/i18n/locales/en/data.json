@@ -1,0 +1,1971 @@
+{
+  "baseSetting": {
+    "strEquip": "Equip",
+    "strEquipConfig": "EquipConfig",
+    "strSkills": "Skills",
+    "strSearch": "Search",
+    "strReset": "Reset",
+    "strCopyLink": "CopyLink",
+    "strLinkCopied": "LinkCopied",
+    "parts": {
+      "weapon": "weapon",
+      "helm": "helm",
+      "mail": "mail",
+      "gloves": "gloves",
+      "belt": "belt",
+      "greaves": "greaves"
+    },
+    "skills": {
+      "iceResistance": {
+        "name": "Ice Resistance",
+        "content": [
+          "Decreases damage from ice-element monster by 10%.",
+          "Decreases damage from ice-element monster by 20%.",
+          "Decreases damage from ice-element monster by 30%.",
+          "Decreases damage from ice-element monster by 40%.",
+          "Decreases damage from ice-element monster by 50%."
+        ]
+      },
+      "fireResistance": {
+        "name": "Fire Resistance",
+        "content": [
+          "Decreases damage from fire-element monster by 10%.",
+          "Decreases damage from fire-element monster by 20%.",
+          "Decreases damage from fire-element monster by 30%.",
+          "Decreases damage from fire-element monster by 40%.",
+          "Decreases damage from fire-element monster by 50%."
+        ]
+      },
+      "thunderResistance": {
+        "name": "Thunder Resistance",
+        "content": [
+          "Decreases damage from thunder-element monster by 10%.",
+          "Decreases damage from thunder-element monster by 20%.",
+          "Decreases damage from thunder-element monster by 30%.",
+          "Decreases damage from thunder-element monster by 40%.",
+          "Decreases damage from thunder-element monster by 50%."
+        ]
+      },
+      "waterResistance": {
+        "name": "Water Resistance",
+        "content": [
+          "Decreases damage from water-element monster by 10%.",
+          "Decreases damage from water-element monster by 20%.",
+          "Decreases damage from water-element monster by 30%.",
+          "Decreases damage from water-element monster by 40%.",
+          "Decreases damage from water-element monster by 50%."
+        ]
+      },
+      "paralysisResistance": {
+        "name": "Paralysis Resistance",
+        "content": [
+          "Grants a 20% chance of preventing paralysis status when damaged by a paralysis-element attack.",
+          "Grants a 40% chance of preventing paralysis status when damaged by a paralysis-element attack.",
+          "Grants a 60% chance of preventing paralysis status when damaged by a paralysis-element attack.",
+          "Grants a 80% chance of preventing paralysis status when damaged by a paralysis-element attack.",
+          "Paralysis has no effect"
+        ]
+      },
+      "poisonResistance": {
+        "name": "Poison Resistance",
+        "content": [
+          "Grants a 20% chance of preventing poison status when damaged by a poison-element attack.",
+          "Grants a 40% chance of preventing poison status when damaged by a poison-element attack.",
+          "Grants a 60% chance of preventing poison status when damaged by a poison-element attack.",
+          "Grants a 80% chance of preventing poison status when damaged by a poison-element attack.",
+          "Poison has no effect"
+        ]
+      },
+      "fireAttackBoost": {
+        "name": "Fire Attack",
+        "content": [
+          "Increases weapon's fire-element value by 50.",
+          "Increases weapon's fire-element value by 100.",
+          "Increases weapon's fire-element value by 200.",
+          "Increases weapon's fire-element value by 350.",
+          "Increases weapon's fire-element value by 500."
+        ]
+      },
+      "waterAttackBoost": {
+        "name": "Water Attack",
+        "content": [
+          "Increases weapon's water-element value by 50.",
+          "Increases weapon's water-element value by 100.",
+          "Increases weapon's water-element value by 200.",
+          "Increases weapon's water-element value by 350.",
+          "Increases weapon's water-element value by 500."
+        ]
+      },
+      "iceAttackBoost": {
+        "name": "Ice Attack",
+        "content": [
+          "Increases weapon's ice-element value by 50.",
+          "Increases weapon's ice-element value by 100.",
+          "Increases weapon's ice-element value by 200.",
+          "Increases weapon's ice-element value by 350.",
+          "Increases weapon's ice-element value by 500."
+        ]
+      },
+      "thunderAttackBoost": {
+        "name": "Thunder Attack",
+        "content": [
+          "Increases weapon's thunder-element value by 50.",
+          "Increases weapon's thunder-element value by 100.",
+          "Increases weapon's thunder-element value by 200.",
+          "Increases weapon's thunder-element value by 350.",
+          "Increases weapon's thunder-element value by 500."
+        ]
+      },
+      "dragonAttackBoost": {
+        "name": "Dragon Attack",
+        "content": [
+          "Increases weapon's dragon-element value by 50.",
+          "Increases weapon's dragon-element value by 100.",
+          "Increases weapon's dragon-element value by 200.",
+          "Increases weapon's dragon-element value by 350.",
+          "Increases weapon's dragon-element value by 500."
+        ]
+      },
+      "poisonAttackBoost": {
+        "name": "Poison Attack",
+        "content": [
+          "Increases weapon's poison buildup value by 50.",
+          "Increases weapon's poison buildup value by 75.",
+          "Increases weapon's poison buildup value by 100.",
+          "Increases weapon's poison buildup value by 125.",
+          "Increases weapon's poison buildup value by 150."
+        ]
+      },
+      "paralysisAttackBoost": {
+        "name": "Paralysis Attack",
+        "content": [
+          "Increases weapon's paralysis buildup value by 50.",
+          "Increases weapon's paralysis buildup value by 75.",
+          "Increases weapon's paralysis buildup value by 100.",
+          "Increases weapon's paralysis buildup value by 125.",
+          "Increases weapon's paralysis buildup value by 150."
+        ]
+      },
+      "unshaken": {
+        "name": "Fortify",
+        "content": [
+          "Increases attack power by 10% for 10 seconds each time you revive after fainting during a hunt.",
+          "Increases attack power by 15% for 10 seconds each time you revive after fainting during a hunt.",
+          "Increases attack power by 20% for 10 seconds each time you revive after fainting during a hunt.",
+          "Increases attack power by 30% for 10 seconds each time you revive after fainting during a hunt.",
+          "Increases attack power by 40% for 10 seconds each time you revive after fainting during a hunt."
+        ]
+      },
+      "criticalEye": {
+        "name": "Critical Eye",
+        "content": [
+          "Increases affinity by 10%.",
+          "Increases affinity by 15%.",
+          "Increases affinity by 20%.",
+          "Increases affinity by 30%.",
+          "Increases affinity by 40%."
+        ]
+      },
+      "attack": {
+        "name": "Attack Boost",
+        "content": [
+          "Increases attack power by 20.",
+          "Increases attack power by 40.",
+          "Increases attack power by 60.",
+          "Increases attack power by 80.",
+          "Increases attack power by 120."
+        ]
+      },
+      "defense": {
+        "name": "Defense Boost",
+        "content": [
+          "Increases defense by 20.",
+          "Increases defense by 40.",
+          "Increases defense by 60.",
+          "Increases defense by 80.",
+          "Increases defense by 100."
+        ]
+      },
+      "healthBoost": {
+        "name": "Health Boost",
+        "content": [
+          "Increases health by 10.",
+          "Increases health by 20.",
+          "Increases health by 30.",
+          "Increases health by 40.",
+          "Increases health by 50."
+        ]
+      },
+      "staminaThief": {
+        "name": "Firm Foothold",
+        "content": [
+          "Very slightly reduces knockback when taking damage.",
+          "Slightly reduces knockback when taking damage.",
+          "Moderately reduces knockback when taking damage."
+        ]
+      },
+      "heroics": {
+        "name": "Rising Tide",
+        "content": [
+          "Very slightly increases attack power and defense as the hunt timer runs out.",
+          "Slightly increases attack power and defense as the hunt timer runs out.",
+          "Moderately increases attack power and defense as the hunt timer runs out.",
+          "Greatly increases attack power and defense as the hunt timer runs out.",
+          "Massively increases attack power and defense as the hunt timer runs out."
+        ]
+      },
+      "lockOn": {
+        "name": "Lock On",
+        "content": [
+          "If using close-range weapons, it displays a lock-on button while hunting, allowing a specific monster body part to be targeted."
+        ]
+      },
+      "tenacity": {
+        "name": "Guts",
+        "content": [
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 80 health or above.",
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 70 health or above.",
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 60 health or above.",
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 50 health or above.",
+          "Up to 1 time(s) per hunt, survive lethal damage taken at 40 health or above."
+        ]
+      },
+      "lastStand": {
+        "name": "Last Stand",
+        "content": [
+          "Increases defense by 50 when your health drops to 29% or lower.",
+          "Increases defense by 100 when your health drops to 29% or lower.",
+          "Increases defense by 150 when your health drops to 29% or lower.",
+          "Increases defense by 200 when your health drops to 29% or lower.",
+          "Increases defense by 300 when your health drops to 29% or lower."
+        ]
+      },
+      "evadeDistanceUP": {
+        "name": "Evade Extender",
+        "content": [
+          "Very slightly extends evasion distance.",
+          "Slightly extends evasion distance.",
+          "Moderately extends evasion distance.",
+          "Greatly extends evasion distance.",
+          "Massively extends evasion distance."
+        ]
+      },
+      "counterstrike": {
+        "name": "Offensive Guard",
+        "content": [
+          "Increases attack power by 10% for 10 seconds after executing a well-timed guard.",
+          "Increases attack power by 15% for 10 seconds after executing a well-timed guard.",
+          "Increases attack power by 20% for 10 seconds after executing a well-timed guard.",
+          "Increases attack power by 30% for 10 seconds after executing a well-timed guard.",
+          "Increases attack power by 40% for 10 seconds after executing a well-timed guard."
+        ]
+      },
+      "focus": {
+        "name": "Focus",
+        "content": [
+          "Shortens charging time for weapons with charge attacks by 5%, and increases the fill rate of the Spirit Gauge by 5%.",
+          "Shortens charging time for weapons with charge attacks by 10%, and increases the fill rate of the Spirit Gauge by 10%.",
+          "Shortens charging time for weapons with charge attacks by 15%, and increases the fill rate of the Spirit Gauge by 15%.",
+          "Shortens charging time for weapons with charge attacks by 20%, and increases the fill rate of the Spirit Gauge by 20%.",
+          "Shortens charging time for weapons with charge attacks by 30%, and increases the fill rate of the Spirit Gauge by 30%."
+        ]
+      },
+      "defenseUp": {
+        "name": "Guard",
+        "content": [
+          "Very slightly reduces damage and knockback when guarding against monster attacks.",
+          "Slightly reduces damage and knockback when guarding against monster attacks.",
+          "Moderately reduces damage and knockback when guarding against monster attacks.",
+          "Greatly reduces damage and knockback when guarding against monster attacks.",
+          "Massively reduces damage and knockback when guarding against monster attacks."
+        ]
+      },
+      "recoilReduction": {
+        "name": "Recoil Down",
+        "content": [
+          "Slightly reduces bowgun recoil.",
+          "Moderately reduces bowgun recoil.",
+          "Greatly reduces bowgun recoil."
+        ]
+      },
+      "sneakAttack": {
+        "name": "Sneak Attack",
+        "content": [
+          "Increases damage by 10% when attacking a monster from behind.",
+          "Increases damage by 15% when attacking a monster from behind.",
+          "Increases damage by 20% when attacking a monster from behind.",
+          "Increases damage by 25% when attacking a monster from behind.",
+          "Increases damage by 30% when attacking a monster from behind."
+        ]
+      },
+      "earplugs": {
+        "name": "Earplugs",
+        "content": [
+          "Slightly reduces the effects of weak monster roars.",
+          "Moderately reduces the effects of weak monster roars.",
+          "Nullifies the effects of weak monster roars, and slightly reduces the effects of strong monster roars.",
+          "Nullifies the effects of weak monster roars, and moderately reduces the effects of strong monster roars.",
+          "Nullifies the effects of both weak and strong monster roars."
+        ]
+      },
+      "loadingSpeed": {
+        "name": "Reload Speed",
+        "content": [
+          "Slightly reduces reload time for bowguns.",
+          "Moderately reduces reload time for bowguns.",
+          "Greatly reduces reload time for bowguns."
+        ]
+      },
+      "perfectEvasion": {
+        "name": "Artful Dodger",
+        "content": [
+          "Makes perfect evades ever so slightly easier to perform.",
+          "Makes perfect evades slightly easier to perform.",
+          "Makes perfect evades moderately easier to perform.",
+          "Makes perfect evades much easier to perform.",
+          "Makes perfect evades significantly easier to perform."
+        ]
+      },
+      "spRapidCharge": {
+        "name": "Concentration",
+        "content": [
+          "Increases Special Gauge fill rate by 5%",
+          "Increases Special Gauge fill rate by 10%",
+          "Increases Special Gauge fill rate by 15%",
+          "Increases Special Gauge fill rate by 20%",
+          "Increases Special Gauge fill rate by 30%"
+        ]
+      },
+      "spSkillBoost": {
+        "name": "Special Boost",
+        "content": [
+          "Increases the damage of Special Skills by 10%",
+          "Increases the damage of Special Skills by 15%",
+          "Increases the damage of Special Skills by 20%",
+          "Increases the damage of Special Skills by 25%",
+          "Increases the damage of Special Skills by 30%"
+        ]
+      },
+      "windProof": {
+        "name": "Windproof",
+        "content": [
+          "Slightly reduces the effects of minor wind pressure.",
+          "Reduces the effects of minor wind pressure.",
+          "Negates minor wind pressure and slightly reduces the effects of major wind pressure.",
+          "Negates minor wind pressure and reduces the effects of major wind pressure.",
+          "Negates minor and major wind pressure."
+        ]
+      },
+      "peakPerformance": {
+        "name": "Peak Performance",
+        "content": [
+          "Increases attack power by 30 when your health is full.",
+          "Increases attack power by 60 when your health is full.",
+          "Increases attack power by 90 when your health is full.",
+          "Increases attack power by 130 when your health is full.",
+          "Increases attack power by 180 when your health is full."
+        ]
+      },
+      "divineBlessing": {
+        "name": "Divine Blessing",
+        "content": [
+          "30% chance of reducing damage from a monster's attack by 50%",
+          "40% chance of reducing damage from a monster's attack by 50%",
+          "50% chance of reducing damage from a monster's attack by 50%",
+          "50% chance of reducing damage from a monster's attack by 60%",
+          "50% chance of reducing damage from a monster's attack by 80%"
+        ]
+      },
+      "comboPro": {
+        "name": "Burst",
+        "content": [
+          "Landing consecutive hits in a short span of time increases attack power by 5% for 4 seconds.",
+          "Landing consecutive hits in a short span of time increases attack power by 10% for 4 seconds.",
+          "Landing consecutive hits in a short span of time increases attack power by 15% for 4 seconds.",
+          "Landing consecutive hits in a short span of time increases attack power by 20% for 4 seconds.",
+          "Landing consecutive hits in a short span of time increases attack power by 30% for 4 seconds."
+        ]
+      },
+      "firestarter": {
+        "name": "Heroics",
+        "content": [
+          "Increases attack power by 10% when your health drops to 29% or lower.",
+          "Increases attack power by 20% when your health drops to 29% or lower.",
+          "Increases attack power by 30% when your health drops to 29% or lower.",
+          "Increases attack power by 40% when your health drops to 29% or lower.",
+          "Increases attack power by 50% when your health drops to 29% or lower."
+        ]
+      },
+      "koKing": {
+        "name": "Slugger",
+        "content": [
+          "Increases stun power by 10%",
+          "Increases stun power by 15%",
+          "Increases stun power by 20%",
+          "Increases stun power by 25%",
+          "Increases stun power by 30%"
+        ]
+      },
+      "partbreaker": {
+        "name": "Partbreaker",
+        "content": [
+          "Increases part damage accumulated on breakable parts by 5%",
+          "Increases part damage accumulated on breakable parts by 10%",
+          "Increases part damage accumulated on breakable parts by 20%",
+          "Increases part damage accumulated on breakable parts by 30%",
+          "Increases part damage accumulated on breakable parts by 40%"
+        ]
+      },
+      "weaknessExploit": {
+        "name": "Weakness Exploit",
+        "content": [
+          "Increases affinity by 20% when attacking a monster's weak spot.",
+          "Increases affinity by 25% when attacking a monster's weak spot.",
+          "Increases affinity by 30% when attacking a monster's weak spot.",
+          "Increases affinity by 40% when attacking a monster's weak spot.",
+          "Increases affinity by 50% when attacking a monster's weak spot."
+        ]
+      },
+      "resentment": {
+        "name": "Resentment",
+        "content": [
+          "When taking damage, attack power is increased by 10% for 15 seconds.",
+          "When taking damage, attack power is increased by 15% for 15 seconds.",
+          "When taking damage, attack power is increased by 20% for 15 seconds.",
+          "When taking damage, attack power is increased by 25% for 15 seconds.",
+          "When taking damage, attack power is increased by 30% for 15 seconds."
+        ]
+      },
+      "solidarity": {
+        "name": "Solidarity",
+        "content": [
+          "Increases raw attack power by 1%. The effect is multiplied by the number of hunters who are wearing it in the team. *During the Halloween Pumpkin Hunt event, extra 5 times the effect."
+        ]
+      },
+      "criticalBoost": {
+        "name": "超會心",
+        "content": [
+          "會心攻擊的傷害倍率提升至130%",
+          "會心攻擊的傷害倍率提升至135%",
+          "會心攻擊的傷害倍率提升至140%"
+        ]
+      }
+    }
+  },
+  "equipSetting": {
+    "alloy": {
+      "id": 0,
+      "name": "Iron Ore",
+      "unlock": 1,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "poisonResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "poisonResistance",
+            "lv": 2
+          }
+        ]
+      },
+      "mapShow": true
+    },
+    "leather": {
+      "id": 1,
+      "name": "Leather",
+      "unlock": 1,
+      "equip": {
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "iceResistance",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "attack",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "fireResistance",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "thunderResistance",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "waterResistance",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "poisonResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "paralysisResistance",
+            "lv": 1
+          }
+        ]
+      },
+      "mapShow": true
+    },
+    "g-jagr": {
+      "id": 2,
+      "name": "Great Jagras",
+      "unlock": 1,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "healthBoost",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "staminaThief",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "staminaThief",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "heroics",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "heroics",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "staminaThief",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "waterAttackBoost",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "unshaken",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "heroics",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "unshaken",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "waterAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "waterAttackBoost",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "water",
+      "mapShow": true,
+      "location": ["forest", "desert", "swamp"],
+      "statusEffect": {
+        "poison": 3,
+        "sleep": 3,
+        "paralysis": 3,
+        "blastblight": 3,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "kulu": {
+      "id": 3,
+      "name": "Kulu-Ya-Ku",
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "unshaken",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "unshaken",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "lockOn",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "criticalEye",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "tenacity",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "tenacity",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "lastStand",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "criticalEye",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "lastStand",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 2
+          }
+        ]
+      },
+      "unlock": 1,
+      "mapShow": true,
+      "location": ["forest", "desert", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 2
+      }
+    },
+    "puke": {
+      "id": 4,
+      "name": "Pukei-Pukei",
+      "unlock": 1,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "sneakAttack",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "focus",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "healthBoost",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "poisonResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "focus",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "poisonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "poisonResistance",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "poisonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "poisonAttackBoost",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "poisonResistance",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "poison",
+      "mapShow": true,
+      "location": ["forest", "desert", "swamp"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 3,
+        "blastblight": 2,
+        "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 0,
+        "thunder": 3,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "barr": {
+      "id": 5,
+      "name": "Barroth",
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "defense",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "counterstrike",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "counterstrike",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "counterstrike",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "defenseUp",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "defenseUp",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "defenseUp",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "recoilReduction",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "defense",
+            "lv": 2
+          }
+        ]
+      },
+      "unlock": 1,
+      "mapShow": true,
+      "location": ["desert", "swamp"],
+      "statusEffect": {
+        "poison": 3,
+        "sleep": 1,
+        "paralysis": 3,
+        "blastblight": 3,
+        "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "g-girr": {
+      "id": 6,
+      "name": "Great Girros",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "sneakAttack",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "paralysisResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "paralysisResistance",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "paralysisResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "sneakAttack",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "sneakAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "earplugs",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "paralysisAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "earplugs",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "paralysisAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "paralysisAttackBoost",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "paralysis",
+      "mapShow": true,
+      "location": ["forest", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 3,
+        "paralysis": 1,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "tobi": {
+      "id": 7,
+      "name": "Tobi-Kadachi",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "loadingSpeed",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "perfectEvasion",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "thunderAttackBoost",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "perfectEvasion",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "evadeDistanceUP",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "thunderAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "thunderAttackBoost",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "perfectEvasion",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "thunderResistance",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "thunder",
+      "mapShow": true,
+      "location": ["forest", "swamp"],
+      "statusEffect": {
+        "poison": 3,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 3,
+        "thunder": 0,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "paol": {
+      "id": 8,
+      "name": "Paolumu",
+      "unlock": 3,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "divineBlessing",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 3,
+            "skill": "spRapidCharge",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 3,
+            "skill": "recoilReduction",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "recoilReduction",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 3,
+            "skill": "spRapidCharge",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "spRapidCharge",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 3,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "divineBlessing",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 3,
+            "skill": "windProof",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 2
+          }
+        ]
+      },
+      "mapShow": true,
+      "location": ["desert", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 3,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 1
+      }
+    },
+    "jyur": {
+      "id": 9,
+      "name": "Jyuratodus",
+      "unlock": 3,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "lastStand",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 3,
+            "skill": "waterResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "lastStand",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 3,
+            "skill": "waterAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "lastStand",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 3,
+            "skill": "waterAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "waterAttackBoost",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 3,
+            "skill": "waterResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "waterResistance",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 3,
+            "skill": "focus",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "lastStand",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "water",
+      "mapShow": true,
+      "location": ["swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 1,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 1,
+        "water": 0,
+        "thunder": 3,
+        "ice": 1,
+        "dragon": 1
+      }
+    },
+    "anja": {
+      "id": 10,
+      "name": "Anjanath",
+      "unlock": 4,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "heroics",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 4,
+            "skill": "fireAttackBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "fireResistance",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 4,
+            "skill": "spSkillBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "spSkillBoost",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 4,
+            "skill": "fireAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "fireAttackBoost",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 4,
+            "skill": "fireResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "spSkillBoost",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 4,
+            "skill": "peakPerformance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "peakPerformance",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": true,
+      "location": ["forest", "desert"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 3,
+        "thunder": 2,
+        "ice": 2,
+        "dragon": 1
+      }
+    },
+    "rathi": {
+      "id": 11,
+      "name": "Rathian",
+      "unlock": 4,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "healthBoost",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "poisonAttackBoost",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 4,
+            "skill": "poisonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "poisonAttackBoost",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 4,
+            "skill": "lockOn",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "comboPro",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "comboPro",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 4,
+            "skill": "poisonResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "comboPro",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 4,
+            "skill": "healthBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "healthBoost",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "poison",
+      "mapShow": true,
+      "location": ["forest", "desert"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
+      }
+    },
+    "legi": {
+      "id": 12,
+      "name": "Legiana",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 5,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "divineBlessing",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "iceAttackBoost",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "divineBlessing",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "loadingSpeed",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "loadingSpeed",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "iceAttackBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "loadingSpeed",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "iceResistance",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "ice",
+      "mapShow": true,
+      "location": ["swamp"],
+      "statusEffect": {
+        "poison": 3,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 1,
+        "thunder": 3,
+        "ice": 0,
+        "dragon": 1
+      }
+    },
+    "diab": {
+      "id": 13,
+      "name": "Diablos",
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "firestarter",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "firestarter",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "firestarter",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "koKing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "firestarter",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "firestarter",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "partbreaker",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "partbreaker",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "counterstrike",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "koKing",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "partbreaker",
+            "lv": 1
+          }
+        ]
+      },
+      "unlock": 5,
+      "mapShow": true,
+      "location": ["desert"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 3,
+        "blastblight": 2,
+        "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 2,
+        "thunder": 1,
+        "ice": 3,
+        "dragon": 2
+      }
+    },
+    "ratha": {
+      "id": 14,
+      "name": "Rathalos",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "earplugs",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "attack",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "fireAttackBoost",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "weaknessExploit",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "weaknessExploit",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "fireResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "attack",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "focus",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "fireAttackBoost",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "fireResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "weaknessExploit",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": true,
+      "location": ["forest"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
+      }
+    },
+    "b-diab": {
+      "id": 15,
+      "name": "Black Diablos",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "partbreaker",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "partbreaker",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "resentment",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "resentment",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "staminaThief",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "resentment",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "lockOn",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "firestarter",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "firestarter",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "counterstrike",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": true,
+      "location": ["desert"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 3,
+        "blastblight": 2,
+        "stun": 1
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 2,
+        "thunder": 1,
+        "ice": 3,
+        "dragon": 0
+      }
+    },
+    "p-rathi": {
+      "id": 16,
+      "name": "Pink Rathian",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "spSkillBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "windProof",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "windProof",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "spSkillBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": false,
+      "location": ["forest"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 2,
+        "ice": 1,
+        "dragon": 3
+      }
+    }
+  }
+}

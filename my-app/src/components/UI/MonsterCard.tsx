@@ -1,13 +1,9 @@
 // MonsterCard.tsx
 import { FC } from "react";
-import {
-  StarIcon,
-  ClipboardDocumentIcon,
-  MapPinIcon,
-  FaceSmileIcon,
-  FaceFrownIcon,
-} from "@heroicons/react/24/solid";
+import { HiClipboardDocument, HiFaceSmile, HiFaceFrown } from "react-icons/hi2";
+import { FaStar, FaLocationDot } from "react-icons/fa6";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface MonsterCardProps {
   item: DataItem;
@@ -26,6 +22,9 @@ const MonsterCard: FC<MonsterCardProps> = ({
   sendReport,
   userId,
 }) => {
+  const { t } = useTranslation("monster");
+  const { t: transMonster } = useTranslation("data");
+
   const imageElements = monsterNames.map((monsterName, index) => (
     <div className="max-w-[4rem] max-h-[4rem]" key={index}>
       <Image
@@ -38,6 +37,12 @@ const MonsterCard: FC<MonsterCardProps> = ({
       />
     </div>
   ));
+
+  //翻譯名字
+  const trans = monsterNames.map((monsterName) => {
+    return transMonster(`equipSetting.${monsterName}.name`);
+  });
+  const translatedMonsterNamesString = trans.join(", ");
 
   return (
     <div
@@ -53,7 +58,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
               {Array.from(
                 { length: item.level > 5 ? item.level - 5 : item.level },
                 (_, index) => (
-                  <StarIcon
+                  <FaStar
                     key={index}
                     className={`w-5 h-5 drop-shadow-md ${
                       item.level > 5 ? "text-purple-600" : "text-amber-400"
@@ -63,12 +68,17 @@ const MonsterCard: FC<MonsterCardProps> = ({
               )}
             </div>
             <div>
-              <p className="text-base">{monsterNames.join(", ")}</p>
-              <span className="text-base">{item.round} 周目</span>
+              <p className="text-base">
+                {/* {monsterNames.join(", ")} */}
+                {translatedMonsterNamesString}
+              </p>
+              <span className="text-base">
+                {item.round} {t("MonsterMap.round")}
+              </span>
             </div>
           </div>
           <div>
-            <ClipboardDocumentIcon
+            <HiClipboardDocument
               title="複製"
               className="w-6 h-6 cursor-pointer absolute top-0 right-0"
               onClick={() => copyToClipboard(item.coordinates)}
@@ -79,7 +89,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
           className="flex items-center gap-1 mt-2 cursor-pointer"
           onClick={() => onCardClick(item)}
         >
-          <MapPinIcon className="w-5 h-8" title="開啟地圖" />
+          <FaLocationDot className="w-5 h-5" title="開啟地圖" />
           <span className="text-base">
             {item.location} - {item.coordinates}
           </span>
@@ -97,7 +107,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
           <div className="flex gap-4">
             <div className="flex items-center gap-1">
               <span className="">{item.goodLocations.length}</span>
-              <FaceSmileIcon
+              <HiFaceSmile
                 title="回報正確定位"
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => sendReport(true, userId, item)}
@@ -105,7 +115,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
             </div>
             <div className="flex items-center gap-1">
               <span className="">{item.badLocations.length}</span>
-              <FaceFrownIcon
+              <HiFaceFrown
                 title="回報錯誤定位"
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => sendReport(false, userId, item)}

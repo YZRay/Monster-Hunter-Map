@@ -3,6 +3,7 @@ import { FC, Fragment, useState } from "react";
 import data from "../data/data.json";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useTranslation } from "react-i18next";
 
 const MonsterModal = dynamic(() => import("./Modal/MonsterModal.tsx"), {
   ssr: false,
@@ -12,6 +13,9 @@ const Selection: FC<SelectionProps> = ({
   onMonsterClick,
   selectedMonster,
 }) => {
+  const { t } = useTranslation("monster");
+  const { t: transData } = useTranslation("data");
+  const { t: transSkills } = useTranslation("data");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const skills: Skills = data.baseSetting.skills;
 
@@ -33,8 +37,14 @@ const Selection: FC<SelectionProps> = ({
       </th>
     );
   });
-  const renderEquipmentType = (armor: Armor, type: string) => {
+
+  const renderEquipmentType = (
+    armor: Armor,
+    type: string,
+    armorKey: string
+  ) => {
     const equipArray = armor.equip[type] || [];
+
     return (
       <td
         scope="col"
@@ -45,14 +55,15 @@ const Selection: FC<SelectionProps> = ({
           if (equipArray.length === 0) {
             return; // 找不到就回傳以免報錯
           }
-          onArmorClick(armor, type);
+          onArmorClick(armor, type, armorKey);
         }}
       >
         {equipArray.map((equipment, index) => (
           <div className="p-2" key={index}>
             {equipment.skill && (
               <p className="text-sm md:text-base">
-                {equipment.unlock} {skills[equipment.skill]?.name}{" "}
+                G{equipment.unlock}{" "}
+                {transSkills(`baseSetting.skills.${equipment.skill}.name`)} lv:
                 {equipment.lv}
               </p>
             )}
@@ -61,41 +72,46 @@ const Selection: FC<SelectionProps> = ({
       </td>
     );
   };
+
   //表格內容
-  const armorRows = Object.values(data.equipSetting).map((armor: Armor) => (
-    <tr className="z-0" key={armor.id}>
-      <th
-        scope="row"
-        onClick={() => {
-          onMonsterClick(armor);
-          if (armor.name === "礦石" || armor.name === "皮製") {
-            return setIsModalOpen(false);
-          }
-          setIsModalOpen(true);
-        }}
-        className="sticky left-0 border-r-2 bg-slate-700 px-2 py-2 font-bold text-center hover:bg-slate-800 border border-slate-200 "
-      >
-        <Image
-          className=""
-          src={`/assets/icons/Monster/${armor.name}.svg`}
-          width={60}
-          height={60}
-          alt="equipment"
-          loading="lazy"
-        />
-        {armor.name}
-      </th>
-      <td className="px-3 py-1 lg:px-6 lg:py-3 border border-slate-200 text-center">
-        {armor.unlock}
-      </td>
-      {renderEquipmentType(armor, "weapon")}
-      {renderEquipmentType(armor, "helm")}
-      {renderEquipmentType(armor, "mail")}
-      {renderEquipmentType(armor, "gloves")}
-      {renderEquipmentType(armor, "belt")}
-      {renderEquipmentType(armor, "greaves")}
-    </tr>
-  ));
+  const armorRows = Object.entries(data.equipSetting).map(
+    ([armorKey, armor]: [string, Armor]) => (
+      <tr className="z-0" key={armor.id}>
+        <th
+          scope="row"
+          onClick={() => {
+            onMonsterClick({ ...armor, key: armorKey });
+            if (armorKey === "alloy" || armorKey === "leather") {
+              return setIsModalOpen(false);
+            }
+            setIsModalOpen(true);
+          }}
+          className="sticky left-0 border-r-2 bg-slate-700 px-2 py-2 font-bold text-center hover:bg-slate-800 border border-slate-200 "
+        >
+          <div className="flex items-center flex-col">
+            <Image
+              className=""
+              src={`/assets/icons/Monster/${armorKey}.svg`}
+              width={60}
+              height={60}
+              alt="equipment"
+              loading="lazy"
+            />
+            {transData(`equipSetting.${armorKey}.name`)}
+          </div>
+        </th>
+        <td className="px-3 py-1 lg:px-6 lg:py-3 border border-slate-200 text-center">
+          {armor.unlock}
+        </td>
+        {renderEquipmentType(armor, "weapon", armorKey)}
+        {renderEquipmentType(armor, "helm", armorKey)}
+        {renderEquipmentType(armor, "mail", armorKey)}
+        {renderEquipmentType(armor, "gloves", armorKey)}
+        {renderEquipmentType(armor, "belt", armorKey)}
+        {renderEquipmentType(armor, "greaves", armorKey)}
+      </tr>
+    )
+  );
 
   return (
     <Fragment>
@@ -105,7 +121,9 @@ const Selection: FC<SelectionProps> = ({
         monsterData={selectedMonster}
       ></MonsterModal>
       <div className="container mt-4 mb-6 lg:mt-8 lg:mb-16 rounded-lg">
-        <h1 className="text-2xl font-bold mb-2 text-gray-800">魔物資訊</h1>
+        <h1 className="text-2xl font-bold mb-2 text-gray-800">
+          {t("Selection.information")}
+        </h1>
         <div className="relative overflow-auto  max-h-[40rem] w-full shadow-md">
           <table className="table-auto text-base text-left font-bold w-max lg:w-full text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
             <thead className="text-center sticky top-0 z-10 bg-slate-700 border-b-2">
@@ -114,13 +132,13 @@ const Selection: FC<SelectionProps> = ({
                   scope="col"
                   className="px-3 py-1 lg:px-6 lg:py-3 border border-slate-200"
                 >
-                  種類
+                  {t("Selection.type")}
                 </th>
                 <th
                   scope="col"
                   className="px-3 py-1 lg:px-6 lg:py-3 border border-slate-200"
                 >
-                  等級
+                  {t("Selection.level")}
                 </th>
                 {th}
               </tr>

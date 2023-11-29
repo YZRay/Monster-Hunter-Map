@@ -1,7 +1,6 @@
 "use client";
 import "../globals.css";
 import React, { FC, useState, Fragment, useMemo } from "react";
-import Navbar from "@/components/UI/Navbar";
 import dynamic from "next/dynamic";
 
 const Selection = dynamic(() => import("@/components/Selection"), {
@@ -18,7 +17,7 @@ const SelectionPage: FC = () => {
   const [selectedMonster, setSelectedMonster] = useState<Monster | null>(null);
   const [isMonster, setIsMonster] = useState(false);
 
-  const handleArmorClick = (armor: Armor, key: string) => {
+  const handleArmorClick = (armor: Armor, key: string, armorKey: string) => {
     // 檢查是否已經存在相同 key 的資料
     const existingIndex = selectedArmors.findIndex(
       (selectedArmor) => selectedArmor.key === key
@@ -31,7 +30,9 @@ const SelectionPage: FC = () => {
         ...armor,
         equip: { [key]: armor.equip[key] },
         key: key,
+        armorKey: armorKey,
       };
+
       setSelectedArmors(updatedArmors);
     } else {
       // 否則添加新的資料
@@ -39,6 +40,7 @@ const SelectionPage: FC = () => {
         ...armor,
         equip: { [key]: armor.equip[key] },
         key: key,
+        armorKey: armorKey,
       });
       setSelectedArmors(newSelectedArmors);
     }
@@ -79,7 +81,6 @@ const SelectionPage: FC = () => {
 
   return (
     <Fragment>
-      <Navbar />
       <ArmorSection armor={selectedArmors} />
       <SkillLevel skill={skillLevels} />
       <Selection

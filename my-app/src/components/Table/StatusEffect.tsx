@@ -2,6 +2,7 @@ import React, { FC, Fragment } from "react";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { useTranslation } from "react-i18next";
 
 interface MyComponentProps<T> {
   data: T;
@@ -17,6 +18,7 @@ interface statusEffect {
 const MonsterStatusEffect: FC<MyComponentProps<any>> = ({ data }) => {
   const statusEffects = data.statusEffect;
   const weaknessElement = data.weaknessElement;
+  const { t } = useTranslation("monster");
   const renderStatusEffectRow = (effectName: string, effectCount: number) => (
     <tr key={effectName} className="bg-gray-800">
       <td>
@@ -59,8 +61,8 @@ const MonsterStatusEffect: FC<MyComponentProps<any>> = ({ data }) => {
         <table className="monster-table">
           <thead className="bg-gray-800 text-gray-300">
             <tr>
-              <th>狀態異常</th>
-              <th>有效程度</th>
+              <th>{t("MonsterMap.status")}</th>
+              <th>{t("MonsterMap.effectiveness")}</th>
             </tr>
           </thead>
           <tbody>
@@ -72,8 +74,8 @@ const MonsterStatusEffect: FC<MyComponentProps<any>> = ({ data }) => {
         <table className="monster-table">
           <thead className="bg-gray-800 text-gray-300">
             <tr>
-              <th>屬性異常</th>
-              <th>有效程度</th>
+              <th>{t("MonsterMap.element")}</th>
+              <th>{t("MonsterMap.effectiveness")}</th>
             </tr>
           </thead>
           <tbody>

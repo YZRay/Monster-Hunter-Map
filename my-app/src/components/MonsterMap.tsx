@@ -1,12 +1,20 @@
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css"; // Re-uses images from ~leaflet package
 import "leaflet-defaulticon-compatibility";
 import { LatLngTuple, Icon } from "leaflet";
 import { FC, useState, useLayoutEffect } from "react";
-import { StarIcon, FaceSmileIcon, FaceFrownIcon } from "@heroicons/react/24/solid";
+import { FaStar } from "react-icons/fa6";
+import { HiFaceSmile, HiFaceFrown } from "react-icons/hi2";
 import { toast } from "react-toastify";
 import useUserId from "./Hook/UserId";
 import { createBadLocation, createGoodLocation } from "./api/MLApi";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   data: GetResponse | null;
@@ -23,6 +31,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   const longitude = geolocation?.longitude || 121.564427;
   const position: LatLngTuple = [latitude, longitude];
   const [iconSize, setIconSize] = useState(35);
+  const { t } = useTranslation("monster");
 
   const processedData =
     data?.data.map((item) => ({
@@ -63,12 +72,16 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
 
   const [isCreateing, setIsCreateing] = useState(false);
 
-  const sendReport = (isGood: boolean, uid: string | null, mlitem: DataItem) => {
+  const sendReport = (
+    isGood: boolean,
+    uid: string | null,
+    mlitem: DataItem
+  ) => {
     if (isCreateing || !uid) {
       return;
     }
 
-    var loading = toast.loading("回報中！");
+    var loading = toast.loading(`${t("MonsterMap.reporting")}`);
 
     setIsCreateing(true);
 
@@ -77,74 +90,74 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
       mlid: mlitem.id,
     };
 
-    if(isGood){
+    if (isGood) {
       createGoodLocation(model)
-      .then((response) => {
-        if (!response.ok) {
-          toast.error("網路回應發生錯誤", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        }
-        return response.json();
-      })
-      .then((data) => {
-        toast.dismiss(loading);
-        if (!data.status) {
-          toast.error("回報失敗！", {
-            position: "top-center",
-            className: "danger",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        } else {
-          toast.success("回報成功！", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
+        .then((response) => {
+          if (!response.ok) {
+            toast.error("網路回應發生錯誤", {
+              position: "top-center",
+              autoClose: 1500, // 1.5秒關閉
+            });
+          }
+          return response.json();
+        })
+        .then((data) => {
+          toast.dismiss(loading);
+          if (!data.status) {
+            toast.error(`${t("MonsterMap.error")}`, {
+              position: "top-center",
+              className: "danger",
+              autoClose: 1500, // 1.5秒關閉
+            });
+          } else {
+            toast.success(`${t("MonsterMap.success")}`, {
+              position: "top-center",
+              autoClose: 1500, // 1.5秒關閉
+            });
 
-          mlitem.goodLocations.push(model);
-        }
+            mlitem.goodLocations.push(model);
+          }
 
-        setIsCreateing(false);
-      })
-      .catch((error) => {
-        console.error("Error submit Form", error);
-      })
-      .finally(() => {});
-    }else{
+          setIsCreateing(false);
+        })
+        .catch((error) => {
+          console.error("Error submit Form", error);
+        })
+        .finally(() => {});
+    } else {
       createBadLocation(model)
-      .then((response) => {
-        if (!response.ok) {
-          toast.error("網路回應發生錯誤", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        }
-        return response.json();
-      })
-      .then((data) => {
-        toast.dismiss(loading);
-        if (!data.status) {
-          toast.error("回報失敗！", {
-            position: "top-center",
-            className: "danger",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        } else {
-          toast.success("回報成功！", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
+        .then((response) => {
+          if (!response.ok) {
+            toast.error("網路回應發生錯誤", {
+              position: "top-center",
+              autoClose: 1500, // 1.5秒關閉
+            });
+          }
+          return response.json();
+        })
+        .then((data) => {
+          toast.dismiss(loading);
+          if (!data.status) {
+            toast.error(`${t("MonsterMap.error")}`, {
+              position: "top-center",
+              className: "danger",
+              autoClose: 1500, // 1.5秒關閉
+            });
+          } else {
+            toast.success(`${t("MonsterMap.success")}`, {
+              position: "top-center",
+              autoClose: 1500, // 1.5秒關閉
+            });
 
-          mlitem.badLocations.push(model);
-        }
+            mlitem.badLocations.push(model);
+          }
 
-        setIsCreateing(false);
-      })
-      .catch((error) => {
-        console.error("Error submit Form", error);
-      })
-      .finally(() => {});
+          setIsCreateing(false);
+        })
+        .catch((error) => {
+          console.error("Error submit Form", error);
+        })
+        .finally(() => {});
     }
   };
 
@@ -162,7 +175,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
       // 使用 Clipboard API 写入剪贴板
       await navigator.clipboard.writeText(coordinates);
       console.log("已成功複製");
-      toast.success("已複製位置", {
+      toast.success(`${t("MonsterMap.copy")}`, {
         position: "top-center",
         autoClose: 1500,
         hideProgressBar: false,
@@ -173,7 +186,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
         theme: "light",
       });
     } catch (err) {
-      console.error("複製失敗：", err);
+      console.error(`${t("MonsterMap.copyFailed")}`, err);
     }
   }
 
@@ -187,7 +200,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               {dataItem.name}
             </span>
             <div className="flex gap-1 items-center">
-              <FaceSmileIcon
+              <HiFaceSmile
                 title="回報正確定位"
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => {
@@ -197,7 +210,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               <span className="text-lg">{dataItem.goodLocations.length}</span>
             </div>
             <div className="flex gap-1 items-center">
-              <FaceFrownIcon
+              <HiFaceFrown
                 title="回報錯誤定位"
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => {
@@ -214,7 +227,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
                   dataItem.level > 5 ? dataItem.level - 5 : dataItem.level,
               },
               (_, index) => (
-                <StarIcon
+                <FaStar
                   key={index}
                   className={`w-5 h-5 drop-shadow-md ${
                     dataItem.level > 5 ? "text-purple-600" : "text-amber-400"
@@ -235,37 +248,37 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
         </>
       );
     } else {
-      return "當前位置";
+      return `${t("MonsterMap.current")}`;
     }
   };
 
   function MyMapComponent() {
     const mapEvents = useMapEvents({
-        zoomend: () => {
-          switch(mapEvents.getZoom()){
-            case 12:
-              setIconSize(30)
-              break;
-            case 11:
-              setIconSize(25)
-              break;
-            case 10:
-              setIconSize(20)
-              break;
-            case 9:
-              setIconSize(15)
-              break;
-            case 8:
-                setIconSize(10)
-                break;
-            default:
-              setIconSize(35)
-              break;
-          }
-        },
+      zoomend: () => {
+        switch (mapEvents.getZoom()) {
+          case 12:
+            setIconSize(30);
+            break;
+          case 11:
+            setIconSize(25);
+            break;
+          case 10:
+            setIconSize(20);
+            break;
+          case 9:
+            setIconSize(15);
+            break;
+          case 8:
+            setIconSize(10);
+            break;
+          default:
+            setIconSize(35);
+            break;
+        }
+      },
     });
 
-    return null
+    return null;
   }
 
   return (
@@ -279,11 +292,10 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
         scrollWheelZoom={false}
         className="w-full h-[30rem] max-h-[30rem] z-0 mb-8"
       >
-        <MyMapComponent/>
+        <MyMapComponent />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          
         />
         {/* 當前位置 */}
         <Marker
