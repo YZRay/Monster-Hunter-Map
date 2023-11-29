@@ -1,0 +1,29 @@
+"use client";
+import Link from "next/link";
+import { Fragment, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useTranslation } from "../../app/i18n/client";
+
+const Footer = ({ lng }: { lng: string }) => {
+  const pathname = usePathname();
+
+  const { t } = useTranslation(lng, "monster");
+
+  return (
+    <Fragment>
+      <footer className="py-2 bg-slate-900 relative bottom-0 w-full">
+          <div className="text-white text-center">
+            <Link href={`${lng == "zhTW" ? "" : `/${lng}` }/privacy`} locale={lng}>
+              {t("navigation.privacy")}
+            </Link>{" "}
+            |
+            <Link href={`${lng == "zhTW" ? "" : `/${lng}` }/terms`} locale={lng}>
+              {t("navigation.terms")}
+            </Link>
+          </div>
+        </footer>
+    </Fragment>
+  );
+};
+
+export default Footer;

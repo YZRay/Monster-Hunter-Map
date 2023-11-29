@@ -5,7 +5,9 @@
     "map": "地圖資訊",
     "setting": "配裝資訊",
     "about": "關於我們",
-    "new": "最新消息"
+    "new": "最新消息",
+    "privacy": "隱私權政策",
+    "terms": "使用者條款"
   },
   "ArmorSetting": {
     "click": "請點擊下方欄位",

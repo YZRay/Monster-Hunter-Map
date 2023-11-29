@@ -4,8 +4,10 @@
   "navigation": {
     "map": "Map",
     "setting": "EquipSetting",
-    "about": "About",
-    "new": "News"
+    "about": "About Us",
+    "new": "News",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
   },
   "ArmorSetting": {
     "click": "Please click the table below",
@@ -30,9 +32,9 @@
     "closeModal": "Close",
     "searchArea": "Search area",
     "upload": "Upload monster information",
-    "download": "Get monster information",
-    "eyewitness": "Eyewitness",
-    "dynamicMap": "Dynamic map",
+    "download": "Refresh monster information",
+    "eyewitness": "List View",
+    "dynamicMap": "Map View",
     "copy": "Copy position",
     "copyFailed": "Copy failed",
     "round": "round",
