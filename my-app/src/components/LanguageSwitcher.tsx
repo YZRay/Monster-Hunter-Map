@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { HiChevronDown } from "react-icons/hi2";
+import urlBuilder from "@/utility/urlBuilder";
 
 const language = [
   { id: 0, lan: "zhTW", lng: "中" },
@@ -40,7 +41,7 @@ export default function LanguageSwitcher({ lng }: { lng: string }) {
                 <Menu.Item key={lang.id}>
                   {({ active }) => (
                     <Link
-                      href={`/${lang.lan}`}
+                      href={`${urlBuilder(lang.lan, "/")}`}
                       locale={lang.lan}
                       className="py-1 px-4 text-sm rounded-md hover:text-white hover:bg-slate-700 transition-all duration-300"
                     >

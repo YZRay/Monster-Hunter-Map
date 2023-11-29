@@ -8,6 +8,7 @@ import AboutIcon from "../../../public/assets/icons/about.svg";
 import NewsIcon from "../../../public/assets/icons/news.svg";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "../../app/i18n/client";
+import urlBuilder from "@/utility/urlBuilder";
 
 export default function Navigation({ lng }: { lng: string }) {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export default function Navigation({ lng }: { lng: string }) {
   return (
     <div className="w-full xl:w-max xl:flex gap-4">
       <Link
-        href={`/${lng}`}
+        href={`${urlBuilder(lng, "/")}`}
         locale={lng}
         className={`${
           pathname === "/" || pathname === `/${lng}` ? "active" : ""
@@ -32,7 +33,7 @@ export default function Navigation({ lng }: { lng: string }) {
         {t("navigation.map")}
       </Link>
       <Link
-        href={`/${lng}/equipment`}
+        href={`${urlBuilder(lng, "equipment")}`}
         locale={lng}
         className={`${
           pathname.includes("equipment") ? "active" : ""
@@ -48,7 +49,7 @@ export default function Navigation({ lng }: { lng: string }) {
         {t("navigation.setting")}
       </Link>
       <Link
-        href={`/${lng}/news`}
+        href={`${urlBuilder(lng, "news")}`}
         locale={lng}
         className={`${
           pathname.includes("news") ? "active" : ""
@@ -64,7 +65,7 @@ export default function Navigation({ lng }: { lng: string }) {
         {t("navigation.new")}
       </Link>
       <Link
-        href={`/${lng}/about`}
+        href={`${urlBuilder(lng, "about")}`}
         locale={lng}
         className={`${
           pathname.includes("navigation.about") ? "active" : ""
