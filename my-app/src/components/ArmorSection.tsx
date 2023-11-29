@@ -10,7 +10,6 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
-  console.log(armor);
 
   if (armor.length === 0) {
     return (
