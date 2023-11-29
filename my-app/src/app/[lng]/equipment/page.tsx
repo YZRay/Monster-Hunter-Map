@@ -17,7 +17,7 @@ const SelectionPage: FC = () => {
   const [selectedMonster, setSelectedMonster] = useState<Monster | null>(null);
   const [isMonster, setIsMonster] = useState(false);
 
-  const handleArmorClick = (armor: Armor, key: string) => {
+  const handleArmorClick = (armor: Armor, key: string, armorKey: string) => {
     // 檢查是否已經存在相同 key 的資料
     const existingIndex = selectedArmors.findIndex(
       (selectedArmor) => selectedArmor.key === key
@@ -30,6 +30,7 @@ const SelectionPage: FC = () => {
         ...armor,
         equip: { [key]: armor.equip[key] },
         key: key,
+        armorKey: armorKey,
       };
 
       setSelectedArmors(updatedArmors);
@@ -39,6 +40,7 @@ const SelectionPage: FC = () => {
         ...armor,
         equip: { [key]: armor.equip[key] },
         key: key,
+        armorKey: armorKey,
       });
       setSelectedArmors(newSelectedArmors);
     }

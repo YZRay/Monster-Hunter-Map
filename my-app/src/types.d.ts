@@ -13,6 +13,7 @@ interface Armor {
   };
   key?: string;
   equipmentTypeData?: any;
+  armorKey?: string;
 }
 
 interface Monster {
@@ -27,7 +28,7 @@ interface ArmorSectionProps {
 }
 
 interface SelectionProps {
-  onArmorClick: (armor: Armor, equipKey: string) => void;
+  onArmorClick: (armor: Armor, equipKey: string, armorKey: string) => void;
   onMonsterClick: (monster: Monster) => void;
   selectedMonster: Monster | null;
 }

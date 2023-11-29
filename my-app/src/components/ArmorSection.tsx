@@ -10,6 +10,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
+  console.log(armor);
 
   if (armor.length === 0) {
     return (
@@ -59,7 +60,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
                   className="w-8 h-8 md:w-12 md:h-12"
                 />
                 <span className="font-bold text-sm lg:text-base text-gray-800">
-                  {equipment.name}
+                  {equipName(`equipSetting.${equipment.armorKey}.name`)}
                   {equipment.key &&
                     equipName(`baseSetting.parts.${equipment.key}`)}
                 </span>

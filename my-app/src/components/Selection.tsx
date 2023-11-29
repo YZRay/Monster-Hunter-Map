@@ -38,7 +38,11 @@ const Selection: FC<SelectionProps> = ({
     );
   });
 
-  const renderEquipmentType = (armor: Armor, type: string) => {
+  const renderEquipmentType = (
+    armor: Armor,
+    type: string,
+    armorKey: string
+  ) => {
     const equipArray = armor.equip[type] || [];
 
     return (
@@ -51,7 +55,7 @@ const Selection: FC<SelectionProps> = ({
           if (equipArray.length === 0) {
             return; // 找不到就回傳以免報錯
           }
-          onArmorClick(armor, type);
+          onArmorClick(armor, type, armorKey);
         }}
       >
         {equipArray.map((equipment, index) => (
@@ -99,12 +103,12 @@ const Selection: FC<SelectionProps> = ({
         <td className="px-3 py-1 lg:px-6 lg:py-3 border border-slate-200 text-center">
           {armor.unlock}
         </td>
-        {renderEquipmentType(armor, "weapon")}
-        {renderEquipmentType(armor, "helm")}
-        {renderEquipmentType(armor, "mail")}
-        {renderEquipmentType(armor, "gloves")}
-        {renderEquipmentType(armor, "belt")}
-        {renderEquipmentType(armor, "greaves")}
+        {renderEquipmentType(armor, "weapon", armorKey)}
+        {renderEquipmentType(armor, "helm", armorKey)}
+        {renderEquipmentType(armor, "mail", armorKey)}
+        {renderEquipmentType(armor, "gloves", armorKey)}
+        {renderEquipmentType(armor, "belt", armorKey)}
+        {renderEquipmentType(armor, "greaves", armorKey)}
       </tr>
     )
   );
