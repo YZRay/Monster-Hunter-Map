@@ -32,6 +32,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   const position: LatLngTuple = [latitude, longitude];
   const [iconSize, setIconSize] = useState(35);
   const { t } = useTranslation("monster");
+  const { t: transName } = useTranslation("data");
 
   const processedData =
     data?.data.map((item) => ({
@@ -197,7 +198,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
         <>
           <div className="flex gap-4 items-center mb-2">
             <span className="text-base font-semibold text-slate-700">
-              {dataItem.name}
+              {transName(`equipSetting.${dataItem.name}.name`)}
             </span>
             <div className="flex gap-1 items-center">
               <HiFaceSmile
