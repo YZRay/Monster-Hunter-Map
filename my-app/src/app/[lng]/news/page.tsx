@@ -1,23 +1,29 @@
 "use client";
 import "../globals.css";
-import React, { FC, useState, Fragment } from "react";
+import React, { FC, Fragment } from "react";
+import { RxComponentBoolean } from "react-icons/rx";
 import Image from "next/image";
 
 const AboutPage: FC = () => {
   return (
-    <Fragment>
+    <main>
       <div className="container">
-        <h1 className="text-4xl font-bold text-slate-800">最新消息</h1>
+        <h1 className="text-4xl font-bold text-slate-800 text-center">
+          最新消息
+        </h1>
         <section id="featured-news">
-          <article className="my-10 lg:py-4 flex flex-col lg:flex-row items-start justify-around bg-slate-200 rounded-md">
-            <Image
-              src={"/assets/news/20231120.jpg"}
-              width={500}
-              height={281}
-              alt="沙漠咆哮 角龍"
-            />
-            <div className="max-h-[281px] overflow-y-scroll max-w-xl p-4">
-              <h2 className="text-2xl my-5 font-medium">沙漠咆哮 角龍</h2>
+          <article className="news-list-container">
+            <div className="news-img-container">
+              <Image
+                className="news-img"
+                src={"/assets/news/20231120.jpg"}
+                width={500}
+                height={281}
+                alt="沙漠咆哮 角龍"
+              />
+            </div>
+            <div className="news-list-content">
+              <h2 className="text-2xl mb-5 font-medium">沙漠咆哮 角龍</h2>
               <p className="text-lg font-medium">
                 各位獵人，
                 <br />
@@ -119,15 +125,17 @@ const AboutPage: FC = () => {
               </p>
             </div>
           </article>
-
-          <article className="my-10 lg:py-4 flex flex-col lg:flex-row items-start justify-around bg-slate-200 rounded-md">
-            <Image
-              src={"/assets/news/20231114.jpg"}
-              width={500}
-              height={281}
-              alt="焦點新聞圖片"
-            />
-            <div className="max-h-[281px] overflow-y-scroll max-w-xl p-4">
+          <article className="news-list-container">
+            <div className="news-img-container">
+              <Image
+                className="news-img"
+                src={"/assets/news/20231114.jpg"}
+                width={500}
+                height={281}
+                alt="焦點新聞圖片"
+              />
+            </div>
+            <div className="news-list-content">
               <h2 className="text-2xl my-5 font-medium">
                 風中飄盪的寒意降臨！討伐風漂龍吧！
               </h2>
@@ -176,14 +184,17 @@ const AboutPage: FC = () => {
             </div>
           </article>
 
-          <article className="my-10 lg:py-4 flex flex-col lg:flex-row items-start justify-around bg-slate-200 rounded-md">
-            <Image
-              src={"/assets/news/20231107.jpg"}
-              width={500}
-              height={281}
-              alt="焦點新聞圖片"
-            />
-            <div className="max-h-[281px] overflow-y-scroll max-w-xl  p-4">
+          <article className="news-list-container">
+            <div className="news-img-container">
+              <Image
+                className="news-img"
+                src={"/assets/news/20231107.jpg"}
+                width={500}
+                height={281}
+                alt="焦點新聞圖片"
+              />
+            </div>
+            <div className="news-list-content">
               <h2 className="text-2xl my-5 font-medium">
                 「來自庫萊莉的特殊任務」發布！
               </h2>
@@ -236,14 +247,17 @@ const AboutPage: FC = () => {
             </div>
           </article>
 
-          <article className="my-10 lg:py-4 flex flex-col lg:flex-row items-start justify-around bg-slate-200 rounded-md">
-            <Image
-              src={"/assets/news/20231101.jpg"}
-              width={500}
-              height={281}
-              alt="焦點新聞圖片"
-            />
-            <div className="max-h-[281px] overflow-y-scroll max-w-xl  p-4">
+          <article className="news-list-container">
+            <div className="news-img-container">
+              <Image
+                className="news-img"
+                src={"/assets/news/20231101.jpg"}
+                width={500}
+                height={281}
+                alt="焦點新聞圖片"
+              />
+            </div>
+            <div className="news-list-content">
               <h2 className="text-2xl my-5 font-medium">
                 《魔物獵人 Now》：11月的活動公告！
               </h2>
@@ -336,7 +350,7 @@ const AboutPage: FC = () => {
           </article>
         </section>
       </div>
-    </Fragment>
+    </main>
   );
 };
 

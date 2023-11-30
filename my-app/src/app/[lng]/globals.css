@@ -31,7 +31,9 @@ body {
     rgba(3, 5, 50, 0.35) 65%
   );
 }
-
+main {
+  min-height: 87vh;
+}
 @layer components {
   .monster-tab {
     @apply w-full bg-slate-400 text-slate-800 px-2 py-1 md:px-4 md:py-2 rounded-md hover:bg-slate-800 hover:text-white duration-300 justify-center tracking-wider ui-selected:bg-slate-800 ui-selected:text-white;
@@ -60,6 +62,18 @@ body {
   }
   .card-body {
     @apply p-4 mb-4 rounded-md;
+  }
+  .news-list-container {
+    @apply my-10 lg:p-1 flex flex-col lg:flex-row border-4 border-slate-300 items-center justify-around bg-slate-700/75 rounded-md;
+  }
+  .news-img-container {
+    @apply flex items-center justify-center border-slate-300 border-4 w-full overflow-hidden;
+  }
+  .news-img {
+    @apply object-cover w-full rounded-md hover:scale-105 hover:rotate-2 duration-300;
+  }
+  .news-list-content {
+    @apply max-h-[180px] lg:max-h-[260px] w-full overflow-y-scroll max-w-xl p-4 text-slate-200;
   }
 }
 * {
