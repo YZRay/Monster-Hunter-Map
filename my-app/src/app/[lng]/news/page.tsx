@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const AboutPage: FC = () => {
   return (
-    <Fragment>
+    <main>
       <div className="container">
         <h1 className="text-4xl font-bold text-slate-800 text-center">
           最新消息
@@ -350,7 +350,7 @@ const AboutPage: FC = () => {
           </article>
         </section>
       </div>
-    </Fragment>
+    </main>
   );
 };
 

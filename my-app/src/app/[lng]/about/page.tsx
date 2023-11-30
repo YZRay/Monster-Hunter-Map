@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const AboutPage: FC = () => {
   return (
-    <Fragment>
+    <main>
       <div className="container">
         <h1 className="text-lg">關於我們</h1>
         <p className="my-5">
@@ -31,7 +31,7 @@ const AboutPage: FC = () => {
           </Link>
         </p>
       </div>
-    </Fragment>
+    </main>
   );
 };
 

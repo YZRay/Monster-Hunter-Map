@@ -53,20 +53,17 @@ const SelectionPage: FC = () => {
       const { equip } = armor;
       for (const key in equip) {
         if (equip.hasOwnProperty(key)) {
-          const skillArray = equip[key]; 
-          const skillHighLv: { [key: string]: number } = {}
+          const skillArray = equip[key];
+          const skillHighLv: { [key: string]: number } = {};
           for (const skill of skillArray) {
             const { skill: skillName, lv } = skill;
-            if(skillHighLv[skillName] === undefined)
+            if (skillHighLv[skillName] === undefined)
               skillHighLv[skillName] = 0;
-            if(skillHighLv[skillName] < lv)
-              skillHighLv[skillName] = lv;
-
+            if (skillHighLv[skillName] < lv) skillHighLv[skillName] = lv;
           }
           for (const skillkey in skillHighLv) {
-            if(levels[skillkey] === undefined)
-              levels[skillkey] = 0;
-              
+            if (levels[skillkey] === undefined) levels[skillkey] = 0;
+
             levels[skillkey] += skillHighLv[skillkey];
           }
         }
@@ -80,7 +77,7 @@ const SelectionPage: FC = () => {
   };
 
   return (
-    <Fragment>
+    <main>
       <ArmorSection armor={selectedArmors} />
       <SkillLevel skill={skillLevels} />
       <Selection
@@ -88,7 +85,7 @@ const SelectionPage: FC = () => {
         onMonsterClick={monsterHandler}
         selectedMonster={selectedMonster}
       />
-    </Fragment>
+    </main>
   );
 };
 

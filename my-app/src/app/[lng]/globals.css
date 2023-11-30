@@ -31,7 +31,9 @@ body {
     rgba(3, 5, 50, 0.35) 65%
   );
 }
-
+main {
+  min-height: 87vh;
+}
 @layer components {
   .monster-tab {
     @apply w-full bg-slate-400 text-slate-800 px-2 py-1 md:px-4 md:py-2 rounded-md hover:bg-slate-800 hover:text-white duration-300 justify-center tracking-wider ui-selected:bg-slate-800 ui-selected:text-white;

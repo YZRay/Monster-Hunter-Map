@@ -13,16 +13,16 @@ const Footer = ({ lng }: { lng: string }) => {
   return (
     <Fragment>
       <footer className="py-2 bg-slate-900 relative bottom-0 w-full">
-          <div className="text-white text-center">
-            <Link href={`${urlBuilder(lng, "privacy")}`} locale={lng}>
-              {t("navigation.privacy")}
-            </Link>{" "}
-            |
-            <Link href={`${urlBuilder(lng, "terms")}`} locale={lng}>
-              {t("navigation.terms")}
-            </Link>
-          </div>
-        </footer>
+        <div className="text-white text-center">
+          <Link href={`${urlBuilder(lng, "privacy")}`} locale={lng}>
+            {t("navigation.privacy")}
+          </Link>{" "}
+          |
+          <Link href={`${urlBuilder(lng, "terms")}`} locale={lng}>
+            {t("navigation.terms")}
+          </Link>
+        </div>
+      </footer>
     </Fragment>
   );
 };
