@@ -198,7 +198,7 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
       return (
         <>
           <div className="flex gap-4 items-center mb-2">
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 flex-wrap items-center">
               {names.map((name, index) => (
                 <span
                   key={index}

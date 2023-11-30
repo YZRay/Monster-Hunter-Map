@@ -127,7 +127,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
               <h1 className="text-xl font-bold mt-2">
                 {t("MonsterMap.monsterName")}
               </h1>
-              <div className="bg-white p-2 rounded-md shadow-md flex flex-wrap gap-y-4 gap-x-2 justify-center">
+              <div className="bg-white p-2 rounded-md shadow-md flex flex-wrap gap-y-4 gap-x-2 justify-center max-h-40 overflow-y-auto">
                 {monsterNames.map((name, index) => (
                   <div className="flex gap-2 items-center" key={index}>
                     <input
@@ -200,7 +200,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
+                    <Listbox.Options className="absolute w-full bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
                       {levels.map((level) => (
                         <Listbox.Option key={level} value={level}>
                           {({ active }) => (
@@ -254,7 +254,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
+                    <Listbox.Options className="absolute w-full bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
                       {rounds.map((round) => (
                         <Listbox.Option key={round} value={round}>
                           {({ active }) => (

@@ -108,7 +108,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="bg-slate-50 mt-2 rounded-lg py-2 pl-3 shadow-md max-h-40 overflow-y-auto">
+            <Listbox.Options className="container absolute bg-slate-50 mt-2 rounded-lg py-2 pl-3 shadow-md max-h-40 overflow-y-auto">
               {LocationList === null || LocationList.length === 0 ? (
                 <Listbox.Option
                   className="relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 text-gray-900"
