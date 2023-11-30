@@ -3,7 +3,7 @@
   "LocaleSwitcher": "English",
   "navigation": {
     "map": "Map",
-    "setting": "EquipSetting",
+    "setting": "Equipment Build",
     "about": "About Us",
     "new": "News",
     "privacy": "Privacy Policy",
@@ -22,11 +22,11 @@
   },
   "Selection": {
     "type": "type",
-    "level": "level",
-    "information": "Monster information"
+    "level": "Grade",
+    "information": "Equipment Information"
   },
   "MonsterMap": {
-    "open": "Open the search bar",
+    "open": "Open Monster filter",
     "unlock": "unlock",
     "close": "Close the search bar",
     "closeModal": "Close",
@@ -37,7 +37,7 @@
     "dynamicMap": "Map View",
     "copy": "Copy position",
     "copyFailed": "Copy failed",
-    "round": "round",
+    "round": "Round",
     "reporting": "Reporting!",
     "success": "Report success!",
     "error": "Report failed!",
@@ -48,8 +48,8 @@
     "gotCurrent": "Got",
     "submit": "Submit",
     "cancel": "Cancel",
-    "share": "Share information",
-    "level": "Level",
+    "share": "Share Monster information",
+    "level": "Grade",
     "Latitude": "Latitude and longitude",
     "LatitudePlaceholder": "Please enter latitude and longitude",
     "all": "All",

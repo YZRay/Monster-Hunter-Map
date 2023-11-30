@@ -23,7 +23,7 @@
   "Selection": {
     "type": "種類",
     "level": "レベル",
-    "information": "モンスター情報"
+    "information": "装備情報"
   },
   "MonsterMap": {
     "open": "モンスター検索バーを開く",
