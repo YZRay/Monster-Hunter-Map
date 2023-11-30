@@ -194,12 +194,20 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
   //Popup顯示資訊，點擊卡片的就顯示卡片資訊
   const getPopupContent = (dataItem: DataItem | null) => {
     if (dataItem) {
+      const names = dataItem.name.split(",");
       return (
         <>
           <div className="flex gap-4 items-center mb-2">
-            <span className="text-base font-semibold text-slate-700">
-              {transName(`equipSetting.${dataItem.name}.name`)}
-            </span>
+            <div className="flex gap-2 items-center">
+              {names.map((name, index) => (
+                <span
+                  key={index}
+                  className="text-base font-semibold text-slate-700"
+                >
+                  {transName(`equipSetting.${name}.name`)}
+                </span>
+              ))}
+            </div>
             <div className="flex gap-1 items-center">
               <HiFaceSmile
                 title="回報正確定位"
