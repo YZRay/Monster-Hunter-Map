@@ -9,6 +9,7 @@ import Footer from "@/components/UI/Footer";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
 import { useTranslation, I18nextProvider } from "react-i18next";
+import ATSManager from '../../components/scripts/atsManager.js'
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -65,6 +66,7 @@ export default async function RootLayout({
     <html lang={lng} dir={dir(lng)}>
       <body>
         <Adsense />
+        <ATSManager />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
