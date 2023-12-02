@@ -9,7 +9,7 @@ import Footer from "@/components/UI/Footer";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
 import { useTranslation, I18nextProvider } from "react-i18next";
-import ATSManager from '../../components/scripts/ATSManager.js'
+import ATSManager from '../../components/scripts/atsManager.js'
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
