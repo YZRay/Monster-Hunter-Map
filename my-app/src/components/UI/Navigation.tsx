@@ -33,7 +33,7 @@ export default function Navigation({ lng }: { lng: string }) {
         {t("navigation.map")}
       </Link>
       <Link
-        href={`${urlBuilder(lng, "equipment")}`}
+        href={`${urlBuilder(lng, "/equipment")}`}
         locale={lng}
         className={`${
           pathname.includes("equipment") ? "active" : ""
@@ -49,7 +49,7 @@ export default function Navigation({ lng }: { lng: string }) {
         {t("navigation.setting")}
       </Link>
       <Link
-        href={`${urlBuilder(lng, "news")}`}
+        href={`${urlBuilder(lng, "/news")}`}
         locale={lng}
         className={`${
           pathname.includes("news") ? "active" : ""
@@ -65,7 +65,7 @@ export default function Navigation({ lng }: { lng: string }) {
         {t("navigation.new")}
       </Link>
       <Link
-        href={`${urlBuilder(lng, "about")}`}
+        href={`${urlBuilder(lng, "/about")}`}
         locale={lng}
         className={`${
           pathname.includes("navigation.about") ? "active" : ""
