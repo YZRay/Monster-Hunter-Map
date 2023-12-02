@@ -18,7 +18,7 @@ function PostCard(post: Post) {
         <div className="news-list-content">
           <h2 className="text-2xl my-5 font-medium">{post.title}</h2>
           <div
-            className="[&>*]:mb-3 [&>*:last-child]:mb-0 text-lg font-medium"
+            className="[&>*]:mb-3 [&>*:last-child]:mb-0 text-lg font-medium [&>*]:text-ellipsis"
             dangerouslySetInnerHTML={{ __html: post.body.html }}
           />
         </div>
