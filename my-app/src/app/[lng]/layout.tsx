@@ -1,15 +1,15 @@
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import type { Metadata } from "next";
-import GoogleAnalytics from "../../components/api/GA";
-import Adsense from "../../components/api/Adsense";
+import GoogleAnalytics from "../../components/scripts/GA";
+import Adsense from "../../components/scripts/Adsense";
 import Link from "next/link";
 import Navbar from "@/components/UI/Navbar";
 import Footer from "@/components/UI/Footer";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
 import { useTranslation, I18nextProvider } from "react-i18next";
-import ATSManager from '../../components/scripts/atsManager.js'
+import ATSManager from '../../components/scripts/ATSManager.js'
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
