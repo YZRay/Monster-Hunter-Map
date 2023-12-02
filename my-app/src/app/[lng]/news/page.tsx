@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { allPosts, Post } from "contentlayer/generated";
 function PostCard(post: Post) {
+  if(!post.image){
+    post.image = "";
+  }
   return (
     <article>
       <Link href={post.url} className="news-list-container">
