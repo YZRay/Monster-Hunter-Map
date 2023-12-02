@@ -65,6 +65,10 @@
     "material": "Material",
     "element": "Element",
     "status": "Status",
-    "effectiveness": "Effectiveness"
+    "effectiveness": "Effectiveness",
+    "openMap": "Open Map",
+    "copytips": "Copy Location",
+    "reportGood": "Report Good",
+    "reportBad": "Report Bad"
   }
 }

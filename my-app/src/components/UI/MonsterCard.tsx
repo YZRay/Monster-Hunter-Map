@@ -79,7 +79,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
           </div>
           <div>
             <HiClipboardDocument
-              title="複製"
+              title={t("copytips")}
               className="w-6 h-6 cursor-pointer absolute top-0 right-0"
               onClick={() => copyToClipboard(item.coordinates)}
             />
@@ -89,7 +89,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
           className="flex items-center gap-1 mt-2 cursor-pointer"
           onClick={() => onCardClick(item)}
         >
-          <FaLocationDot className="w-5 h-5" title="開啟地圖" />
+          <FaLocationDot className="w-5 h-5" title={t("openMap")} />
           <span className="text-base">
             {item.location} - {item.coordinates}
           </span>
@@ -108,7 +108,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
             <div className="flex items-center gap-1">
               <span className="">{item.goodLocations.length}</span>
               <HiFaceSmile
-                title="回報正確定位"
+                title={t("reportGood")}
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => sendReport(true, userId, item)}
               />
@@ -116,7 +116,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
             <div className="flex items-center gap-1">
               <span className="">{item.badLocations.length}</span>
               <HiFaceFrown
-                title="回報錯誤定位"
+                title={t("reportBad")}
                 className="w-6 h-6 cursor-pointer"
                 onClick={() => sendReport(false, userId, item)}
               />

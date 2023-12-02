@@ -65,6 +65,10 @@
     "material": "素材",
     "element": "屬性異常",
     "status": "狀態異常",
-    "effectiveness": "有效程度"
+    "effectiveness": "有效程度",
+    "openMap": "開啟地圖",
+    "copytips": "複製經緯度",
+    "reportGood": "回報正確定位",
+    "reportBad": "回報錯誤定位"
   }
 }

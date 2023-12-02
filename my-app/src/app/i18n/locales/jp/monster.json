@@ -63,6 +63,10 @@
     "material": "素材",
     "element": "属性異常",
     "status": "状態異常",
-    "effectiveness": "効果の程度"
+    "effectiveness": "効果の程度",
+    "openMap": "開啟地圖",
+    "copytips": "複製",
+    "reportGood": "回報正確定位",
+    "reportBad": "回報錯誤定位"
   }
 }
