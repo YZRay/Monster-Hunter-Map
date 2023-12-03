@@ -1,8 +1,10 @@
 // MonsterSearch.js
 import { Listbox, Transition } from "@headlessui/react";
+import Link from "next/link";
 import { Fragment, FC } from "react";
 import { HiChevronUpDown } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { FaCoffee } from "react-icons/fa";
 import Image from "next/image";
 interface SearchMonsterProps {
   isCollapsed: boolean;
@@ -31,13 +33,21 @@ const SearchMonster: FC<SearchMonsterProps> = ({
   return (
     <Fragment>
       {/* 搜尋魔物 */}
-      <div className="flex gap-2 items-center mb-4 md:mb-0">
+      <div className="flex justify-between items-center mb-4 md:mb-0 flex-wrap gap-2">
         <button
-          className="w-max btn justify-center rounded-md py-2 px-4  font-bold "
+          className="w-max btn justify-center rounded-md py-2 px-4  font-bold"
           onClick={toggleCollapse}
         >
           {isCollapsed ? `${t("MonsterMap.open")}` : `${t("MonsterMap.close")}`}
         </button>
+        <Link
+          href="https://p.ecpay.com.tw/D5FEAC2"
+          target="_blank"
+          className="flex items-center btn gap-2 text-base rounded-md font-bold py-2 px-4"
+        >
+          <FaCoffee />
+          歡迎請我們喝杯咖啡
+        </Link>
       </div>
       {!isCollapsed && (
         <>
