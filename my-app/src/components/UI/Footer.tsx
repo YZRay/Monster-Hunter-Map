@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 import { useTranslation } from "../../app/i18n/client";
 
 const Footer = ({ lng }: { lng: string }) => {
-  const pathname = usePathname();
-
   const { t } = useTranslation(lng, "monster");
 
   return (
