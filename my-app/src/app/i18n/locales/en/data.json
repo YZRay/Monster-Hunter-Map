@@ -443,11 +443,61 @@
         ]
       },
       "criticalBoost": {
-        "name": "超會心",
+        "name": "Critical Boost",
         "content": [
-          "會心攻擊的傷害倍率提升至130%",
-          "會心攻擊的傷害倍率提升至135%",
-          "會心攻擊的傷害倍率提升至140%"
+          "Increases the damage multiplier of critical hits to 130%.",
+          "Increases the damage multiplier of critical hits to 135%.",
+          "Increases the damage multiplier of critical hits to 140%.",
+          "Increases the damage multiplier of critical hits to 145%.",
+          "Increases the damage multiplier of critical hits to 150%."
+        ]
+      },
+      "sleepResistance": {
+        "name": "Sleep Resistance",
+        "content": [
+          "20% chance of preventing sleep status when damaged by a sleep-element attack.",
+          "40% chance of preventing sleep status when damaged by a sleep-element attack.",
+          "60% chance of preventing sleep status when damaged by a sleep-element attack.",
+          "80% chance of preventing sleep status when damaged by a sleep-element attack.",
+          "Prevents sleep status."
+        ]
+      },
+      "sleepAttack": {
+        "name": "Sleep Attack",
+        "content": [
+          "Increases weapon's sleep buildup value by 50.",
+          "Increases weapon's sleep buildup value by 75.",
+          "Increases weapon's sleep buildup value by 100.",
+          "Increases weapon's sleep buildup value by 125.",
+          "Increases weapon's sleep buildup value by 150."
+        ]
+      },
+      "evasiveConcentration": {
+        "name": "Evasive Concentration",
+        "content": [
+          "Fills Special Gauge by 7% after performing a perfect evade.",
+          "Fills Special Gauge by 10% after performing a perfect evade.",
+          "Fills Special Gauge by 12% after performing a perfect evade.",
+          "Fills Special Gauge by 15% after performing a perfect evade.",
+          "Fills Special Gauge by 20% after performing a perfect evade."
+        ]
+      },
+      "tremorResistance": {
+        "name": "Tremor Resistance",
+        "content": [
+          "Negates weak tremors.",
+          "Negates weak tremors and reduces the effects of strong tremors.",
+          "Negates weak and strong tremors."
+        ]
+      },
+      "skywardStriker": {
+        "name": "Skyward Striker",
+        "content": [
+          "Increases the damage of aerial attacks by 10%.",
+          "Increases the damage of aerial attacks by 15%.",
+          "Increases the damage of aerial attacks by 20%.",
+          "Increases the damage of aerial attacks by 25%.",
+          "Increases the damage of aerial attacks by 30%."
         ]
       }
     }
@@ -626,7 +676,11 @@
       },
       "eff": "water",
       "mapShow": true,
-      "location": ["forest", "desert", "swamp"],
+      "location": [
+        "forest",
+        "desert",
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 3,
         "sleep": 3,
@@ -721,7 +775,11 @@
       },
       "unlock": 1,
       "mapShow": true,
-      "location": ["forest", "desert", "swamp"],
+      "location": [
+        "forest",
+        "desert",
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -817,7 +875,11 @@
       },
       "eff": "poison",
       "mapShow": true,
-      "location": ["forest", "desert", "swamp"],
+      "location": [
+        "forest",
+        "desert",
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 1,
         "sleep": 2,
@@ -917,7 +979,10 @@
       },
       "unlock": 1,
       "mapShow": true,
-      "location": ["desert", "swamp"],
+      "location": [
+        "desert",
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 3,
         "sleep": 1,
@@ -1008,7 +1073,10 @@
       },
       "eff": "paralysis",
       "mapShow": true,
-      "location": ["forest", "swamp"],
+      "location": [
+        "forest",
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 2,
         "sleep": 3,
@@ -1104,7 +1172,10 @@
       },
       "eff": "thunder",
       "mapShow": true,
-      "location": ["forest", "swamp"],
+      "location": [
+        "forest",
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 3,
         "sleep": 2,
@@ -1204,7 +1275,10 @@
         ]
       },
       "mapShow": true,
-      "location": ["desert", "swamp"],
+      "location": [
+        "desert",
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -1300,7 +1374,9 @@
       },
       "eff": "water",
       "mapShow": true,
-      "location": ["swamp"],
+      "location": [
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 2,
         "sleep": 1,
@@ -1391,7 +1467,10 @@
       },
       "eff": "fire",
       "mapShow": true,
-      "location": ["forest", "desert"],
+      "location": [
+        "forest",
+        "desert"
+      ],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -1492,7 +1571,10 @@
       },
       "eff": "poison",
       "mapShow": true,
-      "location": ["forest", "desert"],
+      "location": [
+        "forest",
+        "desert"
+      ],
       "statusEffect": {
         "poison": 1,
         "sleep": 2,
@@ -1588,7 +1670,9 @@
       },
       "eff": "ice",
       "mapShow": true,
-      "location": ["swamp"],
+      "location": [
+        "swamp"
+      ],
       "statusEffect": {
         "poison": 3,
         "sleep": 2,
@@ -1678,7 +1762,9 @@
       },
       "unlock": 5,
       "mapShow": true,
-      "location": ["desert"],
+      "location": [
+        "desert"
+      ],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -1769,7 +1855,9 @@
       },
       "eff": "fire",
       "mapShow": true,
-      "location": ["forest"],
+      "location": [
+        "forest"
+      ],
       "statusEffect": {
         "poison": 1,
         "sleep": 2,
@@ -1860,7 +1948,9 @@
       },
       "eff": "fire",
       "mapShow": true,
-      "location": ["desert"],
+      "location": [
+        "desert"
+      ],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -1951,7 +2041,9 @@
       },
       "eff": "fire",
       "mapShow": false,
-      "location": ["forest"],
+      "location": [
+        "forest"
+      ],
       "statusEffect": {
         "poison": 1,
         "sleep": 2,
@@ -1966,6 +2058,454 @@
         "ice": 1,
         "dragon": 3
       }
+    },
+    "a-ratha": {
+      "id": 17,
+      "name": "Azure Rathalos",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 5,
+            "skill": "peakPerformance",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "peakPerformance",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "earplugs",
+            "lv": 1
+          },
+          {
+            "unlock": 5,
+            "skill": "focus",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "focus",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "peakPerformance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "earplugs",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "criticalBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalBoost",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "recoilReduction",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "peakPerformance",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "earplugs",
+            "lv": 1
+          },
+          {
+            "unlock": 5,
+            "skill": "criticalBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalBoost",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": "fire",
+      "mapShow": false,
+      "location": [
+        "forest"
+      ]
+    },
+    "zino": {
+      "id": 19,
+      "name": "Zinogre",
+      "unlock": 5,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "perfectEvasion",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "evasiveConcentration",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "comboPro",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "evasiveConcentration",
+            "lv": 1
+          },
+          {
+            "unlock": 5,
+            "skill": "thunderResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "evasiveConcentration",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "thunderAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "thunderAttackBoost",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "perfectEvasion",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "loadingSpeed",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "comboPro",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "thunderAttackBoost",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "thunder",
+      "mapShow": false,
+      "location": [
+        "forest",
+        "swamp"
+      ]
+    },
+    "bari": {
+      "id": 20,
+      "name": "Barioth",
+      "unlock": 4,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 4,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "skywardStriker",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "skywardStriker",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 4,
+            "skill": "iceResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "iceAttackBoost",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 4,
+            "skill": "iceAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "iceAttackBoost",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 4,
+            "skill": "skywardStriker",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "iceResistance",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 4,
+            "skill": "sneakAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "ice",
+      "mapShow": true,
+      "location": [
+        "forest"
+      ]
+    },
+    "banb": {
+      "id": 21,
+      "name": "Banbaro",
+      "unlock": 3,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "staminaThief",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "staminaThief",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 3,
+            "skill": "tremorResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "recoilReduction",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 3,
+            "skill": "spRapidCharge",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "partbreaker",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 3,
+            "skill": "counterstrike",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "tremorResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "counterstrike",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 3,
+            "skill": "attack",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "staminaThief",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "attack",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 3,
+            "skill": "divineBlessing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "spRapidCharge",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "white",
+      "mapShow": true,
+      "location": [
+        "forest",
+        "swamp"
+      ]
+    },
+    "rado": {
+      "id": 22,
+      "name": "Radobaan",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "defense",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "defenseUp",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "defenseUp",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "sleepAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "defense",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "koKing",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "sleepResistance",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "sleepAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "sleepAttack",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "sleepResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "defenseUp",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "sleep",
+      "mapShow": true,
+      "location": [
+        "desert",
+        "swamp"
+      ]
     }
   }
 }
