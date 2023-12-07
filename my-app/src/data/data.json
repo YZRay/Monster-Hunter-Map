@@ -2103,7 +2103,21 @@
       },
       "eff": "fire",
       "mapShow": false,
-      "location": ["forest"]
+      "location": ["forest"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 1,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 0,
+        "water": 1,
+        "thunder": 1,
+        "ice": 2,
+        "dragon": 3
+      }
     },
     "zino": {
       "id": 19,
@@ -2185,7 +2199,21 @@
       },
       "eff": "thunder",
       "mapShow": false,
-      "location": ["forest", "swamp"]
+      "location": ["forest", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 1,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 1,
+        "water": 2,
+        "thunder": 0,
+        "ice": 3,
+        "dragon": 1
+      }
     },
     "bari": {
       "id": 20,
@@ -2267,7 +2295,21 @@
       },
       "eff": "ice",
       "mapShow": true,
-      "location": ["forest"]
+      "location": ["forest"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 3,
+        "water": 0,
+        "thunder": 2,
+        "ice": 0,
+        "dragon": 1
+      }
     },
     "banb": {
       "id": 21,
@@ -2359,7 +2401,21 @@
       },
       "eff": "white",
       "mapShow": true,
-      "location": ["forest", "swamp"]
+      "location": ["forest", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 3,
+        "stun": 3
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 0,
+        "thunder": 1,
+        "ice": 0,
+        "dragon": 3
+      }
     },
     "rado": {
       "id": 22,
@@ -2446,7 +2502,21 @@
       },
       "eff": "sleep",
       "mapShow": true,
-      "location": ["desert", "swamp"]
+      "location": ["desert", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 1,
+        "paralysis": 2,
+        "blastblight": 3,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 1,
+        "water": 1,
+        "thunder": 1,
+        "ice": 2,
+        "dragon": 3
+      }
     }
   }
 }
