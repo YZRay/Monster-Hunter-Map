@@ -2038,7 +2038,7 @@
         ]
       },
       "eff": "fire",
-      "mapShow": false,
+      "mapShow": true,
       "location": [
         "forest"
       ],
