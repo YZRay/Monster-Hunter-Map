@@ -216,9 +216,7 @@
       },
       "lockOn": {
         "name": "鎖定",
-        "content": [
-          "使用近戰武器時，可使用「鎖定」按鈕瞄準指定的魔物部位"
-        ]
+        "content": ["使用近戰武器時，可使用「鎖定」按鈕瞄準指定的魔物部位"]
       },
       "tenacity": {
         "name": "毅力",
@@ -674,11 +672,7 @@
       },
       "eff": "water",
       "mapShow": true,
-      "location": [
-        "forest",
-        "desert",
-        "swamp"
-      ],
+      "location": ["forest", "desert", "swamp"],
       "statusEffect": {
         "poison": 3,
         "sleep": 3,
@@ -773,11 +767,7 @@
       },
       "unlock": 1,
       "mapShow": true,
-      "location": [
-        "forest",
-        "desert",
-        "swamp"
-      ],
+      "location": ["forest", "desert", "swamp"],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -873,11 +863,7 @@
       },
       "eff": "poison",
       "mapShow": true,
-      "location": [
-        "forest",
-        "desert",
-        "swamp"
-      ],
+      "location": ["forest", "desert", "swamp"],
       "statusEffect": {
         "poison": 1,
         "sleep": 2,
@@ -977,10 +963,7 @@
       },
       "unlock": 1,
       "mapShow": true,
-      "location": [
-        "desert",
-        "swamp"
-      ],
+      "location": ["desert", "swamp"],
       "statusEffect": {
         "poison": 3,
         "sleep": 1,
@@ -1071,10 +1054,7 @@
       },
       "eff": "paralysis",
       "mapShow": true,
-      "location": [
-        "forest",
-        "swamp"
-      ],
+      "location": ["forest", "swamp"],
       "statusEffect": {
         "poison": 2,
         "sleep": 3,
@@ -1170,10 +1150,7 @@
       },
       "eff": "thunder",
       "mapShow": true,
-      "location": [
-        "forest",
-        "swamp"
-      ],
+      "location": ["forest", "swamp"],
       "statusEffect": {
         "poison": 3,
         "sleep": 2,
@@ -1273,10 +1250,7 @@
         ]
       },
       "mapShow": true,
-      "location": [
-        "desert",
-        "swamp"
-      ],
+      "location": ["desert", "swamp"],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -1372,9 +1346,7 @@
       },
       "eff": "water",
       "mapShow": true,
-      "location": [
-        "swamp"
-      ],
+      "location": ["swamp"],
       "statusEffect": {
         "poison": 2,
         "sleep": 1,
@@ -1465,10 +1437,7 @@
       },
       "eff": "fire",
       "mapShow": true,
-      "location": [
-        "forest",
-        "desert"
-      ],
+      "location": ["forest", "desert"],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -1569,10 +1538,7 @@
       },
       "eff": "poison",
       "mapShow": true,
-      "location": [
-        "forest",
-        "desert"
-      ],
+      "location": ["forest", "desert"],
       "statusEffect": {
         "poison": 1,
         "sleep": 2,
@@ -1668,9 +1634,7 @@
       },
       "eff": "ice",
       "mapShow": true,
-      "location": [
-        "swamp"
-      ],
+      "location": ["swamp"],
       "statusEffect": {
         "poison": 3,
         "sleep": 2,
@@ -1760,9 +1724,7 @@
       },
       "unlock": 5,
       "mapShow": true,
-      "location": [
-        "desert"
-      ],
+      "location": ["desert"],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -1853,9 +1815,7 @@
       },
       "eff": "fire",
       "mapShow": true,
-      "location": [
-        "forest"
-      ],
+      "location": ["forest"],
       "statusEffect": {
         "poison": 1,
         "sleep": 2,
@@ -1945,10 +1905,8 @@
         ]
       },
       "eff": "fire",
-      "mapShow": true,
-      "location": [
-        "desert"
-      ],
+      "mapShow": false,
+      "location": ["desert"],
       "statusEffect": {
         "poison": 2,
         "sleep": 2,
@@ -2039,9 +1997,7 @@
       },
       "eff": "fire",
       "mapShow": false,
-      "location": [
-        "forest"
-      ],
+      "location": ["forest"],
       "statusEffect": {
         "poison": 1,
         "sleep": 2,
@@ -2147,9 +2103,7 @@
       },
       "eff": "fire",
       "mapShow": false,
-      "location": [
-        "forest"
-      ]
+      "location": ["forest"]
     },
     "zino": {
       "id": 19,
@@ -2231,9 +2185,7 @@
       },
       "eff": "thunder",
       "mapShow": false,
-      "location": [
-        "forest","swamp"
-      ]
+      "location": ["forest", "swamp"]
     },
     "bari": {
       "id": 20,
@@ -2315,9 +2267,7 @@
       },
       "eff": "ice",
       "mapShow": true,
-      "location": [
-        "forest"
-      ]
+      "location": ["forest"]
     },
     "banb": {
       "id": 21,
@@ -2409,9 +2359,7 @@
       },
       "eff": "white",
       "mapShow": true,
-      "location": [
-        "forest","swamp"
-      ]
+      "location": ["forest", "swamp"]
     },
     "rado": {
       "id": 22,
@@ -2498,9 +2446,7 @@
       },
       "eff": "sleep",
       "mapShow": true,
-      "location": [
-        "desert","swamp"
-      ]
+      "location": ["desert", "swamp"]
     }
   }
 }
