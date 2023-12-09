@@ -120,12 +120,12 @@ const Selection: FC<SelectionProps> = ({
         onClose={() => setIsModalOpen(false)}
         monsterData={selectedMonster}
       ></MonsterModal>
-      <div className="container mt-4 mb-6 lg:mt-8 lg:mb-16 rounded-lg">
-        <h1 className="text-2xl font-bold mb-2 text-gray-800 dark:text-slate-300">
+      <div className="my-4 xl:my-8 w-full flex-1 rounded-lg">
+        <h1 className="text-2xl font-bold mb-2 w-11/12 mx-auto text-gray-800 dark:text-slate-300">
           {t("Selection.information")}
         </h1>
-        <div className="relative overflow-auto  max-h-[40rem] w-full shadow-md">
-          <table className="table-auto text-base text-left font-bold w-max lg:w-full text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
+        <div className="relative overflow-auto max-h-[95%] w-11/12 mx-auto shadow-md">
+          <table className="table-fixed text-base text-left font-bold w-max lg:w-full text-slate-200 opacity-90 bg-slate-700 border-spacing-2 border border-slate-200 rounded-lg">
             <thead className="text-center sticky top-0 z-10 bg-slate-700 border-b-2">
               <tr>
                 <th

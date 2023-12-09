@@ -49,6 +49,9 @@ main {
   .container {
     @apply w-11/12 md:max-w-xl lg:max-w-2xl xl:max-w-5xl mx-auto;
   }
+  .equip-container {
+    @apply w-9/12 mx-auto;
+  }
   .btn {
     @apply bg-slate-300 py-2 text-slate-800 hover:bg-slate-800 hover:text-slate-200 duration-300 shadow-md dark:bg-slate-600 dark:text-slate-200 dark:hover:bg-slate-500 dark:hover:text-slate-50;
   }
