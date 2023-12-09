@@ -25,6 +25,7 @@ interface Monster {
 interface ArmorSectionProps {
   armor: Armor[];
   qeuipKey?: string;
+  isArmorOpen?: boolean;
 }
 
 interface SelectionProps {
@@ -44,6 +45,7 @@ type SkillLevels = {
 };
 type SkillLevelProps = {
   skill: SkillLevels;
+  isArmorOpen?: boolean;
 };
 
 //Loaction
