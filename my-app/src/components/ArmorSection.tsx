@@ -48,7 +48,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor, isArmorOpen }) => {
             <div
               key={equipment.key}
               className={`flex w-full py-1 px-2 lg:py-2 lg:px-4 items-center bg-gray-100 dark:bg-slate-600 bg-opacity-90 border border-transparent dark:border-slate-300/50 rounded-lg shadow-md ${
-                isArmorOpen ? "justify-between" : "justify-center"
+                isArmorOpen ? "justify-between gap-2" : "justify-center"
               }`}
             >
               <div className="flex flex-col items-center gap-1">
@@ -69,7 +69,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor, isArmorOpen }) => {
               {equipment.key && armorName[equipment.key] ? (
                 equipment.equip[equipment.key]?.map((equip, index) => (
                   <p
-                    className={`mt-2 font-bold text-left text-sm lg:text-base transition-opacity  duration-300 ease-in-out ${
+                    className={`font-bold text-left text-sm lg:text-base transition-opacity  duration-300 ease-in-out ${
                       isArmorOpen
                         ? "opacity-100 visible"
                         : "opacity-0 invisible w-0 h-0"
