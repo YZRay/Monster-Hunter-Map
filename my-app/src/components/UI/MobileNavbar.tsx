@@ -13,7 +13,7 @@ interface IProps {
 const MobileNavbar = ({ show, toggleShow, lng }: IProps) => {
   const ModalOverlay = () => (
     <div
-      className={`flex xl:hidden fixed top-0 right-0 bottom-0 left-0 bg-slate-400 opacity-50 z-30 transition-all duration-500`}
+      className={`flex xl:hidden fixed top-0 right-0 bottom-0 left-0 bg-slate-400 dark:bg-slate-950 opacity-50 z-30 transition-all duration-500`}
       onClick={() => toggleShow()}
     />
   );
@@ -34,7 +34,7 @@ const MobileNavbar = ({ show, toggleShow, lng }: IProps) => {
   return (
     <Fragment>
       <div
-        className={`border shadow-md w-64 h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-slate-200 fixed top-0 transition-all duration-500  z-50 ${
+        className={`shadow-md w-64 h-screen xl:hidden flex flex-col items-end gap-2 p-4 bg-slate-200 dark:bg-slate-800 fixed top-0 transition-all duration-500  z-50 ${
           show ? "right-0" : "-right-full"
         }`}
       >

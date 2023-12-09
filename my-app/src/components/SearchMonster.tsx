@@ -53,7 +53,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
         <>
           {/* 選擇魔物 */}
           <div
-            className="bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 
+            className="bg-slate-50 dark:bg-slate-700 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 
           overflow-y-auto grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-2"
           >
             {monsterNames.map((monster, index) => (
@@ -61,7 +61,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
                 <input
                   type="checkbox"
                   id={`monsterCheckbox${index}`}
-                  className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-lime-600 accent-lime-600"
+                  className="w-5 h-5 text-blue-600 bg-gray-100 dark:bg-gray-100 border-gray-300 rounded focus:ring-lime-600 accent-lime-600"
                   value={monster}
                   checked={selectedMonster.includes(monster)}
                   onChange={(e) => {
@@ -93,12 +93,12 @@ const SearchMonster: FC<SearchMonsterProps> = ({
           value={selectedRegion}
           onChange={(newSelectedRegion) => setSelectedRegion(newSelectedRegion)}
         >
-          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2">
-            <h3 className="text-lg md:text-xl lg:text-2xl font-bold mt-2">
+          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-1/2 dark:text-gray-300">
+            <h3 className="text-lg md:text-xl lg:text-2xl font-bold my-2">
               {t("MonsterMap.searchArea")}
             </h3>
           </Listbox.Label>
-          <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md cursor-pointer">
+          <Listbox.Button className="relative w-full rounded-lg bg-white dark:bg-slate-700/80 py-2 px-3 pr-10 text-left shadow-md cursor-pointer">
             <span className="block truncate">
               {selectedRegion ? selectedRegion : city}
             </span>
@@ -118,7 +118,7 @@ const SearchMonster: FC<SearchMonsterProps> = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="container absolute bg-slate-50 mt-2 rounded-lg py-2 pl-3 shadow-md max-h-40 overflow-y-auto">
+            <Listbox.Options className="container absolute bg-slate-50 dark:bg-slate-700 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
               {LocationList === null || LocationList.length === 0 ? (
                 <Listbox.Option
                   className="relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 text-gray-900"
@@ -131,7 +131,9 @@ const SearchMonster: FC<SearchMonsterProps> = ({
                   <Listbox.Option
                     className={({ active }) =>
                       `relative cursor-pointer rounded-md select-none py-2 pl-8 pr-4 ${
-                        active ? "bg-slate-800 text-white" : "text-gray-900"
+                        active
+                          ? "bg-slate-800 text-white"
+                          : "text-gray-900 dark:text-gray-200"
                       }`
                     }
                     key={index}

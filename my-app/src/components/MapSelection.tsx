@@ -199,17 +199,17 @@ const MapSelection = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-90"
               >
-                <Dialog.Panel className="w-full max-w-md md:max-w-lg lg:max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md md:max-w-lg lg:max-w-xl transform overflow-hidden rounded-2xl bg-white dark:bg-slate-600 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-bold leading-6 text-gray-800"
+                    className="text-lg font-bold leading-6 text-gray-800 dark:text-gray-200"
                   >
                     {t("MonsterMap.share")}
                   </Dialog.Title>
                   <MonsterForm onSubmitted={handleFormSubmitted} />
                   <button
                     type="button"
-                    className="w-full justify-center rounded-md bg-slate-400 py-2 text-white font-bold hover:bg-slate-800 duration-300"
+                    className="w-full justify-center rounded-md bg-slate-400 dark:bg-slate-700 py-2 text-white font-bold hover:bg-slate-800 dark:hover:bg-slate-500 duration-300 border border-transparent dark:border-slate-400/50"
                     onClick={closeModal}
                   >
                     {t("MonsterMap.cancel")}

@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <main>
       <div className="container">
-        <h1 className="text-4xl font-bold text-slate-800 text-center">
+        <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-300 text-center">
           最新消息
         </h1>
         {posts.map((post, idx) => (

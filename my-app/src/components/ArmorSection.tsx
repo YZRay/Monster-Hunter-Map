@@ -47,7 +47,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
           {armor.map((equipment) => (
             <div
               key={equipment.key}
-              className="flex w-full py-1 px-2 lg:py-2 lg:px-4 items-center gap-4 bg-gray-100 bg-opacity-90 border rounded-lg shadow-md"
+              className="flex w-full py-1 px-2 lg:py-2 lg:px-4 items-center gap-4 bg-gray-100 dark:bg-slate-600 bg-opacity-90 border border-transparent dark:border-slate-300/50 rounded-lg shadow-md"
             >
               <div className="flex flex-col items-center gap-1">
                 <Image
@@ -58,7 +58,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor }) => {
                   loading="lazy"
                   className="w-8 h-8 md:w-12 md:h-12"
                 />
-                <span className="font-bold text-sm lg:text-base text-gray-800">
+                <span className="font-bold text-sm lg:text-base text-gray-800 dark:text-gray-300">
                   {equipName(`equipSetting.${equipment.armorKey}.name`)}
                   {equipment.key &&
                     equipName(`baseSetting.parts.${equipment.key}`)}
