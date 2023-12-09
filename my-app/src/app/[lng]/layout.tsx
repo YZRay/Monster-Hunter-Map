@@ -15,10 +15,11 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mhnow.cc"),
   openGraph: {
     title: "MHNow 魔物地圖",
     description: "歡迎上傳你看到的魔物...方便大家找怪喔",
-    url: "https://mhnow.cc/",
+    url: "https://mhnow.cc",
     siteName: "MHNow 魔物地圖",
     locale: "zh_TW",
     type: "website",
@@ -53,6 +54,27 @@ export const metadata: Metadata = {
       url: "/assets/apple-touch-icon.png",
     },
   ],
+  keywords: [
+    "Monster Hunter Now",
+    "MonsterHunter",
+    "MHN",
+    "魔物獵人",
+    "魔物獵人 Now",
+    "魔物獵人地圖",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 export default async function RootLayout({
   children,
