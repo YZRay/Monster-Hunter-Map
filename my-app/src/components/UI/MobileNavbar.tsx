@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { RxCross1 } from "react-icons/rx";
 import Navigation from "./Navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 interface IProps {
   show: boolean;
@@ -46,6 +47,7 @@ const MobileNavbar = ({ show, toggleShow, lng }: IProps) => {
         </button>
         <Navigation lng={lng} />
         <LanguageSwitcher lng={lng} />
+        <ThemeSwitch />
         <Link
           href={"https://lin.ee/g3FujGH"}
           target="_blank"
