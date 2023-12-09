@@ -9,6 +9,7 @@ import Navigation from "./Navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Headroom from "react-headroom";
 import urlBuilder from "@/utility/urlBuilder";
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 const Navbar = ({ lng }: { lng: string }) => {
   const pathname = usePathname();
@@ -42,9 +43,10 @@ const Navbar = ({ lng }: { lng: string }) => {
               {t("title")}
             </Link>
           </h1>
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <Navigation lng={lng} />
             <LanguageSwitcher lng={lng} />
+            <ThemeSwitch />
           </div>
         </div>
       </Headroom>

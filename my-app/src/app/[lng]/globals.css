@@ -25,11 +25,6 @@
 }
 body {
   height: 100%;
-  background-image: linear-gradient(
-    157deg,
-    rgba(49, 158, 214, 0.4) 0%,
-    rgba(3, 5, 50, 0.35) 65%
-  );
 }
 main {
   min-height: 87vh;

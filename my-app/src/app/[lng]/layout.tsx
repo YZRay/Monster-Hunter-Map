@@ -3,12 +3,12 @@ import "leaflet/dist/leaflet.css";
 import type { Metadata } from "next";
 import GoogleAnalytics from "../../components/scripts/GA";
 import Adsense from "../../components/scripts/Adsense";
-import Link from "next/link";
+import { ThemeProviders } from "@/components/Providers/ThemeProvider";
 import Navbar from "@/components/UI/Navbar";
 import Footer from "@/components/UI/Footer";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
-import ATSManager from '../../components/scripts/atsManager.js'
+import ATSManager from "../../components/scripts/atsManager.js";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -60,18 +60,20 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
   params: { lng: string };
-}) {  
+}) {
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body>
+      <body className="bg-light-gradient dark:bg-dark-gradient">
         <Adsense />
         <ATSManager />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         ) : null}
-        <Navbar lng={lng} />
-        {children}
-        <Footer lng={lng} />
+        <ThemeProviders>
+          <Navbar lng={lng} />
+          {children}
+          <Footer lng={lng} />
+        </ThemeProviders>
       </body>
     </html>
   );
