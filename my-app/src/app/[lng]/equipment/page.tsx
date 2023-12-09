@@ -118,12 +118,6 @@ const SelectionPage: FC = () => {
       >
         <HiOutlineChevronDoubleRight className="w-6 h-6" />
       </button>
-      {/* <div
-        className={`hidden xl:equip-container xl:block col-span-full xl:col-span-1`}
-      >
-        <ArmorSection armor={selectedArmors} />
-        <SkillLevel skill={skillLevels} />
-      </div> */}
       <Selection
         onArmorClick={handleArmorClick}
         onMonsterClick={monsterHandler}
