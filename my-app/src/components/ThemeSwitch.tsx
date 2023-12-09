@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Switch } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { useTheme } from "next-themes";
 
@@ -17,19 +17,6 @@ export default function ThemeSwitch() {
 
   if (!mounted) return null;
   return (
-    // <Switch
-    //   defaultSelected={resolvedTheme === "dark"}
-    //   onChange={handleThemeChange}
-    //   size="lg"
-    //   color="default"
-    //   thumbIcon={({ isSelected, className }) =>
-    //     isSelected ? (
-    //       <IoMdMoon className={className} />
-    //     ) : (
-    //       <IoMdSunny className={className} />
-    //     )
-    //   }
-    // ></Switch>
     <>
       <Button
         className={`w-10 h-10 rounded-xl p-2 border ${
