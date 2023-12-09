@@ -8,7 +8,7 @@ import { FaCoffee } from "react-icons/fa";
 const AboutPage: FC = () => {
   return (
     <main className="container">
-      <h1 className="text-4xl font-bold text-slate-800 text-center">
+      <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-300 text-center">
         關於我們
       </h1>
       <div className="text-lg flex flex-col xl:flex-row justify-between my-10">

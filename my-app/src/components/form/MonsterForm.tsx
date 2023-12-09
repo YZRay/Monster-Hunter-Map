@@ -117,7 +117,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
     <Fragment>
       <form
         onSubmit={onSubmit}
-        className="bg-slate-200 px-6 py-4 rounded-md my-4"
+        className="bg-slate-200 dark:bg-slate-700 px-6 py-4 rounded-md my-4 border border-transparent dark:border-slate-400/50"
       >
         <Controller
           name="name"
@@ -127,7 +127,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
               <h1 className="text-xl font-bold mt-2">
                 {t("MonsterMap.monsterName")}
               </h1>
-              <div className="bg-white p-2 rounded-md shadow-md flex flex-wrap gap-y-4 gap-x-2 justify-center max-h-40 overflow-y-auto">
+              <div className="bg-white p-2 rounded-md shadow-md dark:bg-slate-600 flex flex-wrap gap-y-4 gap-x-2 justify-center max-h-40 overflow-y-auto">
                 {monsterNames.map((name, index) => (
                   <div className="flex gap-2 items-center" key={index}>
                     <input
@@ -150,7 +150,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                     />
                     <label
                       htmlFor={`checkbox_${name.name}`}
-                      className="text-sm md:text-base text-gray-800"
+                      className="text-sm md:text-base text-gray-800 dark:text-gray-300"
                     >
                       <Image
                         className=" h-8 w-8 md:w-12 md:h-12"
@@ -177,12 +177,12 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             render={({ field }) => (
               <Listbox {...field}>
                 <div className="relative mt-1">
-                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
+                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-300">
                     <h1 className="text-xl font-bold mt-2">
                       {t("MonsterMap.level")}
                     </h1>
                   </Listbox.Label>
-                  <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md ">
+                  <Listbox.Button className="relative w-full rounded-lg bg-white dark:bg-slate-600 py-2 pl-3 pr-10 text-left shadow-md ">
                     <span className="block truncate">{field.value}</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <HiChevronUpDown
@@ -200,7 +200,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="absolute w-full bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
+                    <Listbox.Options className="absolute w-full bg-slate-50 dark:bg-slate-300  mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
                       {levels.map((level) => (
                         <Listbox.Option key={level} value={level}>
                           {({ active }) => (
@@ -231,12 +231,12 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             render={({ field }) => (
               <Listbox {...field}>
                 <div className="relative mt-1">
-                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
+                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-300">
                     <h1 className="text-xl font-bold mt-2">
                       {t("MonsterMap.round")}
                     </h1>
                   </Listbox.Label>
-                  <Listbox.Button className="relative w-full rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md ">
+                  <Listbox.Button className="relative w-full rounded-lg bg-white dark:bg-slate-600 py-2 pl-3 pr-10 text-left shadow-md ">
                     <span className="block truncate">{field.value}</span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <HiChevronUpDown
@@ -254,7 +254,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="absolute w-full bg-slate-50 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
+                    <Listbox.Options className="absolute w-full bg-slate-50 dark:bg-slate-300 mt-2 rounded-lg py-2 px-3 shadow-md max-h-40 overflow-y-auto">
                       {rounds.map((round) => (
                         <Listbox.Option key={round} value={round}>
                           {({ active }) => (
@@ -277,7 +277,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             )}
           />
         </div>
-        <label className="text-xl font-bold mt-2 block">
+        <label className="text-xl font-bold mt-2 block dark:text-gray-300">
           {t("MonsterMap.Latitude")}
         </label>
         <div className="flex items-center gap-2 flex-col md:flex-row">
@@ -286,7 +286,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             {...register("coordinates")}
             value={manualInput}
             onChange={(e) => setManualInput(e.target.value)}
-            className="w-full bg-slate-50 rounded-lg py-2 px-3 shadow-md max-h-40"
+            className="w-full bg-slate-50 dark:bg-slate-600 rounded-lg py-2 px-3 shadow-md max-h-40"
             required
             placeholder={`${t("MonsterMap.LatitudePlaceholder")}`}
           />
@@ -303,12 +303,12 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             selectedMonster.length === 0 ||
             selectedMonster.length > 2
           } // 禁止上傳
-          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 ${
+          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 border border-transparent dark:border-slate-400/50 ${
             disableSubmit ||
             selectedMonster.length === 0 ||
             selectedMonster.length > 2
-              ? "bg-gray-300 text-gray-500" // 禁止上傳
-              : "bg-slate-400 text-white hover:bg-slate-800 duration-300 " // 可以送出時
+              ? "bg-gray-300 text-gray-500 dark:bg-gray-600 dark:text-gray-200" // 禁止上傳
+              : "bg-slate-400 text-white dark:bg-slate-600 hover:bg-slate-800 dark:hover:bg-slate-500 duration-300" // 可以送出時
           }`}
         >
           <HiMiniPaperAirplane className="w-4 h-4" />

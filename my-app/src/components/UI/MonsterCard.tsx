@@ -46,8 +46,8 @@ const MonsterCard: FC<MonsterCardProps> = ({
 
   return (
     <div
-      className="flex flex-col text-base lg:text-lg font-bold bg-slate-300 
-        text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 
+      className="flex flex-col border border-transparent text-base lg:text-lg font-bold bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-500/50
+        text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 dark:hover:bg-slate-300 dark:hover:text-slate-800 
         "
     >
       <div className="justify-around flex-wrap">

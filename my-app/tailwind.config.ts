@@ -5,14 +5,18 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       backgroundImage: {
-        texure: "url('/assets/texure.svg')",
+        "light-gradient":
+          "linear-gradient(157deg, rgba(49, 158, 214, 0.4) 0%, rgba(3, 5, 50, 0.35) 65%)",
+        "dark-gradient": "linear-gradient(157deg, #0f172a 0%, #111827 65%)",
       },
     },
   },
-  plugins: [require("@headlessui/tailwindcss")],
+  plugins: [require("@headlessui/tailwindcss"), require("@nextui-org/react")],
+  darkMode: "class",
 };
 export default config;

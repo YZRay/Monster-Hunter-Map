@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 import urlBuilder from "@/utility/urlBuilder";
-import { Fragment, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { Fragment } from "react";
 import { useTranslation } from "../../app/i18n/client";
 
 const Footer = ({ lng }: { lng: string }) => {
@@ -10,8 +9,8 @@ const Footer = ({ lng }: { lng: string }) => {
 
   return (
     <Fragment>
-      <footer className="py-2 bg-slate-900 relative bottom-0 w-full">
-        <div className="text-white text-center">
+      <footer className="py-2 bg-slate-900 dark:bg-slate-800 relative bottom-0 w-full">
+        <div className="text-white dark:text-slate-200 text-center">
           <Link href={`${urlBuilder(lng, "privacy")}`} locale={lng}>
             {t("navigation.privacy")}
           </Link>{" "}

@@ -33,8 +33,8 @@ function GeoLocationBtn({
       disabled={isLoading}
       className={`w-full md:w-1/2 flex items-center justify-center gap-1 rounded-md py-2 font-bold transition-all ease-linear ${
         isLoading
-          ? "bg-gray-300 text-gray-500 cursor-not-allowed" // 禁止上傳
-          : "bg-slate-400 text-white hover:bg-slate-800 duration-300 cursor-pointer"
+          ? "bg-gray-300 text-gray-500 dark:bg-gray-600 dark:text-gray-200 cursor-not-allowed" // 禁止上傳
+          : "bg-slate-400 text-white dark:bg-slate-600 hover:bg-slate-800 dark:hover:bg-slate-500 duration-300 cursor-pointer"
       }`}
     >
       <FaLocationDot className="w-5 h-5" />

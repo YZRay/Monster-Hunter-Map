@@ -21,7 +21,7 @@ export default function Navigation({ lng }: { lng: string }) {
         locale={lng}
         className={`${
           pathname === "/" || pathname === `/${lng}` ? "active" : ""
-        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center md:gap-2 text-lg`}
+        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 transition-all duration-500 rounded-md justify-center flex items-center md:gap-2 text-lg`}
       >
         <Image
           className="hidden xl:inline-block"
@@ -37,7 +37,7 @@ export default function Navigation({ lng }: { lng: string }) {
         locale={lng}
         className={`${
           pathname.includes("equipment") ? "active" : ""
-        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
+        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
       >
         <Image
           className="hidden xl:inline-block"
@@ -53,7 +53,7 @@ export default function Navigation({ lng }: { lng: string }) {
         locale={lng}
         className={`${
           pathname.includes("news") ? "active" : ""
-        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
+        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
       >
         <Image
           className="hidden xl:inline-block"
@@ -69,7 +69,7 @@ export default function Navigation({ lng }: { lng: string }) {
         locale={lng}
         className={`${
           pathname.includes("navigation.about") ? "active" : ""
-        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
+        } px-4 py-3 mb-2 xl:mb-0 xl:py-1 hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 transition-all duration-500 rounded-md justify-center flex items-center gap-2 text-lg`}
       >
         <Image
           className="hidden xl:inline-block"

@@ -31,7 +31,7 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
         </button>
       </div>
       {!isCollapsed && (
-        <div className="container grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 my-2 bg-gray-100 pb-2 pt-4 px-8 rounded-md shadow-md bg-opacity-90 gap-x-8 gap-y-4">
+        <div className="container grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 my-2 bg-gray-100 dark:bg-slate-600 bg-opacity-90 border border-transparent dark:border-slate-300/50 pb-2 pt-4 px-8 rounded-md shadow-md gap-x-8 gap-y-4">
           {Object.entries(skill).map(([skillName, skillLevel]) => {
             const skillObject = skills[skillName];
             const skillLevelLimit = skillObject.content.length;
@@ -48,14 +48,14 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
             return (
               <div key={skillName} className="flex flex-col gap-1 items-start">
                 <div className="flex justify-around items-center gap-4">
-                  <h3 className="font-bold text-sm md:text-md lg:text-lg text-gray-800">
+                  <h3 className="font-bold text-sm md:text-md lg:text-lg text-gray-800 dark:text-gray-200">
                     {skillsName(`baseSetting.skills.${skillName}.name`)}
                   </h3>
                   <span
                     className={`font-bold text-base lg:text-lg ${
                       displayedSkillLevel === skillLevelLimit
-                        ? "text-[#E0AD55] ease-linear duration-300"
-                        : "text-gray-800"
+                        ? "text-[#E0AD55] dark:text-yellow-300 ease-linear duration-300"
+                        : "text-gray-800 dark:text-gray-300"
                     }`}
                   >
                     Lv
@@ -74,7 +74,7 @@ const SkillLevel: FC<SkillLevelProps> = ({ skill }) => {
                     ></span>
                   ))}
                 </div>
-                <p className="md:mb-4 text-sm lg:text-base font-bold text-gray-700">
+                <p className="md:mb-4 text-sm lg:text-base font-bold text-gray-700 dark:text-gray-300">
                   {skillsName(
                     `baseSetting.skills.${skillName}.content.${skillContentIndex}`
                   )}

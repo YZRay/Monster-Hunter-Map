@@ -121,7 +121,7 @@ const Selection: FC<SelectionProps> = ({
         monsterData={selectedMonster}
       ></MonsterModal>
       <div className="container mt-4 mb-6 lg:mt-8 lg:mb-16 rounded-lg">
-        <h1 className="text-2xl font-bold mb-2 text-gray-800">
+        <h1 className="text-2xl font-bold mb-2 text-gray-800 dark:text-slate-300">
           {t("Selection.information")}
         </h1>
         <div className="relative overflow-auto  max-h-[40rem] w-full shadow-md">

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { allPosts, Post } from "contentlayer/generated";
 function PostCard(post: Post) {
-  if(!post.image){
+  if (!post.image) {
     post.image = "";
   }
   return (
@@ -38,10 +38,10 @@ export default function Home() {
   return (
     <main>
       <div className="container">
-        <h1 className="text-4xl font-bold text-slate-800 text-center">
+        <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-300 text-center">
           最新消息
         </h1>
-        {allPosts.map((post, idx) => (
+        {posts.map((post, idx) => (
           <PostCard key={idx} {...post} />
         ))}
       </div>
