@@ -35,7 +35,7 @@ export default function LanguageSwitcher({ lng }: { lng: string }) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-fit origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-2 w-fit origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-slate-500 shadow-lg ring-1 ring-black/5 focus:outline-none">
             <div className="px-1 py-1 flex flex-col gap-2">
               {language.map((lang) => (
                 <Menu.Item key={lang.id}>

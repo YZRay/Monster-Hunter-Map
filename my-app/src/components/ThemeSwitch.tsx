@@ -17,18 +17,34 @@ export default function ThemeSwitch() {
 
   if (!mounted) return null;
   return (
-    <Switch
-      defaultSelected={resolvedTheme === "dark"}
-      onChange={handleThemeChange}
-      size="lg"
-      color="default"
-      thumbIcon={({ isSelected, className }) =>
-        isSelected ? (
-          <IoMdMoon className={className} />
+    // <Switch
+    //   defaultSelected={resolvedTheme === "dark"}
+    //   onChange={handleThemeChange}
+    //   size="lg"
+    //   color="default"
+    //   thumbIcon={({ isSelected, className }) =>
+    //     isSelected ? (
+    //       <IoMdMoon className={className} />
+    //     ) : (
+    //       <IoMdSunny className={className} />
+    //     )
+    //   }
+    // ></Switch>
+    <>
+      <Button
+        className={`w-10 h-10 rounded-xl p-2 border ${
+          resolvedTheme === "light" ? "border-slate-700" : "border-slate-400"
+        }`}
+        onClick={handleThemeChange}
+        variant="bordered"
+        color={resolvedTheme === "dark" ? "warning" : "primary"}
+      >
+        {resolvedTheme === "dark" ? (
+          <IoMdSunny className="w-5 h-50" />
         ) : (
-          <IoMdSunny className={className} />
-        )
-      }
-    ></Switch>
+          <IoMdMoon className="w-5 h-5" />
+        )}
+      </Button>
+    </>
   );
 }

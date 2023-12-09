@@ -10,7 +10,6 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        texure: "url('/assets/texure.svg')",
         "light-gradient":
           "linear-gradient(157deg, rgba(49, 158, 214, 0.4) 0%, rgba(3, 5, 50, 0.35) 65%)",
         "dark-gradient": "linear-gradient(157deg, #0f172a 0%, #111827 65%)",
