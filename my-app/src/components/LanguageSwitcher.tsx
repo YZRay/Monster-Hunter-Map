@@ -6,9 +6,9 @@ import { HiChevronDown } from "react-icons/hi2";
 import urlBuilder from "@/utility/urlBuilder";
 
 const language = [
-  { id: 0, lan: "zhTW", lng: "中" },
+  { id: 0, lan: "zh-Hant-TW", lng: "中" },
   { id: 1, lan: "en", lng: "Eng" },
-  { id: 2, lan: "jp", lng: "日" },
+  { id: 2, lan: "ja", lng: "日" },
 ];
 
 export default function LanguageSwitcher({ lng }: { lng: string }) {
