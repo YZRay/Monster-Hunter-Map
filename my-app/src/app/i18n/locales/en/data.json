@@ -590,6 +590,10 @@
     "rado": {
       "id": 22,
       "name": "Radobaan"
+    }, 
+    "hunt-a-thons":{
+      "id":23,
+      "name":"hunt a thons"
     }
   }
 }

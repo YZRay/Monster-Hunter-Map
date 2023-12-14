@@ -586,6 +586,10 @@
     "rado": {
       "id": 22,
       "name": "骨鎚龍"
+    }, 
+    "hunt-a-thons":{
+      "id":23,
+      "name":"hunt a thons"
     }
   }
 }

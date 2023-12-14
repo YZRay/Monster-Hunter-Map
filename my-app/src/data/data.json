@@ -2517,6 +2517,12 @@
         "ice": 2,
         "dragon": 3
       }
+    }, 
+      "hunt-a-thons":{
+        "id":23,
+        "name":"hunt a thons",
+        "unlock":2,
+        "mapShow":true
     }
   }
 }
