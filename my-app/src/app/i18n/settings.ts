@@ -1,5 +1,5 @@
-export const fallbackLng = "zhTW";
-export const languages = [fallbackLng, "en", "jp"];
+export const fallbackLng = "zh-Hant-TW";
+export const languages = [fallbackLng, "en", "ja"];
 export const defaultNS = "common";
 export const cookieName = "i18next";
 

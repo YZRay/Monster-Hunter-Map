@@ -95,7 +95,7 @@ const SelectionPage: FC = () => {
       <div
         className={`shadow-md fixed xl:relative overflow-y-auto h-screen col-span-auto flex flex-col gap-2 p-4 bg-slate-200 dark:bg-slate-900 top-0 transition-all duration-500 z-50 lg:left-0 ${
           isArmorOpen
-            ? "left-0 max-w-[80%] lg:w-1/3"
+            ? "left-0 max-w-[100%] lg:w-1/3"
             : "-left-full lg:w-[220px]"
         }`}
       >

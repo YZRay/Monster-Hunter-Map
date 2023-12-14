@@ -47,8 +47,8 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor, isArmorOpen }) => {
           {armor.map((equipment) => (
             <div
               key={equipment.key}
-              className={`flex w-full py-1 px-2 lg:py-2 lg:px-4 items-center bg-gray-100 dark:bg-slate-600 bg-opacity-90 border border-transparent dark:border-slate-300/50 rounded-lg shadow-md ${
-                isArmorOpen ? "justify-between gap-2" : "justify-center"
+              className={`w-full py-1 px-2 lg:py-2 lg:px-3 items-center bg-gray-100 dark:bg-slate-600 bg-opacity-90 border border-transparent dark:border-slate-300/50 rounded-lg shadow-md ${
+                isArmorOpen ? "grid grid-cols-5 gap-2" : "flex justify-center"
               }`}
             >
               <div className="flex flex-col items-center gap-1">
@@ -60,7 +60,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor, isArmorOpen }) => {
                   loading="lazy"
                   className="w-8 h-8 md:w-12 md:h-12"
                 />
-                <span className="font-bold text-sm lg:text-base text-gray-800 dark:text-gray-300">
+                <span className="font-bold text-xs md:text-sm lg:text-base text-gray-800 dark:text-gray-300">
                   {equipName(`equipSetting.${equipment.armorKey}.name`)}
                   {equipment.key &&
                     equipName(`baseSetting.parts.${equipment.key}`)}
@@ -77,7 +77,7 @@ const ArmorSection: FC<ArmorSectionProps> = ({ armor, isArmorOpen }) => {
                     }`}
                     key={index}
                   >
-                    {equip.unlock} {t("ArmorSetting.unlock")}
+                    G {equip.unlock}
                     <br /> {equipName(
                       `baseSetting.skills.${equip.skill}.name`
                     )}{" "}
