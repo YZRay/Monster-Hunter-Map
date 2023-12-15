@@ -74,7 +74,9 @@ const Selection: FC<SelectionProps> = ({
   };
 
   //表格內容
-  const armorRows = Object.entries(data.equipSetting).map(
+  const armorRows = Object.entries(data.equipSetting).filter(([armorKey, armor] : [string, Armor])=>{
+    return armorKey !== "hunt-a-thons";
+  }).map(
     ([armorKey, armor]: [string, Armor]) => (
       <tr className="z-0" key={armor.id}>
         <th

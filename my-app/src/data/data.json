@@ -2522,7 +2522,102 @@
         "id":23,
         "name":"hunt a thons",
         "unlock":2,
-        "mapShow":true
+        "equip": {
+          "weapon": [
+            {
+              "unlock": 4,
+              "skill": "defense",
+              "lv": 1
+            },
+            {
+              "unlock": 8,
+              "skill": "defense",
+              "lv": 2
+            }
+          ],
+          "helm": [
+            {
+              "unlock": 2,
+              "skill": "defenseUp",
+              "lv": 1
+            },
+            {
+              "unlock": 6,
+              "skill": "defenseUp",
+              "lv": 2
+            }
+          ],
+          "mail": [
+            {
+              "unlock": 2,
+              "skill": "sleepAttack",
+              "lv": 1
+            },
+            {
+              "unlock": 4,
+              "skill": "defense",
+              "lv": 1
+            },
+            {
+              "unlock": 6,
+              "skill": "defense",
+              "lv": 2
+            }
+          ],
+          "gloves": [
+            {
+              "unlock": 2,
+              "skill": "koKing",
+              "lv": 1
+            },
+            {
+              "unlock": 4,
+              "skill": "sleepResistance",
+              "lv": 1
+            }
+          ],
+          "belt": [
+            {
+              "unlock": 2,
+              "skill": "sleepAttack",
+              "lv": 1
+            },
+            {
+              "unlock": 6,
+              "skill": "sleepAttack",
+              "lv": 2
+            }
+          ],
+          "greaves": [
+            {
+              "unlock": 2,
+              "skill": "sleepResistance",
+              "lv": 1
+            },
+            {
+              "unlock": 4,
+              "skill": "defenseUp",
+              "lv": 1
+            }
+          ]
+        },
+        "mapShow":true,
+        "location": ["desert", "swamp"],
+        "statusEffect": {
+          "poison": 2,
+          "sleep": 1,
+          "paralysis": 2,
+          "blastblight": 3,
+          "stun": 2
+        },
+        "weaknessElement": {
+          "fire": 1,
+          "water": 1,
+          "thunder": 1,
+          "ice": 2,
+          "dragon": 3
+        }
+        
     }
   }
 }
