@@ -47,7 +47,7 @@ main {
     @apply p-3;
   }
   .container {
-    @apply w-11/12 md:max-w-xl lg:max-w-2xl xl:max-w-5xl mx-auto;
+    @apply w-11/12 md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto;
   }
   .equip-container {
     @apply w-9/12 mx-auto;
