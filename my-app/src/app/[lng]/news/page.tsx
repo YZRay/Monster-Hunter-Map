@@ -15,9 +15,9 @@ function PostCard(post: Post) {
     <article>
       <Card
         isFooterBlurred
-        className="w-full h-[400 xl:px] col-span-12 sm:col-span-5 group"
+        className="w-full h-[400px] relative z-0 col-span-12 sm:col-span-5 group rounded-md"
       >
-        <CardHeader className="absolute z-10 top-0 flex-col items-start backdrop-blur-sm bg-white/30 ">
+        <CardHeader className="absolute z-[1] top-0 flex-col items-start backdrop-blur-sm bg-white/30 ">
           <p className="text-tiny text-slate-900 uppercase font-bold">New</p>
           <h4 className="text-slate-900 font-bold text-lg md:text-xl xl:text-2xl">
             {post.title}
@@ -29,7 +29,7 @@ function PostCard(post: Post) {
           className="z-0 w-full h-full object-center object-cover group-hover:scale-110"
           src={post.image}
         />
-        <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
+        <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-[1] justify-between">
           <div>
             {post.tags?.map((tag, index) => (
               <p key={index} className="text-slate-900 text-tiny">

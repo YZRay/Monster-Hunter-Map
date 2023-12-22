@@ -26,7 +26,7 @@ const Navbar = ({ lng }: { lng: string }) => {
           pathname.includes("/equipment") ? "mb-0" : "mb-4 xl:mb-0"
         }`}
       >
-        <div className="px-2 md:px-6 lg:px-8 z-30 xl:hidden flex items-center justify-between bg-opacity-95 bg-slate-200 dark:bg-slate-700 shadow-md py-2">
+        <div className="px-2 md:px-6 lg:px-8 z-50 xl:hidden flex items-center justify-between bg-opacity-95 bg-slate-200 dark:bg-slate-700 shadow-md py-2">
           <h1 className="font-bold text-lg text-slate-800 dark:text-slate-200">
             <Link href={`${urlBuilder(lng, "/")}`} locale={lng}>
               {t("title")}
@@ -43,7 +43,7 @@ const Navbar = ({ lng }: { lng: string }) => {
       <Headroom
         className={`${pathname.includes("/equipment") ? "mb-0" : "md:mb-6"}`}
       >
-        <div className="w-full hidden xl:flex p-1 rounded-md gap-1 justify-around items-center z-30 bg-opacity-95 bg-slate-200 dark:bg-slate-800 shadow-md py-2">
+        <div className="w-full hidden xl:flex p-1 rounded-md gap-1 justify-around items-center z-50 bg-opacity-95 bg-slate-200 dark:bg-slate-800 shadow-md py-2">
           <h1 className="font-bold text-xl text-slate-800 dark:text-slate-200">
             <Link href={`${urlBuilder(lng, "/")}`} locale={lng}>
               {t("title")}
