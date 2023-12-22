@@ -16,7 +16,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@headlessui/tailwindcss"), require("@nextui-org/react")],
+  plugins: [require("@nextui-org/react"), require("@headlessui/tailwindcss")],
   darkMode: "class",
 };
 export default config;
