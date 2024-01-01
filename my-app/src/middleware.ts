@@ -1,10 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { fallbackLng, languages } from "./app/i18n/settings";
 export function middleware(request: NextRequest) {
-  // Check if there is any supported locale in the pathname
   const { pathname, searchParams } = request.nextUrl;
-
-  // Check if the default locale is in the pathname
   if (
     pathname.startsWith(`/${fallbackLng}/`) ||
     pathname === `/${fallbackLng}`
