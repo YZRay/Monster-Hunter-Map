@@ -1,7 +1,11 @@
 "use client";
 import React, { FC, Fragment } from "react";
 import MapSelection from "@/components/MapSelection";
-import DiscordBot from "@/components/DiscordBot";
+import dynamic from "next/dynamic";
+
+const DiscordBot = dynamic(() => import("@/components/DiscordBot"), {
+  ssr: false,
+});
 
 const HomePage: FC = () => {
   return (

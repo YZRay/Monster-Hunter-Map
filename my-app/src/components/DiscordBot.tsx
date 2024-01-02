@@ -26,7 +26,7 @@ const DiscordBot: FC = () => {
           variant="faded"
           aria-label="Chat Message"
           onClick={() => setShow(!show)}
-          className="fixed bottom-10 left-6 rounded-full p-3 bg-slate-100 drop-shadow-md z-50"
+          className="fixed bottom-10 left-8 rounded-full p-3 bg-slate-100 drop-shadow-lg z-50"
         >
           <BsDiscord className="w-8 h-8 text-slate-700" />
         </Button>
