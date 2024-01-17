@@ -45,7 +45,12 @@ const SearchMonster: FC<SearchMonsterProps> = ({
           target="_blank"
           className="flex items-center"
         >
-          <img src="https://img.buymeacoffee.com/button-api/?text=buy me a beer&emoji=&slug=mhnow.cc&button_colour=5F7FFF&font_colour=ffffff&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00" />
+          <img
+            className=""
+            src="https://img.buymeacoffee.com/button-api/?text=buy me a beer&emoji=&slug=mhnow.cc&button_colour=5F7FFF&font_colour=ffffff&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00"
+            width="217"
+            height="50"
+          />
         </Link>
       </div>
       {!isCollapsed && (
