@@ -2033,11 +2033,6 @@
         "helm": [
           {
             "unlock": 5,
-            "skill": "earplugs",
-            "lv": 1
-          },
-          {
-            "unlock": 5,
             "skill": "focus",
             "lv": 1
           },
@@ -2050,7 +2045,12 @@
         "mail": [
           {
             "unlock": 5,
-            "skill": "peakPerformance",
+            "skill": "fireAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 5,
+            "skill": "earplugs",
             "lv": 1
           },
           {
@@ -2074,30 +2074,25 @@
         "belt": [
           {
             "unlock": 5,
-            "skill": "recoilReduction",
+            "skill": "spSkillBoost",
             "lv": 1
           },
           {
             "unlock": 6,
-            "skill": "peakPerformance",
+            "skill": "criticalBoost",
             "lv": 1
           }
         ],
         "greaves": [
           {
             "unlock": 5,
-            "skill": "earplugs",
-            "lv": 1
-          },
-          {
-            "unlock": 5,
-            "skill": "criticalBoost",
-            "lv": 1
+            "skill": "loadingSpeed",
+            "lv": 2
           },
           {
             "unlock": 6,
-            "skill": "criticalBoost",
-            "lv": 2
+            "skill": "fireAttackBoost",
+            "lv": 1
           }
         ]
       },
