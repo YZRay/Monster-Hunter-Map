@@ -29,7 +29,6 @@ const SearchMonster: FC<SearchMonsterProps> = ({
   toggleCollapse,
 }) => {
   const { t } = useTranslation("monster");
-
   return (
     <Fragment>
       {/* 搜尋魔物 */}
