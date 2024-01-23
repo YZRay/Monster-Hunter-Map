@@ -85,6 +85,9 @@ main {
   .table-list {
     @apply flex gap-3 before:w-24 lg:before:hidden before:bg-slate-500 dark:lg:before:bg-transparent lg:before:bg-transparent before:text-slate-200 before:py-4 before:px-2 items-center before:content-[attr(data-td)] lg:before:content-[''] lg:table-cell lg:p-4 border-slate-400 dark:before:bg-slate-800;
   }
+  article p {
+    @apply mt-2 leading-relaxed;
+  }
 }
 * {
   --sb-track-color: rgb(148 163 184);

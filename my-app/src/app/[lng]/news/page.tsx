@@ -1,11 +1,14 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useMDXComponent } from "next-contentlayer/hooks";
 import { allPosts, Post } from "contentlayer/generated";
 function PostCard(post: Post) {
   if (!post.image) {
     post.image = "";
   }
+  const Component = useMDXComponent(post.body.code);
+
   return (
     <article>
       <Link href={post.url} className="news-list-container">
@@ -20,10 +23,7 @@ function PostCard(post: Post) {
         </div>
         <div className="news-list-content">
           <h2 className="text-2xl my-5 font-medium">{post.title}</h2>
-          <div
-            className="[&>*]:mb-3 [&>*:last-child]:mb-0 text-lg font-medium [&>*]:text-ellipsis"
-            dangerouslySetInnerHTML={{ __html: post.body.html }}
-          />
+          <Component />
         </div>
       </Link>
     </article>
