@@ -1,7 +1,10 @@
 "use client";
-// import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 import { Card, CardHeader, Button, CardFooter, Image } from "@nextui-org/react";
+import Link from "next/link";
+import { useMDXComponent } from "next-contentlayer/hooks";
+
 import { allPosts, Post } from "contentlayer/generated";
 
 function PostCard(post: Post) {
@@ -10,6 +13,8 @@ function PostCard(post: Post) {
   if (!post.image) {
     post.image = "";
   }
+  const Component = useMDXComponent(post.body.code);
+
   return (
     <article>
       <Card
@@ -35,8 +40,6 @@ function PostCard(post: Post) {
                 {tag}
               </p>
             ))}
-            {/* <p className="text-slate-900 text-tiny">Available soon.</p>
-            <p className="text-slate-900 text-tiny">Get notified.</p> */}
           </div>
           <Button
             className="text-base px-4 py-2 rounded-full bg-slate-300 dark:bg-slate-600 hover:scale-105 duration-300"
@@ -57,6 +60,7 @@ export default function Home() {
   const posts = allPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
+  console.log(posts);
 
   return (
     <main>

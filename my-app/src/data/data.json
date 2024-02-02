@@ -2033,11 +2033,6 @@
         "helm": [
           {
             "unlock": 5,
-            "skill": "earplugs",
-            "lv": 1
-          },
-          {
-            "unlock": 5,
             "skill": "focus",
             "lv": 1
           },
@@ -2050,13 +2045,18 @@
         "mail": [
           {
             "unlock": 5,
-            "skill": "peakPerformance",
+            "skill": "fireAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 5,
+            "skill": "earplugs",
             "lv": 1
           },
           {
             "unlock": 6,
             "skill": "earplugs",
-            "lv": 1
+            "lv": 2
           }
         ],
         "gloves": [
@@ -2074,35 +2074,30 @@
         "belt": [
           {
             "unlock": 5,
-            "skill": "recoilReduction",
+            "skill": "spSkillBoost",
             "lv": 1
           },
           {
             "unlock": 6,
-            "skill": "peakPerformance",
+            "skill": "criticalBoost",
             "lv": 1
           }
         ],
         "greaves": [
           {
             "unlock": 5,
-            "skill": "earplugs",
-            "lv": 1
-          },
-          {
-            "unlock": 5,
-            "skill": "criticalBoost",
-            "lv": 1
+            "skill": "loadingSpeed",
+            "lv": 2
           },
           {
             "unlock": 6,
-            "skill": "criticalBoost",
-            "lv": 2
+            "skill": "fireAttackBoost",
+            "lv": 1
           }
         ]
       },
       "eff": "fire",
-      "mapShow": false,
+      "mapShow": true,
       "location": ["forest"],
       "statusEffect": {
         "poison": 1,
@@ -2517,107 +2512,106 @@
         "ice": 2,
         "dragon": 3
       }
-    }, 
-      "hunt-a-thons":{
-        "id":23,
-        "name":"hunt a thons",
-        "unlock":2,
-        "equip": {
-          "weapon": [
-            {
-              "unlock": 4,
-              "skill": "defense",
-              "lv": 1
-            },
-            {
-              "unlock": 8,
-              "skill": "defense",
-              "lv": 2
-            }
-          ],
-          "helm": [
-            {
-              "unlock": 2,
-              "skill": "defenseUp",
-              "lv": 1
-            },
-            {
-              "unlock": 6,
-              "skill": "defenseUp",
-              "lv": 2
-            }
-          ],
-          "mail": [
-            {
-              "unlock": 2,
-              "skill": "sleepAttack",
-              "lv": 1
-            },
-            {
-              "unlock": 4,
-              "skill": "defense",
-              "lv": 1
-            },
-            {
-              "unlock": 6,
-              "skill": "defense",
-              "lv": 2
-            }
-          ],
-          "gloves": [
-            {
-              "unlock": 2,
-              "skill": "koKing",
-              "lv": 1
-            },
-            {
-              "unlock": 4,
-              "skill": "sleepResistance",
-              "lv": 1
-            }
-          ],
-          "belt": [
-            {
-              "unlock": 2,
-              "skill": "sleepAttack",
-              "lv": 1
-            },
-            {
-              "unlock": 6,
-              "skill": "sleepAttack",
-              "lv": 2
-            }
-          ],
-          "greaves": [
-            {
-              "unlock": 2,
-              "skill": "sleepResistance",
-              "lv": 1
-            },
-            {
-              "unlock": 4,
-              "skill": "defenseUp",
-              "lv": 1
-            }
-          ]
-        },
-        "mapShow":true,
-        "location": ["desert", "swamp"],
-        "statusEffect": {
-          "poison": 2,
-          "sleep": 1,
-          "paralysis": 2,
-          "blastblight": 3,
-          "stun": 2
-        },
-        "weaknessElement": {
-          "fire": 1,
-          "water": 1,
-          "thunder": 1,
-          "ice": 2,
-          "dragon": 3
-        }
-        
+    },
+    "hunt-a-thons": {
+      "id": 23,
+      "name": "hunt a thons",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 8,
+            "skill": "defense",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "defenseUp",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "defenseUp",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "sleepAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "defense",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "defense",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "koKing",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "sleepResistance",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "sleepAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "sleepAttack",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "sleepResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "defenseUp",
+            "lv": 1
+          }
+        ]
+      },
+      "mapShow": true,
+      "location": ["desert", "swamp"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 1,
+        "paralysis": 2,
+        "blastblight": 3,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 1,
+        "water": 1,
+        "thunder": 1,
+        "ice": 2,
+        "dragon": 3
+      }
     }
   }
 }
