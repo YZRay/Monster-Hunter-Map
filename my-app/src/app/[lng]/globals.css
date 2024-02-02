@@ -77,6 +77,16 @@ main {
   article p {
     @apply mt-2 leading-relaxed;
   }
+  article table {
+    @apply w-11/12 md:w-full text-left my-4 mx-auto table-auto;
+  }
+  article tr {
+    @apply border-b-1 border-slate-800;
+  }
+  article td,
+  article th {
+    @apply p-2 py-4 border-b-2 border-slate-700 text-left leading-4 text-slate-900 tracking-wider;
+  }
 }
 * {
   --sb-track-color: rgb(148 163 184);
