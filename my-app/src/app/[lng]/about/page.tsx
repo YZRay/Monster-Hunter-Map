@@ -33,12 +33,11 @@ const AboutPage: FC = () => {
           <p className="my-5">
             如果覺得我們做的不錯 :{" "}
             <Link
-              href="https://p.ecpay.com.tw/D5FEAC2"
+              href="https://www.buymeacoffee.com/mhnow.cc"
               target="_blank"
-              className="flex w-full justify-center items-center btn gap-2 text-base rounded-md font-bold py-2 px-4 mt-2"
+              className="flex items-center"
             >
-              <FaCoffee />
-              歡迎請我們喝杯咖啡
+              <img src="https://img.buymeacoffee.com/button-api/?text=buy me a beer&emoji=&slug=mhnow.cc&button_colour=5F7FFF&font_colour=ffffff&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00" />
             </Link>
           </p>
           <p className="my-5">

@@ -29,7 +29,6 @@ const SearchMonster: FC<SearchMonsterProps> = ({
   toggleCollapse,
 }) => {
   const { t } = useTranslation("monster");
-
   return (
     <Fragment>
       {/* 搜尋魔物 */}
@@ -41,12 +40,16 @@ const SearchMonster: FC<SearchMonsterProps> = ({
           {isCollapsed ? `${t("MonsterMap.open")}` : `${t("MonsterMap.close")}`}
         </button>
         <Link
-          href="https://p.ecpay.com.tw/D5FEAC2"
+          href="https://www.buymeacoffee.com/mhnow.cc"
           target="_blank"
-          className="flex items-center btn gap-2 text-base rounded-md font-bold py-2 px-4"
+          className="flex items-center"
         >
-          <FaCoffee />
-          歡迎請我們喝杯咖啡
+          <img
+            className=""
+            src="https://img.buymeacoffee.com/button-api/?text=buy me a beer&emoji=&slug=mhnow.cc&button_colour=5F7FFF&font_colour=ffffff&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00"
+            width="217"
+            height="50"
+          />
         </Link>
       </div>
       {!isCollapsed && (
