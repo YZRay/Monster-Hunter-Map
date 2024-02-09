@@ -6,6 +6,7 @@ import { HiChevronUpDown } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 import { FaCoffee } from "react-icons/fa";
 import Image from "next/image";
+
 interface SearchMonsterProps {
   isCollapsed: boolean;
   toggleCollapse: () => void;
@@ -17,6 +18,7 @@ interface SearchMonsterProps {
   setSelectedRegion: (region: string | null) => void;
   LocationList: string[];
 }
+
 const SearchMonster: FC<SearchMonsterProps> = ({
   monsterNames,
   selectedMonster,
