@@ -44,8 +44,8 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-300 text-center">
           最新消息
         </h1>
-        <div className="grid grid-cols-12 gap-7 my-4 md:my-8">
-          <div className="col-span-12 xl:col-span-9 flex flex-col gap-6">
+        <div className="grid grid-cols-12 gap-7 my-4 md:my-8 w-3/4 mx-auto">
+          <div className="col-span-12 flex flex-col gap-6">
             {displayedPosts.map((post, idx) => (
               <NewsCard key={idx} {...post} />
             ))}
@@ -61,9 +61,9 @@ export default function Home() {
               onChange={handlePageChange}
             />
           </div>
-          <aside className="col-span-3">
+          {/* <aside className="col-span-3">
             <div className="hidden lg:sticky lg:top-28 lg:block">SIDE BAR</div>
-          </aside>
+          </aside> */}
         </div>
       </div>
     </main>
