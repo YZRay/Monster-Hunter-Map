@@ -72,6 +72,7 @@
     "reportBad": "Report Bad",
     "isHuntAThons": "Hunt A Thons",
     "remainingTime": "Remaining Time",
-    "minute": "minute"
+    "minute": "minute",
+    "finished": "time up"
   }
 }

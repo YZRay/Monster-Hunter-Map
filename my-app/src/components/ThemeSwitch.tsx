@@ -19,15 +19,14 @@ export default function ThemeSwitch() {
   return (
     <>
       <Button
-        className={`w-10 h-10 rounded-xl p-2 border ${
-          resolvedTheme === "light" ? "border-slate-700" : "border-slate-400"
-        }`}
         onClick={handleThemeChange}
-        variant="bordered"
+        variant="shadow"
+        className="text-slate-200"
+        isIconOnly
         color={resolvedTheme === "dark" ? "warning" : "primary"}
       >
         {resolvedTheme === "dark" ? (
-          <IoMdSunny className="w-5 h-50" />
+          <IoMdSunny className="w-5 h-5" />
         ) : (
           <IoMdMoon className="w-5 h-5" />
         )}

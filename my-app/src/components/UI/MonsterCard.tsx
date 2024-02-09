@@ -4,6 +4,8 @@ import { HiClipboardDocument, HiFaceSmile, HiFaceFrown } from "react-icons/hi2";
 import { FaStar, FaLocationDot } from "react-icons/fa6";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import { Divider } from "@nextui-org/react";
+import CountdownTimer from "../CountdownTimer";
 
 interface MonsterCardProps {
   item: DataItem;
@@ -26,7 +28,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
   const { t: transMonster } = useTranslation("data");
 
   const imageElements = monsterNames.map((monsterName, index) => (
-    <div className="max-w-[4rem] max-h-[4rem]" key={index}>
+    <div className="max-w-[4rem] max-h-[4rem] relative" key={index}>
       <Image
         className="w-auto h-auto drop-shadow"
         src={`/assets/icons/Monster/${monsterName}.svg`}
@@ -35,6 +37,16 @@ const MonsterCard: FC<MonsterCardProps> = ({
         alt="equipment"
         loading="lazy"
       />
+      {item.isHuntAThons && (
+        <Image
+          className="h-9 w-9 absolute top-0 right-0 translate-x-[25%] translate-y-[-25%]"
+          src={`/assets/icons/Monster/hunt-a-thons.svg`}
+          width={36}
+          height={36}
+          alt="equipment"
+          loading="lazy"
+        />
+      )}
     </div>
   ));
 
@@ -46,14 +58,14 @@ const MonsterCard: FC<MonsterCardProps> = ({
 
   return (
     <div
-      className="flex flex-col border border-transparent text-base lg:text-lg font-bold bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-500/50
-        text-slate-800 rounded-md shadow-md p-4 hover:bg-slate-800 hover:text-slate-200 duration-300 dark:hover:bg-slate-300 dark:hover:text-slate-800 
+      className="group flex flex-col border border-transparent text-base lg:text-lg font-bold bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-500/50
+        text-slate-800 rounded-md shadow-md p-3 hover:bg-slate-800 hover:text-slate-200 duration-300 dark:hover:bg-slate-300 dark:hover:text-slate-800 
         "
     >
       <div className="justify-around flex-wrap">
         <div className="flex gap-4 relative items-center">
           {imageElements}
-          <div className="basis-1/2">
+          <div className="flex-1">
             <div className="flex gap-1">
               {Array.from(
                 { length: item.level > 5 ? item.level - 5 : item.level },
@@ -67,14 +79,28 @@ const MonsterCard: FC<MonsterCardProps> = ({
                 )
               )}
             </div>
-            <div>
-              <p className="text-base">
-                {/* {monsterNames.join(", ")} */}
-                {translatedMonsterNamesString}
-              </p>
-              <span className="text-base">
-                {item.round} {t("MonsterMap.round")}
-              </span>
+            <div className="flex flex-col gap-1">
+              <p className="text-base">{translatedMonsterNamesString}</p>
+              <div className="flex items-center gap-3 h-auto">
+                <span className="text-base">
+                  {item.round} {t("MonsterMap.round")}
+                </span>
+                {item.isHuntAThons && (
+                  <>
+                    <Divider
+                      orientation="vertical"
+                      className="h-4 bg-slate-800 group-hover:bg-slate-300 dark:bg-slate-200 dark:group-hover:bg-slate-800 transition-all duration-300"
+                    />
+                    <span>
+                      <CountdownTimer
+                        endTime={item.remainingTime}
+                        createdTime={item.createdAt}
+                        id={item.id}
+                      />
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
           </div>
           <div>
@@ -94,7 +120,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
             {item.location} - {item.coordinates}
           </span>
         </div>
-        <div className="flex items-center justify-between pt-2">
+        <div className="flex items-center justify-between mt-2">
           <div className="text-base">
             {(() => {
               const date = new Date(item.createdAt + "Z");
