@@ -182,7 +182,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                 <h2 className="text-xl font-bold block dark:text-gray-300">
                   {t("MonsterMap.isHuntAThons")}
                 </h2>
-                <div className="relative w-full rounded-lg bg-white dark:bg-slate-600 p-2 text-left shadow-md flex items-center gap-2">
+                <div className="relative w-full h-16 rounded-lg bg-white dark:bg-slate-600 p-2 text-left shadow-md flex items-center">
                   <input
                     type="checkbox"
                     id={`checkbox_IsHuntAThons`}
@@ -194,7 +194,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                   />
                   <label
                     htmlFor={`checkbox_IsHuntAThons`}
-                    className="text-sm md:text-base text-gray-800 dark:text-gray-300 flex-1"
+                    className="text-sm md:text-base text-gray-800 dark:text-gray-300 flex-1 flex justify-center"
                   >
                     <Image
                       className=" h-8 w-8 md:w-12 md:h-12"
@@ -220,7 +220,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                 <h2 className="text-xl font-bold block dark:text-gray-300">
                   {t("MonsterMap.remainingTime")}
                 </h2>
-                <div className="relative w-full rounded-lg bg-white dark:bg-slate-600 p-2 text-left shadow-md flex items-center gap-2">
+                <div className="relative w-full h-16 rounded-lg bg-white dark:bg-slate-600 p-2 text-left shadow-md flex items-center gap-2">
                   <input
                     min={0}
                     max={60}

@@ -58,7 +58,7 @@ const MonsterCard: FC<MonsterCardProps> = ({
 
   return (
     <div
-      className="flex flex-col border border-transparent text-base lg:text-lg font-bold bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-500/50
+      className="group flex flex-col border border-transparent text-base lg:text-lg font-bold bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-500/50
         text-slate-800 rounded-md shadow-md p-3 hover:bg-slate-800 hover:text-slate-200 duration-300 dark:hover:bg-slate-300 dark:hover:text-slate-800 
         "
     >
@@ -81,18 +81,24 @@ const MonsterCard: FC<MonsterCardProps> = ({
             </div>
             <div className="flex flex-col gap-1">
               <p className="text-base">{translatedMonsterNamesString}</p>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3 h-auto">
                 <span className="text-base">
                   {item.round} {t("MonsterMap.round")}
                 </span>
                 {item.isHuntAThons && (
-                  <span>
-                    <CountdownTimer
-                      endTime={item.remainingTime}
-                      createdTime={item.createdAt}
-                      id={item.id}
+                  <>
+                    <Divider
+                      orientation="vertical"
+                      className="h-4 bg-slate-800 group-hover:bg-slate-300 dark:bg-slate-200 dark:group-hover:bg-slate-800 transition-all duration-300"
                     />
-                  </span>
+                    <span>
+                      <CountdownTimer
+                        endTime={item.remainingTime}
+                        createdTime={item.createdAt}
+                        id={item.id}
+                      />
+                    </span>
+                  </>
                 )}
               </div>
             </div>

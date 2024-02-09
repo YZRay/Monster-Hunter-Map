@@ -40,7 +40,7 @@ const CountdownTimer = ({
       />
     );
   } else {
-    formattedTime = t("MonsterMap.finished");
+    formattedTime = <div> {t("MonsterMap.finished")}</div>;
   }
 
   return <Fragment>{formattedTime}</Fragment>;
