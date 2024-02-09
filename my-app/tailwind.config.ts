@@ -16,7 +16,23 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@headlessui/tailwindcss"), nextui()],
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            primary: "#27374D",
+          },
+        },
+        dark: {
+          colors: {
+            primary: "#94a3b8",
+          },
+        },
+      },
+    }),
+    require("@headlessui/tailwindcss"),
+  ],
   darkMode: "class",
 };
 export default config;
