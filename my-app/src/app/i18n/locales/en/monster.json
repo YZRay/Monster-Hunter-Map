@@ -69,6 +69,9 @@
     "openMap": "Open Map",
     "copytips": "Copy Location",
     "reportGood": "Report Good",
-    "reportBad": "Report Bad"
+    "reportBad": "Report Bad",
+    "isHuntAThons": "Hunt A Thons",
+    "remainingTime": "Remaining Time",
+    "minute": "minute"
   }
 }

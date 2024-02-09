@@ -69,6 +69,9 @@
     "openMap": "開啟地圖",
     "copytips": "複製經緯度",
     "reportGood": "回報正確定位",
-    "reportBad": "回報錯誤定位"
+    "reportBad": "回報錯誤定位",
+    "isHuntAThons": "大狩獵",
+    "remainingTime": "剩餘時間",
+    "minute": "分鐘"
   }
 }

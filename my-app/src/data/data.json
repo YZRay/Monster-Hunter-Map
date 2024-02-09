@@ -2596,7 +2596,7 @@
           }
         ]
       },
-      "mapShow": true,
+      "mapShow": false,
       "location": ["desert", "swamp"],
       "statusEffect": {
         "poison": 2,

@@ -23,6 +23,8 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
   const [disableSubmit, setDisableSubmit] = useState(false);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
   const [manualInput, setManualInput] = useState("");
+  const [isHuntAThons, setIsHuntAThons] = useState(false);
+  const [remainingTime, setRemainingTime] = useState(0);
   const monsterNameData = selectedMonster.join(",");
   const [geolocationData, setGeolocationData] = useState<{
     latitude: number | null;
@@ -50,6 +52,8 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
       level: 8,
       coordinates: "",
       round: 4,
+      isHuntAThons: false,
+      remainingTime: 0
     },
   });
 
@@ -64,6 +68,8 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
     }
     data.name = monsterNameData;
     data.coordinates = manualInput;
+    data.isHuntAThons = isHuntAThons;
+    data.remainingTime = remainingTime;
     data.uid = userId.userId;
     console.log(data);
 
@@ -124,9 +130,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
           control={control}
           render={({ field }) => (
             <div className="relative mt-1">
-              <h1 className="text-xl font-bold mt-2">
+              <h2 className="text-xl font-bold mt-2">
                 {t("MonsterMap.monsterName")}
-              </h1>
+              </h2>
               <div className="bg-white p-2 rounded-md shadow-md dark:bg-slate-600 flex flex-wrap gap-y-4 gap-x-2 justify-center max-h-40 overflow-y-auto">
                 {monsterNames.map((name, index) => (
                   <div className="flex gap-2 items-center" key={index}>
@@ -169,6 +175,66 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
         />
         <div className="grid grid-cols-2 gap-2">
           <Controller
+            name="isHuntAThons"
+            control={control}
+            render={({ field }) => (
+              <div className="relative mt-1">
+                <h2 className="text-xl font-bold mt-2 block dark:text-gray-300">
+                  {t("MonsterMap.isHuntAThons")}
+                </h2>
+                <div className="relative w-full rounded-lg bg-white dark:bg-slate-600 py-2 pl-3 pr-10 text-left shadow-md">
+                  <input
+                    type="checkbox"
+                    id={`checkbox_IsHuntAThons`}
+                    checked={isHuntAThons}
+                    className="w-full bg-slate-50 dark:bg-slate-600 rounded-lg py-2 px-3 shadow-md max-h-40"
+                    onChange={(e) => {
+                      setIsHuntAThons(!isHuntAThons);
+                    }}
+                  />
+                  <label
+                    htmlFor={`checkbox_isHuntAThons`}
+                    className="text-sm md:text-base text-gray-800 dark:text-gray-300"
+                  >
+                    <Image
+                      className=" h-8 w-8 md:w-12 md:h-12"
+                      src={`/assets/icons/Monster/hunt-a-thons.svg`}
+                      width={50}
+                      height={50}
+                      alt="equipment"
+                      loading="lazy"
+                    />
+                  </label>
+                </div>
+              </div>
+            )}
+          />
+          <Controller
+            name="remainingTime"
+            control={control}
+            rules={{
+              required: false,
+            }}
+            render={({ field }) => (
+              <div className="relative mt-1">
+                <h2 className="text-xl font-bold mt-2 block dark:text-gray-300">
+                  {t("MonsterMap.remainingTime")}
+                </h2>
+                <div className="relative w-full rounded-lg bg-white dark:bg-slate-600 py-2 pl-3 pr-10 text-left shadow-md">
+                  <input
+                    type="number"
+                    value={remainingTime}
+                    onChange={(e) => setRemainingTime(e.target.valueAsNumber)}
+                    className="w-full bg-slate-50 dark:bg-slate-600 rounded-lg py-2 px-3 shadow-md max-h-40"
+                  />
+                  <span>{t("MonsterMap.minute")}</span>
+                </div>
+              </div>
+            )}
+          />
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          <Controller
             name="level"
             control={control}
             rules={{
@@ -205,11 +271,10 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                         <Listbox.Option key={level} value={level}>
                           {({ active }) => (
                             <div
-                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${
-                                active
-                                  ? "bg-slate-800 text-white"
-                                  : "text-gray-900"
-                              }`}
+                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${active
+                                ? "bg-slate-800 text-white"
+                                : "text-gray-900"
+                                }`}
                             >
                               {level}
                             </div>
@@ -259,11 +324,10 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                         <Listbox.Option key={round} value={round}>
                           {({ active }) => (
                             <div
-                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${
-                                active
-                                  ? "bg-slate-800 text-white"
-                                  : "text-gray-900"
-                              }`}
+                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${active
+                                ? "bg-slate-800 text-white"
+                                : "text-gray-900"
+                                }`}
                             >
                               {round}
                             </div>
@@ -303,13 +367,12 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             selectedMonster.length === 0 ||
             selectedMonster.length > 2
           } // 禁止上傳
-          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 border border-transparent dark:border-slate-400/50 ${
-            disableSubmit ||
+          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 border border-transparent dark:border-slate-400/50 ${disableSubmit ||
             selectedMonster.length === 0 ||
             selectedMonster.length > 2
-              ? "bg-gray-300 text-gray-500 dark:bg-gray-600 dark:text-gray-200" // 禁止上傳
-              : "bg-slate-400 text-white dark:bg-slate-600 hover:bg-slate-800 dark:hover:bg-slate-500 duration-300" // 可以送出時
-          }`}
+            ? "bg-gray-300 text-gray-500 dark:bg-gray-600 dark:text-gray-200" // 禁止上傳
+            : "bg-slate-400 text-white dark:bg-slate-600 hover:bg-slate-800 dark:hover:bg-slate-500 duration-300" // 可以送出時
+            }`}
         >
           <HiMiniPaperAirplane className="w-4 h-4" />
           <span>{t("MonsterMap.submit")}</span>
