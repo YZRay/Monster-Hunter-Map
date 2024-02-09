@@ -19,7 +19,7 @@ export default function ThemeSwitch() {
   return (
     <>
       <Button
-        className={`w-10 h-10 rounded-xl p-2 border ${
+        className={`w-10 h-10 border ${
           resolvedTheme === "light" ? "border-slate-700" : "border-slate-400"
         }`}
         onClick={handleThemeChange}

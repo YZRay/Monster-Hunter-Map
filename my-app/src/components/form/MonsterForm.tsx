@@ -53,7 +53,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
       coordinates: "",
       round: 4,
       isHuntAThons: false,
-      remainingTime: 0
+      remainingTime: 0,
     },
   });
 
@@ -71,7 +71,7 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
     data.isHuntAThons = isHuntAThons;
     data.remainingTime = remainingTime;
     data.uid = userId.userId;
-    console.log(data);
+    // console.log(data);
 
     setDisableSubmit(true);
 
@@ -173,28 +173,28 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             </div>
           )}
         />
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center mt-2">
           <Controller
             name="isHuntAThons"
             control={control}
             render={({ field }) => (
-              <div className="relative mt-1">
-                <h2 className="text-xl font-bold mt-2 block dark:text-gray-300">
+              <div>
+                <h2 className="text-xl font-bold block dark:text-gray-300">
                   {t("MonsterMap.isHuntAThons")}
                 </h2>
-                <div className="relative w-full rounded-lg bg-white dark:bg-slate-600 py-2 pl-3 pr-10 text-left shadow-md">
+                <div className="relative w-full rounded-lg bg-white dark:bg-slate-600 p-2 text-left shadow-md flex items-center gap-2">
                   <input
                     type="checkbox"
                     id={`checkbox_IsHuntAThons`}
                     checked={isHuntAThons}
-                    className="w-full bg-slate-50 dark:bg-slate-600 rounded-lg py-2 px-3 shadow-md max-h-40"
+                    className="w-5 h-5 bg-gray-100 border-gray-300 rounded focus:ring-lime-600 accent-lime-600 flex-1"
                     onChange={(e) => {
                       setIsHuntAThons(!isHuntAThons);
                     }}
                   />
                   <label
-                    htmlFor={`checkbox_isHuntAThons`}
-                    className="text-sm md:text-base text-gray-800 dark:text-gray-300"
+                    htmlFor={`checkbox_IsHuntAThons`}
+                    className="text-sm md:text-base text-gray-800 dark:text-gray-300 flex-1"
                   >
                     <Image
                       className=" h-8 w-8 md:w-12 md:h-12"
@@ -216,24 +216,28 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
               required: false,
             }}
             render={({ field }) => (
-              <div className="relative mt-1">
-                <h2 className="text-xl font-bold mt-2 block dark:text-gray-300">
+              <div>
+                <h2 className="text-xl font-bold block dark:text-gray-300">
                   {t("MonsterMap.remainingTime")}
                 </h2>
-                <div className="relative w-full rounded-lg bg-white dark:bg-slate-600 py-2 pl-3 pr-10 text-left shadow-md">
+                <div className="relative w-full rounded-lg bg-white dark:bg-slate-600 p-2 text-left shadow-md flex items-center gap-2">
                   <input
+                    min={0}
+                    max={60}
                     type="number"
                     value={remainingTime}
                     onChange={(e) => setRemainingTime(e.target.valueAsNumber)}
-                    className="w-full bg-slate-50 dark:bg-slate-600 rounded-lg py-2 px-3 shadow-md max-h-40"
+                    className="w-1/2 bg-slate-50 dark:bg-slate-600 rounded-lg py-2 px-3 max-h-40"
                   />
-                  <span>{t("MonsterMap.minute")}</span>
+                  <span className="flex-1 text-center">
+                    {t("MonsterMap.minute")}
+                  </span>
                 </div>
               </div>
             )}
           />
         </div>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 mt-2">
           <Controller
             name="level"
             control={control}
@@ -242,9 +246,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             }}
             render={({ field }) => (
               <Listbox {...field}>
-                <div className="relative mt-1">
+                <div className="relative">
                   <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-300">
-                    <h1 className="text-xl font-bold mt-2">
+                    <h1 className="text-xl font-bold">
                       {t("MonsterMap.level")}
                     </h1>
                   </Listbox.Label>
@@ -271,10 +275,11 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                         <Listbox.Option key={level} value={level}>
                           {({ active }) => (
                             <div
-                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${active
-                                ? "bg-slate-800 text-white"
-                                : "text-gray-900"
-                                }`}
+                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${
+                                active
+                                  ? "bg-slate-800 text-white"
+                                  : "text-gray-900"
+                              }`}
                             >
                               {level}
                             </div>
@@ -295,9 +300,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             }}
             render={({ field }) => (
               <Listbox {...field}>
-                <div className="relative mt-1">
+                <div className="relative">
                   <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-300">
-                    <h1 className="text-xl font-bold mt-2">
+                    <h1 className="text-xl font-bold">
                       {t("MonsterMap.round")}
                     </h1>
                   </Listbox.Label>
@@ -324,10 +329,11 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
                         <Listbox.Option key={round} value={round}>
                           {({ active }) => (
                             <div
-                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${active
-                                ? "bg-slate-800 text-white"
-                                : "text-gray-900"
-                                }`}
+                              className={`relative  rounded-md select-none py-2 pl-8 pr-4 ${
+                                active
+                                  ? "bg-slate-800 text-white"
+                                  : "text-gray-900"
+                              }`}
                             >
                               {round}
                             </div>
@@ -367,12 +373,13 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
             selectedMonster.length === 0 ||
             selectedMonster.length > 2
           } // 禁止上傳
-          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 border border-transparent dark:border-slate-400/50 ${disableSubmit ||
+          className={`w-full flex items-center justify-center gap-2 rounded-md py-2 font-bold my-4 border border-transparent dark:border-slate-400/50 ${
+            disableSubmit ||
             selectedMonster.length === 0 ||
             selectedMonster.length > 2
-            ? "bg-gray-300 text-gray-500 dark:bg-gray-600 dark:text-gray-200" // 禁止上傳
-            : "bg-slate-400 text-white dark:bg-slate-600 hover:bg-slate-800 dark:hover:bg-slate-500 duration-300" // 可以送出時
-            }`}
+              ? "bg-gray-300 text-gray-500 dark:bg-gray-600 dark:text-gray-200" // 禁止上傳
+              : "bg-slate-400 text-white dark:bg-slate-600 hover:bg-slate-800 dark:hover:bg-slate-500 duration-300" // 可以送出時
+          }`}
         >
           <HiMiniPaperAirplane className="w-4 h-4" />
           <span>{t("MonsterMap.submit")}</span>
