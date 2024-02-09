@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import useUserId from "./Hook/UserId";
 import { createBadLocation, createGoodLocation } from "./api/MLApi";
 import { useTranslation } from "react-i18next";
+import CountdownTimer from "./CountdownTimer";
 
 interface Props {
   data: GetResponse | null;
@@ -245,7 +246,9 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               )
             )}
           </div>
-          <span>
+          <span
+            className={`${dataItem.isHuntAThons ? "mb-2" : ""} inline-block`}
+          >
             {(() => {
               const date = new Date(dataItem.createdAt + "Z");
               const localTime = date.toLocaleString(undefined, {
@@ -254,6 +257,13 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               return localTime;
             })()}
           </span>
+          {dataItem.isHuntAThons && (
+            <CountdownTimer
+              endTime={dataItem.remainingTime}
+              createdTime={dataItem.createdAt}
+              id={dataItem.id}
+            />
+          )}
         </>
       );
     } else {

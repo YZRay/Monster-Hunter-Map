@@ -1996,7 +1996,7 @@
         ]
       },
       "eff": "fire",
-      "mapShow": false,
+      "mapShow" : true,
       "location": ["forest"],
       "statusEffect": {
         "poison": 1,
@@ -2596,7 +2596,7 @@
           }
         ]
       },
-      "mapShow": true,
+      "mapShow": false,
       "location": ["desert", "swamp"],
       "statusEffect": {
         "poison": 2,

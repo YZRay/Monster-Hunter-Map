@@ -69,6 +69,8 @@ interface DataItem {
   createdAt: string;
   round: number;
   distance: number;
+  isHuntAThons: boolean;
+  remainingTime: string;
   badLocations: ReportLocationModel[];
   goodLocations: ReportLocationModel[];
 }
@@ -78,6 +80,8 @@ interface PostData {
   coordinates: string;
   round: number;
   uid: string | null;
+  isHuntAThons: boolean;
+  remainingTime: number;
 }
 
 interface ReportLocationModel {
