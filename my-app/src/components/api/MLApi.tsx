@@ -42,7 +42,7 @@ export async function fetchMonsterLocation() {
     return data;
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
-    return null;
+    throw error;
   }
 }
 

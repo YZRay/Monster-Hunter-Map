@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -36,8 +22,11 @@ main {
   .monster-tab-mobile {
     @apply w-full text-slate-800 px-2 py-3 rounded-md text-lg hover:bg-slate-800 hover:text-white duration-300 justify-center tracking-wider ui-selected:bg-slate-800 ui-selected:text-white;
   }
+  .nav-btn {
+    @apply pb-2 relative after:content-[''] after:absolute after:w-full after:left-0 after:bottom-0 after:rounded-md after:scale-x-0 after:h-0.5 after:bg-neutral-700 after:transition-transform after:duration-300 dark:after:bg-neutral-200 hover:after:scale-x-100 ease-out;
+  }
   .active {
-    @apply bg-slate-800 text-white dark:bg-slate-700;
+    @apply after:scale-x-100;
   }
   .monster-table {
     @apply table table-fixed text-gray-300 border-separate space-y-6 text-center w-full;
@@ -47,7 +36,7 @@ main {
     @apply p-3;
   }
   .container {
-    @apply w-11/12 md:max-w-xl lg:max-w-2xl xl:max-w-5xl mx-auto;
+    @apply w-11/12 md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto;
   }
   .equip-container {
     @apply w-9/12 mx-auto;
@@ -87,6 +76,16 @@ main {
   }
   article p {
     @apply mt-2 leading-relaxed;
+  }
+  article table {
+    @apply w-11/12 md:w-full text-left my-4 mx-auto table-auto;
+  }
+  article tr {
+    @apply border-b-1 border-slate-800;
+  }
+  article td,
+  article th {
+    @apply p-2 py-4 border-b-2 border-slate-700 text-left leading-4 text-slate-900 tracking-wider;
   }
 }
 * {

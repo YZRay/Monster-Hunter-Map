@@ -13,6 +13,7 @@ import Image from "next/image";
 import monster from "../data/data.json";
 import dynamic from "next/dynamic";
 import SearchMonster from "./SearchMonster";
+import { toast } from "react-toastify";
 
 const MapTable = dynamic(() => import("./Table/MapTable"));
 const MonsterForm = dynamic(() => import("./form/MonsterForm"), {
@@ -57,10 +58,23 @@ const MapSelection = () => {
   } | null>(null);
 
   async function handleFormSubmitted() {
-    // 獲取上傳的魔物資料
-    const monsterDataResult = await fetchMonsterLocation();
-    if (monsterDataResult) {
-      setData(monsterDataResult);
+    try {
+      // 獲取上傳的魔物資料
+      const monsterDataResult = await toast.promise(fetchMonsterLocation(), {
+        pending: `Loading ...`,
+        success: "取得成功",
+        error: "發生錯誤",
+      });
+
+      console.log(monsterDataResult);
+
+      if (monsterDataResult && monsterDataResult.data) {
+        setData(monsterDataResult);
+      } else {
+        console.error("獲取的魔物資料失敗");
+      }
+    } catch (error) {
+      console.error("發生錯誤", error);
     }
   }
 
