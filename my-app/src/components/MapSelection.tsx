@@ -66,8 +66,6 @@ const MapSelection = () => {
         error: "發生錯誤",
       });
 
-      console.log(monsterDataResult);
-
       if (monsterDataResult && monsterDataResult.data) {
         setData(monsterDataResult);
       } else {
