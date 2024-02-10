@@ -82,11 +82,16 @@ const MonsterCard: FC<MonsterCardProps> = ({
             <div className="flex flex-col gap-1">
               <p className="text-base">{translatedMonsterNamesString}</p>
               <div className="flex items-center gap-3 h-auto">
-                <span className="text-base">
-                  {item.round} {t("MonsterMap.round")}
-                </span>
+                {!item.isHuntAThons && (
+                  <span className="text-base">
+                    {item.round} {t("MonsterMap.round")}
+                  </span>
+                )}
                 {item.isHuntAThons && (
                   <>
+                    <span className="text-base">
+                      {t("MonsterMap.remainingTime")}
+                    </span>
                     <Divider
                       orientation="vertical"
                       className="h-4 bg-slate-800 group-hover:bg-slate-300 dark:bg-slate-200 dark:group-hover:bg-slate-800 transition-all duration-300"
