@@ -1905,7 +1905,7 @@
         ]
       },
       "eff": "fire",
-      "mapShow": false,
+      "mapShow": ㄍㄧ,
       "location": ["desert"],
       "statusEffect": {
         "poison": 2,
