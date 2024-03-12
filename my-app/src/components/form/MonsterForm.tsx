@@ -8,8 +8,9 @@ import Image from "next/image";
 import monster from "../../data/data.json";
 import { toast } from "react-toastify";
 import useUserId from "@/components/Hook/UserId";
-import { createMonsterLocation } from "../api/MLApi";
+import { createMonsterLocation, queryClient } from "../api/MLApi";
 import { useTranslation } from "react-i18next";
+import { useMutation } from "@tanstack/react-query";
 
 const levels = [5, 6, 7, 8, 9, 10];
 const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
