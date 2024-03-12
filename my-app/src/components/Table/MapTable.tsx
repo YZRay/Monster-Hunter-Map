@@ -1,8 +1,13 @@
 import { FC, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Dialog, Transition } from "@headlessui/react";
 import useUserId from "../Hook/UserId";
-import { createBadLocation, createGoodLocation } from "./../api/MLApi";
+import {
+  createBadLocation,
+  createGoodLocation,
+  queryClient,
+} from "./../api/MLApi";
+import { useMutation } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
 import { useTranslation } from "react-i18next";
 
@@ -52,6 +57,14 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   const userId = useUserId();
   const [isCreateing, setIsCreateing] = useState(false);
 
+  const { mutate: createGood } = useMutation({
+    mutationFn: createGoodLocation,
+  });
+
+  const { mutate: createBad } = useMutation({
+    mutationFn: createBadLocation,
+  });
+
   const sendReport = (
     isGood: boolean,
     uid: string | null,
@@ -61,8 +74,6 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       return;
     }
 
-    var loading = toast.loading(`${t("MonsterMap.reporting")}`);
-
     setIsCreateing(true);
 
     var model = {
@@ -71,73 +82,25 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
     };
 
     if (isGood) {
-      createGoodLocation(model)
-        .then((response) => {
-          if (!response.ok) {
-            toast.error("網路回應發生錯誤", {
-              position: "top-center",
-              autoClose: 1500, // 1.5秒關閉
-            });
-          }
-          return response.json();
-        })
-        .then((data) => {
-          toast.dismiss(loading);
-          if (!data.status) {
-            toast.error(`${t("MonsterMap.error")}`, {
-              position: "top-center",
-              className: "danger",
-              autoClose: 1500, // 1.5秒關閉
-            });
-          } else {
-            toast.success(`${t("MonsterMap.success")}`, {
-              position: "top-center",
-              autoClose: 1500, // 1.5秒關閉
-            });
-
-            mlitem.goodLocations.push(model);
-          }
-
-          setIsCreateing(false);
-        })
-        .catch((error) => {
-          console.error("Error submit Form", error);
-        })
-        .finally(() => {});
+      createGood(model, {
+        onSuccess: () => {
+          toast.success(`${t("MonsterMap.success")}`, {
+            position: "top-center",
+            autoClose: 1500,
+          });
+          mlitem.goodLocations.push(model);
+        },
+      });
     } else {
-      createBadLocation(model)
-        .then((response) => {
-          if (!response.ok) {
-            toast.error("網路回應發生錯誤", {
-              position: "top-center",
-              autoClose: 1500, // 1.5秒關閉
-            });
-          }
-          return response.json();
-        })
-        .then((data) => {
-          toast.dismiss(loading);
-          if (!data.status) {
-            toast.error(`${t("MonsterMap.error")}`, {
-              position: "top-center",
-              className: "danger",
-              autoClose: 1500, // 1.5秒關閉
-            });
-          } else {
-            toast.success(`${t("MonsterMap.success")}`, {
-              position: "top-center",
-              autoClose: 1500, // 1.5秒關閉
-            });
-
-            mlitem.badLocations.push(model);
-          }
-
-          setIsCreateing(false);
-        })
-        .catch((error) => {
-          console.error("Error submit Form", error);
-        })
-        .finally(() => {});
+      createBad(model, {
+        onSuccess: () => {
+          toast.success(`${t("MonsterMap.success")}`, {
+            position: "top-center",
+            autoClose: 1500,
+          });
+          mlitem.badLocations.push(model);
+        },
+      });
     }
   };
 
