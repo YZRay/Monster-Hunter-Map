@@ -3,17 +3,14 @@ import { Fragment, useState, useEffect, useCallback } from "react";
 import FieldIcon from "../../public/assets/icons/field_icon.svg";
 import MonsterIcon from "../../public/assets/icons/monster_icon.svg";
 import { useTranslation } from "react-i18next";
-import {
-  fetchMonsterLocation,
-  GetlocationList,
-  Getlocation,
-} from "./api/MLApi";
+import { fetchMonsterLocation, GetlocationList } from "./api/MLApi";
 import { getGeolocationData } from "./api/GeolocationAPI";
 import Image from "next/image";
 import monster from "../data/data.json";
 import dynamic from "next/dynamic";
 import SearchMonster from "./SearchMonster";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
 const MapTable = dynamic(() => import("./Table/MapTable"));
 const MonsterForm = dynamic(() => import("./form/MonsterForm"), {
@@ -22,7 +19,6 @@ const MonsterForm = dynamic(() => import("./form/MonsterForm"), {
 const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
   ssr: false,
 });
-
 const monsterNames = Object.entries(monster.equipSetting)
   .filter(
     ([key, armor]) =>
@@ -32,6 +28,19 @@ const monsterNames = Object.entries(monster.equipSetting)
 
 const MapSelection = () => {
   const { t } = useTranslation("monster");
+  const {
+    data: monsterList,
+    isLoading: isMonsterListLoading,
+    isError: isMonsterListError,
+  } = useQuery({
+    queryKey: ["monsterList"],
+    queryFn: fetchMonsterLocation,
+  });
+  const { data: monsterData } = useQuery({
+    queryKey: ["monsterData"],
+    queryFn: GetlocationList,
+  });
+
   //摺疊搜尋區塊
   const [isCollapsed, setIsCollapsed] = useState(true);
   const toggleCollapse = useCallback(() => {
@@ -48,7 +57,6 @@ const MapSelection = () => {
   }, []);
 
   const [city, setCity] = useState("全部");
-  const [LocationList, setLocationList] = useState<string[]>([]);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
   const [selectedRegion, setSelectedRegion] = useState<string | null>("全部");
   const [data, setData] = useState<GetResponse | null>(null);
@@ -82,36 +90,9 @@ const MapSelection = () => {
       getGeolocationData((geoData) => {
         setGeolocation(geoData);
       });
-
-      // 取得已經上傳的地區、國家
-      const locationListResult = await GetlocationList();
-      if (locationListResult) {
-        setLocationList(locationListResult.data);
-      }
-
-      // 獲取上傳的魔物資料
-      const monsterDataResult = await fetchMonsterLocation();
-      if (monsterDataResult) {
-        setData(monsterDataResult);
-      }
     }
-
     fetchData();
   }, []);
-  // 獲取經緯度城市
-  //useEffect(() => {
-  //async function fetchData() {
-  //if (geolocation) {
-  //const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
-  //const result = await Getlocation(cityLocation);
-  //if (result) {
-  //  setCity(result.data);
-  //  setSelectedRegion(result.data);
-  //}
-  //}
-  //}
-  //fetchData();
-  //}, [geolocation]);
 
   return (
     <Fragment>
@@ -131,7 +112,7 @@ const MapSelection = () => {
         city={city}
         selectedRegion={selectedRegion}
         setSelectedRegion={setSelectedRegion}
-        LocationList={LocationList}
+        LocationList={monsterData ? monsterData.data : []}
         isCollapsed={isCollapsed}
         toggleCollapse={toggleCollapse}
       />
@@ -169,20 +150,27 @@ const MapSelection = () => {
         <Tab.Panels>
           <Tab.Panel>
             {/* 魔物上傳資訊 */}
-            <MapTable
-              data={data}
-              monster={selectedMonster}
-              city={selectedRegion}
-            />
+            {isMonsterListLoading && <p className="text-center">Loading...</p>}
+            {isMonsterListError && <p className="text-center">Error</p>}
+            {monsterList && (
+              <MapTable
+                data={monsterList}
+                monster={selectedMonster}
+                city={selectedRegion}
+              />
+            )}
           </Tab.Panel>
           <Tab.Panel>
             {/* 動態地圖 */}
-            <MonsterMap
-              geolocation={geolocation}
-              data={data}
-              monster={selectedMonster}
-              monsterData={null}
-            />
+            {isMonsterListLoading && <p className="text-center">Loading...</p>}
+            {monsterList && (
+              <MonsterMap
+                geolocation={geolocation}
+                data={monsterList}
+                monster={selectedMonster}
+                monsterData={null}
+              />
+            )}
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
