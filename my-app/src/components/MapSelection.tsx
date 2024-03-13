@@ -3,6 +3,7 @@ import { Fragment, useState, useEffect, useCallback } from "react";
 import FieldIcon from "../../public/assets/icons/field_icon.svg";
 import MonsterIcon from "../../public/assets/icons/monster_icon.svg";
 import { useTranslation } from "react-i18next";
+import { GiWingedSword } from "react-icons/gi";
 import {
   fetchMonsterLocation,
   GetlocationList,
@@ -72,7 +73,7 @@ const MapSelection = () => {
   async function handleFormSubmitted() {
     try {
       queryClient.invalidateQueries({
-        queryKey: ["monsterData"],
+        queryKey: ["monsterList"],
       });
       // 獲取上傳的魔物資料
       await toast.promise(fetchMonsterLocation(), {
@@ -160,6 +161,12 @@ const MapSelection = () => {
             )}
             {isMonsterListError && (
               <p className="text-center">Something went wrong.</p>
+            )}
+            {monsterList?.data.length === 0 && (
+              <div className="text-center flex flex-col gap-4 text-xl justify-center items-center my-12">
+                <GiWingedSword className="w-20 h-20" />
+                <h3 className=" text-slate-800">尚未有人發現魔物...</h3>
+              </div>
             )}
             {monsterList && (
               <MapTable

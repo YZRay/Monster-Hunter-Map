@@ -39,7 +39,6 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
 
   async function copyTextToClipboard(coordinates: string) {
     try {
-      // 使用 Clipboard API 写入剪贴板
       await navigator.clipboard.writeText(coordinates);
       toast.success(`${t("MonsterMap.copy")}`, {
         position: "top-center",
@@ -83,78 +82,49 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
       mlid: mlitem.id,
     };
 
-    if (isGood) {
-      createGood(model, {
-        onSuccess: (data) => {
-          toast.dismiss(loading);
-          data.json().then((data) => {
-            if (!data.status) {
-              toast.error(`${t("MonsterMap.error")}`, {
-                position: "top-center",
-                className: "danger",
-                autoClose: 1500, // 1.5秒關閉
-              });
-            } else {
-              toast.success(`${t("MonsterMap.success")}`, {
-                position: "top-center",
-                autoClose: 1500, // 1.5秒關閉
-              });
-              mlitem.goodLocations.push(model);
-            }
-
-            setIsCreateing(false);
-
-            queryClient.invalidateQueries({
-              queryKey: ["monsterList"],
-            });
+    const successCallback = (data: any) => {
+      toast.dismiss(loading);
+      data.json().then((data: any) => {
+        if (!data.status) {
+          toast.error(`${t("MonsterMap.error")}`, {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500,
           });
-        },
-        onError: () => {
-          toast.error(`${t("MonsterMap.failed")}`, {
+        } else {
+          toast.success(`${t("MonsterMap.success")}`, {
             position: "top-center",
             autoClose: 1500,
           });
-          queryClient.invalidateQueries({
-            queryKey: ["monsterList"],
-          });
-          setIsCreateing(false);
+        }
+        setIsCreateing(false);
+      });
+      queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+    };
+
+    const errorCallback = () => {
+      toast.error(`${t("MonsterMap.failed")}`, {
+        position: "top-center",
+        autoClose: 1500,
+      });
+      setIsCreateing(false);
+      queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+    };
+
+    if (isGood) {
+      createGood(model, {
+        onSuccess: successCallback,
+        onError: errorCallback,
+        onSettled: () => {
+          queryClient.invalidateQueries({ queryKey: ["monsterList"] });
         },
       });
     } else {
       createBad(model, {
-        onSuccess: (data) => {
-          toast.dismiss(loading);
-          data.json().then((data) => {
-            if (!data.status) {
-              toast.error(`${t("MonsterMap.error")}`, {
-                position: "top-center",
-                className: "danger",
-                autoClose: 1500,
-              });
-            } else {
-              toast.success(`${t("MonsterMap.success")}`, {
-                position: "top-center",
-                autoClose: 1500,
-              });
-
-              mlitem.badLocations.push(model);
-            }
-            queryClient.invalidateQueries({
-              queryKey: ["monsterList"],
-            });
-
-            setIsCreateing(false);
-          });
-        },
-        onError: () => {
-          toast.error(`${t("MonsterMap.failed")}`, {
-            position: "top-center",
-            autoClose: 1500,
-          });
-          queryClient.invalidateQueries({
-            queryKey: ["monsterList"],
-          });
-          setIsCreateing(false);
+        onSuccess: successCallback,
+        onError: errorCallback,
+        onSettled: () => {
+          queryClient.invalidateQueries({ queryKey: ["monsterList"] });
         },
       });
     }
