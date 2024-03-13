@@ -8,8 +8,9 @@ import Image from "next/image";
 import monster from "../../data/data.json";
 import { toast } from "react-toastify";
 import useUserId from "@/components/Hook/UserId";
-import { createMonsterLocation } from "../api/MLApi";
+import { createMonsterLocation, queryClient } from "../api/MLApi";
 import { useTranslation } from "react-i18next";
+import { useMutation } from "@tanstack/react-query";
 
 const levels = [5, 6, 7, 8, 9, 10];
 const rounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -56,6 +57,9 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
       remainingTime: 0,
     },
   });
+  const { mutate } = useMutation({
+    mutationFn: createMonsterLocation,
+  });
 
   //送出表單
   const onSubmit = handleSubmit((data) => {
@@ -74,41 +78,23 @@ const MonsterForm: FC<Props> = ({ onSubmitted }) => {
     // console.log(data);
 
     setDisableSubmit(true);
-
-    createMonsterLocation(data)
-      .then((response) => {
-        if (!response.ok) {
-          toast.error("網路回應發生錯誤", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (!data.status) {
-          toast.error("魔物資訊新增失敗！", {
-            position: "top-center",
-            className: "danger",
-            autoClose: 1500, // 1.5秒關閉
-          });
-        } else {
-          toast.success("魔物資訊新增成功！", {
-            position: "top-center",
-            autoClose: 1500, // 1.5秒關閉
-          });
-
-          onSubmitted();
-        }
-        setSubmitted(true);
-        //reset(); // 送出後清空表單
-      })
-      .catch((error) => {
-        console.error("Error submit Form", error);
-      })
-      .finally(() => {
+    mutate(data, {
+      onSuccess: () => {
+        toast.success("魔物資訊新增成功", {
+          position: "top-center",
+        });
+        queryClient.invalidateQueries({ queryKey: ["monsterLocation"] });
+      },
+      onError: () => {
+        toast.error("發生錯誤", {
+          position: "top-center",
+        });
         setDisableSubmit(false);
-      });
+      },
+      onSettled: () => {
+        setDisableSubmit(false);
+      },
+    });
   });
 
   // 魔物名稱

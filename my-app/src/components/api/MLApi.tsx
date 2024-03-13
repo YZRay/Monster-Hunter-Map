@@ -1,3 +1,6 @@
+import { QueryClient } from "@tanstack/react-query";
+export const queryClient = new QueryClient();
+
 const url = "https://api.mhnow.cc";
 
 export async function Getlocation(c: string) {

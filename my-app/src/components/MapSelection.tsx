@@ -3,17 +3,20 @@ import { Fragment, useState, useEffect, useCallback } from "react";
 import FieldIcon from "../../public/assets/icons/field_icon.svg";
 import MonsterIcon from "../../public/assets/icons/monster_icon.svg";
 import { useTranslation } from "react-i18next";
+import { GiWingedSword } from "react-icons/gi";
 import {
   fetchMonsterLocation,
   GetlocationList,
-  Getlocation,
+  queryClient,
 } from "./api/MLApi";
 import { getGeolocationData } from "./api/GeolocationAPI";
 import Image from "next/image";
 import monster from "../data/data.json";
 import dynamic from "next/dynamic";
 import SearchMonster from "./SearchMonster";
+import { Spinner } from "@nextui-org/react";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
 const MapTable = dynamic(() => import("./Table/MapTable"));
 const MonsterForm = dynamic(() => import("./form/MonsterForm"), {
@@ -22,7 +25,6 @@ const MonsterForm = dynamic(() => import("./form/MonsterForm"), {
 const MonsterMap = dynamic(() => import("@/components/MonsterMap"), {
   ssr: false,
 });
-
 const monsterNames = Object.entries(monster.equipSetting)
   .filter(
     ([key, armor]) =>
@@ -32,6 +34,21 @@ const monsterNames = Object.entries(monster.equipSetting)
 
 const MapSelection = () => {
   const { t } = useTranslation("monster");
+  const {
+    data: monsterList,
+    isLoading: isMonsterListLoading,
+    isError: isMonsterListError,
+  } = useQuery({
+    queryKey: ["monsterList"],
+    queryFn: fetchMonsterLocation,
+    refetchIntervalInBackground: true,
+    refetchInterval: 10000,
+  });
+  const { data: monsterData } = useQuery({
+    queryKey: ["monsterData"],
+    queryFn: GetlocationList,
+  });
+
   //摺疊搜尋區塊
   const [isCollapsed, setIsCollapsed] = useState(true);
   const toggleCollapse = useCallback(() => {
@@ -48,10 +65,8 @@ const MapSelection = () => {
   }, []);
 
   const [city, setCity] = useState("全部");
-  const [LocationList, setLocationList] = useState<string[]>([]);
   const [selectedMonster, setSelectedMonster] = useState<string[]>([]);
   const [selectedRegion, setSelectedRegion] = useState<string | null>("全部");
-  const [data, setData] = useState<GetResponse | null>(null);
   const [geolocation, setGeolocation] = useState<{
     latitude: number | null;
     longitude: number | null;
@@ -59,18 +74,15 @@ const MapSelection = () => {
 
   async function handleFormSubmitted() {
     try {
+      queryClient.invalidateQueries({
+        queryKey: ["monsterList"],
+      });
       // 獲取上傳的魔物資料
-      const monsterDataResult = await toast.promise(fetchMonsterLocation(), {
+      await toast.promise(fetchMonsterLocation(), {
         pending: `Loading ...`,
         success: "取得成功",
         error: "發生錯誤",
       });
-
-      if (monsterDataResult && monsterDataResult.data) {
-        setData(monsterDataResult);
-      } else {
-        console.error("獲取的魔物資料失敗");
-      }
     } catch (error) {
       console.error("發生錯誤", error);
     }
@@ -82,36 +94,9 @@ const MapSelection = () => {
       getGeolocationData((geoData) => {
         setGeolocation(geoData);
       });
-
-      // 取得已經上傳的地區、國家
-      const locationListResult = await GetlocationList();
-      if (locationListResult) {
-        setLocationList(locationListResult.data);
-      }
-
-      // 獲取上傳的魔物資料
-      const monsterDataResult = await fetchMonsterLocation();
-      if (monsterDataResult) {
-        setData(monsterDataResult);
-      }
     }
-
     fetchData();
   }, []);
-  // 獲取經緯度城市
-  //useEffect(() => {
-  //async function fetchData() {
-  //if (geolocation) {
-  //const cityLocation = `${geolocation.latitude}%2C${geolocation.longitude}`;
-  //const result = await Getlocation(cityLocation);
-  //if (result) {
-  //  setCity(result.data);
-  //  setSelectedRegion(result.data);
-  //}
-  //}
-  //}
-  //fetchData();
-  //}, [geolocation]);
 
   return (
     <Fragment>
@@ -131,11 +116,10 @@ const MapSelection = () => {
         city={city}
         selectedRegion={selectedRegion}
         setSelectedRegion={setSelectedRegion}
-        LocationList={LocationList}
+        LocationList={monsterData ? monsterData.data : []}
         isCollapsed={isCollapsed}
         toggleCollapse={toggleCollapse}
       />
-      {/* 搜尋魔物 */}
       {/* 上傳魔物表單 */}
       <div className="flex gap-2">
         <button
@@ -153,7 +137,6 @@ const MapSelection = () => {
           {t("MonsterMap.download")}
         </button>
       </div>
-      {/* 上傳魔物表單 */}
       {/* 切換動態地圖 */}
       <Tab.Group>
         <Tab.List className="flex items-center gap-4 mb-4 mt-1">
@@ -169,20 +152,51 @@ const MapSelection = () => {
         <Tab.Panels>
           <Tab.Panel>
             {/* 魔物上傳資訊 */}
-            <MapTable
-              data={data}
-              monster={selectedMonster}
-              city={selectedRegion}
-            />
+            {isMonsterListLoading && (
+              <div className="flex justify-center items-center h-52">
+                <Spinner
+                  label="The page is loading, please wait..."
+                  color="primary"
+                  labelColor="foreground"
+                />
+              </div>
+            )}
+            {isMonsterListError && (
+              <p className="text-center">Something went wrong.</p>
+            )}
+            {monsterList?.data.length === 0 && (
+              <div className="text-center flex flex-col gap-4 text-xl justify-center items-center my-12">
+                <GiWingedSword className="w-20 h-20" />
+                <h3 className=" text-slate-800">尚未有人發現魔物...</h3>
+              </div>
+            )}
+            {monsterList && (
+              <MapTable
+                data={monsterList}
+                monster={selectedMonster}
+                city={selectedRegion}
+              />
+            )}
           </Tab.Panel>
           <Tab.Panel>
             {/* 動態地圖 */}
-            <MonsterMap
-              geolocation={geolocation}
-              data={data}
-              monster={selectedMonster}
-              monsterData={null}
-            />
+            {isMonsterListLoading && (
+              <div className="flex justify-center items-center h-52">
+                <Spinner
+                  label="The page is loading, please wait..."
+                  color="primary"
+                  labelColor="foreground"
+                />
+              </div>
+            )}
+            {monsterList && (
+              <MonsterMap
+                geolocation={geolocation}
+                data={monsterList}
+                monster={selectedMonster}
+                monsterData={null}
+              />
+            )}
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
