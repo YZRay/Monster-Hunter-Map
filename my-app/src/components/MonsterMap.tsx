@@ -101,10 +101,12 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
               autoClose: 1500, // 1.5秒關閉
             });
           }
+
           return response.json();
         })
         .then((data) => {
           toast.dismiss(loading);
+
           if (!data.status) {
             toast.error(`${t("MonsterMap.error")}`, {
               position: "top-center",

@@ -36,6 +36,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
   function openModal() {
     setIsOpen(true);
   }
+
   async function copyTextToClipboard(coordinates: string) {
     try {
       // 使用 Clipboard API 写入剪贴板
@@ -73,6 +74,7 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
     if (isCreateing || !uid) {
       return;
     }
+    var loading = toast.loading(`${t("MonsterMap.reporting")}`);
 
     setIsCreateing(true);
 
@@ -83,22 +85,76 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
 
     if (isGood) {
       createGood(model, {
-        onSuccess: () => {
-          toast.success(`${t("MonsterMap.success")}`, {
+        onSuccess: (data) => {
+          toast.dismiss(loading);
+          data.json().then((data) => {
+            if (!data.status) {
+              toast.error(`${t("MonsterMap.error")}`, {
+                position: "top-center",
+                className: "danger",
+                autoClose: 1500, // 1.5秒關閉
+              });
+            } else {
+              toast.success(`${t("MonsterMap.success")}`, {
+                position: "top-center",
+                autoClose: 1500, // 1.5秒關閉
+              });
+              mlitem.goodLocations.push(model);
+            }
+
+            setIsCreateing(false);
+
+            queryClient.invalidateQueries({
+              queryKey: ["monsterList"],
+            });
+          });
+        },
+        onError: () => {
+          toast.error(`${t("MonsterMap.failed")}`, {
             position: "top-center",
             autoClose: 1500,
           });
-          mlitem.goodLocations.push(model);
+          queryClient.invalidateQueries({
+            queryKey: ["monsterList"],
+          });
+          setIsCreateing(false);
         },
       });
     } else {
       createBad(model, {
-        onSuccess: () => {
-          toast.success(`${t("MonsterMap.success")}`, {
+        onSuccess: (data) => {
+          toast.dismiss(loading);
+          data.json().then((data) => {
+            if (!data.status) {
+              toast.error(`${t("MonsterMap.error")}`, {
+                position: "top-center",
+                className: "danger",
+                autoClose: 1500,
+              });
+            } else {
+              toast.success(`${t("MonsterMap.success")}`, {
+                position: "top-center",
+                autoClose: 1500,
+              });
+
+              mlitem.badLocations.push(model);
+            }
+            queryClient.invalidateQueries({
+              queryKey: ["monsterList"],
+            });
+
+            setIsCreateing(false);
+          });
+        },
+        onError: () => {
+          toast.error(`${t("MonsterMap.failed")}`, {
             position: "top-center",
             autoClose: 1500,
           });
-          mlitem.badLocations.push(model);
+          queryClient.invalidateQueries({
+            queryKey: ["monsterList"],
+          });
+          setIsCreateing(false);
         },
       });
     }
