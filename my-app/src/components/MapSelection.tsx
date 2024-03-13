@@ -41,6 +41,8 @@ const MapSelection = () => {
   } = useQuery({
     queryKey: ["monsterList"],
     queryFn: fetchMonsterLocation,
+    refetchIntervalInBackground: true,
+    refetchInterval: 10000,
   });
   const { data: monsterData } = useQuery({
     queryKey: ["monsterData"],
