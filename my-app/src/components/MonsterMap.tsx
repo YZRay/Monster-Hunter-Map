@@ -13,7 +13,12 @@ import { FaStar } from "react-icons/fa6";
 import { HiFaceSmile, HiFaceFrown } from "react-icons/hi2";
 import { toast } from "react-toastify";
 import useUserId from "./Hook/UserId";
-import { createBadLocation, createGoodLocation } from "./api/MLApi";
+import {
+  createBadLocation,
+  createGoodLocation,
+  queryClient,
+} from "./api/MLApi";
+import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import CountdownTimer from "./CountdownTimer";
 
@@ -74,6 +79,14 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
 
   const [isCreateing, setIsCreateing] = useState(false);
 
+  const { mutate: createGood } = useMutation({
+    mutationFn: createGoodLocation,
+  });
+
+  const { mutate: createBad } = useMutation({
+    mutationFn: createBadLocation,
+  });
+
   const sendReport = (
     isGood: boolean,
     uid: string | null,
@@ -92,76 +105,55 @@ const MonsterMap: FC<Props> = ({ geolocation, data, monster, monsterData }) => {
       mlid: mlitem.id,
     };
 
+    const successCallback = (data: any) => {
+      toast.dismiss(loading);
+      data.json().then((data: any) => {
+        if (!data.status) {
+          toast.error(`${t("MonsterMap.error")}`, {
+            position: "top-center",
+            className: "danger",
+            autoClose: 1500,
+          });
+        } else {
+          toast.success(`${t("MonsterMap.success")}`, {
+            position: "top-center",
+            autoClose: 1500,
+          });
+        }
+        setIsCreateing(false);
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+        }, 4500);
+      });
+    };
+
+    const errorCallback = () => {
+      toast.error(`${t("MonsterMap.failed")}`, {
+        position: "top-center",
+        autoClose: 1500,
+      });
+      setIsCreateing(false);
+      setTimeout(() => {
+        queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+      }, 4500);
+    };
+
     if (isGood) {
-      createGoodLocation(model)
-        .then((response) => {
-          if (!response.ok) {
-            toast.error("網路回應發生錯誤", {
-              position: "top-center",
-              autoClose: 1500, // 1.5秒關閉
-            });
-          }
-
-          return response.json();
-        })
-        .then((data) => {
-          toast.dismiss(loading);
-
-          if (!data.status) {
-            toast.error(`${t("MonsterMap.error")}`, {
-              position: "top-center",
-              className: "danger",
-              autoClose: 1500, // 1.5秒關閉
-            });
-          } else {
-            toast.success(`${t("MonsterMap.success")}`, {
-              position: "top-center",
-              autoClose: 1500, // 1.5秒關閉
-            });
-
-            mlitem.goodLocations.push(model);
-          }
-
-          setIsCreateing(false);
-        })
-        .catch((error) => {
-          console.error("Error submit Form", error);
-        })
-        .finally(() => {});
+      createGood(model, {
+        onSuccess: successCallback,
+        onError: errorCallback,
+        onSettled: () => {
+          queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+        },
+      });
     } else {
-      createBadLocation(model)
-        .then((response) => {
-          if (!response.ok) {
-            toast.error("網路回應發生錯誤", {
-              position: "top-center",
-              autoClose: 1500, // 1.5秒關閉
-            });
-          }
-          return response.json();
-        })
-        .then((data) => {
-          toast.dismiss(loading);
-          if (!data.status) {
-            toast.error(`${t("MonsterMap.error")}`, {
-              position: "top-center",
-              className: "danger",
-              autoClose: 1500, // 1.5秒關閉
-            });
-          } else {
-            toast.success(`${t("MonsterMap.success")}`, {
-              position: "top-center",
-              autoClose: 1500, // 1.5秒關閉
-            });
-
-            mlitem.badLocations.push(model);
-          }
-
-          setIsCreateing(false);
-        })
-        .catch((error) => {
-          console.error("Error submit Form", error);
-        })
-        .finally(() => {});
+      createBad(model, {
+        onSuccess: successCallback,
+        onError: errorCallback,
+        onSettled: () => {
+          queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+        },
+      });
     }
   };
 

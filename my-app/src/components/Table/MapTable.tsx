@@ -98,8 +98,10 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
           });
         }
         setIsCreateing(false);
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+        }, 4500);
       });
-      queryClient.invalidateQueries({ queryKey: ["monsterList"] });
     };
 
     const errorCallback = () => {
@@ -108,7 +110,9 @@ const MapTable: FC<MapTableProps> = ({ data, monster, city }) => {
         autoClose: 1500,
       });
       setIsCreateing(false);
-      queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+      setTimeout(() => {
+        queryClient.invalidateQueries({ queryKey: ["monsterList"] });
+      }, 4500);
     };
 
     if (isGood) {
