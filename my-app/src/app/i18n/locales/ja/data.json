@@ -584,10 +584,22 @@
     "rado": {
       "id": 22,
       "name": "ラドバルキン"
-    }, 
-    "hunt-a-thons":{
-      "id":23,
-      "name":"hunt a thons"
+    },
+    "hunt-a-thons": {
+      "id": 23,
+      "name": "hunt a thons"
+    },
+    "devil": {
+      "id": 24,
+      "name": "イビルジョー"
+    },
+    "tzitzi": {
+      "id": 25,
+      "name": "ツィツィヤック"
+    },
+    "odoga": {
+      "id": 26,
+      "name": "オドガロン"
     }
   }
 }

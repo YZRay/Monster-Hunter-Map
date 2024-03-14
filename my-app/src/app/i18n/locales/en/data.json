@@ -590,10 +590,22 @@
     "rado": {
       "id": 22,
       "name": "Radobaan"
-    }, 
-    "hunt-a-thons":{
-      "id":23,
-      "name":"hunt a thons"
+    },
+    "hunt-a-thons": {
+      "id": 23,
+      "name": "hunt a thons"
+    },
+    "devil": {
+      "id": 24,
+      "name": "Deviljho"
+    },
+    "tzitzi": {
+      "id": 25,
+      "name": "Tzitzi-Ya-Ku"
+    },
+    "odoga": {
+      "id": 26,
+      "name": "Odogaron"
     }
   }
 }

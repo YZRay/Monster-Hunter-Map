@@ -586,10 +586,22 @@
     "rado": {
       "id": 22,
       "name": "骨鎚龍"
-    }, 
-    "hunt-a-thons":{
-      "id":23,
-      "name":"hunt a thons"
+    },
+    "hunt-a-thons": {
+      "id": 23,
+      "name": "hunt a thons"
+    },
+    "devil": {
+      "id": 24,
+      "name": "恐暴龍"
+    },
+    "tzitzi": {
+      "id": 25,
+      "name": "眩鳥"
+    },
+    "odoga": {
+      "id": 26,
+      "name": "慘爪龍"
     }
   }
 }
