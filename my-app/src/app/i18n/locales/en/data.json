@@ -499,6 +499,44 @@
           "Increases the damage of aerial attacks by 25%.",
           "Increases the damage of aerial attacks by 30%."
         ]
+      },
+      "latentPower": {
+        "name": "力量解放",
+        "content": [
+          "Affinity is raised by 20% and Special Gauge fill rate is increased by 10% when certain conditions are met.",
+          "Affinity is raised by 30% and Special Gauge fill rate is increased by 20% when certain conditions are met.",
+          "Affinity is raised by 40% and Special Gauge fill rate is increased by 30% when certain conditions are met.",
+          "Affinity is raised by 50% and Special Gauge fill rate is increased by 40% when certain conditions are met.",
+          "Affinity is raised by 60% and Special Gauge fill rate is increased by 50% when certain conditions are met."
+        ]
+      },
+      "radiantFlow": {
+        "name": "行雲流水",
+        "content": [
+          "Become ever so slightly faster at sheathing or transforming your weapon.",
+          "Become slightly faster at sheathing or transforming your weapon.",
+          "Become significantly faster at sheathing or transforming your weapon."
+        ]
+      },
+      "statusSneakAttack": {
+        "name": "Status Sneak Attack",
+        "content": [
+          "Makes it ever so slightly more probable to inflict status ailment buildup when attacking a monster from behind.",
+          "Makes it slightly more probable to inflict status ailment buildup when attacking a monster from behind.",
+          "Makes it moderately more probable to inflict status ailment buildup when attacking a monster from behind.",
+          "Makes it significantly more probable to inflict status ailment buildup when attacking a monster from behind.",
+          "從魔物背後攻擊時，必定觸發異常狀態累積"
+        ]
+      },
+      "bleedingResistance": {
+        "name": "Bleeding Resistance",
+        "content": [
+          "20% chance of preventing bleeding status when damaged by a bleeding-inducing attack.",
+          "40% chance of preventing bleeding status when damaged by a bleeding-inducing attack.",
+          "60% chance of preventing bleeding status when damaged by a bleeding-inducing attack.",
+          "80% chance of preventing bleeding status when damaged by a bleeding-inducing attack.",
+          "Prevents bleeding."
+        ]
       }
     }
   },
@@ -590,10 +628,22 @@
     "rado": {
       "id": 22,
       "name": "Radobaan"
-    }, 
-    "hunt-a-thons":{
-      "id":23,
-      "name":"hunt a thons"
+    },
+    "hunt-a-thons": {
+      "id": 23,
+      "name": "hunt a thons"
+    },
+    "devil": {
+      "id": 24,
+      "name": "Deviljho"
+    },
+    "tzitzi": {
+      "id": 25,
+      "name": "Tzitzi-Ya-Ku"
+    },
+    "odoga": {
+      "id": 26,
+      "name": "Odogaron"
     }
   }
 }
