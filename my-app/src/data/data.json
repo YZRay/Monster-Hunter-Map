@@ -495,6 +495,44 @@
           "透過空中攻擊對魔物造成的傷害增加25%",
           "透過空中攻擊對魔物造成的傷害增加30%"
         ]
+      },
+      "latentPower": {
+        "name": "力量解放",
+        "content": [
+          "達到特定的條件後，會心率+20%、SP計量表增加量+10%",
+          "達到特定的條件後，會心率+30%、SP計量表增加量+20%",
+          "達到特定的條件後，會心率+40%、SP計量表增加量+30%",
+          "達到特定的條件後，會心率+50%、SP計量表增加量+40%",
+          "達到特定的條件後，會心率+60%、SP計量表增加量+50%"
+        ]
+      },
+      "radiantFlow": {
+        "name": "行雲流水",
+        "content": [
+          "收起武器的速度和變換武器型態的速度些微上升",
+          "收起武器的速度和變換武器型態的速度小幅上升",
+          "收起武器的速度和變換武器型態的速度大幅上升"
+        ]
+      },
+      "statusSneakAttack": {
+        "name": "奇襲 (狀態異常)",
+        "content": [
+          "從魔物背後攻擊時，異常狀態累積的觸發機率極小幅上升",
+          "從魔物背後攻擊時，異常狀態累積的觸發機率小幅上升",
+          "從魔物背後攻擊時，異常狀態累積的觸發機率上升",
+          "從魔物背後攻擊時，異常狀態累積的觸發機率大幅上升",
+          "從魔物背後攻擊時，必定觸發異常狀態累積"
+        ]
+      },
+      "bleedingResistance": {
+        "name": "裂傷耐性",
+        "content": [
+          "受到裂傷攻擊時，20%機率裂傷無效",
+          "受到裂傷攻擊時，40%機率裂傷無效",
+          "受到裂傷攻擊時，60%機率裂傷無效",
+          "受到裂傷攻擊時，80%機率裂傷無效",
+          "不會陷入裂傷狀態"
+        ]
       }
     }
   },
@@ -1996,7 +2034,7 @@
         ]
       },
       "eff": "fire",
-      "mapShow" : true,
+      "mapShow": true,
       "location": ["forest"],
       "statusEffect": {
         "poison": 1,
@@ -2611,6 +2649,314 @@
         "thunder": 1,
         "ice": 2,
         "dragon": 3
+      }
+    },
+    "devil": {
+      "id": 24,
+      "name": "恐暴龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "heroics",
+            "lv": 2
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 5,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 5,
+            "skill": "koKing",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "koKing",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 5,
+            "skill": "latentPower",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "latentPower",
+            "lv": 2
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 5,
+            "skill": "peakPerformance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "peakPerformance",
+            "lv": 2
+          },
+          {
+            "unlock": 5,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 5,
+            "skill": "dragonAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "dragonAttackBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 6,
+            "skill": "tremorResistance",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 5,
+            "skill": "tenacity",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "tenacity",
+            "lv": 2
+          },
+          {
+            "unlock": 5,
+            "skill": "latentPower",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": "dragon",
+      "mapShow": true,
+      "location": ["desert", "swamp", "forest"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 2,
+        "thunder": 3,
+        "ice": 1,
+        "dragon": 3
+      }
+    },
+    "tzitzi": {
+      "id": 25,
+      "name": "眩鳥",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 8,
+            "skill": "lockOn",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 2,
+            "skill": "thunderAttackBoost",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "thunderAttackBoost",
+            "lv": 2
+          },
+          {
+            "unlock": 4,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 2,
+            "skill": "statusSneakAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "perfectEvasion",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 2,
+            "skill": "statusSneakAttack",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "statusSneakAttack",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 2,
+            "skill": "evadeDistanceUP",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "statusSneakAttack",
+            "lv": 1
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 2,
+            "skill": "unshaken",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "unshaken",
+            "lv": 2
+          }
+        ]
+      },
+      "eff": null,
+      "mapShow": true,
+      "location": ["desert", "swamp", "forest"],
+      "statusEffect": {
+        "poison": 2,
+        "sleep": 2,
+        "paralysis": 2,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 2,
+        "water": 2,
+        "thunder": 3,
+        "ice": 3,
+        "dragon": 2
+      }
+    },
+    "odoga": {
+      "id": 26,
+      "name": "慘爪龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          {
+            "unlock": 4,
+            "skill": "evasiveConcentration",
+            "lv": 1
+          }
+        ],
+        "helm": [
+          {
+            "unlock": 4,
+            "skill": "radiantFlow",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "radiantFlow",
+            "lv": 2
+          }
+        ],
+        "mail": [
+          {
+            "unlock": 4,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "criticalEye",
+            "lv": 2
+          },
+          {
+            "unlock": 4,
+            "skill": "bleedingResistance",
+            "lv": 1
+          }
+        ],
+        "gloves": [
+          {
+            "unlock": 4,
+            "skill": "radiantFlow",
+            "lv": 1
+          },
+          {
+            "unlock": 4,
+            "skill": "bleedingResistance",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "bleedingResistance",
+            "lv": 2
+          }
+        ],
+        "belt": [
+          {
+            "unlock": 4,
+            "skill": "criticalEye",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "evasiveConcentration",
+            "lv": 2
+          }
+        ],
+        "greaves": [
+          {
+            "unlock": 4,
+            "skill": "evasiveConcentration",
+            "lv": 1
+          },
+          {
+            "unlock": 6,
+            "skill": "evasiveConcentration",
+            "lv": 1
+          }
+        ]
+      },
+      "eff": null,
+      "mapShow": true,
+      "location": ["desert", "swamp", "forest"],
+      "statusEffect": {
+        "poison": 1,
+        "sleep": 2,
+        "paralysis": 3,
+        "blastblight": 2,
+        "stun": 2
+      },
+      "weaknessElement": {
+        "fire": 1,
+        "water": 1,
+        "thunder": 2,
+        "ice": 3,
+        "dragon": 0
       }
     }
   }
