@@ -1,4 +1,3 @@
-// MonsterCard.tsx
 import { FC } from "react";
 import { HiClipboardDocument, HiFaceSmile, HiFaceFrown } from "react-icons/hi2";
 import { FaStar, FaLocationDot } from "react-icons/fa6";
