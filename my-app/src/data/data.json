@@ -2958,6 +2958,37 @@
         "ice": 3,
         "dragon": 0
       }
+    },
+    "c-puke": {
+      "id": 27,
+      "name": "水妖鳥",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+          
+        ],
+        "helm": [
+        ],
+        "mail": [
+        ],
+        "gloves": [
+        ],
+        "belt": [
+          
+        ],
+        "greaves": [
+         
+        ]
+      },
+      "eff": null,
+      "mapShow": true,
+      "location": [],
+      "statusEffect": {
+        
+      },
+      "weaknessElement": {
+       
+      }
     }
   }
 }
