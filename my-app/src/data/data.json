@@ -2989,6 +2989,146 @@
       "weaknessElement": {
        
       }
+    },
+    "basar": {
+      "id": 28,
+      "name": "岩龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+        ],
+        "helm": [
+        ],
+        "mail": [
+        ],
+        "gloves": [
+        ],
+        "belt": [
+        ],
+        "greaves": [
+        ]
+      },
+      "eff": null,
+      "mapShow": true,
+      "location": [],
+      "statusEffect": {
+        
+      },
+      "weaknessElement": {
+       
+      }
+    },
+    "khezu": {
+      "id": 29,
+      "name": "奇怪龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+        ],
+        "helm": [
+        ],
+        "mail": [
+        ],
+        "gloves": [
+        ],
+        "belt": [
+        ],
+        "greaves": [
+        ]
+      },
+      "eff": null,
+      "mapShow": true,
+      "location": [],
+      "statusEffect": {
+        
+      },
+      "weaknessElement": {
+       
+      }
+    },
+    "kusha": {
+      "id": 30,
+      "name": "鋼龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+        ],
+        "helm": [
+        ],
+        "mail": [
+        ],
+        "gloves": [
+        ],
+        "belt": [
+        ],
+        "greaves": [
+        ]
+      },
+      "eff": null,
+      "mapShow": true,
+      "location": [],
+      "statusEffect": {
+        
+      },
+      "weaknessElement": {
+       
+      }
+    },
+    "mizu": {
+      "id": 31,
+      "name": "泡狐龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+        ],
+        "helm": [
+        ],
+        "mail": [
+        ],
+        "gloves": [
+        ],
+        "belt": [
+        ],
+        "greaves": [
+        ]
+      },
+      "eff": null,
+      "mapShow": false,
+      "location": [],
+      "statusEffect": {
+        
+      },
+      "weaknessElement": {
+       
+      }
+    },
+    "n-paol": {
+      "id": 32,
+      "name": "浮眠龍",
+      "unlock": 2,
+      "equip": {
+        "weapon": [
+        ],
+        "helm": [
+        ],
+        "mail": [
+        ],
+        "gloves": [
+        ],
+        "belt": [
+        ],
+        "greaves": [
+        ]
+      },
+      "eff": null,
+      "mapShow": false,
+      "location": [],
+      "statusEffect": {
+        
+      },
+      "weaknessElement": {
+       
+      }
     }
   }
 }
